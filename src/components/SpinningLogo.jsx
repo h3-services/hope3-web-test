@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import './spinningLogo.css'
+import '../styles/spinningLogo.css'
 
 function SpinningLogo() {
   const [animationStep, setAnimationStep] = useState(0)

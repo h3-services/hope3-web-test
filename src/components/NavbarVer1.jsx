@@ -1,6 +1,6 @@
 "use client"
 
-import './navbar.css'
+import '../styles/navbar.css'
 import { useState } from "react"
 
 const NavbarVer1 = () => {

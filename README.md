@@ -1,6 +1,6 @@
 # HOPE3 - Professional UI Implementation
 
-A modern, component-based implementation using Next.js, shadcn/ui, and Tailwind CSS.
+A modern, component-based implementation using Vite, React, and Tailwind CSS.
 
 ## Installation
 
@@ -8,7 +8,7 @@ A modern, component-based implementation using Next.js, shadcn/ui, and Tailwind 
 npm install
 ```
 
-## Run Development Server
+## Development
 
 ```bash
 npm run dev
@@ -16,20 +16,38 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Components Structure
+## Build
 
-- `components/Header.tsx` - Main header wrapper
-- `components/Navbar.tsx` - Navigation bar with logo and menu
-- `components/HeroSection.tsx` - Hero section with graduation theme
-- `components/ui/button.tsx` - Reusable button component (shadcn/ui)
-- `lib/utils.ts` - Utility functions for className merging
+```bash
+npm run build
+```
+
+## Preview
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   └── *.jsx           # Feature components
+├── styles/             # CSS files
+├── assets/             # Images and static files
+├── utils/              # Utility functions
+├── App.jsx             # Main app component
+├── main.jsx            # Entry point
+└── index.css           # Global styles
+```
 
 ## Features
 
-- ✅ Fully responsive design
+- ✅ Vite for fast development
+- ✅ React 18
+- ✅ Tailwind CSS
 - ✅ Component-based architecture
-- ✅ Tailwind CSS styling
-- ✅ shadcn/ui components
-- ✅ Animated graduation caps
-- ✅ Gradient logo design
-- ✅ Professional navigation
+- ✅ Professional file structure
+- ✅ Optimized build process

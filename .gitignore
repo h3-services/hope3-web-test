@@ -6,9 +6,9 @@ node_modules/
 # Testing
 /coverage
 
-# Next.js
-/.next/
-/out/
+# Vite
+dist/
+.vite/
 
 # Production
 /build
@@ -30,7 +30,6 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
-next-env.d.ts
 
 # IDE
 .vscode/

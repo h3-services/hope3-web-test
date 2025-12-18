@@ -20,7 +20,7 @@ const HeroSection = () => {
         <div className="space-y-8">
           {/* Abdul Kalam Quote */}
           <div className={`transition-all duration-1000 mt-16 ${textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <blockquote className="content text-white italic font-light mb-4" >
+            <blockquote className="content text-white italic font-light mb-4 text-[60px]" >
               "Learning gives creativity, creativity leads to thinking, thinking provides knowledge, knowledge makes you great."
             </blockquote>
             <cite className="text-white text-sm">- Dr. A.P.J. Abdul Kalam</cite>
