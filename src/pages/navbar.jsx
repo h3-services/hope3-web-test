@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import logo from '../assets/hope3_logo.png';
 import hope3 from '../assets/hope3.png';
@@ -34,8 +35,8 @@ const Navbar = () => {
   }, [showGetInvolved, activeDropdown]);
 
   const menuItems = {
-    'Our Work': ['Why HOPE3?', 'HOPE3 Journey'],
-    'Our Impact': ['Our Students', 'Our Projects'],
+    'Our Work': ['Our Students', 'Our Projects'],
+    'Our Impact': ['Why HOPE3?', 'HOPE3 Journey'],
     'Services': ['Services'],
     'About Us': ['Leadership & Board', 'Financials', 'FAQ', 'Be Informed']
   };
@@ -43,7 +44,9 @@ const Navbar = () => {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
-        <img src={logo} alt="Logo" className="navbar-logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" className="navbar-logo" />
+        </Link>
         
         <button 
           className="hamburger"
@@ -68,7 +71,7 @@ const Navbar = () => {
                 setClickedDropdown(newState);
               }}
             >
-              Our Work <span className="dropdown-arrow">^</span>
+              Our Work
             </button>
             {activeDropdown === 'Our Work' && (
               <div className="dropdown show">
@@ -89,12 +92,16 @@ const Navbar = () => {
                 setClickedDropdown(newState);
               }}
             >
-              Our Impact <span className="dropdown-arrow">^</span>
+              Our Impact
             </button>
             {activeDropdown === 'Our Impact' && (
               <div className="dropdown show">
                 {menuItems['Our Impact'].map((item, index) => (
-                  <div key={index} className="dropdown-link">{item}</div>
+                  item === 'Why HOPE3?' ? (
+                    <Link key={index} to="/why-hope3" className="dropdown-link">{item}</Link>
+                  ) : (
+                    <div key={index} className="dropdown-link">{item}</div>
+                  )
                 ))}
               </div>
             )}
@@ -115,7 +122,7 @@ const Navbar = () => {
                 setClickedDropdown(newState);
               }}
             >
-              Services <span className="dropdown-arrow">^</span>
+              Services
             </button>
             {activeDropdown === 'Services' && (
               <div className="dropdown show">
@@ -136,7 +143,7 @@ const Navbar = () => {
                 setClickedDropdown(newState);
               }}
             >
-              About Us <span className="dropdown-arrow">^</span>
+              About Us
             </button>
             {activeDropdown === 'About Us' && (
               <div className="dropdown show">
