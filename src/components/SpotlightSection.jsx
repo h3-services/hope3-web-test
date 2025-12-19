@@ -1,5 +1,7 @@
 "use client"
 
+import '../styles/spotlightSection.css'
+
 const SpotlightSection = () => {
   const news = [
     {
@@ -42,13 +44,13 @@ const SpotlightSection = () => {
   return (
     <section className="py-20 px-6 bg-blue-50">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-700 rounded-2xl p-6 mb-12 text-center">
+        <div className="bg-gradient-to-r from-purple-700 to-blue-600 rounded-2xl p-6 mb-12 text-center">
           <h2 className="text-4xl font-bold text-white">
             Spotlight & News
           </h2>
         </div>
         
-        <div className="bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl p-8 shadow-lg">
+        <div className="rounded-3xl p-8 shadow-lg" style={{backgroundColor: '#A0B6E6'}}>
           <div className="space-y-6">
             {news.map((item) => (
               <div
@@ -57,14 +59,14 @@ const SpotlightSection = () => {
                 onClick={() => window.open(item.link, '_blank')}
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-semibold text-white hover:text-gray-200 transition-colors">
+                  <h3 className="text-lg font-semibold text-purple-700 hover:text-purple-600 transition-colors">
                     {item.title}
                   </h3>
-                  <span className="text-sm text-gray-200 whitespace-nowrap ml-4">
+                  <span className="text-sm text-purple-600 whitespace-nowrap ml-4">
                     {item.date}
                   </span>
                 </div>
-                <p className="text-white">
+                <p className="text-purple-700">
                   {item.description}
                 </p>
               </div>

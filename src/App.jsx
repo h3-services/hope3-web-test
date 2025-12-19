@@ -1,4 +1,5 @@
 import Header from "./components/Header.jsx"
+import HeroSection from "./components/HeroSection.jsx"
 import SpinningLogo from "./components/SpinningLogo.jsx"
 import FeatureCards from "./components/FeatureCards.jsx"
 import PhilosophySection from "./components/PhilosophySection.jsx"
@@ -9,6 +10,7 @@ function App() {
   return (
     <main className="min-h-screen">
       <Header />
+      <HeroSection />
       <SpinningLogo />
       <FeatureCards />
       <PhilosophySection />

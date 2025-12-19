@@ -1,39 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@600&display=swap');
-@import url('https://fonts.cdnfonts.com/css/kyiv-type-titling');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  font-family: "Josefin Slab", serif;
-  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   font-size: 20px;
   color: #323232;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Kyiv*Type Titling", serif;
-  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
   color: #332EB2;
 }
 
 :root {
   --heading-color: #332EB2;
   --content-color: #323232;
-  --heading-font: "Kyiv*Type Titling", serif;
-  --content-font: "Josefin Slab", serif;
+  --heading-font: "Inter", sans-serif;
+  --content-font: "Inter", sans-serif;
 }
 
 .heading {
   font-family: var(--heading-font);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--heading-color);
 }
 
 .content {
   font-family: var(--content-font);
-  font-weight: 600;
+  font-weight: 400;
   font-size: 20px;
   color: var(--content-color);
 }
