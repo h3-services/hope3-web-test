@@ -1,8 +1,8 @@
-import linkedinLogo from '../assets/linkedin-removebg-preview.png'
-import fbLogo from '../assets/facebook-removebg-preview.png'
-import youtubeLogo from '../assets/youtube-removebg-preview.png'
-import instaLogo from '../assets/instagram-removebg-preview.png'
-import twitter from '../assets/twitter-removebg-preview.png'
+import linkedinLogo from '../assets/footer_logo/linkedin-removebg-preview.png'
+import fbLogo from '../assets/footer_logo/facebook-removebg-preview.png'
+import youtubeLogo from '../assets/footer_logo/youtube-removebg-preview.png'
+import instaLogo from '../assets/footer_logo/instagram-removebg-preview.png'
+import twitter from '../assets/footer_logo/twitter-removebg-preview.png'
 // import '../styles/NewFooter.css'
 
 const NewFooter = () => {

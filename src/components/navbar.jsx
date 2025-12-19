@@ -57,27 +57,6 @@ const Navbar = () => {
         </button>
 
         <div className="navbar-left">
-          <div className="navbar-section" ref={el => dropdownRefs.current['Our Impact'] = el}
-               onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Impact')}
-               onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
-            <button 
-              className="section-title"
-              onClick={() => {
-                const newState = activeDropdown === 'Our Impact' ? null : 'Our Impact';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
-              }}
-            >
-              Our Impact <span className="dropdown-arrow">^</span>
-            </button>
-            {activeDropdown === 'Our Impact' && (
-              <div className="dropdown show">
-                {menuItems['Our Impact'].map((item, index) => (
-                  <div key={index} className="dropdown-link">{item}</div>
-                ))}
-              </div>
-            )}
-          </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Work'] = el}
                onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Work')}
                onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
@@ -94,6 +73,27 @@ const Navbar = () => {
             {activeDropdown === 'Our Work' && (
               <div className="dropdown show">
                 {menuItems['Our Work'].map((item, index) => (
+                  <div key={index} className="dropdown-link">{item}</div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="navbar-section" ref={el => dropdownRefs.current['Our Impact'] = el}
+               onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Impact')}
+               onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
+            <button 
+              className="section-title"
+              onClick={() => {
+                const newState = activeDropdown === 'Our Impact' ? null : 'Our Impact';
+                setActiveDropdown(newState);
+                setClickedDropdown(newState);
+              }}
+            >
+              Our Impact <span className="dropdown-arrow">^</span>
+            </button>
+            {activeDropdown === 'Our Impact' && (
+              <div className="dropdown show">
+                {menuItems['Our Impact'].map((item, index) => (
                   <div key={index} className="dropdown-link">{item}</div>
                 ))}
               </div>
