@@ -47,7 +47,7 @@ const FeatureCards = () => {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="rounded-xl p-4 shadow-lg border-0 h-full flex flex-col max-w-xs mx-auto"
+              className="rounded-xl p-4 shadow-[0_15px_35px_rgba(0,_0,_0,_0.3)] border-0 h-full flex flex-col max-w-xs mx-auto transition-all duration-300 ease-in-out hover:shadow-[0_20px_45px_rgba(0,_0,_0,_0.4)] hover:scale-105 hover:-translate-y-2"
               style={{backgroundColor: '#A0B6E6'}}
             >
               <div className="h-28 w-full mb-3">
