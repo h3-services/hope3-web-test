@@ -1,22 +1,15 @@
-import Header from "./components/Header.jsx"
-import HeroSection from "./components/HeroSection.jsx"
-import SpinningLogo from "./components/SpinningLogo.jsx"
-import FeatureCards from "./components/FeatureCards.jsx"
-import PhilosophySection from "./components/PhilosophySection.jsx"
-import SpotlightSection from "./components/SpotlightSection.jsx"
-import NewFooter from "./components/NewFooter.jsx"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import WhyHope3 from './pages/whyHope3.jsx'
 
 function App() {
   return (
-    <main className="min-h-screen">
-      <Header />
-      <HeroSection />
-      <SpinningLogo />
-      <FeatureCards />
-      <PhilosophySection />
-      <SpotlightSection />
-      <NewFooter />
-    </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/why-hope3" element={<WhyHope3 />} />
+      </Routes>
+    </Router>
   )
 }
 

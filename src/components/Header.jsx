@@ -1,4 +1,4 @@
-import NavbarVer1 from "./navbar.jsx"
+import NavbarVer1 from "../pages/navbar.jsx"
 
 const Header = () => {
   return (
