@@ -6,7 +6,7 @@ import NewFooter from './NewFooter';
 
 const JourneyTimeline = () => {
   const [selectedYear, setSelectedYear] = useState(null);
-  
+
   const studentData = [
     { year: 2018, students: 7, station: "Social projects findabed", icon: "🏠" },
     { year: 2019, students: 23, station: "Varsity", icon: "🎓" },
@@ -17,9 +17,9 @@ const JourneyTimeline = () => {
     { year: 2024, students: 15, station: "Student Entreprenship", icon: "🚀" },
     { year: 2025, students: 2, station: "Enters into Maang", icon: "💻" }
   ];
-  
+
   const totalStudents = 139;
-  
+
   // Calculate zigzag positions for 8 stations
   const getZigzagPosition = (index, total) => {
     const segment = index / (total - 1);
@@ -38,44 +38,50 @@ const JourneyTimeline = () => {
     <>
       <Navbar />
       <div className="journey-container">
-        <h1 className="journey-headline">HOPE3 Journey</h1>
-        
-        <div className="timeline-container">
-        <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
-        
-        {/* Station markers */}
-        {studentData.map(({ year, students, station, icon }, index) => {
-          const { x, y } = getZigzagPosition(index, studentData.length);
-          return (
-            <div key={year} className="station-container" style={{ left: x, top: y }}>
-              <div
-                className={`station-marker ${selectedYear === year ? 'active' : ''}`}
-                onClick={() => setSelectedYear(selectedYear === year ? null : year)}
-              >
-                <div className="station-icon">{icon}</div>
-              </div>
-              <div className="station-name-label">{station}</div>
-            </div>
-          );
-        })}
-      </div>
-      
-      {/* Student data display */}
-      {selectedYear && (
-        <div className="impact-card">
-          <button className="close-btn" onClick={() => setSelectedYear(null)}>×</button>
-          <h3>{selectedYear}</h3>
-          <h4 className="station-name">{studentData.find(d => d.year === selectedYear)?.station}</h4>
-          <p className="student-count">{studentData.find(d => d.year === selectedYear)?.students} Students</p>
+        <div style={{ textAlign: 'center' }}>
+          <h1 className="journey-headline">HOPE3 Journey</h1>
         </div>
-      )}
-      
-      {/* Total summary card */}
-      <div className="total-card">
-        <h4>Total Impact</h4>
-        <p className="total-students">{totalStudents} Students</p>
-        <p className="year-range">2018 - 2025</p>
-      </div>
+
+        {/* Fixed Hover Card Container */}
+        <div className="hover-card-container">
+          {selectedYear && (
+            <div className="hover-card show">
+              <h3>{selectedYear}</h3>
+              <h4 className="hover-station-name">{studentData.find(d => d.year === selectedYear)?.station}</h4>
+              <p className="student-count">{studentData.find(d => d.year === selectedYear)?.students} Students</p>
+            </div>
+          )}
+        </div>
+
+        <div className="timeline-container">
+          <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
+
+          {/* Station markers */}
+          {studentData.map(({ year, students, station, icon }, index) => {
+            const { x, y } = getZigzagPosition(index, studentData.length);
+            return (
+              <div
+                key={year}
+                className="station-container"
+                style={{ left: x, top: y }}
+                onMouseEnter={() => setSelectedYear(year)}
+                onMouseLeave={() => setSelectedYear(null)}
+              >
+                <div className={`station-marker ${selectedYear === year ? 'active' : ''}`}>
+                  <div className="station-icon">{icon}</div>
+                </div>
+                <div className="station-name-label">{station}</div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Total summary card */}
+        <div className="total-card">
+          <h4>Total Impact</h4>
+          <p className="total-students">{totalStudents} Students</p>
+          <p className="year-range">2018 - 2025</p>
+        </div>
       </div>
       <NewFooter />
     </>

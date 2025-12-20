@@ -9,18 +9,22 @@
 
 /* Page Title */
 .page-title {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 60px 20px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  padding: 20px 40px;
   text-align: center;
+  margin: 100px auto 30px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  width: 100%;
+  max-width: 1200px;
 }
 
 .page-title h1 {
   color: white;
-  font-size: 3rem;
-  font-weight: bold;
+  font-size: 48px;
+  font-weight: 900;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  padding: 35px 40px;
+  letter-spacing: 2px;
 }
 
 /* Header Image */
@@ -94,9 +98,11 @@
   0% {
     transform: scaleX(1);
   }
+
   50% {
     transform: scaleX(0);
   }
+
   100% {
     transform: scaleX(1);
   }
@@ -315,71 +321,73 @@
     height: auto;
     gap: 20px;
   }
-  
-  .left-column, .center-column, .right-column {
+
+  .left-column,
+  .center-column,
+  .right-column {
     flex: none;
   }
-  
+
   .transformation-container {
     width: 250px;
     height: 250px;
   }
-  
+
   .hero-banner h1 {
     font-size: 2rem;
   }
-  
+
   .mission-content h2 {
     font-size: 1.5rem;
   }
-  
+
   .mission-content p {
     font-size: 1rem;
   }
-  
+
   .growth-stages {
     padding: 20px;
   }
-  
+
   .stage-content {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
-  
+
   .stage-image {
     width: 50px;
     height: 50px;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
-  
+
   .cta-btn {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .transformation-card {
     padding: 30px 15px;
   }
-  
+
   .card-content {
     padding: 30px 20px;
   }
-  
+
   .card-content h3 {
     font-size: 1.6rem;
   }
-  
+
   .card-stats {
     flex-direction: column;
     gap: 25px;
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
@@ -389,19 +397,19 @@
   .hero-banner {
     height: 120px;
   }
-  
+
   .hero-banner h1 {
     font-size: 1.8rem;
   }
-  
+
   .mission-vision {
     padding: 40px 15px;
   }
-  
+
   .how-we-do-it {
     padding: 30px 15px;
   }
-  
+
   .growth-stages {
     padding: 15px;
   }

@@ -1,10 +1,16 @@
 .journey-headline {
   text-align: center;
   font-size: 48px;
-  font-weight: bold;
-  color: #1e40af;
-  margin: 40px 0 30px 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  padding: 20px 40px;
+  border-radius: 12px;
+  margin: 100px 0 30px 0;
+  letter-spacing: 2px;
+  display: block;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 
 .journey-container {
@@ -13,7 +19,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  background: transparent;
   border-radius: 12px;
 }
 
@@ -43,11 +49,22 @@
   border-top: 8px solid #1e3a8a;
 }
 
+/* Fixed Hover Card Container */
+.hover-card-container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-right: 400px;
+}
+
 .timeline-container {
   position: relative;
   width: 100%;
   height: 400px;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .journey-image {
@@ -58,7 +75,7 @@
 
 .station-container {
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +93,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .station-icon {
@@ -93,18 +110,66 @@
   background: rgba(255, 255, 255, 0.9);
   padding: 2px 4px;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .station-marker:hover {
   transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .station-marker.active {
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
   transform: translate(-50%, -50%) scale(1.2);
-  box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Card */
+.hover-card {
+  background: #A0B6E6;
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(160, 182, 230, 0.4);
+  min-width: 200px;
+  text-align: center;
+  animation: riseUp 0.3s ease;
+}
+
+@keyframes riseUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-card.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hover-card h3 {
+  margin: 0 0 8px 0;
+  color: black;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.hover-card h4 {
+  margin: 0 0 5px 0;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hover-card p {
+  margin: 0;
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .station-name {
@@ -122,7 +187,7 @@
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   max-width: 300px;
   border-left: 4px solid #1e3a8a;
   animation: slideIn 0.3s ease;
@@ -163,6 +228,7 @@
     opacity: 0;
     transform: translateY(-50%) translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
@@ -173,11 +239,11 @@
   .journey-container {
     padding: 10px;
   }
-  
+
   .timeline-svg {
     height: 300px;
   }
-  
+
   .impact-card {
     position: fixed;
     top: 50%;
@@ -187,7 +253,7 @@
     max-width: 90vw;
     z-index: 100;
   }
-  
+
   .tooltip-bubble {
     font-size: 12px;
     padding: 6px 12px;
