@@ -1,187 +1,92 @@
 import { useState, useEffect } from 'react';
 import Navbar from './navbar.jsx';
 import NewFooter from './NewFooter.jsx';
-import '../styles/whyhope3.css';
+import '../styles/whyHope3.css';
 import headerImg from '../assets/college-background1.jpg';
-import hope3Logo from '../assets/hope3.png';
-import img1 from '../assets/education.jpeg';
-import img2 from '../assets/empowerment.jpeg';
-import img3 from '../assets/enterpreneurship.jpeg';
-import img4 from '../assets/college-graduation-pictures.jpg';
-import img5 from '../assets/education.jpeg';
-import img6 from '../assets/empowerment.jpeg';
-import img7 from '../assets/college-graduation-pictures.jpg';
-import img8 from '../assets/enterpreneurship.jpeg';
+import img1 from '../assets/transformation/img1.jpeg';
+import img2 from '../assets/transformation/img2.jpeg';
+import img3 from '../assets/transformation/img3.jpeg';
+import img4 from '../assets/transformation/img4.jpeg';
+import img5 from '../assets/transformation/img5.jpeg';
+import img6 from '../assets/transformation/img6.jpeg';
+import img7 from '../assets/transformation/img7.jpeg';
+import img8 from '../assets/transformation/img8.jpeg';
+import Animation from '../components/Animation.jsx';
 
 const WhyHope3 = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const images = document.querySelectorAll('.transform-image');
-    let currentIndex = 0;
-
-    function showNextImage() {
-      images[currentIndex]?.classList.remove('active');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex]?.classList.add('active');
-      setActiveIndex(currentIndex + 1);
-    }
-
-    if (images.length > 0) {
-      images[0].classList.add('active');
-      const transformInterval = setInterval(showNextImage, 3000);
-      return () => clearInterval(transformInterval);
-    }
-  }, []);
-  const growthStages = [
-    { 
-      number: 1, 
-      text: "Girl in front of a very small school building", 
-      image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=300&fit=crop",
-      alt: "Small school building"
-    },
-    { 
-      number: 2, 
-      text: "Word 'Learn' displayed clearly", 
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop",
-      alt: "Learn concept"
-    },
-    { 
-      number: 3, 
-      text: "Boy standing in front of an arch with HOPE3 logo", 
-      image: hope3Logo,
-      alt: "HOPE3 logo arch"
-    },
-    { 
-      number: 4, 
-      text: "Girl in front of a college building", 
-      image: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop",
-      alt: "College building"
-    },
-    { 
-      number: 5, 
-      text: "Girl doing lab work", 
-      image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop",
-      alt: "Lab work"
-    },
-    { 
-      number: 6, 
-      text: "Boy doing tech work using a laptop", 
-      image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&h=300&fit=crop",
-      alt: "Tech work with laptop"
-    },
-    { 
-      number: 7, 
-      text: "Girl graduating with cap and gown", 
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
-      alt: "Graduation ceremony"
-    },
-    { 
-      number: 8, 
-      text: "Boy and girl entering a high-rise building", 
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
-      alt: "High-rise building entrance"
-    }
+  const images = [img1, img2, img3, img4, img5, img6, img7, img8];
+  const journeyStages = [
+    'Schooling',
+    'Hope3 Gate', 
+    'Classroom',
+    'College Life',
+    'Lab Work',
+    'Digital Skills',
+    'Graduation',
+    'Career Entry'
   ];
 
-  const StageImage = ({ stage }) => (
-    <img 
-      src={stage.image} 
-      alt={stage.alt}
-      className="stage-img"
-      onError={(e) => {
-        e.target.style.display = 'none';
-        e.target.nextSibling.style.display = 'flex';
-      }}
-    />
-  );
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
 
-  const PlaceholderImage = ({ text }) => (
-    <div className="placeholder-image" style={{ display: 'none' }}>
-      <span>📷</span>
-      <small>{text}</small>
-    </div>
-  );
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
     <div className="whyhope3-page">
       <Navbar />
       
-      {/* Header Image */}
-      <div className="header-image">
-        <img src={headerImg} alt="Header" />
+      {/* Page Title */}
+      <div className="page-title">
+        <div className="container">
+          <h1>Why HOPE3?</h1>
+        </div>
       </div>
-      
+
       {/* Transformation Section */}
       <div className="transformation-section">
-        {/* Left Column - Images */}
+        {/* Left Column - Image Slideshow */}
         <div className="left-column">
           <div className="transformation-container">
-            <img src={img1} className="transform-image" id="img1" />
-            <img src={img2} className="transform-image" id="img2" />
-            <img src={img3} className="transform-image" id="img3" />
-            <img src={img4} className="transform-image" id="img4" />
-            <img src={img5} className="transform-image" id="img5" />
-            <img src={img6} className="transform-image" id="img6" />
-            <img src={img7} className="transform-image" id="img7" />
-            <img src={img8} className="transform-image" id="img8" />
+            {images.map((img, index) => (
+              <img 
+                key={index}
+                src={img} 
+                className={`transform-image ${index === activeIndex ? 'active' : ''}`}
+                alt={`Transformation ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
         
         {/* Center Column - Content */}
         <div className="center-column">
-          <h3 className={activeIndex === 0 ? 'gradient-text active' : ''}>A Student's Journey of Change</h3>
+          <h3 className={activeIndex === 0 ? 'gradient-text active' : ''}>
+            A Student's Journey of Change
+          </h3>
           <p>Watch as students transform through education, from their first steps in school to successful careers.</p>
         </div>
         
-        {/* Right Column - Text List */}
+        {/* Right Column - Journey Stages */}
         <div className="right-column">
           <ul>
-            <li className={activeIndex === 1 ? 'gradient-text active' : ''}>Schooling</li>
-            <li className={activeIndex === 2 ? 'gradient-text active' : ''}>Hope3 Gate</li>
-            <li className={activeIndex === 3 ? 'gradient-text active' : ''}>Classroom</li>
-            <li className={activeIndex === 4 ? 'gradient-text active' : ''}>College Life</li>
-            <li className={activeIndex === 5 ? 'gradient-text active' : ''}>Lab Work</li>
-            <li className={activeIndex === 6 ? 'gradient-text active' : ''}>Digital Skills</li>
-            <li className={activeIndex === 7 ? 'gradient-text active' : ''}>Graduation</li>
-            <li className={activeIndex === 8 ? 'gradient-text active' : ''}>Career Entry</li>
+            {journeyStages.map((stage, index) => (
+              <li 
+                key={index}
+                className={index === activeIndex ? 'gradient-text active' : ''}
+              >
+                {stage}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       
-      {/* Transformation Card Section */}
-      <div className="transformation-card">
-        <div className="card-content">
-          <h3>The Power of Transformation</h3>
-          <p>
-            Every journey begins with a single step. At HOPE3, we witness incredible 
-            transformations as students evolve from curious learners to confident leaders. 
-            This visual journey represents the real-life progression of our students - 
-            from their first day in school to achieving their career aspirations.
-          </p>
-          <div className="card-stats">
-            <div className="stat">
-              <span className="stat-number">1000+</span>
-              <span className="stat-label">Students Transformed</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">95%</span>
-              <span className="stat-label">Success Rate</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">8</span>
-              <span className="stat-label">Key Milestones</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Hero Banner Section */}
-      {/* <section className="hero-banner">
-        <h1>Why HOPE3</h1>
-      </section> */}
-
-      {/* Mission/Vision Section */}
+      {/* Mission/Vision/Philosophy Section */}
       <section className="mission-vision">
         <div className="container">
           <div className="mission-content">
@@ -219,10 +124,7 @@ const WhyHope3 = () => {
         <div className="section-title">
           <h2>How we do it</h2>
         </div>
-        
-        <div className="animation-placeholder">
-          <p>Animation component will be added here</p>
-        </div>
+        <Animation />
       </section>
 
       {/* Call to Action Section */}

@@ -1,4 +1,4 @@
-import Header from "../components/Header.jsx"
+import Navbar from "./navbar.jsx"
 import HeroSection from "./HeroSection.jsx"
 import SpinningLogo from "../components/SpinningLogo.jsx"
 import FeatureCards from "./FeatureCards.jsx"
@@ -9,7 +9,7 @@ import NewFooter from "./NewFooter.jsx"
 function Home() {
   return (
     <main className="min-h-screen">
-      <Header />
+      <Navbar />
       <HeroSection />
       <SpinningLogo />
       <FeatureCards />

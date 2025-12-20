@@ -3,33 +3,39 @@
 import { useState, useEffect } from "react"
 
 const HeroSection = () => {
-  const [textVisible, setTextVisible] = useState(false)
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setTextVisible(true), 500)
-    return () => clearTimeout(timer)
+    const t = setTimeout(() => setShow(true), 400)
+    return () => clearTimeout(t)
   }, [])
 
   return (
-    <section className="relative h-96 flex items-center justify-center overflow-hidden">
-      {/* Main Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <div
-          className={`transition-all duration-1000 mt-16 ${
-            textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="relative">
-            <p className="text-black text-lg mb-8">
-              Learning gives creativity, creativity leads to thinking,
-              thinking provides knowledge, knowledge makes you great.
-            </p>
-            <span className="absolute left-3/4 -translate-x-1/2 text-[14px] font-medium opacity-90 text-black">
-              — Dr. A. P. J. Abdul Kalam
-            </span>
-          </div>
-        </div>
-      </div>
+    <section
+      className="relative w-full min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{ backgroundImage: 'url(/src/assets/college-graduation-pictures.jpg)' }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Text */}
+      <div
+  className={`relative z-10 max-w-5xl px-6 transition-all duration-1000 ${
+    show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
+  {/* Quote */}
+  <blockquote className="text-white text-[26px] md:text-[30px] font-light leading-relaxed text-center">
+    “Learning gives creativity, creativity leads to thinking,
+    thinking provides knowledge, knowledge makes you great.”
+  </blockquote>
+
+  {/* Author – aligned like screenshot */}
+  <cite className="block mt-4 text-white text-[14px] md:text-[16px] font-medium not-italic opacity-90 text-right">
+    — Dr. A. P. J. Abdul Kalam
+  </cite>
+</div>
+
     </section>
   )
 }

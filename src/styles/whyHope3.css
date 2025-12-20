@@ -7,6 +7,22 @@
   margin-top: 70px;
 }
 
+/* Page Title */
+.page-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.page-title h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 35px 40px;
+}
+
 /* Header Image */
 .header-image {
   width: 100%;
@@ -106,7 +122,7 @@
 
 .right-column li {
   padding: 12px 0;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #333;
   border-bottom: 1px solid #eee;
 }
@@ -200,22 +216,31 @@
 /* Mission/Vision Section */
 .mission-vision {
   background-color: white;
-  padding: 60px 20px;
+  padding: 60px 60px;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 500px;
   margin: 0 auto;
+  border-radius: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .mission-content {
   text-align: left;
   line-height: 1.6;
+  border-left: 4px solid #007bff;
+  border-right: 4px solid #007bff;
+  border-radius: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #A0B6E6;
 }
 
 .mission-content h2 {
-  color: #2c5f5f;
-  font-size: 1.8rem;
+  color: white;
+  font-size: 1.5rem;
   margin-bottom: 15px;
   margin-top: 30px;
 }
@@ -225,8 +250,8 @@
 }
 
 .mission-content p {
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 0.95rem;
+  color: black;
   margin-bottom: 25px;
   line-height: 1.7;
 }
