@@ -1,32 +1,17 @@
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import Home from './pages/Home.jsx'
-// import WhyHope3 from './pages/WhyHope3.jsx'
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/why-hope3" element={<WhyHope3 />} />
-//       </Routes>
-//     </Router>
-//   )
-// }
-
-// export default App
-
-
-// src/App.jsx
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import WhyHope3 from "./pages/WhyHope3.jsx";
+import WhyHope3 from "./pages/whyHope3.jsx";
 import Hope3Journey from "./pages/Hope3Journey.jsx";
 import OurStudents from "./pages/OurStudents.jsx";
+import Donate from "./pages/Donate.jsx";
+import JoinHope3 from "./pages/JoinHope3.jsx";
+
+// Use basename for GitHub Pages deployment
+const basename = import.meta.env.BASE_URL;
 
 function App() {
   return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router basename={basename} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/why-hope3" element={<WhyHope3 />} />
@@ -40,6 +25,8 @@ function App() {
         <Route path="/financials" element={<div>Financials Page</div>} />
         <Route path="/faq" element={<div>FAQ Page</div>} />
         <Route path="/be-informed" element={<div>Be Informed Page</div>} />
+        <Route path="/donate" element={<Donate />} />
+        <Route path="/join-hope3" element={<JoinHope3 />} />
       </Routes>
     </Router>
   );

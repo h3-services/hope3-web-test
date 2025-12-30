@@ -1,7 +1,7 @@
 import '../styles/featureCards.css'
 import img1 from '../assets/education.jpeg'
 import img3 from '../assets/empowerment.jpeg'
-import imd2 from '../assets/enterpreneurship.jpeg'
+import img2 from '../assets/enterpreneurship.jpeg'
 import hope3Logo from '../assets/hope3_logo.png'
 
 const FeatureCards = () => {
@@ -19,7 +19,7 @@ const FeatureCards = () => {
     },
     {
       id: "empowerment",
-      title: "Empowerment", 
+      title: "Empowerment",
       image: img3,
       details: [
         "	Uncover personal strengths and master essential soft skills",
@@ -30,11 +30,11 @@ const FeatureCards = () => {
     {
       id: "entrepreneurship",
       title: "Entrepreneurship",
-      image: imd2, 
+      image: img2,
       details: [
-         "Test and refine startup concepts in practice",
-         "Get exposure and receive expert guidance on business strategies", 
-         "Opportunity to pitch ideas directly to clients and investors"
+        "Test and refine startup concepts in practice",
+        "Get exposure and receive expert guidance on business strategies",
+        "Opportunity to pitch ideas directly to clients and investors"
 
       ]
     }
@@ -48,16 +48,16 @@ const FeatureCards = () => {
             <div
               key={feature.id}
               className="rounded-xl p-4 shadow-[0_15px_35px_rgba(0,_0,_0,_0.3)] border-0 h-full flex flex-col max-w-xs mx-auto transition-all duration-300 ease-in-out hover:shadow-[0_20px_45px_rgba(0,_0,_0,_0.4)] hover:scale-105 hover:-translate-y-2"
-              style={{backgroundColor: '#A0B6E6'}}
+              style={{ backgroundColor: '#e8f5e8' }}
             >
               <div className="h-28 w-full mb-3">
                 <img src={feature.image} alt={feature.title} className="w-full h-full object-cover rounded-lg" />
               </div>
-              
-              <h3 className="text-2xl font-bold mb-2 text-white">
+
+              <h3 className="text-2xl font-bold mb-2 text-[#332EB2] font-kavoon">
                 {feature.title}
               </h3>
-              
+
               <div className="space-y-1.5 mb-3 flex-1">
                 {feature.details.map((detail, index) => (
                   <div key={index} className="flex items-start">
@@ -68,7 +68,7 @@ const FeatureCards = () => {
                   </div>
                 ))}
               </div>
-              
+
               {/* <button className="text-red-500 font-medium text-sm">
                 Read More
               </button> */}

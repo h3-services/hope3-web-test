@@ -161,28 +161,23 @@ const allStudents = [
     },
 ];
 
-// iPhone Mockup Component
-const IPhoneMockup = ({ student, onClick }) => {
+// Samsung Galaxy A12 Mockup Component
+const GalaxyMockup = ({ student, onClick }) => {
     return (
-        <div className="iphone-mockup" onClick={() => onClick(student)}>
-            <div className="iphone-frame">
-                {/* Dynamic Island / Notch */}
-                <div className="iphone-notch">
-                    <div className="notch-camera"></div>
-                </div>
+        <div className="galaxy-mockup" onClick={() => onClick(student)}>
+            <div className="galaxy-frame">
+                {/* Front Camera */}
+                <div className="galaxy-camera"></div>
                 {/* Screen */}
-                <div className="iphone-screen">
+                <div className="galaxy-screen">
                     <img
                         src={student.image}
                         alt={student.name}
-                        className="iphone-student-image"
+                        className="galaxy-student-image"
                     />
-                    <div className="iphone-student-name">
-                        <span>{student.name}</span>
-                    </div>
                 </div>
-                {/* Home Indicator */}
-                <div className="iphone-home-indicator"></div>
+                {/* Home Button */}
+                <div className="galaxy-home-button"></div>
             </div>
             <div className="tap-hint">
                 <span>👆 Tap to view story</span>
@@ -270,10 +265,10 @@ const OurStudents = () => {
                     <span>Success Stories</span> <span className="purple-text">from our alumni</span>
                 </h2>
 
-                {/* iPhone Grid - 4 per row */}
-                <div className="iphone-grid">
+                {/* Galaxy Grid - 4 per row */}
+                <div className="galaxy-grid">
                     {allStudents.map((student) => (
-                        <IPhoneMockup
+                        <GalaxyMockup
                             key={student.id}
                             student={student}
                             onClick={handleIPhoneClick}

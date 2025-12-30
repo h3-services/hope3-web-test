@@ -2,9 +2,10 @@
 .spinning-logo-container {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
   margin: 0 auto;
-  max-width: 600px;
+  margin-top: 40px;
+  width: 100%;
 }
 
 .logo-wrapper {
@@ -34,58 +35,63 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.text-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+/* Mobile Responsive - Hide text and center logo */
+@media (max-width: 768px) {
+  .spinning-logo-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center !important;
+  }
+
+  /* Center the logo wrapper */
+  .logo-wrapper {
+    margin: 0 auto;
+  }
+
+  .spinning-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+  }
 }
 
-.text-education {
-  font-size: 60px;
-  font-weight: 950;
-  color: red;
-  font-family: 'Cooper Black', 'Arial Black', sans-serif;
-  letter-spacing: 4px;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-  transform: perspective(500px) rotateX(15deg);
-  display: flex;
+@media (max-width: 480px) {
+  .spinning-logo-container {
+    padding: 0 5px;
+    max-width: 100%;
+  }
+
+  .spinning-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
 }
 
-.text-empowerment {
-  font-size: 60px;
-  font-weight: 950;
-  color: green;
-  font-family: 'Cooper Black', 'Arial Black', sans-serif;
-  letter-spacing: 4px;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-  transform: perspective(500px) rotateX(15deg);
-  display: flex;
-}
+/* Extra small phones like iPhone SE */
+@media (max-width: 375px) {
+  .spinning-logo {
+    width: 70px;
+    height: 70px;
+  }
 
-.text-entrepreneurship {
-  font-size: 60px;
-  font-weight: 950;
-  color: blue;
-  font-family: 'Cooper Black', 'Arial Black', sans-serif;
-  letter-spacing: 4px;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-  transform: perspective(500px) rotateX(15deg);
-  display: flex;
-}
-
-.letter {
-  display: inline-block;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.letter:hover {
-  transform: translateY(-10px) scale(1.2);
-  margin: 0 5px;
-  text-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+  .logo-text {
+    font-size: 16px;
+  }
 }

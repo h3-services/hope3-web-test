@@ -1,0 +1,425 @@
+/* Join HOPE3 Page Styles */
+
+.join-hope3-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+}
+
+/* Hero Section */
+.join-hero {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    padding: 100px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.join-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.join-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.join-hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.join-hero p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.7;
+}
+
+/* Tabs Section */
+.join-tabs-section {
+    padding: 60px 20px;
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    flex: 1;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 30px;
+    background: #e8f5e8;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn:hover:not(:disabled) {
+    border-color: #8b5cf6;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.tab-btn.active .tab-label,
+.tab-btn.active .tab-icon {
+    color: white;
+}
+
+.tab-icon {
+    font-size: 2rem;
+}
+
+.tab-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #334155;
+    text-align: center;
+}
+
+.tab-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Form Cards Container */
+.form-cards-container {
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 580px;
+}
+
+.form-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #e8f5e8;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition: all 0.4s ease;
+}
+
+.form-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.form-card h2 {
+    font-size: 1.8rem;
+    color: #332EB2;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.form-description {
+    font-size: 0.95rem;
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #ef4444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    background: #e8f5e8;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.form-group input:disabled {
+    background: #f1f5f9;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error Message */
+.error-msg {
+    padding: 12px 16px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    color: #dc2626;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 16px;
+    animation: shake 0.4s ease-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Success State */
+.success-state {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.success-state .success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.success-state h2 {
+    font-size: 1.8rem;
+    color: #10b981;
+    margin-bottom: 12px;
+}
+
+.success-state p {
+    font-size: 1rem;
+    color: #64748b;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+.reset-btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #8b5cf6;
+    background: transparent;
+    border: 2px solid #8b5cf6;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #8b5cf6;
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .join-hero {
+        padding: 80px 15px 60px;
+    }
+
+    .join-hero h1 {
+        font-size: 2rem;
+    }
+
+    .join-hero p {
+        font-size: 1rem;
+    }
+
+    .tabs-container {
+        gap: 12px;
+    }
+
+    .tab-btn {
+        padding: 16px 20px;
+        min-width: 150px;
+    }
+
+    .tab-icon {
+        font-size: 1.6rem;
+    }
+
+    .tab-label {
+        font-size: 0.85rem;
+    }
+
+    .form-cards-container {
+        min-height: 620px;
+    }
+
+    .form-card {
+        padding: 30px 24px;
+    }
+
+    .form-card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .join-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .tabs-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-btn {
+        width: 100%;
+        max-width: 280px;
+        flex-direction: row;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+
+    .form-cards-container {
+        min-height: 750px;
+        margin-bottom: 40px;
+    }
+
+    .form-card {
+        padding: 25px 18px 40px;
+        border-radius: 18px;
+    }
+
+    .form-group input {
+        padding: 12px 14px;
+    }
+
+    .submit-btn {
+        padding: 16px;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .join-tabs-section {
+        padding: 60px 20px 100px;
+    }
+}

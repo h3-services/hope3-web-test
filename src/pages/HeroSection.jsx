@@ -20,21 +20,20 @@ const HeroSection = () => {
 
       {/* Text */}
       <div
-  className={`relative z-10 max-w-5xl px-6 transition-all duration-1000 ${
-    show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
->
-  {/* Quote */}
-  <blockquote className="text-white text-[26px] md:text-[30px] font-light leading-relaxed text-center">
-    “Learning gives creativity, creativity leads to thinking,
-    thinking provides knowledge, knowledge makes you great.”
-  </blockquote>
+        className={`relative z-10 max-w-5xl px-6 transition-all duration-1000 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+      >
+        {/* Quote */}
+        <blockquote className="text-white text-[28px] md:text-[38px] font-jaini leading-relaxed text-center">
+          “Learning gives creativity, creativity leads to thinking,
+          thinking provides knowledge, knowledge makes you great.”
+        </blockquote>
 
-  {/* Author – aligned like screenshot */}
-  <cite className="block mt-4 text-white text-[14px] md:text-[16px] font-medium not-italic opacity-90 text-right">
-    — Dr. A. P. J. Abdul Kalam
-  </cite>
-</div>
+        {/* Author – aligned like screenshot */}
+        <cite className="block mt-4 text-white text-[14px] md:text-[16px] font-medium not-italic opacity-90 text-right">
+          — Dr. A. P. J. Abdul Kalam
+        </cite>
+      </div>
 
     </section>
   )

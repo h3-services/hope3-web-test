@@ -2,15 +2,16 @@
   text-align: center;
   font-size: 48px;
   font-weight: 900;
-  color: #ffffff;
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  color: #000000;
+  background: rgba(0, 120, 188, 0.28);
   padding: 20px 40px;
   border-radius: 12px;
   margin: 100px 0 30px 0;
   letter-spacing: 2px;
   display: block;
   width: 100%;
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 120, 188, 0.4);
+  font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
 .journey-container {
@@ -125,7 +126,7 @@
 
 /* Hover Card */
 .hover-card {
-  background: #A0B6E6;
+  background: rgba(150, 225, 135, 0.47);
   padding: 20px 40px;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(160, 182, 230, 0.4);
@@ -184,7 +185,7 @@
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  background: white;
+  background: #e8f5e8;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -235,27 +236,786 @@
   }
 }
 
+/* ========================================
+   MOBILE-SPECIFIC LAYOUT STYLES
+   ======================================== */
+
+/* Mobile Journey Layout Container */
+.mobile-journey-layout {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+/* Banner Block with Quote */
+.banner-block {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  padding: 30px 20px;
+  margin: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  text-align: center;
+}
+
+.banner-quote {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.banner-author {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e7ff;
+  margin: 0;
+  font-style: italic;
+}
+
+/* HOPE3 Story Section */
+.hope3-story {
+  padding: 30px 20px;
+  margin: 20px 15px;
+  background: #e8f5e8;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.story-intro {
+  font-size: 16px;
+  color: #1e293b;
+  margin: 0 0 15px 0;
+  line-height: 1.7;
+}
+
+.story-text {
+  font-size: 15px;
+  color: #475569;
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+}
+
+.story-highlight {
+  font-size: 16px;
+  color: #1e293b;
+  margin: 20px 0 0 0;
+  line-height: 1.7;
+  padding-top: 15px;
+  border-top: 2px solid #e2e8f0;
+}
+
+/* Zigzag Track Visualization */
+.track-visualization {
+  padding: 30px 15px;
+  margin: 20px 0;
+}
+
+.track-instruction {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 20px 0;
+  font-style: italic;
+}
+
+.track-container {
+  position: relative;
+  width: 100%;
+  min-height: 900px;
+  padding: 20px 0;
+}
+
+.track-image {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  max-width: 120px;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* Track Stations - Zigzag Pattern */
+.track-station {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  justify-content: center;
+}
+
+.track-station.left .track-marker {
+  transform: translateX(-25px);
+  /* Position on left side of track */
+}
+
+.track-station.right .track-marker {
+  transform: translateX(25px);
+  /* Position on right side of track */
+}
+
+/* Track Marker (Icon Circle) */
+.track-marker {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+  flex-shrink: 0;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+}
+
+.track-marker:active {
+  transform: scale(0.95);
+}
+
+.track-station.left .track-marker:active {
+  transform: translateX(-25px) scale(0.95);
+}
+
+.track-station.right .track-marker:active {
+  transform: translateX(25px) scale(0.95);
+}
+
+.track-marker.selected {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+.track-station.left .track-marker.selected {
+  transform: translateX(-25px) scale(1.1);
+}
+
+.track-station.right .track-marker.selected {
+  transform: translateX(25px) scale(1.1);
+}
+
+.track-icon {
+  font-size: 24px;
+}
+
+/* Track Info Box - Appears on selection */
+.track-info-box {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  max-width: 220px;
+  border-left: 4px solid #3b82f6;
+  animation: slideIn 0.3s ease-out;
+  position: absolute;
+  z-index: 2;
+}
+
+.track-info-box.left {
+  left: 15%;
+}
+
+.track-info-box.right {
+  right: 15%;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.track-year {
+  font-size: 18px;
+  font-weight: 900;
+  color: #1e40af;
+  margin: 0 0 4px 0;
+}
+
+.track-station-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin: 0 0 4px 0;
+}
+
+.track-students {
+  font-size: 12px;
+  font-weight: 700;
+  color: #3b82f6;
+  margin: 0;
+}
+
+/* ========================================
+   NEW SCROLL-BASED MOBILE LAYOUT STYLES
+   ======================================== */
+
+/* Main container for scroll-based mobile layout */
+.mobile-scroll-journey {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.mobile-scroll-journey .journey-headline {
+  font-size: 28px;
+  padding: 15px 20px;
+  margin: 80px 15px 20px 15px;
+  letter-spacing: 1px;
+}
+
+.mobile-scroll-journey .banner-block {
+  margin: 15px 10px;
+  padding: 20px 15px;
+}
+
+/* Scroll instruction text */
+.scroll-instruction {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  margin: 15px 0;
+  font-style: italic;
+  padding: 0 15px;
+}
+
+/* Main content area with flex layout */
+.mobile-journey-content {
+  display: flex;
+  flex-direction: row;
+  min-height: 400px;
+  padding: 10px;
+  gap: 15px;
+}
+
+/* Left side: Track with icons */
+.track-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  position: relative;
+}
+
+/* Track image positioned on the left */
+.track-left-image {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  z-index: 1;
+  top: 0;
+}
+
+/* Scrollable icons box - shows 3 icons at a time with vertical scroll */
+.icons-scroll-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  height: 300px;
+  overflow-y: scroll;
+  padding: 0;
+  z-index: 2;
+  width: 100%;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+}
+
+.icons-scroll-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.icons-scroll-box::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.icons-scroll-box::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 3px;
+}
+
+/* Icons container - all icons displayed */
+.icons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Keep old class for backwards compatibility */
+.icons-scroll-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  z-index: 2;
+  width: 100%;
+}
+
+.icons-scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.icons-scroll-container::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 2px;
+}
+
+.icons-scroll-container::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+/* Individual icon item */
+.scroll-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
+  height: 100px;
+  min-height: 100px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.scroll-icon-item:hover {
+  transform: scale(1.05);
+}
+
+.scroll-icon-item.selected {
+  transform: scale(1.1);
+}
+
+/* Icon marker circle */
+.scroll-icon-marker {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  border: 3px solid #ffffff;
+  transition: all 0.3s ease;
+}
+
+.scroll-icon-marker.selected {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+  border-color: #e0e7ff;
+}
+
+.scroll-icon-marker:active {
+  transform: scale(0.95);
+}
+
+.scroll-icon-emoji {
+  font-size: 24px;
+}
+
+.scroll-icon-year {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e40af;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* Right side: Content card area */
+.card-side {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+/* Content card */
+.mobile-content-card {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  border-left: 4px solid #3b82f6;
+  animation: slideInRight 0.3s ease-out;
+  text-align: center;
+  width: 100%;
+  max-width: 180px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.card-year {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+
+.card-station-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.card-students {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3b82f6;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Placeholder when no card selected */
+.card-placeholder {
+  text-align: center;
+  padding: 30px 15px;
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.card-placeholder p {
+  margin: 0;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
 @media (max-width: 768px) {
+
+  /* Hide desktop layout on mobile */
   .journey-container {
-    padding: 10px;
+    display: none;
   }
 
-  .timeline-svg {
-    height: 300px;
+  /* New scroll-based mobile layout responsive adjustments */
+  .scroll-icon-marker {
+    width: 50px;
+    height: 50px;
   }
 
-  .impact-card {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    transform: translate(-50%, -50%);
-    max-width: 90vw;
-    z-index: 100;
+  .scroll-icon-emoji {
+    font-size: 22px;
   }
 
-  .tooltip-bubble {
+  .mobile-content-card {
+    padding: 15px;
+    max-width: 160px;
+  }
+
+  .card-icon {
+    font-size: 35px;
+  }
+
+  .card-year {
+    font-size: 24px;
+  }
+
+  .card-station-name {
+    font-size: 13px;
+  }
+
+  .card-students {
+    font-size: 14px;
+  }
+
+  /* Mobile headline adjustments */
+  .mobile-journey-layout .journey-headline {
+    font-size: 28px;
+    padding: 15px 20px;
+    margin: 80px 15px 20px 15px;
+    letter-spacing: 1px;
+  }
+
+  /* Adjust banner for smaller screens */
+  .banner-block {
+    padding: 25px 15px;
+    margin: 15px 10px;
+  }
+
+  .banner-quote {
+    font-size: 16px;
+  }
+
+  .banner-author {
+    font-size: 13px;
+  }
+
+  /* Story section adjustments */
+  .hope3-story {
+    padding: 25px 15px;
+    margin: 15px 10px;
+  }
+
+  .story-intro {
+    font-size: 15px;
+  }
+
+  .story-text {
+    font-size: 14px;
+  }
+
+  .story-highlight {
+    font-size: 15px;
+  }
+
+  /* Track adjustments */
+  .track-visualization {
+    padding: 20px 10px;
+  }
+
+  .track-container {
+    min-height: 850px;
+  }
+
+  .track-station.left .track-marker {
+    transform: translateX(-20px);
+  }
+
+  .track-station.right .track-marker {
+    transform: translateX(20px);
+  }
+
+  .track-marker {
+    width: 50px;
+    height: 50px;
+  }
+
+  .track-icon {
+    font-size: 22px;
+  }
+
+  .track-info-box {
+    padding: 10px 14px;
+    min-width: 160px;
+    max-width: 200px;
+  }
+
+  .track-info-box.left {
+    left: 10%;
+  }
+
+  .track-info-box.right {
+    right: 10%;
+  }
+
+  .track-year {
+    font-size: 16px;
+  }
+
+  .track-station-name {
     font-size: 12px;
-    padding: 6px 12px;
+  }
+
+  .track-students {
+    font-size: 11px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+
+  /* New scroll-based layout adjustments for small screens */
+  .mobile-scroll-journey .journey-headline {
+    font-size: 24px;
+    padding: 12px 15px;
+    margin: 70px 10px 15px 10px;
+  }
+
+  .track-side {
+    width: 35%;
+  }
+
+  .track-left-image {
+    width: 90px;
+    height: 100%;
+  }
+
+  .icons-scroll-box {
+    height: 280px;
+    gap: 15px;
+  }
+
+  .icons-scroll-container {
+    height: 300px;
+    gap: 20px;
+  }
+
+  .scroll-icon-marker {
+    width: 45px;
+    height: 45px;
+  }
+
+  .scroll-icon-emoji {
+    font-size: 20px;
+  }
+
+  .scroll-icon-year {
+    font-size: 11px;
+  }
+
+  .mobile-content-card {
+    padding: 12px;
+    max-width: 140px;
+  }
+
+  .card-icon {
+    font-size: 30px;
+  }
+
+  .card-year {
+    font-size: 22px;
+  }
+
+  .card-station-name {
+    font-size: 12px;
+  }
+
+  .card-students {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .card-placeholder {
+    font-size: 12px;
+    padding: 20px 10px;
+  }
+
+  .mobile-journey-layout .journey-headline {
+    font-size: 24px;
+    padding: 12px 15px;
+    margin: 70px 10px 15px 10px;
+  }
+
+  .banner-block {
+    padding: 20px 12px;
+  }
+
+  .banner-quote {
+    font-size: 15px;
+  }
+
+  .hope3-story {
+    padding: 20px 12px;
+  }
+
+  .story-intro,
+  .story-text,
+  .story-highlight {
+    font-size: 14px;
+  }
+
+  .track-container {
+    min-height: 800px;
+  }
+
+  .track-station.left .track-marker {
+    transform: translateX(-18px);
+  }
+
+  .track-station.right .track-marker {
+    transform: translateX(18px);
+  }
+
+  .track-marker {
+    width: 45px;
+    height: 45px;
+  }
+
+  .track-icon {
+    font-size: 20px;
+  }
+
+  .track-info-box {
+    padding: 8px 12px;
+    min-width: 130px;
+    max-width: 160px;
+    font-size: 11px;
+  }
+
+  .track-info-box.left {
+    left: 8%;
+  }
+
+  .track-info-box.right {
+    right: 8%;
+  }
+
+  .track-year {
+    font-size: 15px;
+  }
+
+  .track-station-name {
+    font-size: 11px;
+  }
+
+  .track-students {
+    font-size: 10px;
+  }
+}
+
+/* Desktop - Hide mobile layouts */
+@media (min-width: 769px) {
+  .mobile-journey-layout {
+    display: none;
+  }
+
+  .mobile-scroll-journey {
+    display: none;
   }
 }
