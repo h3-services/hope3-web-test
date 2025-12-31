@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from './navbar.jsx';
 import NewFooter from './NewFooter.jsx';
-import '../styles/whyHope3.css';
 import headerImg from '../assets/college-background1.jpg';
 import img1 from '../assets/transformation/img1.jpeg';
 import img2 from '../assets/transformation/img2.jpeg';
@@ -19,7 +18,7 @@ const WhyHope3 = () => {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8];
   const journeyStages = [
     'Schooling',
-    'Hope3 Gate', 
+    'Hope3 Gate',
     'Classroom',
     'College Life',
     'Lab Work',
@@ -39,7 +38,7 @@ const WhyHope3 = () => {
   return (
     <div className="whyhope3-page">
       <Navbar />
-      
+
       {/* Page Title */}
       <div className="page-title">
         <div className="container">
@@ -53,16 +52,16 @@ const WhyHope3 = () => {
         <div className="left-column">
           <div className="transformation-container">
             {images.map((img, index) => (
-              <img 
+              <img
                 key={index}
-                src={img} 
+                src={img}
                 className={`transform-image ${index === activeIndex ? 'active' : ''}`}
                 alt={`Transformation ${index + 1}`}
               />
             ))}
           </div>
         </div>
-        
+
         {/* Center Column - Content */}
         <div className="center-column">
           <h3 className={activeIndex === 0 ? 'gradient-text active' : ''}>
@@ -70,12 +69,12 @@ const WhyHope3 = () => {
           </h3>
           <p>Watch as students transform through education, from their first steps in school to successful careers.</p>
         </div>
-        
+
         {/* Right Column - Journey Stages */}
         <div className="right-column">
           <ul>
             {journeyStages.map((stage, index) => (
-              <li 
+              <li
                 key={index}
                 className={index === activeIndex ? 'gradient-text active' : ''}
               >
@@ -85,34 +84,34 @@ const WhyHope3 = () => {
           </ul>
         </div>
       </div>
-      
+
       {/* Mission/Vision/Philosophy Section */}
       <section className="mission-vision">
         <div className="container">
           <div className="mission-content">
             <h2>Our Mission</h2>
             <p>
-              HOPE3 is dedicated to transforming lives through education and opportunity. 
-              We believe that every individual deserves access to quality education and 
-              the chance to reach their full potential, regardless of their background 
+              HOPE3 is dedicated to transforming lives through education and opportunity.
+              We believe that every individual deserves access to quality education and
+              the chance to reach their full potential, regardless of their background
               or circumstances.
             </p>
-            
+
             <h2>Our Vision</h2>
             <p>
-              We envision a world where education serves as the great equalizer, 
-              breaking down barriers and creating pathways to success for all. 
-              Through our comprehensive approach, we aim to nurture not just academic 
+              We envision a world where education serves as the great equalizer,
+              breaking down barriers and creating pathways to success for all.
+              Through our comprehensive approach, we aim to nurture not just academic
               excellence, but also character, leadership, and social responsibility.
             </p>
-            
+
             <h2>Our Philosophy</h2>
             <p>
-              At HOPE3, we believe in the power of holistic development. Our philosophy 
-              centers on three pillars: Hope (inspiring dreams), Opportunity (creating 
-              pathways), and Progress (measuring impact). We understand that true 
-              transformation happens when we address not just educational needs, but 
-              also provide mentorship, life skills, and ongoing support throughout 
+              At HOPE3, we believe in the power of holistic development. Our philosophy
+              centers on three pillars: Hope (inspiring dreams), Opportunity (creating
+              pathways), and Progress (measuring impact). We understand that true
+              transformation happens when we address not just educational needs, but
+              also provide mentorship, life skills, and ongoing support throughout
               each individual's journey.
             </p>
           </div>

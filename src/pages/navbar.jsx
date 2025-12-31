@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/navbar.css';
 import logo from '../assets/hope3_logo.png';
 import hope3 from '../assets/hope3.png';
 import usericon from '../assets/img1.png';
@@ -189,7 +188,15 @@ const Navbar = () => {
           <div className={`get-involved-card ${showGetInvolved ? 'show' : ''}`}>
             <div className="simple-menu">
               <button className="simple-button">Join HOPE3</button>
-              <button className="simple-button">Make a Gift</button>
+              <button
+                className="simple-button"
+                onClick={() => {
+                  navigate('/donations');
+                  setShowGetInvolved(false);
+                }}
+              >
+                Make a Gift
+              </button>
               <button className="simple-button">Give Feedback</button>
             </div>
           </div>

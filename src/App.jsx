@@ -22,12 +22,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import WhyHope3 from "./pages/WhyHope3.jsx";
 import Hope3Journey from "./pages/Hope3Journey.jsx";
+import Donations from "./pages/Donations.jsx";
 
 function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
-        <Route path="/" element={<Home />} /> 
+        <Route path="/" element={<Home />} />
         <Route path="/why-hope3" element={<WhyHope3 />} />
         <Route path="/hope3-journey" element={<Hope3Journey />} />
         <Route path="/hope3-journey" element={<div>HOPE3 Journey Page</div>} />
@@ -39,6 +40,7 @@ function App() {
         <Route path="/financials" element={<div>Financials Page</div>} />
         <Route path="/faq" element={<div>FAQ Page</div>} />
         <Route path="/be-informed" element={<div>Be Informed Page</div>} />
+        <Route path="/donations" element={<Donations />} />
       </Routes>
     </Router>
   );

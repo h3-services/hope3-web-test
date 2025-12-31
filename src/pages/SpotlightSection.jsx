@@ -1,7 +1,5 @@
 "use client"
 
-import '../styles/spotlightSection.css'
-
 const SpotlightSection = () => {
   const news = [
     {
@@ -12,7 +10,7 @@ const SpotlightSection = () => {
       link: "#"
     },
     {
-      id: 2, 
+      id: 2,
       title: "Education Initiative Reaches 500 Students",
       date: "November 2024",
       description: "Our comprehensive education program expands to rural communities",
@@ -21,7 +19,7 @@ const SpotlightSection = () => {
     {
       id: 3,
       title: "Women Empowerment Workshop Success",
-      date: "October 2024", 
+      date: "October 2024",
       description: "Building confidence and leadership skills among women",
       link: "#"
     },
@@ -49,8 +47,8 @@ const SpotlightSection = () => {
             Spotlight & News
           </h2>
         </div>
-        
-        <div className="rounded-3xl p-8 shadow-lg" style={{backgroundColor: '#A0B6E6'}}>
+
+        <div className="rounded-3xl p-8 shadow-lg" style={{ backgroundColor: '#A0B6E6' }}>
           <div className="space-y-6">
             {news.map((item) => (
               <div
