@@ -61,11 +61,52 @@
   padding-right: 400px;
 }
 
+/* Track labels for beginning and ongoing */
+.track-label-mobile,
+.track-label-desktop {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  background: rgba(0, 120, 188, 0.28);
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Desktop track labels - positioned before and after horizontally */
+.timeline-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.track-label-desktop {
+  flex-shrink: 0;
+}
+
+/* Mobile track labels - positioned before and after vertically */
+.track-label-mobile {
+  margin: 10px 0;
+  flex-shrink: 0;
+}
+
+/* Track image wrapper for mobile */
+.track-image-wrapper {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+}
+
 .timeline-container {
   position: relative;
   width: 100%;
   height: 400px;
   margin-top: 30px;
+  flex: 1;
 }
 
 .journey-image {
@@ -512,6 +553,7 @@
   align-items: center;
   width: 40%;
   position: relative;
+  gap: 10px;
 }
 
 /* Track image positioned on the left */

@@ -168,27 +168,31 @@ const JourneyTimeline = () => {
             )}
           </div>
 
-          <div className="timeline-container">
-            <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
+          <div className="timeline-wrapper">
+            <div className="track-label-desktop track-label-before">beginning</div>
+            <div className="timeline-container">
+              <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
 
-            {/* Station markers */}
-            {studentData.map(({ year, students, station, icon }, index) => {
-              const { x, y } = getZigzagPosition(index, studentData.length);
-              return (
-                <div
-                  key={year}
-                  className="station-container"
-                  style={{ left: x, top: y }}
-                  onMouseEnter={() => setSelectedYear(year)}
-                  onMouseLeave={() => setSelectedYear(null)}
-                >
-                  <div className={`station - marker ${selectedYear === year ? 'active' : ''} `}>
-                    <div className="station-icon">{icon}</div>
+              {/* Station markers */}
+              {studentData.map(({ year, students, station, icon }, index) => {
+                const { x, y } = getZigzagPosition(index, studentData.length);
+                return (
+                  <div
+                    key={year}
+                    className="station-container"
+                    style={{ left: x, top: y }}
+                    onMouseEnter={() => setSelectedYear(year)}
+                    onMouseLeave={() => setSelectedYear(null)}
+                  >
+                    <div className={`station - marker ${selectedYear === year ? 'active' : ''} `}>
+                      <div className="station-icon">{icon}</div>
+                    </div>
+                    <div className="station-name-label">{station}</div>
                   </div>
-                  <div className="station-name-label">{station}</div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <div className="track-label-desktop track-label-after">ongoing</div>
           </div>
 
           {/* Total summary card */}
