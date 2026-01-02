@@ -7,17 +7,16 @@ import usericon from '../assets/img1.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [clickedDropdown, setClickedDropdown] = useState(null);
   const [showGetInvolved, setShowGetInvolved] = useState(false);
-  const [mobileSubmenu, setMobileSubmenu] = useState(null);
   const getInvolvedRef = useRef(null);
   const dropdownRefs = useRef({});
-  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Only close if we have a clicked (frozen) dropdown
       if (clickedDropdown) {
         let clickedInsideAnyDropdown = false;
         Object.keys(dropdownRefs.current).forEach(key => {
@@ -32,15 +31,9 @@ const Navbar = () => {
         }
       }
 
+      // Handle Get Involved dropdown
       if (getInvolvedRef.current && !getInvolvedRef.current.contains(event.target)) {
         setShowGetInvolved(false);
-      }
-
-      // Close mobile menu when clicking outside
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target) &&
-        !event.target.closest('.hamburger')) {
-        setMobileMenuOpen(false);
-        setMobileSubmenu(null);
       }
     };
 
@@ -50,31 +43,24 @@ const Navbar = () => {
     };
   }, [clickedDropdown]);
 
-  const handleMobileNavClick = (section) => {
-    if (mobileSubmenu === section) {
-      setMobileSubmenu(null);
-    } else {
-      setMobileSubmenu(section);
-    }
-  };
-
-  const handleMobileLink = (path) => {
-    setMobileMenuOpen(false);
-    setMobileSubmenu(null);
-    window.location.href = path;
+  const menuItems = {
+    'Our Work': ['Our Students', 'Our Projects'],
+    'Our Impact': ['Why HOPE3?', 'HOPE3 Journey'],
+    'Services': ['Services'],
+    'About Us': ['Leadership & Board', 'Financials', 'FAQ', 'Be Informed']
   };
 
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
-        {/* Mobile Hamburger - Left Side */}
+        <Link to="/">
+          <img src={logo} alt="Logo" className="navbar-logo" />
+        </Link>
+
         <button
-          className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
-          onClick={() => {
-            setMobileMenuOpen(!mobileMenuOpen);
-            setMobileSubmenu(null);
-          }}
-          aria-expanded={mobileMenuOpen}
+          className="hamburger"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-expanded={mobileOpen}
           aria-label="Toggle menu"
         >
           <span></span>
@@ -82,12 +68,6 @@ const Navbar = () => {
           <span></span>
         </button>
 
-        {/* Desktop Left Logo */}
-        <Link to="/" className="desktop-logo-link">
-          <img src={logo} alt="Logo" className="navbar-logo" />
-        </Link>
-
-        {/* Desktop Left Nav Items */}
         <div className="navbar-left">
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Work'] = el}
             onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Work')}
@@ -125,7 +105,6 @@ const Navbar = () => {
               </div>
             )}
           </div>
-
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Impact'] = el}
             onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Impact')}
             onMouseLeave={() => !clickedDropdown && setTimeout(() => setActiveDropdown(null), 100)}>
@@ -147,6 +126,7 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
+                    console.log("hope");
                     window.location.href = '/why-hope3';
                   }}
                 >
@@ -156,6 +136,7 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
+                    console.log("hope3 journey");
                     window.location.href = '/hope3-journey';
                   }}
                 >
@@ -166,20 +147,28 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Center Logo - HOPE3 */}
-        <Link to="/" className="navbar-center-link">
-          <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
-        </Link>
+        <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
 
-        {/* Desktop Right Nav Items */}
         <div className="navbar-right">
-          <button
-            className="section-title"
-            onClick={() => window.location.href = '/services'}
-          >
-            Services
-          </button>
-
+          <div className="navbar-section" ref={el => dropdownRefs.current['Services'] = el}
+            onMouseEnter={() => !clickedDropdown && setActiveDropdown('Services')}
+            onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
+            <button
+              className="section-title"
+              onClick={() => {
+                const newState = activeDropdown === 'Services' ? null : 'Services';
+                setActiveDropdown(newState);
+                setClickedDropdown(newState);
+              }}
+            >
+              Services
+            </button>
+            {activeDropdown === 'Services' && (
+              <div className="dropdown show">
+                <div className="dropdown-link">Services</div>
+              </div>
+            )}
+          </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['About Us'] = el}
             onMouseEnter={() => !clickedDropdown && setActiveDropdown('About Us')}
             onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
@@ -204,7 +193,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Get Involved Button - Right Side */}
         <div className="profile-dropdown-container" ref={getInvolvedRef}>
           <button
             className={`getinv-btn ${showGetInvolved ? 'active' : ''}`}
@@ -216,77 +204,25 @@ const Navbar = () => {
 
           <div className={`get-involved-card ${showGetInvolved ? 'show' : ''}`}>
             <div className="simple-menu">
-              <button className="simple-button" onClick={() => window.location.href = '/join-hope3'}>Join HOPE3</button>
-              <button className="simple-button" onClick={() => window.location.href = '/donate'}>Make a Gift</button>
+              <button
+                className="simple-button"
+                onClick={() => {
+                  window.location.href = '/join-hope3';
+                  setShowGetInvolved(false);
+                }}
+              >
+                Join HOPE3
+              </button>
+              <button
+                className="simple-button"
+                onClick={() => {
+                  window.location.href = '/donate';
+                  setShowGetInvolved(false);
+                }}
+              >
+                Make a Gift
+              </button>
               <button className="simple-button">Give Feedback</button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'active' : ''}`} ref={mobileMenuRef}>
-          <div className="mobile-menu-content">
-            {/* Our Work */}
-            <div className="mobile-nav-item">
-              <button
-                className={`mobile-nav-button ${mobileSubmenu === 'Our Work' ? 'active' : ''}`}
-                onClick={() => handleMobileNavClick('Our Work')}
-              >
-                Our Work
-                <span className="mobile-arrow">{mobileSubmenu === 'Our Work' ? '▲' : '▼'}</span>
-              </button>
-              {mobileSubmenu === 'Our Work' && (
-                <div className="mobile-submenu">
-                  <button onClick={() => handleMobileLink('/our-students')}>Our Students</button>
-                  <button onClick={() => handleMobileLink('/our-projects')}>Our Projects</button>
-                </div>
-              )}
-            </div>
-
-            {/* Our Impact */}
-            <div className="mobile-nav-item">
-              <button
-                className={`mobile-nav-button ${mobileSubmenu === 'Our Impact' ? 'active' : ''}`}
-                onClick={() => handleMobileNavClick('Our Impact')}
-              >
-                Our Impact
-                <span className="mobile-arrow">{mobileSubmenu === 'Our Impact' ? '▲' : '▼'}</span>
-              </button>
-              {mobileSubmenu === 'Our Impact' && (
-                <div className="mobile-submenu">
-                  <button onClick={() => handleMobileLink('/why-hope3')}>Why HOPE3?</button>
-                  <button onClick={() => handleMobileLink('/hope3-journey')}>HOPE3 Journey</button>
-                </div>
-              )}
-            </div>
-
-            {/* Services */}
-            <div className="mobile-nav-item">
-              <button
-                className="mobile-nav-button"
-                onClick={() => handleMobileLink('/services')}
-              >
-                Services
-              </button>
-            </div>
-
-            {/* About Us */}
-            <div className="mobile-nav-item">
-              <button
-                className={`mobile-nav-button ${mobileSubmenu === 'About Us' ? 'active' : ''}`}
-                onClick={() => handleMobileNavClick('About Us')}
-              >
-                About Us
-                <span className="mobile-arrow">{mobileSubmenu === 'About Us' ? '▲' : '▼'}</span>
-              </button>
-              {mobileSubmenu === 'About Us' && (
-                <div className="mobile-submenu">
-                  <button onClick={() => handleMobileLink('/leadership')}>Leadership & Board</button>
-                  <button onClick={() => handleMobileLink('/financials')}>Financials</button>
-                  <button onClick={() => handleMobileLink('/faq')}>FAQ</button>
-                  <button onClick={() => handleMobileLink('/be-informed')}>Be Informed</button>
-                </div>
-              )}
             </div>
           </div>
         </div>
