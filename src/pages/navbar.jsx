@@ -88,7 +88,7 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.location.href = '/our-students';
+                    window.location.href = import.meta.env.BASE_URL + 'our-students';
                   }}
                 >
                   Our Students
@@ -97,7 +97,7 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.location.href = '/our-projects';
+                    window.location.href = import.meta.env.BASE_URL + 'our-projects';
                   }}
                 >
                   Our Projects
@@ -127,7 +127,7 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     console.log("hope");
-                    window.location.href = '/why-hope3';
+                    window.location.href = import.meta.env.BASE_URL + 'why-hope3';
                   }}
                 >
                   Why HOPE3?
@@ -137,7 +137,7 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     console.log("hope3 journey");
-                    window.location.href = '/hope3-journey';
+                    window.location.href = import.meta.env.BASE_URL + 'hope3-journey';
                   }}
                 >
                   HOPE3 Journey
@@ -207,7 +207,7 @@ const Navbar = () => {
               <button
                 className="simple-button"
                 onClick={() => {
-                  window.location.href = '/join-hope3';
+                  window.location.href = import.meta.env.BASE_URL + 'join-hope3';
                   setShowGetInvolved(false);
                 }}
               >
@@ -216,7 +216,7 @@ const Navbar = () => {
               <button
                 className="simple-button"
                 onClick={() => {
-                  window.location.href = '/donate';
+                  window.location.href = import.meta.env.BASE_URL + 'donate';
                   setShowGetInvolved(false);
                 }}
               >
