@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
-import logo from '../assets/hope3_logo.png';
-import hope3 from '../assets/hope3.png';
-import usericon from '../assets/img1.png';
+import logo from '../assets/home/hope3_logo.png';
+import hope3 from '../assets/home/hope3.png';
+import usericon from '../assets/home/img1.png';
 
 const Navbar = () => {
   const navigate = useNavigate();

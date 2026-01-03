@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-  base: '/hope3-web-test/',
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {

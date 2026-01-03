@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import heroBackground from '../assets/home/college-graduation-pictures.jpg'
 
 const HeroSection = () => {
   const [show, setShow] = useState(false)
@@ -13,7 +14,7 @@ const HeroSection = () => {
   return (
     <section
       className="relative w-full min-h-screen bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: 'url(/src/assets/college-graduation-pictures.jpg)' }}
+      style={{ backgroundImage: `url(${heroBackground})` }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>

@@ -1,4 +1,5 @@
 /* Our Students Page Styles */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 
 .students-page {
     min-height: 100vh;
@@ -7,54 +8,63 @@
     padding-bottom: 60px;
 }
 
-/* Headline Section */
-.students-headline {
+/* Banner Block */
+.banner-block {
     width: 100%;
-    background: rgba(0, 120, 188, 0.28);
-    padding: 100px 20px 40px;
-    text-align: center;
-    margin-bottom: 0;
+    background-image: url('../assets/our-students/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 120px 60px 60px;
+    border-bottom: 2px solid #e5e7eb;
+    position: relative;
 }
 
-.students-headline h1 {
-    color: black;
-    font-size: 3.5rem;
+.banner-quote {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-text {
+    font-size: 1.8rem;
     font-weight: 700;
-    margin: 0;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
-    font-family: 'Kdam Thmor Pro', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0 0 15px;
+    text-align: left;
+    font-style: normal;
+    font-family: 'Cinzel Decorative', cursive;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.students-headline p {
-    color: rgba(255, 255, 255, 0.9);
+.quote-author {
     font-size: 1.2rem;
-    margin-top: 15px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Section Title */
-.section-title {
-    text-align: center;
-    color: #3b82f6;
-    font-size: 1.5rem;
+    color: #ffffff;
     margin: 0;
-    padding: 30px 0 20px;
-    font-weight: 600;
-    background: #e8f5e8;
+    text-align: right;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.section-title span {
-    color: #3b82f6;
-    background: none;
-    -webkit-text-fill-color: #3b82f6;
+.banner-description {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 2;
 }
 
-.section-title .purple-text {
-    color: #8b5cf6;
-    -webkit-text-fill-color: #8b5cf6;
+.banner-description p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #ffffff;
+    margin: 0;
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ==================== Galaxy Grid Layout ==================== */
@@ -407,6 +417,22 @@
 }
 
 @media (max-width: 900px) {
+    .banner-block {
+        padding: 100px 40px 50px;
+    }
+
+    .quote-text {
+        font-size: 1.5rem;
+    }
+
+    .quote-author {
+        font-size: 1.1rem;
+    }
+
+    .banner-description p {
+        font-size: 1rem;
+    }
+
     .galaxy-grid {
         grid-template-columns: repeat(2, 1fr);
         padding: 40px 40px;
@@ -438,8 +464,20 @@
 }
 
 @media (max-width: 768px) {
-    .students-headline h1 {
-        font-size: 2.5rem;
+    .banner-block {
+        padding: 90px 30px 40px;
+    }
+
+    .quote-text {
+        font-size: 1.3rem;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+    }
+
+    .banner-description p {
+        font-size: 0.95rem;
     }
 
     .galaxy-grid {
@@ -505,8 +543,20 @@
 }
 
 @media (max-width: 480px) {
-    .students-headline h1 {
-        font-size: 2rem;
+    .banner-block {
+        padding: 80px 20px 30px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+    }
+
+    .quote-author {
+        font-size: 0.9rem;
+    }
+
+    .banner-description p {
+        font-size: 0.9rem;
     }
 
     .galaxy-grid {

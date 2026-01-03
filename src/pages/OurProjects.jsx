@@ -12,10 +12,10 @@ import img5 from '../assets/transformation/img5.jpeg';
 import img6 from '../assets/transformation/img6.jpeg';
 import img7 from '../assets/transformation/img7.jpeg';
 import img8 from '../assets/transformation/img8.jpeg';
-import educationImg from '../assets/education.jpeg';
-import empowermentImg from '../assets/empowerment.jpeg';
-import entrepreneurshipImg from '../assets/enterpreneurship.jpeg';
-import graduationImg from '../assets/college-graduation-pictures.jpg';
+import educationImg from '../assets/home/education.jpeg';
+import empowermentImg from '../assets/home/empowerment.jpeg';
+import entrepreneurshipImg from '../assets/home/enterpreneurship.jpeg';
+import graduationImg from '../assets/home/college-graduation-pictures.jpg';
 
 const OurProjects = () => {
     const [activeFilter, setActiveFilter] = useState('All');

@@ -21,6 +21,7 @@ import PoojaImg from '../assets/our-students/pooja.png';
 import PrathiswaranImg from '../assets/our-students/prathiswaran.png';
 import SornamImg from '../assets/our-students/sornam.png';
 import ViswanathanImg from '../assets/our-students/viswanathan.png';
+import BannerImage from '../assets/our-students/image.png';
 
 // All students data
 const allStudents = [
@@ -256,14 +257,18 @@ const OurStudents = () => {
         <>
             <Navbar />
             <div className="students-page">
-                <div className="students-headline">
-                    <h1>Our Students</h1>
-                    <p>Meet the brilliant minds who transformed their lives through HOPE3</p>
+                {/* Banner Block */}
+                <div className="banner-block">
+                    <div className="banner-quote">
+                        <p className="quote-text">
+                            "Everyone can rise above their circumstances and achieve success if they are dedicated to and passionate about what they do."
+                        </p>
+                        <p className="quote-author">~Nelson Mandela</p>
+                    </div>
+                    <div className="banner-description">
+                        <p>We are proud of each and every student have passed through HOPE3. We would like to highlight some of our students and their success stories.</p>
+                    </div>
                 </div>
-
-                <h2 className="section-title">
-                    <span>Success Stories</span> <span className="purple-text">from our alumni</span>
-                </h2>
 
                 {/* Galaxy Grid - 4 per row */}
                 <div className="galaxy-grid">

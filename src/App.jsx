@@ -17,10 +17,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/why-hope3" element={<WhyHope3 />} />
         <Route path="/hope3-journey" element={<Hope3Journey />} />
-        <Route path="/hope3-journey" element={<div>HOPE3 Journey Page</div>} />
         <Route path="/our-students" element={<OurStudents />} />
         <Route path="/our-projects" element={<OurProjects />} />
-        <Route path="/hope3-journey" element={<div>HOPE3 Journey Page</div>} />
         <Route path="/services" element={<div>Services Page</div>} />
         <Route path="/leadership-&-board" element={<div>Leadership & Board Page</div>} />
         <Route path="/financials" element={<div>Financials Page</div>} />
