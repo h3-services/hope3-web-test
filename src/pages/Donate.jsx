@@ -177,7 +177,7 @@ const Donate = () => {
                     <div className="max-w-3xl mx-auto">
                         <div className="rounded-xl shadow-md p-5 sm:p-6 text-center text-gray-800" style={{ backgroundColor: '#e8f5e8' }}>
                             <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4" style={{ fontFamily: 'Kavoon' }}>Empowering Dreams, Transforming Lives</h2>
-                            <p className="text-sm sm:text-base leading-relaxed text-gray-700">
+                            <p className="leading-relaxed text-gray-700" style={{ fontSize: '1.1em' }}>
                                 Every student deserves a chance to rise and achieve their fullest potential. This transformative
                                 work at HOPE3 is made possible by a vibrant community of volunteers and generous donors, each
                                 contributing in their own unique way to empower students and drive change. Sustaining the HOPE3
@@ -220,17 +220,17 @@ const Donate = () => {
                     <section className="py-8 sm:py-10 px-4 sm:px-6 bg-white rounded-xl shadow-md mt-6 border border-gray-100">
                         <div className="max-w-5xl mx-auto">
                             <div className="py-4 sm:py-6 px-2 sm:px-4">
-                                <div className="text-left mb-8 max-w-4xl mx-auto space-y-4 text-gray-700">
-                                    <p className="text-sm sm:text-base leading-relaxed">
+                                <div className="text-left mb-8 max-w-4xl mx-auto space-y-4 text-gray-700" style={{ fontSize: '1.1em' }}>
+                                    <p className="leading-relaxed">
                                         This transformative work at HOPE3 is made possible by a vibrant community of volunteers and generous donors, each contributing in their own unique way to empower students and drive change.
                                     </p>
-                                    <p className="text-sm sm:text-base leading-relaxed">
+                                    <p className="leading-relaxed">
                                         Sustaining the HOPE3 residential program relies on generous, ongoing support. Every contribution, no matter the size, truly makes a meaningful impact in covering each student's essential expenses, including hostel, meals, healthcare, and utilities. Donations also fund tuition, exam fees, textbooks, commuting expenses, and critical staff salaries, ensuring students always receive guidance and support in their academic journey. Your donation goes a long way toward empowering their journey and shaping brighter futures.
                                     </p>
-                                    <p className="text-sm sm:text-base leading-relaxed">
+                                    <p className="leading-relaxed">
                                         Your generous support is invaluable and has the power to change a student's life forever. Every donation—no matter the amount—makes a meaningful difference and a profound impact in uplifting their journey.
                                     </p>
-                                    <p className="text-sm sm:text-base leading-relaxed">
+                                    <p className="leading-relaxed">
                                         HOPE3 is tax-exempt in the USA (501(C)(3)), making donations both impactful and tax-friendly. Please check with your employer if there is donation match for 501(C)(3) registered organization working towards upliftment through education in India. If there is, please follow the process with your employer.
                                     </p>
                                 </div>
@@ -592,10 +592,10 @@ const Donate = () => {
                             <h2 className="text-xl sm:text-2xl font-bold mb-4 !text-blue-700 text-left">
                                 Donation of Electronics:
                             </h2>
-                            <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base text-left">
+                            <p className="text-gray-700 leading-relaxed mb-4 text-left" style={{ fontSize: '1.1em' }}>
                                 The electronics that you want to recycle or give away can be donated to HOPE3 Foundation for the use by the students. Electronics include laptops, tablets, mobile devices, keyboards, and mice. Donations of such electronics is made easy with the app called ecohome.one.
                             </p>
-                            <p className="text-gray-700 leading-relaxed mb-6 text-sm sm:text-base text-left">
+                            <p className="text-gray-700 leading-relaxed mb-6 text-left" style={{ fontSize: '1.1em' }}>
                                 ecohome.one is an AI-powered digital home inventory platform that empowers households to understand what they own, reduce waste, and participate in more sustainable, community-driven living.
                             </p>
 
@@ -610,7 +610,7 @@ const Donate = () => {
                                     'Choose hope3 as donation channel',
                                     'Arrange handoff based on local availability'
                                 ].map((step, index) => (
-                                    <li key={index} className="flex items-start gap-2 text-gray-700 text-sm sm:text-base">
+                                    <li key={index} className="flex items-start gap-2 text-gray-700" style={{ fontSize: '1.1em' }}>
                                         <span className="font-bold">*</span>
                                         <span>{step}</span>
                                     </li>
@@ -627,7 +627,7 @@ const Donate = () => {
                                     <p className="text-[10px] text-gray-400 mt-2 text-center font-medium uppercase tracking-wider">Scan to donate</p>
                                 </div>
                                 <div className="flex flex-col gap-4">
-                                    <p className="text-gray-600 text-sm max-w-xs text-left">
+                                    <p className="text-gray-600 text-left" style={{ fontSize: '1.1em', maxWidth: '320px' }}>
                                         Scan the QR code to quickly access ecohome.one and start your electronic donation journey.
                                     </p>
                                     <a
