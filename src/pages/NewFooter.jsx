@@ -19,21 +19,31 @@ const NewFooter = () => {
               contact@hope3.org
             </a>
             <div className="social-links" style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
-              <img src={linkedinLogo} alt="LinkedIn" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
-              <img src={fbLogo} alt="Facebook" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
-              <img src={youtubeLogo} alt="Youtube" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
-              <img src={instaLogo} alt="Instagram" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
-              <img src={twitter} alt="Twitter" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer">
+                <img src={linkedinLogo} alt="LinkedIn" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              </a>
+              <a href="https://www.facebook.com/hope3org/" target="_blank" rel="noopener noreferrer">
+                <img src={fbLogo} alt="Facebook" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              </a>
+              <a href="https://www.youtube.com/channel/UCbtzvET5Ev2spcIDWraFguA" target="_blank" rel="noopener noreferrer">
+                <img src={youtubeLogo} alt="Youtube" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              </a>
+              <a href="https://www.instagram.com/hope3org/" target="_blank" rel="noopener noreferrer">
+                <img src={instaLogo} alt="Instagram" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              </a>
+              <a href="https://x.com/hope3org" target="_blank" rel="noopener noreferrer">
+                <img src={twitter} alt="Twitter" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              </a>
             </div>
           </div>
           <div className="footer-right" style={{ lineHeight: '1.2' }}>
-            <div className="footer-nonprofit" style={{ marginBottom: '0' }}>
+            <div className="footer-nonprofit" style={{ marginBottom: '0', fontSize: '0.875rem' }}>
               US IRS 501(C)(3) Non-Profit Organization
             </div>
-            <div className="footer-ein" style={{ marginBottom: '0', marginTop: '0' }}>
+            <div className="footer-ein" style={{ marginBottom: '0', marginTop: '0', fontSize: '0.75rem', fontWeight: 'normal' }}>
               ID: EIN 94-3184861
             </div>
-            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '0' }}>
+            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '0', fontSize: '0.875rem' }}>
               © 2024 All Rights Reserved      |  Privacy Policy
             </div>
           </div>

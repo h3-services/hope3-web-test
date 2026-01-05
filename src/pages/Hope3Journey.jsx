@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Hope3Journey.css';
 import journeyImage from '../assets/journey/Gemini_Generated_Image_yyvlsoyyvlsoyyvl-removebg-preview.png';
 import mobileTrackImage from '../assets/journey/_620DED87-C755-4F75-9D5F-3EA3E770D415_-removebg-preview.png';
+import bannerImage from '../assets/journey/bannerForJourney.png';
 import Navbar from './navbar';
 import NewFooter from './NewFooter';
 
@@ -81,16 +82,27 @@ const JourneyTimeline = () => {
       {isMobile ? (
         // Mobile-specific layout with scroll-based icons
         <div className="mobile-scroll-journey">
-          <div style={{ textAlign: 'center' }}>
-            <h1 className="journey-headline">HOPE3 Journey</h1>
-          </div>
-
           {/* Banner Block with Quote */}
-          <div className="banner-block">
+          <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
             <p className="banner-quote">
               "The Journey Of A Thousand Miles Begins With One Step"
             </p>
             <p className="banner-author">- Lao Tzu</p>
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <h1 className="journey-headline">HOPE3 Journey</h1>
+          </div>
+
+          {/* HOPE3 Story Passage */}
+          <div className="hope3-passage">
+            <p className="passage-text">HOPE3 began modestly, driven by a simple vision to make learning accessible to all.</p>
+            <p className="passage-text">Over the years, it has grown steadily, shaping countless student journeys.</p>
+            <p className="passage-text">This transformation was made possible by the unwavering support of volunteers.</p>
+            <p className="passage-text">Generous donors joined hands, strengthening every step of the mission.</p>
+            <p className="passage-text">Each contribution—big or small—added a unique spark of change.</p>
+            <p className="passage-text">Together, they empowered students to learn, dream, and achieve.</p>
+            <p className="passage-highlight">Today, HOPE3 stands as a catalyst—transforming every student's life.</p>
           </div>
 
           {/* Instruction text */}
@@ -151,10 +163,29 @@ const JourneyTimeline = () => {
           </div>
         </div>
       ) : (
-        // Desktop layout (unchanged)
+        // Desktop layout
         <div className="journey-container">
+          {/* Banner Block with Quote */}
+          <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
+            <p className="banner-quote">
+              "The Journey Of A Thousand Miles Begins With One Step"
+            </p>
+            <p className="banner-author">- Lao Tzu</p>
+          </div>
+
           <div style={{ textAlign: 'center' }}>
             <h1 className="journey-headline">HOPE3 Journey</h1>
+          </div>
+
+          {/* HOPE3 Story Passage */}
+          <div className="hope3-passage">
+            <p className="passage-text">HOPE3 began modestly, driven by a simple vision to make learning accessible to all.</p>
+            <p className="passage-text">Over the years, it has grown steadily, shaping countless student journeys.</p>
+            <p className="passage-text">This transformation was made possible by the unwavering support of volunteers.</p>
+            <p className="passage-text">Generous donors joined hands, strengthening every step of the mission.</p>
+            <p className="passage-text">Each contribution—big or small—added a unique spark of change.</p>
+            <p className="passage-text">Together, they empowered students to learn, dream, and achieve.</p>
+            <p className="passage-highlight">Today, HOPE3 stands as a catalyst—transforming every student's life.</p>
           </div>
 
           {/* Fixed Hover Card Container */}

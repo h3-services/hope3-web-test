@@ -58,7 +58,7 @@ const Navbar = () => {
         </Link>
 
         <button
-          className="hamburger"
+          className={`hamburger ${mobileOpen ? 'active' : ''}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-label="Toggle menu"
@@ -67,6 +67,49 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </button>
+
+        <div className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`}>
+          <div className="mobile-menu-content">
+            {Object.entries(menuItems).map(([section, items]) => (
+              <div key={section} className="mobile-nav-item">
+                <button
+                  className={`mobile-nav-button ${activeDropdown === section ? 'active' : ''}`}
+                  onClick={() => {
+                    const newState = activeDropdown === section ? null : section;
+                    setActiveDropdown(newState);
+                  }}
+                >
+                  {section}
+                  <span className="mobile-arrow">▼</span>
+                </button>
+                {activeDropdown === section && (
+                  <div className="mobile-submenu">
+                    {items.map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => {
+                          const routes = {
+                            'Our Students': 'our-students',
+                            'Our Projects': 'our-projects',
+                            'Why HOPE3?': 'why-hope3',
+                            'HOPE3 Journey': 'hope3-journey'
+                          };
+                          if (routes[item]) {
+                            window.location.href = import.meta.env.BASE_URL + routes[item];
+                          }
+                          setMobileOpen(false);
+                          setActiveDropdown(null);
+                        }}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="navbar-left">
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Work'] = el}

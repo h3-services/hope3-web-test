@@ -291,17 +291,22 @@
 
 /* Banner Block with Quote */
 .banner-block {
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 30px 20px;
-  margin: 20px 15px;
+  margin: 100px 15px 20px 15px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
   text-align: center;
+  position: relative;
+  min-height: 150px;
 }
 
 .banner-quote {
   font-size: 18px;
   font-weight: 700;
+  font-family: 'Jaini', cursive;
   color: #ffffff;
   margin: 0 0 10px 0;
   line-height: 1.5;
@@ -314,6 +319,31 @@
   color: #e0e7ff;
   margin: 0;
   font-style: italic;
+}
+
+/* HOPE3 Passage Section */
+.hope3-passage {
+  padding: 30px 20px;
+  margin: 20px 15px;
+  background: transparent;
+  text-align: left;
+}
+
+.passage-text {
+  font-size: 16px;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.passage-highlight {
+  font-size: 16px;
+  color: #1e293b;
+  margin: 20px 0 0 0;
+  line-height: 1.8;
+  font-weight: 600;
+  text-align: left;
 }
 
 /* HOPE3 Story Section */
@@ -907,6 +937,17 @@
   .track-students {
     font-size: 11px;
   }
+
+  /* Passage section mobile adjustments */
+  .hope3-passage {
+    padding: 20px 15px;
+    margin: 15px 10px;
+  }
+
+  .passage-text,
+  .passage-highlight {
+    font-size: 15px;
+  }
 }
 
 /* Extra small mobile devices */
@@ -1048,6 +1089,17 @@
 
   .track-students {
     font-size: 10px;
+  }
+
+  /* Passage section extra small mobile adjustments */
+  .hope3-passage {
+    padding: 15px 12px;
+    margin: 12px 8px;
+  }
+
+  .passage-text,
+  .passage-highlight {
+    font-size: 14px;
   }
 }
 

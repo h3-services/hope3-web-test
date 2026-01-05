@@ -71,19 +71,19 @@
 
 .footer-nonprofit {
   color: #d1d5db;
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .footer-ein {
   color: #d1d5db;
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .footer-copyright {
   color: #d1d5db;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .footer-bottom {
@@ -110,11 +110,11 @@
     flex-direction: column;
     text-align: center;
   }
-  
+
   .footer-right {
     text-align: center;
   }
-  
+
   .footer-bottom a {
     display: block;
     margin: 0.5rem 0;
