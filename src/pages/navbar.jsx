@@ -4,6 +4,8 @@ import '../styles/navbar.css';
 import logo from '../assets/home/hope3_logo.png';
 import hope3 from '../assets/home/hope3.png';
 import usericon from '../assets/home/img1.png';
+import getInvolvedIcon from '../assets/home/Gemini_Generated_Image_odj8ogodj8ogodj8.png';
+
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -92,7 +94,8 @@ const Navbar = () => {
                             'Our Students': 'our-students',
                             'Our Projects': 'our-projects',
                             'Why HOPE3?': 'why-hope3',
-                            'HOPE3 Journey': 'hope3-journey'
+                            'HOPE3 Journey': 'hope3-journey',
+                            'Leadership & Board': 'leadership-&-board'
                           };
                           if (routes[item]) {
                             window.location.href = import.meta.env.BASE_URL + routes[item];
@@ -227,7 +230,15 @@ const Navbar = () => {
             </button>
             {activeDropdown === 'About Us' && (
               <div className="dropdown show">
-                <div className="dropdown-link">Leadership & Board</div>
+                <button
+                  className="dropdown-link"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.location.href = import.meta.env.BASE_URL + 'leadership-&-board';
+                  }}
+                >
+                  Leadership & Board
+                </button>
                 <div className="dropdown-link">Financials</div>
                 <div className="dropdown-link">FAQ</div>
                 <div className="dropdown-link">Be Informed</div>
@@ -238,11 +249,13 @@ const Navbar = () => {
 
         <div className="profile-dropdown-container" ref={getInvolvedRef}>
           <button
-            className={`getinv-btn ${showGetInvolved ? 'active' : ''}`}
+            className={`getinv-btn-neumorphic ${showGetInvolved ? 'active' : ''}`}
             onClick={() => setShowGetInvolved(!showGetInvolved)}
           >
-            <img src={usericon} alt="" className="btn-icon" />
-            <span className="btn-text">Get Involved</span>
+            <span className="btn-icon-circle">
+              <img src={getInvolvedIcon} alt="" className="get-involved-btn-img" />
+            </span>
+            <span className="btn-text-neumorphic">Get Involved</span>
           </button>
 
           <div className={`get-involved-card ${showGetInvolved ? 'show' : ''}`}>

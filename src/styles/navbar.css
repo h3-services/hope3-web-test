@@ -3,11 +3,11 @@
     top: 20px;
     left: 0;
     right: 0;
-    background: black;
+    background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
     border: none;
     z-index: 1000;
-    height: 70px;
+    height: 75px;
 }
 
 .navbar-container {
@@ -104,7 +104,7 @@
     opacity: 0.8;
 }
 
-.section-title {
+.navbar .section-title {
     font-size: 0.875rem;
     font-weight: 500;
     color: white !important;
@@ -114,7 +114,8 @@
     cursor: pointer;
     white-space: nowrap;
     position: relative;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 0 !important;
     display: flex;
     align-items: center;
 }
@@ -236,23 +237,118 @@
     padding: 2px;
 }
 
-.getinv-btn {
+/* Neumorphic Get Involved Button */
+.getinv-btn-neumorphic {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.7rem;
+    gap: 0.6rem;
+    padding: 0.5rem 1.2rem 0.5rem 0.5rem;
     border: none;
-    background: rgba(255, 255, 255, 0.95);
-    color: black;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
     border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    width: 180px;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
     z-index: 2;
-    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 8px 20px rgba(30, 58, 138, 0.35),
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+
+.getinv-btn-neumorphic:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 28px rgba(30, 58, 138, 0.45),
+        0 6px 14px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    background: linear-gradient(135deg, #1e40af 0%, #60a5fa 100%);
+}
+
+.getinv-btn-neumorphic:active {
+    transform: translateY(-1px);
+    box-shadow:
+        0 4px 12px rgba(30, 58, 138, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.btn-icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.get-involved-btn-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.btn-text-neumorphic {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.getinv-btn-neumorphic.active {
+    background: transparent;
+    border: 2px solid #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    padding: 0;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    justify-content: center;
+    gap: 0;
+}
+
+.getinv-btn-neumorphic.active .btn-icon-circle {
+    transform: translateX(0);
+    /* Icon is naturally centered by flex */
+}
+
+.getinv-btn-neumorphic.active .btn-text-neumorphic {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+}
+
+@keyframes slideAndSet {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(95px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .getinv-btn.active {
@@ -394,10 +490,10 @@
 .mobile-menu-overlay {
     display: none;
     position: fixed;
-    top: 70px;
+    top: 75px;
     left: 0;
     width: 280px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 75px);
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(20px);
     transform: translateX(-100%);
@@ -489,7 +585,7 @@
 /* ==================== Mobile Responsive Styles ==================== */
 @media (max-width: 768px) {
     .navbar {
-        height: 60px;
+        height: 55px;
         top: 10px;
         left: 10px;
         right: 10px;
@@ -530,21 +626,26 @@
         justify-self: end;
     }
 
-    .getinv-btn {
-        padding: 0.5rem;
+    .getinv-btn-neumorphic {
+        padding: 0.4rem;
         border-radius: 50%;
         width: 40px;
         height: 40px;
         justify-content: center;
     }
 
-    .getinv-btn .btn-text {
+    .getinv-btn-neumorphic .btn-text-neumorphic {
         display: none;
     }
 
-    .getinv-btn .btn-icon {
-        width: 22px;
-        height: 22px;
+    .getinv-btn-neumorphic .btn-icon-circle {
+        width: 26px;
+        height: 26px;
+    }
+
+    .getinv-btn-neumorphic .hand-heart-icon {
+        width: 14px;
+        height: 14px;
     }
 
     /* Show mobile menu overlay */
@@ -555,7 +656,7 @@
     /* Get Involved card adjustments for mobile */
     .get-involved-card {
         position: fixed;
-        top: 80px;
+        top: 75px;
         bottom: auto;
         right: 15px;
         width: calc(100vw - 30px);
@@ -573,7 +674,7 @@
         top: 5px;
         left: 5px;
         right: 5px;
-        height: 55px;
+        height: 50px;
         border-radius: 10px;
     }
 
@@ -596,20 +697,25 @@
         height: 2px;
     }
 
-    .getinv-btn {
+    .getinv-btn-neumorphic {
         width: 36px;
         height: 36px;
     }
 
-    .getinv-btn .btn-icon {
-        width: 18px;
-        height: 18px;
+    .getinv-btn-neumorphic .btn-icon-circle {
+        width: 24px;
+        height: 24px;
+    }
+
+    .getinv-btn-neumorphic .hand-heart-icon {
+        width: 12px;
+        height: 12px;
     }
 
     .mobile-menu-overlay {
         width: 100%;
-        top: 65px;
-        height: calc(100vh - 65px);
+        top: 60px;
+        height: calc(100vh - 60px);
     }
 
     .mobile-nav-button {
@@ -624,7 +730,7 @@
 
     .get-involved-card {
         right: 10px;
-        top: 70px;
+        top: 65px;
         width: calc(100vw - 20px);
         padding: 20px;
     }

@@ -164,8 +164,8 @@ const JourneyTimeline = () => {
         </div>
       ) : (
         // Desktop layout
-        <div className="journey-container">
-          {/* Banner Block with Quote */}
+        <>
+          {/* Banner Block with Quote - OUTSIDE container for full width */}
           <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
             <p className="banner-quote">
               "The Journey Of A Thousand Miles Begins With One Step"
@@ -173,66 +173,68 @@ const JourneyTimeline = () => {
             <p className="banner-author">- Lao Tzu</p>
           </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <h1 className="journey-headline">HOPE3 Journey</h1>
-          </div>
-
-          {/* HOPE3 Story Passage */}
-          <div className="hope3-passage">
-            <p className="passage-text">HOPE3 began modestly, driven by a simple vision to make learning accessible to all.</p>
-            <p className="passage-text">Over the years, it has grown steadily, shaping countless student journeys.</p>
-            <p className="passage-text">This transformation was made possible by the unwavering support of volunteers.</p>
-            <p className="passage-text">Generous donors joined hands, strengthening every step of the mission.</p>
-            <p className="passage-text">Each contribution—big or small—added a unique spark of change.</p>
-            <p className="passage-text">Together, they empowered students to learn, dream, and achieve.</p>
-            <p className="passage-highlight">Today, HOPE3 stands as a catalyst—transforming every student's life.</p>
-          </div>
-
-          {/* Fixed Hover Card Container */}
-          <div className="hover-card-container">
-            {selectedYear && (
-              <div className="hover-card show">
-                <h3>{selectedYear}</h3>
-                <h4 className="hover-station-name">{studentData.find(d => d.year === selectedYear)?.station}</h4>
-                <p className="student-count">{studentData.find(d => d.year === selectedYear)?.students} Students</p>
-              </div>
-            )}
-          </div>
-
-          <div className="timeline-wrapper">
-            <div className="track-label-desktop track-label-before">beginning</div>
-            <div className="timeline-container">
-              <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
-
-              {/* Station markers */}
-              {studentData.map(({ year, students, station, icon }, index) => {
-                const { x, y } = getZigzagPosition(index, studentData.length);
-                return (
-                  <div
-                    key={year}
-                    className="station-container"
-                    style={{ left: x, top: y }}
-                    onMouseEnter={() => setSelectedYear(year)}
-                    onMouseLeave={() => setSelectedYear(null)}
-                  >
-                    <div className={`station - marker ${selectedYear === year ? 'active' : ''} `}>
-                      <div className="station-icon">{icon}</div>
-                    </div>
-                    <div className="station-name-label">{station}</div>
-                  </div>
-                );
-              })}
+          <div className="journey-container">
+            <div style={{ textAlign: 'center' }}>
+              <h1 className="journey-headline">HOPE3 Journey</h1>
             </div>
-            <div className="track-label-desktop track-label-after">ongoing</div>
-          </div>
 
-          {/* Total summary card */}
-          {/*<div className="total-card">
-            <h4>Total Impact</h4>
-            <p className="total-students">{totalStudents} Students</p>
-            <p className="year-range">2018 - 2025</p>
-          </div>*/}
-        </div>
+            {/* HOPE3 Story Passage */}
+            <div className="hope3-passage">
+              <p className="passage-text">HOPE3 began modestly, driven by a simple vision to make learning accessible to all.</p>
+              <p className="passage-text">Over the years, it has grown steadily, shaping countless student journeys.</p>
+              <p className="passage-text">This transformation was made possible by the unwavering support of volunteers.</p>
+              <p className="passage-text">Generous donors joined hands, strengthening every step of the mission.</p>
+              <p className="passage-text">Each contribution—big or small—added a unique spark of change.</p>
+              <p className="passage-text">Together, they empowered students to learn, dream, and achieve.</p>
+              <p className="passage-highlight">Today, HOPE3 stands as a catalyst—transforming every student's life.</p>
+            </div>
+
+            {/* Fixed Hover Card Container */}
+            <div className="hover-card-container">
+              {selectedYear && (
+                <div className="hover-card show">
+                  <h3>{selectedYear}</h3>
+                  <h4 className="hover-station-name">{studentData.find(d => d.year === selectedYear)?.station}</h4>
+                  <p className="student-count">{studentData.find(d => d.year === selectedYear)?.students} Students</p>
+                </div>
+              )}
+            </div>
+
+            <div className="timeline-wrapper">
+              <div className="track-label-desktop track-label-before">beginning</div>
+              <div className="timeline-container">
+                <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
+
+                {/* Station markers */}
+                {studentData.map(({ year, students, station, icon }, index) => {
+                  const { x, y } = getZigzagPosition(index, studentData.length);
+                  return (
+                    <div
+                      key={year}
+                      className="station-container"
+                      style={{ left: x, top: y }}
+                      onMouseEnter={() => setSelectedYear(year)}
+                      onMouseLeave={() => setSelectedYear(null)}
+                    >
+                      <div className={`station - marker ${selectedYear === year ? 'active' : ''} `}>
+                        <div className="station-icon">{icon}</div>
+                      </div>
+                      <div className="station-name-label">{station}</div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="track-label-desktop track-label-after">ongoing</div>
+            </div>
+
+            {/* Total summary card */}
+            {/*<div className="total-card">
+              <h4>Total Impact</h4>
+              <p className="total-students">{totalStudents} Students</p>
+              <p className="year-range">2018 - 2025</p>
+            </div>*/}
+          </div>
+        </>
       )}
       <NewFooter />
     </>

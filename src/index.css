@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaini:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -101,24 +102,12 @@ body {
   padding: 0;
 }
 
-/* Navbar Styles */
-.navbar {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  border: none;
-  z-index: 1000;
-  height: 90px;
-}
 
 /* Footer Styles */
 .footer {
   font-family: 'Inter', 'Poppins', sans-serif;
   background: white;
-  margin-top: 250px;
+  margin-top: 60px;
   padding: 0 60px 60px 60px;
   position: relative;
 }
@@ -227,7 +216,7 @@ body {
 /* Responsive Rules */
 @media (max-width: 992px) {
   .footer {
-    margin-top: 200px;
+    margin-top: 50px;
     padding: 0 40px 40px 40px;
   }
 
@@ -250,7 +239,7 @@ body {
 
 @media (max-width: 768px) {
   .footer {
-    margin-top: 150px;
+    margin-top: 40px;
     padding: 0 20px 30px 20px;
   }
 
@@ -267,7 +256,7 @@ body {
 
 @media (max-width: 480px) {
   .footer {
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 0 15px 20px 15px;
   }
 

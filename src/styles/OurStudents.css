@@ -3,21 +3,26 @@
 
 .students-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a2a 100%);
+    background: #ffffff;
     overflow-x: hidden;
     padding-bottom: 60px;
 }
 
 /* Banner Block */
 .banner-block {
-    width: 100%;
-    background-image: url('../assets/our-students/image.png');
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 75vh;
+    min-height: 500px;
+    background-image: url('../assets/our-students/ourStudentBanner.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 120px 60px 60px;
-    border-bottom: 2px solid #e5e7eb;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .banner-quote {
@@ -67,13 +72,30 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Students Description - Below Banner */
+.students-description {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    text-align: center;
+    background: transparent;
+}
+
+.students-description p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #334155;
+    margin: 0;
+    font-weight: 500;
+}
+
 /* ==================== Galaxy Grid Layout ==================== */
 .galaxy-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     padding: 50px 40px;
-    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    background: transparent;
     max-width: 1400px;
     margin: 0 auto;
 }

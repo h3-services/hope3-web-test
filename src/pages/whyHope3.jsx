@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './navbar.jsx';
 import NewFooter from './NewFooter.jsx';
 import '../styles/whyHope3.css';
-import headerImg from '../assets/home/college-background1.jpg';
+import bannerImg from '../assets/whyHope3Banner.jpeg';
 import img1 from '../assets/transformation/img1.jpeg';
 import img2 from '../assets/transformation/img2.jpeg';
 import img3 from '../assets/transformation/img3.jpeg';
@@ -39,6 +39,11 @@ const WhyHope3 = () => {
   return (
     <div className="whyhope3-page">
       <Navbar />
+
+      {/* Banner Section */}
+      <div className="whyhope3-banner">
+        <img src={bannerImg} alt="Why Hope3 Banner" className="banner-image" />
+      </div>
 
       {/* Page Title */}
       <div className="page-title">

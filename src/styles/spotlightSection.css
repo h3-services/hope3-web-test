@@ -1,7 +1,7 @@
 /* SpotlightSection Component Styles */
 .spotlight-section {
   padding: 5rem 1.5rem;
-  background-color: #dbeafe;
+  background-color: rgba(255, 255, 255, 0.31);
 }
 
 .spotlight-container {
@@ -10,7 +10,7 @@
 }
 
 .spotlight-header {
-  background: linear-gradient(to right, #7c3aed, #2563eb);
+  background: transparent;
   border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 3rem;
@@ -20,7 +20,7 @@
 .spotlight-title {
   font-size: 2.25rem;
   font-weight: bold;
-  color: white;
+  color: #332EB2;
 }
 
 .spotlight-content {

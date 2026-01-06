@@ -1,0 +1,46 @@
+.leaders-page {
+    padding-top: 100px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.leaders-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.leaders-content h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.board-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.board-card:hover {
+    transform: translateY(-5px);
+}
+
+.board-card h3 {
+    margin: 0;
+    color: #1e3a8a;
+}
+
+.board-card p {
+    color: #666;
+    margin-top: 10px;
+}

@@ -60,9 +60,9 @@
 }
 
 .philosophy-button.active {
-  background: linear-gradient(to right, #60a5fa, #a855f7);
-  color: white;
-  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+  background: rgba(150, 225, 135, 0.4);
+  color: #374151;
+  box-shadow: 0 10px 15px -3px rgba(150, 225, 135, 0.3);
 }
 
 .philosophy-button.inactive {

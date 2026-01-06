@@ -137,9 +137,10 @@ const PhilosophySection = () => {
                   <button
                     onClick={() => setActivePhilosophy(activePhilosophy === key ? null : key)}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgb(0,0,0,0.15)] hover:scale-105 text-base md:text-lg ${activePhilosophy === key
-                      ? 'bg-gradient-to-r from-blue-400 to-purple-500 text-white shadow-[0_6px_20px_rgba(59,130,246,0.3)]'
+                      ? 'text-gray-700 shadow-[0_6px_20px_rgba(150,225,135,0.3)]'
                       : 'bg-white text-gray-700 hover:bg-white hover:text-gray-800 border border-gray-200'
                       }`}
+                    style={activePhilosophy === key ? { backgroundColor: 'rgba(150, 225, 135, 0.4)' } : {}}
                   >
                     <div className="flex items-center gap-3">
                       {key === 'vision' && <LightbulbIcon className="w-5 h-5" />}

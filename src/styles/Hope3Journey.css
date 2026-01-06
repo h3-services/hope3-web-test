@@ -22,6 +22,7 @@
   padding: 20px;
   background: transparent;
   border-radius: 12px;
+  overflow-x: hidden;
 }
 
 .tooltip-bubble {
@@ -146,11 +147,11 @@
   margin-top: 8px;
   font-size: 8px;
   font-weight: bold;
-  color: #1e40af;
+  color: #1e293b;
   text-align: center;
   width: 80px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2px 4px;
+  background: rgba(150, 225, 135, 0.4);
+  padding: 4px 6px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -294,20 +295,25 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 30px 20px;
-  margin: 100px 15px 20px 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  padding: 60px 40px;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
   text-align: center;
   position: relative;
-  min-height: 150px;
+  width: 100%;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-quote {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 700;
   font-family: 'Jaini', cursive;
-  color: #ffffff;
+  color: #000000;
   margin: 0 0 10px 0;
   line-height: 1.5;
   letter-spacing: 0.5px;
@@ -323,21 +329,27 @@
 
 /* HOPE3 Passage Section */
 .hope3-passage {
-  padding: 30px 20px;
-  margin: 20px 15px;
-  background: transparent;
+  padding: 40px 30px;
+  margin: 30px auto;
+  background: rgba(150, 225, 135, 0.4);
   text-align: left;
+  max-width: 800px;
+  width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .passage-text {
+  font-family: 'Cantata One', serif;
   font-size: 16px;
   color: #1e293b;
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
   line-height: 1.8;
   text-align: left;
 }
 
 .passage-highlight {
+  font-family: 'Cantata One', serif;
   font-size: 16px;
   color: #1e293b;
   margin: 20px 0 0 0;
@@ -543,6 +555,7 @@
   padding: 0;
   background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .mobile-scroll-journey .journey-headline {
