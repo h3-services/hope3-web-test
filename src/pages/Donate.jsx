@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Navbar from './navbar';
 import NewFooter from './NewFooter';
 import donateImage from '../assets/donate_icon/donate.jpeg';
@@ -14,6 +14,13 @@ const Donate = () => {
     const [paymentMethod, setPaymentMethod] = useState('paypal');
     const [showModal, setShowModal] = useState(false);
     const [errors, setErrors] = useState({});
+    const customInputRef = useRef(null);
+
+    useEffect(() => {
+        if (selectedAmount === 'custom' && customInputRef.current) {
+            customInputRef.current.focus();
+        }
+    }, [selectedAmount]);
 
     const [formData, setFormData] = useState({
         paymentAmount: '',
@@ -155,14 +162,19 @@ const Donate = () => {
     };
 
     return (
-        <div className="min-h-screen pt-16 font-inter">
+        <div className="min-h-screen font-inter relative bg-white pt-[70px] sm:pt-[70px]">
             <Navbar />
 
             {/* Banner Block */}
-            <section className="relative h-64 sm:h-72 md:h-80 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${donateImage})` }}>
-                <div className="absolute inset-0 flex items-center justify-center pt-16 px-4">
-                    <h1 className="text-white text-center max-w-3xl text-xl sm:text-2xl md:text-4xl font-medium leading-normal" style={{
-                        textShadow: 'rgba(0, 0, 0, 0.62) 0px 0px 10px',
+            <section
+                className="relative w-full h-[50vh] sm:h-[60vh] md:h-[65vh] bg-cover bg-center bg-no-repeat overflow-hidden flex items-center justify-center transition-all duration-500"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${donateImage})`
+                }}
+            >
+                <div className="max-w-4xl mx-auto px-4 text-center">
+                    <h1 className="text-white text-xl sm:text-3xl md:text-5xl font-medium leading-tight animate-fade-in" style={{
+                        textShadow: 'rgba(0, 0, 0, 0.6) 0px 4px 12px',
                         fontFamily: '"Jaini", "Inter", sans-serif'
                     }}>
                         Every student deserves a chance to rise and achieve their fullest potential.
@@ -177,7 +189,7 @@ const Donate = () => {
                     <div className="max-w-3xl mx-auto">
                         <div className="rounded-xl shadow-md p-5 sm:p-6 text-center text-gray-800" style={{ backgroundColor: '#e8f5e8' }}>
                             <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4" style={{ fontFamily: 'Kavoon' }}>Empowering Dreams, Transforming Lives</h2>
-                            <p className="leading-relaxed text-gray-700" style={{ fontSize: '1.1em' }}>
+                            <p className="leading-relaxed text-gray-700 text-left" style={{ fontSize: '1.1em' }}>
                                 Every student deserves a chance to rise and achieve their fullest potential. This transformative
                                 work at HOPE3 is made possible by a vibrant community of volunteers and generous donors, each
                                 contributing in their own unique way to empower students and drive change. Sustaining the HOPE3
@@ -327,19 +339,6 @@ const Donate = () => {
                                         </p>
                                     </label>
                                 </div>
-                                {selectedAmount === 'custom' && (
-                                    <div className="mt-6 max-w-xs mx-auto animate-fade-in text-center">
-                                        <label className="block text-gray-700 text-sm font-semibold mb-2">Enter Custom Amount ($)</label>
-                                        <input
-                                            type="number"
-                                            value={customAmount}
-                                            onChange={handleCustomAmountChange}
-                                            className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-1 focus:ring-green-500 focus:border-green-500 transition-all text-center text-lg"
-                                            placeholder="Enter amount"
-                                            min="1"
-                                        />
-                                    </div>
-                                )}
                             </div>
                         </div>
 
@@ -349,17 +348,23 @@ const Donate = () => {
                                 {/* Payment Amount */}
                                 <div className="sm:col-span-2">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
-                                        Payment Amount <span className="text-red-500">*</span>
+                                        {selectedAmount === 'custom' ? 'Enter the Amount ($)' : 'Payment Amount'} <span className="text-red-500">*</span>
                                     </label>
-                                    <input
-                                        type="number"
-                                        name="paymentAmount"
-                                        value={formData.paymentAmount}
-                                        onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.paymentAmount ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
-                                            }`}
-                                        placeholder="Amount in USD"
-                                    />
+                                    <div className="relative group">
+                                        <span className={`absolute left-3 top-1/2 -translate-y-1/2 font-bold transition-colors ${errors.paymentAmount ? 'text-red-500' : 'text-gray-400 group-focus-within:text-purple-600'}`}>$</span>
+                                        <input
+                                            ref={customInputRef}
+                                            type="number"
+                                            name="paymentAmount"
+                                            value={formData.paymentAmount}
+                                            onChange={handleInputChange}
+                                            className={`w-full pl-7 pr-4 py-2.5 border rounded-lg outline-none transition-all text-sm font-medium ${errors.paymentAmount
+                                                ? 'border-red-500 bg-red-50'
+                                                : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200 shadow-sm'
+                                                }`}
+                                            placeholder="0.00"
+                                        />
+                                    </div>
                                     {errors.paymentAmount && (
                                         <p className="text-red-500 text-xs mt-1">{errors.paymentAmount}</p>
                                     )}
