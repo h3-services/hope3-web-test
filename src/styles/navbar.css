@@ -1,13 +1,14 @@
 .navbar {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
     border: none;
     z-index: 1000;
-    height: 75px;
+    height: 55px;
+    /* Reduced from 75px */
 }
 
 .navbar-container {
@@ -20,6 +21,22 @@
     justify-content: space-between;
     position: relative;
     gap: 1rem;
+}
+
+/* Ensure centering */
+.navbar-left,
+.navbar-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left {
+    justify-content: flex-start;
+}
+
+.navbar-right {
+    justify-content: flex-end;
 }
 
 .navbar-logo {
@@ -57,12 +74,16 @@
 }
 
 .navbar-center-logo {
-    height: 55px;
+    height: 48px;
+    /* Slightly reduced for better fit in 55px nav */
     width: auto;
     object-fit: contain;
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Navigation links container */
@@ -116,6 +137,8 @@
     position: relative;
     padding-bottom: 2px;
     margin-bottom: 0 !important;
+    margin-top: 8px;
+    /* Slightly down */
     display: flex;
     align-items: center;
 }
@@ -350,6 +373,28 @@
     100% {
         transform: translateX(0);
     }
+}
+
+.getinv-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 255, 0, 0.4);
+}
+
+.arrow-circle {
+    width: 32px;
+    height: 32px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.getinv-btn:hover .arrow-circle {
+    transform: rotate(45deg);
 }
 
 .getinv-btn.active {
@@ -595,9 +640,10 @@
     }
 
     .navbar-container {
-        grid-template-columns: auto 1fr auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 0 15px;
-        gap: 0;
     }
 
     /* Hide desktop nav elements */
