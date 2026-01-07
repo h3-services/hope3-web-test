@@ -53,7 +53,7 @@ const Navbar = () => {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
-        <Link to="/">
+        <Link to="/" className="desktop-logo-link">
           <img src={logo} alt="Logo" className="navbar-logo" />
         </Link>
 
@@ -198,8 +198,8 @@ const Navbar = () => {
             className={`getinv-btn ${showGetInvolved ? 'active' : ''}`}
             onClick={() => setShowGetInvolved(!showGetInvolved)}
           >
-            <img src={usericon} alt="" className="btn-icon" />
             <span className="btn-text">Get Involved</span>
+            <div className="arrow-circle">↗</div>
           </button>
 
           <div className={`get-involved-card ${showGetInvolved ? 'show' : ''}`}>
@@ -207,7 +207,7 @@ const Navbar = () => {
               <button
                 className="simple-button"
                 onClick={() => {
-                  window.location.href = import.meta.env.BASE_URL + 'join-hope3';
+                  navigate('/join-hope3');
                   setShowGetInvolved(false);
                 }}
               >
@@ -216,13 +216,21 @@ const Navbar = () => {
               <button
                 className="simple-button"
                 onClick={() => {
-                  window.location.href = import.meta.env.BASE_URL + 'donate';
+                  navigate('/donate');
                   setShowGetInvolved(false);
                 }}
               >
                 Make a Gift
               </button>
-              <button className="simple-button">Give Feedback</button>
+              <button
+                className="simple-button"
+                onClick={() => {
+                  navigate('/feedback');
+                  setShowGetInvolved(false);
+                }}
+              >
+                Give Feedback
+              </button>
             </div>
           </div>
         </div>

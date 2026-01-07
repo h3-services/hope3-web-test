@@ -6,6 +6,7 @@ import hopeBuilderIcon from '../assets/donate_icon/hope_builder.jpeg';
 import hopeEnablerIcon from '../assets/donate_icon/hope_maker1.jpeg';
 import dreamEnablerIcon from '../assets/donate_icon/dream_enabler.jpeg';
 import customAmountIcon from '../assets/donate_icon/hope_maker.jpeg';
+import zelleQR from '../assets/donate_icon/zelle_qr.png';
 
 const Donate = () => {
     const [activeTab, setActiveTab] = useState(null);
@@ -162,7 +163,7 @@ const Donate = () => {
     };
 
     return (
-        <div className="min-h-screen font-inter relative bg-white pt-[70px] sm:pt-[70px]">
+        <div className="min-h-screen font-inter relative bg-white">
             <Navbar />
 
             {/* Banner Block */}
@@ -538,44 +539,70 @@ const Donate = () => {
 
                             {/* Payment Method */}
                             <div className="mt-8 pt-4 border-t border-gray-100">
-                                <h3 className="text-lg sm:text-xl font-bold mb-4 !text-purple-700">Select Payment Method</h3>
+                                <h3 className="text-lg sm:text-xl font-bold mb-4 text-purple-700">
+                                    Select Payment Method
+                                </h3>
+
                                 <div className="flex flex-col sm:flex-row gap-3">
+
+                                    {/* PayPal */}
                                     <label className="flex-1 cursor-pointer">
                                         <input
                                             type="radio"
                                             name="paymentMethod"
                                             value="paypal"
-                                            checked={paymentMethod === 'paypal'}
+                                            checked={paymentMethod === "paypal"}
                                             onChange={(e) => setPaymentMethod(e.target.value)}
                                             className="sr-only"
                                         />
+
                                         <div
-                                            className={`p-3 rounded-lg text-center font-semibold border transition-all duration-300 transform hover:-translate-y-1 ${paymentMethod === 'paypal'
-                                                ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                                                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm'
+                                            className={`p-3 rounded-lg border transition-all duration-300 transform hover:-translate-y-1
+        ${paymentMethod === "paypal"
+                                                    ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                                                    : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm"
                                                 }`}
                                         >
-                                            💳 Pay using PayPal
+                                            <div className="flex items-center justify-center gap-3">
+                                                <img
+                                                    src="/src/assets/paypal.png"
+                                                    alt="PayPal"
+                                                    className="h-6 w-auto"
+                                                />
+                                                <span className="font-semibold">Pay using PayPal</span>
+                                            </div>
                                         </div>
                                     </label>
+
+                                    {/* Zelle */}
                                     <label className="flex-1 cursor-pointer">
                                         <input
                                             type="radio"
                                             name="paymentMethod"
                                             value="zelle"
-                                            checked={paymentMethod === 'zelle'}
+                                            checked={paymentMethod === "zelle"}
                                             onChange={(e) => setPaymentMethod(e.target.value)}
                                             className="sr-only"
                                         />
+
                                         <div
-                                            className={`p-3 rounded-lg text-center font-semibold border transition-all duration-300 transform hover:-translate-y-1 ${paymentMethod === 'zelle'
-                                                ? 'bg-purple-600 text-white border-purple-600 shadow-md'
-                                                : 'bg-white text-gray-700 border-gray-300 hover:border-purple-400 hover:shadow-sm'
+                                            className={`p-3 rounded-lg border transition-all duration-300 transform hover:-translate-y-1
+        ${paymentMethod === "zelle"
+                                                    ? "bg-purple-600 text-white border-purple-600 shadow-md"
+                                                    : "bg-white text-gray-700 border-gray-300 hover:border-purple-400 hover:shadow-sm"
                                                 }`}
                                         >
-                                            📱 Pay using Zelle
+                                            <div className="flex items-center justify-center gap-3">
+                                                <img
+                                                    src="/src/assets/zelle.png"
+                                                    alt="Zelle"
+                                                    className="h-6 w-auto"
+                                                />
+                                                <span className="font-semibold">Pay using Zelle</span>
+                                            </div>
                                         </div>
                                     </label>
+
                                 </div>
                             </div>
 
@@ -654,27 +681,33 @@ const Donate = () => {
             {
                 showModal && (
                     <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 animate-fade-in backdrop-blur-sm">
-                        <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8 max-w-sm w-full transform animate-scale-up">
+                        <div className="bg-white rounded-xl shadow-2xl p-4 sm:p-6 max-w-sm w-full transform animate-scale-up max-h-[90vh] overflow-y-auto">
                             <div className="text-center">
-                                <h3 className="text-xl sm:text-2xl font-bold mb-4 !text-purple-700">
-                                    {paymentMethod === 'paypal' ? 'PayPal Payment' : 'Zelle Payment'}
-                                </h3>
+                                {paymentMethod === 'paypal' && (
+                                    <>
+                                        <h3 className="text-xl sm:text-2xl font-bold mb-4 !text-purple-700">
+                                            PayPal Payment
+                                        </h3>
 
-                                <div className="mb-4 flex justify-center">
-                                    {paymentMethod === 'paypal' ? (
+                                        <div className="mb-4 flex justify-center">
+                                            <img
+                                                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.paypal.com/paypalme/hope3org"
+                                                alt="PayPal QR Code"
+                                                className="w-56 h-56 border-2 border-blue-100 rounded-lg shadow-sm"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+
+                                {paymentMethod === 'zelle' && (
+                                    <div className="mb-4 flex justify-center">
                                         <img
-                                            src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.paypal.com/paypalme/hope3org"
-                                            alt="PayPal QR Code"
-                                            className="w-56 h-56 border-2 border-blue-100 rounded-lg shadow-sm"
+                                            src={zelleQR}
+                                            alt="Zelle Payment Details"
+                                            className="w-[240px] mx-auto h-auto rounded-lg shadow-sm"
                                         />
-                                    ) : (
-                                        <img
-                                            src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.paypal.com/paypalme/hope3org"
-                                            alt="Zelle QR Code"
-                                            className="w-56 h-56 border-2 border-purple-100 rounded-lg shadow-sm"
-                                        />
-                                    )}
-                                </div>
+                                    </div>
+                                )}
 
                                 {paymentMethod === 'paypal' && (
                                     <a
