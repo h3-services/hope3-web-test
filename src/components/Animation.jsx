@@ -103,6 +103,45 @@ function Animation() {
         >
           <h3>{stages[currentIndex]}</h3>
           <p className="font-el-messiri">{descriptions[currentIndex]}</p>
+
+          <button
+            className="nav-arrow-btn"
+            onClick={() => {
+              if (containerRef.current) {
+                const trackHeight = containerRef.current.clientHeight;
+                const viewportHeight = window.innerHeight;
+                const scrollableDistance = trackHeight - viewportHeight;
+                const containerTop = containerRef.current.offsetTop;
+                const stageCount = stages.length;
+
+                if (currentIndex < stageCount - 1) {
+                  // Calculate target scroll position for next index
+                  // Move slightly into the next segment to ensure transition triggers
+                  const targetIndex = currentIndex + 1;
+                  const targetProgress = (targetIndex + 0.1) / stageCount;
+                  const targetScrollY = containerTop + (targetProgress * scrollableDistance);
+
+                  window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+                } else {
+                  // Scroll back to start
+                  window.scrollTo({ top: containerTop, behavior: 'smooth' });
+                }
+              }
+            }}
+            aria-label={currentIndex === stages.length - 1 ? "Scroll to top" : "Next slide"}
+          >
+            {currentIndex === stages.length - 1 ? (
+              // Up Arrow
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
+              </svg>
+            ) : (
+              // Down Arrow
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+              </svg>
+            )}
+          </button>
         </motion.div>
       </div>
     </div>

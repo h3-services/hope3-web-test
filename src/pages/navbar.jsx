@@ -10,7 +10,31 @@ import getInvolvedIcon from '../assets/home/Gemini_Generated_Image_odj8ogodj8ogo
 const Navbar = () => {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [activeDropdown, setActiveDropdown] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 100) { // Only trigger after scrolling down a bit
+        if (currentScrollY > lastScrollY) {
+          setIsVisible(false); // Hide on scroll down
+        } else {
+          setIsVisible(true); // Show on scroll up
+        }
+      } else {
+        setIsVisible(true); // Always visible at the top
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   const [clickedDropdown, setClickedDropdown] = useState(null);
   const [showGetInvolved, setShowGetInvolved] = useState(false);
   const getInvolvedRef = useRef(null);
@@ -49,16 +73,12 @@ const Navbar = () => {
     'Our Work': ['Our Students', 'Our Projects'],
     'Our Impact': ['Why HOPE3?', 'HOPE3 Journey'],
     'Services': ['Services'],
-    'About Us': ['Leadership & Board', 'Financials', 'FAQ', 'Be Informed']
+    'About Us': ['Leadership & Board', 'Financials', 'FAQ']
   };
 
   return (
-    <nav className="navbar" role="navigation" aria-label="Main navigation">
+    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`} role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
-        <Link to="/" className="desktop-logo-link">
-          <img src={logo} alt="Logo" className="navbar-logo" />
-        </Link>
-
         <button
           className={`hamburger ${mobileOpen ? 'active' : ''}`}
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -113,8 +133,10 @@ const Navbar = () => {
             ))}
           </div>
         </div>
-
         <div className="navbar-left">
+          <Link to="/" className="desktop-logo-link">
+            <img src={logo} alt="Logo" className="navbar-logo" />
+          </Link>
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Work'] = el}
             onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Work')}
             onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
@@ -241,7 +263,6 @@ const Navbar = () => {
                 </button>
                 <div className="dropdown-link">Financials</div>
                 <div className="dropdown-link">FAQ</div>
-                <div className="dropdown-link">Be Informed</div>
               </div>
             )}
           </div>

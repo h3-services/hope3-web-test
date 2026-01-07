@@ -16,7 +16,7 @@
 .banner-block {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    height: 90vh;
+    height: 75vh;
     min-height: 500px;
     background-image: url('../assets/our-students/ourStudentBanner.jpeg');
     background-size: cover;
@@ -40,7 +40,7 @@
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.6;
-    color: #ffffff;
+    color: #000000;
     margin: 0 0 15px;
     text-align: left;
     font-style: normal;

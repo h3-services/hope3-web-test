@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Navbar from './navbar.jsx';
 import NewFooter from './NewFooter.jsx';
@@ -12,6 +12,11 @@ const supabase = createClient(
 );
 
 const JoinHope3 = () => {
+    // Scroll to top on component mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');

@@ -1,14 +1,22 @@
 .navbar {
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
     border: none;
     z-index: 1000;
-    height: 55px;
-    /* Reduced from 75px */
+    height: 75px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-hidden {
+    transform: translateY(-200%);
+}
+
+.navbar-visible {
+    transform: translateY(0);
 }
 
 .navbar-container {
@@ -33,10 +41,13 @@
 
 .navbar-left {
     justify-content: flex-start;
+    gap: 3rem;
+    /* Space between logo and links */
 }
 
 .navbar-right {
-    justify-content: flex-end;
+    justify-content: space-evenly;
+    /* Spaced evenly between Center Logo and Right Button */
 }
 
 .navbar-logo {
@@ -74,16 +85,21 @@
 }
 
 .navbar-center-logo {
-    height: 48px;
-    /* Slightly reduced for better fit in 55px nav */
+    height: 55px;
+    /* Restored to 55px */
     width: auto;
     object-fit: contain;
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    /* removed absolute centering to rely on flex structure if possible, but user might want absolute center. 
+       Let's keep absolute centering if the container is relative, but checking structure... 
+       The structure is Left - Center - Right. 
+       Actually, previous 'old style' had Left and Right pushing towards center? 
+       Wait, the previous file view showed .navbar-left justify-content: flex-end and .navbar-right flex-start. 
+       The manual edit changed them to flex-start and flex-end. 
+       I will revert them to flex-end and flex-start to sandwich the logo.
+    */
 }
 
 /* Navigation links container */
@@ -91,24 +107,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 5rem;
+    /* Increased spacing between text buttons */
     flex: 1;
-}
-
-.navbar-left {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 2rem;
-    height: 100%;
-}
-
-.navbar-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2rem;
-    height: 100%;
 }
 
 .navbar-section {
@@ -137,8 +138,7 @@
     position: relative;
     padding-bottom: 2px;
     margin-bottom: 0 !important;
-    margin-top: 8px;
-    /* Slightly down */
+    /* removed margin-top */
     display: flex;
     align-items: center;
 }
@@ -273,10 +273,12 @@
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    width: 180px;
-    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    width: 170px;
+    /* Increased to fit larger text */
+    height: 48px;
+    padding: 0;
     z-index: 2;
     box-shadow:
         0 8px 20px rgba(30, 58, 138, 0.35),
@@ -284,6 +286,77 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
     white-space: nowrap;
     letter-spacing: 0.3px;
+    display: block;
+    /* Ensure block for absolute children relative context */
+}
+
+/* Children Positioning */
+.getinv-btn-neumorphic .btn-icon-circle {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+    pointer-events: none;
+    /* Let clicks pass to button */
+    overflow: hidden;
+    /* Ensure image is clipped to circle */
+    padding: 3px;
+    /* Space inside the circle */
+}
+
+.getinv-btn-neumorphic .btn-text-neumorphic {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    /* Updated font size */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white !important;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.get-involved-btn-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transform: scale(1.2);
+    /* Slightly zoom the image */
+}
+
+/* Active State: Swap Positions (No Shrink) */
+.getinv-btn-neumorphic.active {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    /* Keep background or change if desired */
+    border: 2px solid #3b82f6;
+    /* Optional border change */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    /* Width stays 180px */
+}
+
+.getinv-btn-neumorphic.active .btn-icon-circle {
+    left: calc(100% - 40px);
+    /* Move icon to right end */
+    transform: translateY(-50%) rotate(360deg);
+}
+
+.getinv-btn-neumorphic.active .btn-text-neumorphic {
+    left: 20px;
+    /* Move text to left start */
+    transform: translateY(-50%);
 }
 
 .getinv-btn-neumorphic:hover {
@@ -303,63 +376,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.btn-icon-circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background: white;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.05);
-    flex-shrink: 0;
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
 
-.get-involved-btn-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.btn-text-neumorphic {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    display: inline-block;
-    color: white !important;
-}
-
-.getinv-btn-neumorphic.active {
-    background: transparent;
-    border: 2px solid #3b82f6;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-    padding: 0;
-    width: 44px;
-    min-width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    justify-content: center;
-    gap: 0;
-}
-
-.getinv-btn-neumorphic.active .btn-icon-circle {
-    transform: translateX(0);
-    /* Icon is naturally centered by flex */
-}
-
-.getinv-btn-neumorphic.active .btn-text-neumorphic {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-    visibility: hidden;
-    transform: translateX(-20px);
-}
 
 @keyframes slideAndSet {
     0% {
@@ -389,7 +406,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     transition: transform 0.3s ease;
 }
 

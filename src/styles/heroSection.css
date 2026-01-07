@@ -1,7 +1,8 @@
 /* HeroSection Component Styles */
 .hero-section {
   position: relative;
-  height: 24rem;
+  height: 75vh;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
