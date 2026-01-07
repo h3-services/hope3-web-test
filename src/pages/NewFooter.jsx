@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import linkedinLogo from '../assets/footer_logo/linkedin-removebg-preview.png'
-import fbLogo from '../assets/footer_logo/facebook-removebg-preview.png'
-import youtubeLogo from '../assets/footer_logo/youtube-removebg-preview.png'
-import instaLogo from '../assets/footer_logo/instagram-removebg-preview.png'
-import twitter from '../assets/footer_logo/twitter-removebg-preview.png'
+import linkedinLogo from '../assets/footer_logo/linkedin.png'
+import fbLogo from '../assets/footer_logo/facebook.png'
+import youtubeLogo from '../assets/footer_logo/youtube.png'
+import instaLogo from '../assets/footer_logo/instagram.png'
+import twitter from '../assets/footer_logo/twitter.png'
 // import '../styles/NewFooter.css'
 
 const NewFooter = () => {
@@ -50,14 +50,14 @@ const NewFooter = () => {
           </div>
           <div className="footer-right" style={{ lineHeight: '1.2', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
             <div>
-              <div className="footer-nonprofit" style={{ marginBottom: '0', fontSize: '0.875rem' }}>
+              <div className="footer-nonprofit" style={{ marginBottom: '0', fontSize: '14px' }}>
                 US IRS 501(C)(3) Non-Profit Organization
               </div>
-              <div className="footer-ein" style={{ marginBottom: '0', marginTop: '0', fontSize: '0.75rem', fontWeight: 'normal' }}>
+              <div className="footer-ein" style={{ marginBottom: '0', marginTop: '0', fontSize: '14px', fontWeight: 'normal' }}>
                 ID: EIN 94-3184861
               </div>
             </div>
-            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '20px', fontSize: '0.875rem' }}>
+            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '20px', fontSize: '14px' }}>
               © 2024 All Rights Reserved      |  Privacy Policy
             </div>
             <div

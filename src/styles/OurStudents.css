@@ -6,17 +6,21 @@
     background: #ffffff;
     overflow-x: hidden;
     padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
 /* Banner Block */
 .banner-block {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    height: 75vh;
+    height: 90vh;
     min-height: 500px;
     background-image: url('../assets/our-students/ourStudentBanner.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     padding: 120px 60px 60px;
     position: relative;

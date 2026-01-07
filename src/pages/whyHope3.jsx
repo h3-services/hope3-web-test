@@ -1,41 +1,10 @@
-import { useState, useEffect } from 'react';
 import Navbar from './navbar.jsx';
 import NewFooter from './NewFooter.jsx';
 import '../styles/whyHope3.css';
 import bannerImg from '../assets/whyHope3Banner.jpeg';
-import img1 from '../assets/transformation/img1.jpeg';
-import img2 from '../assets/transformation/img2.jpeg';
-import img3 from '../assets/transformation/img3.jpeg';
-import img4 from '../assets/transformation/img4.jpeg';
-import img5 from '../assets/transformation/img5.jpeg';
-import img6 from '../assets/transformation/img6.jpeg';
-import img7 from '../assets/transformation/img7.jpeg';
-import img8 from '../assets/transformation/img8.jpeg';
 import Animation from '../components/Animation.jsx';
 
 const WhyHope3 = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const images = [img1, img2, img3, img4, img5, img6, img7, img8];
-  const journeyStages = [
-    'Schooling',
-    'Hope3 Gate',
-    'Classroom',
-    'College Life',
-    'Lab Work',
-    'Digital Skills',
-    'Graduation',
-    'Career Entry'
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   return (
     <div className="whyhope3-page">
       <Navbar />
@@ -43,6 +12,12 @@ const WhyHope3 = () => {
       {/* Banner Section */}
       <div className="whyhope3-banner">
         <img src={bannerImg} alt="Why Hope3 Banner" className="banner-image" />
+        <div className="banner-text-overlay">
+          <p className="font-jaini">
+            This earth is filled with people who find joy in seeing the happiness of their fellow human beings.
+            All that is needed to bring that out is a little love!
+          </p>
+        </div>
       </div>
 
       {/* Page Title */}
@@ -52,44 +27,23 @@ const WhyHope3 = () => {
         </div>
       </div>
 
-      {/* Transformation Section */}
-      <div className="transformation-section">
-        {/* Left Column - Image Slideshow */}
-        <div className="left-column">
-          <div className="transformation-container">
-            {images.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                className={`transform-image ${index === activeIndex ? 'active' : ''}`}
-                alt={`Transformation ${index + 1}`}
-              />
-            ))}
-          </div>
+      {/* New Descriptive Passage */}
+      <section className="whyhope3-description">
+        <div className="container">
+          <p>
+            What does it take to make education truly transformative for students from socioeconomically challenged backgrounds?
+            The answer is not just funding college degrees or offering coaching. It's about creating a parallel system—immersive,
+            relevant, and relentlessly focused on building real-world capability. There is a gap in simply earning college degrees,
+            especially from non-premier institutions, where students graduate with theoretical knowledge but little practical skill that translates to employability.
+          </p>
+          <p>
+            There is a disconnect between college education and the need for parallel, immersive learning with one-on-one mentoring.
+            They realized that the students who needed help most weren't the ones already topping their classes. They were the ones
+            with untapped potential—students who hadn't been taught well, who didn't score high, but who had the hunger to learn.
+            These were the "rough cut diamonds," and HOPE3 set out to polish them.
+          </p>
         </div>
-
-        {/* Center Column - Content */}
-        <div className="center-column">
-          <h3 className={activeIndex === 0 ? 'gradient-text active' : ''}>
-            A Student's Journey of Change
-          </h3>
-          <p>Watch as students transform through education, from their first steps in school to successful careers.</p>
-        </div>
-
-        {/* Right Column - Journey Stages */}
-        <div className="right-column">
-          <ul>
-            {journeyStages.map((stage, index) => (
-              <li
-                key={index}
-                className={index === activeIndex ? 'gradient-text active' : ''}
-              >
-                {stage}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </section>
 
       {/* Mission/Vision/Philosophy Section */}
       <section className="mission-vision">
@@ -125,12 +79,8 @@ const WhyHope3 = () => {
       </section>
 
       {/* How We Do It Section */}
-      <section className="how-we-do-it">
-        <div className="section-title">
-          <h2>How we do it</h2>
-        </div>
-        <Animation />
-      </section>
+      <Animation />
+
 
       {/* Call to Action Section */}
       <section className="cta-section">
