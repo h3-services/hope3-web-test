@@ -1,0 +1,440 @@
+/* Founders.css - Ultra Premium Design System */
+
+.founders-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    /* overflow-x: hidden; Removed to ensure sticky works robustly */
+}
+
+
+/* --- Banner Block (Matches OurStudents.css) --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+
+/* Filter Buttons (Matches OurProjects.css) */
+.founders-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 60px auto 40px;
+    /* Added spacing from banner */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: #ffffff;
+    color: #4b5563;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    border-color: #3b82f6;
+    color: #3b82f6;
+    box-shadow: 0 10px 15px rgba(59, 130, 246, 0.1);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .founders-filter {
+        gap: 10px;
+        margin: 40px auto 30px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+.banner-block {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 75vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding: 120px 60px 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner-quote {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: #000000;
+    margin: 0 0 15px;
+    text-align: left;
+    font-style: normal;
+    font-family: 'Cinzel Decorative', cursive;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0;
+    text-align: right;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments for Banner */
+@media (max-width: 900px) {
+    .banner-block {
+        padding: 100px 40px 50px;
+    }
+
+    .quote-text {
+        font-size: 1.5rem;
+    }
+
+    .quote-author {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-block {
+        padding: 90px 30px 40px;
+    }
+
+    .quote-text {
+        font-size: 1.3rem;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-block {
+        padding: 80px 20px 30px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+    }
+
+    .quote-author {
+        font-size: 0.9rem;
+    }
+}
+
+/* --- Founders Intro Section --- */
+.founders-intro-container {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+    /* Aligned with others */
+}
+
+.founders-intro-text {
+    font-size: 1rem;
+    /* Reduced from 1.15rem */
+    line-height: 1.8;
+    color: #4b5563;
+    text-align: left;
+    /* Explicit Left Align as requested */
+    font-weight: 400;
+}
+
+/* --- Founders List Section --- */
+.founders-list-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 100px;
+    /* Reduced top padding since intro handles spacing */
+}
+
+.founder-card-row {
+    display: flex;
+    align-items: flex-start;
+    /* Changed from center to allow sticky behavior */
+    gap: 60px;
+    /* Reduced from 80px */
+    margin-bottom: 100px;
+    /* Reduced from 120px */
+}
+
+.founder-card-row.reversed {
+    flex-direction: row-reverse;
+}
+
+.founder-image-col {
+    flex: 0 0 30%;
+    max-width: 30%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: calc(50vh - 150px);
+    /* Center image in viewport */
+    align-self: flex-start;
+    height: fit-content;
+}
+
+
+.founder-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    /* Reduced from 380px */
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.founder-image-wrapper:hover {
+    transform: translateY(-10px);
+}
+
+.founder-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.05);
+    transition: transform 0.8s ease;
+}
+
+.founder-image-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+.founder-content-col {
+    flex: 0 0 70%;
+    max-width: 70%;
+}
+
+/* Ensure responsiveness resets these widths */
+@media (max-width: 768px) {
+
+    .founder-image-col,
+    .founder-content-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.founder-name {
+    font-size: 2rem;
+    /* Reduced from 2.5rem */
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+    letter-spacing: -0.02em;
+}
+
+.founder-title {
+    font-size: 1rem;
+    /* Reduced from 1.1rem */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #3b82f6;
+    /* Blue 500 */
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 600;
+}
+
+.founder-bio {
+    font-size: 0.95rem;
+    /* Reduced from 1.1rem */
+    line-height: 1.8;
+    color: #4b5563;
+    /* Gray 600 */
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.founder-contact {
+    margin-bottom: 30px;
+}
+
+.founder-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #3b82f6;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
+    /* Slightly reduced */
+    padding: 8px 16px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.founder-email:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateX(4px);
+}
+
+.founder-quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    padding: 25px;
+    /* Reduced from 30px */
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 40px;
+}
+
+.founder-quote {
+    font-size: 1.1rem;
+    /* Reduced from 1.25rem */
+    font-style: italic;
+    color: #334155;
+    font-family: 'Cinzel Decorative', cursive;
+    /* Reusing font from banner */
+    line-height: 1.6;
+}
+
+.achievements-list {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.check-icon {
+    width: 24px;
+    height: 24px;
+    background: #e0e7ff;
+    /* Indigo 100 */
+    color: #4f46e5;
+    /* Indigo 600 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.achievement-text {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .founder-card-row {
+        gap: 50px;
+    }
+
+    .founder-name {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .founders-intro-container {
+        padding: 0 20px;
+        margin-bottom: 40px;
+    }
+
+    .founders-intro-text {
+        font-size: 0.95rem;
+    }
+
+    .founders-list-section {
+        padding-top: 0;
+    }
+
+    .founder-card-row,
+    .founder-card-row.reversed {
+        flex-direction: column;
+        /* Keep vertical stack for readability */
+        gap: 30px;
+        margin-bottom: 60px;
+        align-items: center;
+        /* Center items in stack */
+    }
+
+    .founder-image-col {
+        position: static;
+        /* Disable sticky on mobile */
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+
+    .founder-image-wrapper {
+        min-height: auto;
+        max-width: 180px;
+        /* Much smaller image */
+    }
+
+    .founder-content-col {
+        text-align: center;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .founder-name {
+        font-size: 1.6rem;
+        /* Smaller heading */
+    }
+
+    .founder-title {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .founder-bio {
+        font-size: 0.9rem;
+        text-align: left;
+        /* Keep bio readable */
+    }
+
+    .founder-quote-box {
+        text-align: left;
+        padding: 20px;
+    }
+
+    .founder-quote {
+        font-size: 1rem;
+    }
+
+    .achievements-list {
+        text-align: left;
+    }
+}

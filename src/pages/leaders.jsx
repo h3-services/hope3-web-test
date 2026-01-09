@@ -1,7 +1,7 @@
 import Navbar from "./navbar.jsx"
 import NewFooter from "./NewFooter.jsx"
-import { useEffect, useState } from 'react'
-import './Hope3Pillers.css'
+import { useEffect, useState, useRef } from 'react'
+import './leaders.css'
 import palaniImage from '../assets/pillars/palani.png' // Fixed spelling to match existing directory
 import neelImage from '../assets/pillars/neel.png'     // Fixed spelling to match existing directory
 import meenachiImage from '../assets/pillars/meenachi.png' // Fixed spelling to match existing directory
@@ -9,6 +9,8 @@ import SwipeableVideoStack from '../components/SwipeableVideoStack.jsx'
 
 function Leaders() { // Renamed to Leaders to match the route and file name
     const [activeImageIndex, setActiveImageIndex] = useState(0)
+    const imageContainerRef = useRef(null)
+    const founderRefs = useRef([])
 
     const pillars = [
         {
@@ -66,13 +68,14 @@ function Leaders() { // Renamed to Leaders to match the route and file name
 
     useEffect(() => {
         const handleScroll = () => {
-            const contentElements = document.querySelectorAll('.founder-section')
             const windowHeight = window.innerHeight
 
             let currentIndex = 0
             let maxVisibility = 0
 
-            contentElements.forEach((element, index) => {
+            founderRefs.current.forEach((element, index) => {
+                if (!element) return
+
                 const rect = element.getBoundingClientRect()
                 const elementTop = rect.top
                 const elementBottom = rect.bottom
@@ -92,14 +95,15 @@ function Leaders() { // Renamed to Leaders to match the route and file name
             if (currentIndex !== activeImageIndex) {
                 setActiveImageIndex(currentIndex)
 
-                const imageContainer = document.querySelector('.sticky-image-container')
-                if (imageContainer) {
-                    imageContainer.style.opacity = '0.3'
-                    imageContainer.style.transform = 'translateY(10px) scale(0.98)'
+                if (imageContainerRef.current) {
+                    imageContainerRef.current.style.opacity = '0.3'
+                    imageContainerRef.current.style.transform = 'translateY(10px) scale(0.98)'
 
                     setTimeout(() => {
-                        imageContainer.style.opacity = '1'
-                        imageContainer.style.transform = 'translateY(0) scale(1)'
+                        if (imageContainerRef.current) {
+                            imageContainerRef.current.style.opacity = '1'
+                            imageContainerRef.current.style.transform = 'translateY(0) scale(1)'
+                        }
                     }, 150)
                 }
             }
@@ -122,10 +126,10 @@ function Leaders() { // Renamed to Leaders to match the route and file name
         }, 100)
 
         return () => window.removeEventListener('scroll', throttledScroll)
-    }, [activeImageIndex, pillars])
+    }, [activeImageIndex])
 
     return (
-        <main className="min-h-screen bg-gray-50">
+        <main className="min-h-screen bg-gray-50 overflow-x-hidden">
             <Navbar />
 
             <section className="pillars-hero py-20 px-6">
@@ -145,7 +149,10 @@ function Leaders() { // Renamed to Leaders to match the route and file name
 
                         <div className="lg:w-2/5">
                             <div className="sticky top-20 h-screen flex items-center justify-center">
-                                <div className="sticky-image-container w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 transition-all duration-500 ease-out">
+                                <div
+                                    ref={imageContainerRef}
+                                    className="sticky-image-container w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 transition-all duration-500 ease-out"
+                                >
                                     <div className="text-center">
                                         <img
                                             src={pillars[activeImageIndex].image}
@@ -167,6 +174,7 @@ function Leaders() { // Renamed to Leaders to match the route and file name
                             {pillars.map((pillar, index) => (
                                 <div
                                     key={pillar.id}
+                                    ref={el => founderRefs.current[index] = el}
                                     className="founder-section min-h-screen flex items-center py-20"
                                     data-index={index}
                                 >
@@ -275,3 +283,4 @@ function Leaders() { // Renamed to Leaders to match the route and file name
 }
 
 export default Leaders
+

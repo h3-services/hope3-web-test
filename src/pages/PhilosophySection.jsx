@@ -3,13 +3,17 @@
 import { useState } from "react"
 import hope3Logo from '../assets/home/hope3_logo.png'
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import { FaBullseye, FaLocationArrow, FaUnlink, FaGem, FaUsers, FaHandshake, FaArrowUp } from "react-icons/fa";
+import { FaBullseye, FaLocationArrow, FaUnlink, FaGem, FaUsers, FaHandshake, FaArrowUp, FaChevronDown } from "react-icons/fa";
 import { MdCenterFocusStrong } from "react-icons/md";
 
 const PhilosophySection = () => {
   const [activePhilosophy, setActivePhilosophy] = useState("vision")
 
   const philosophies = {
+    // ... (lines 13-137 remain unchanged effectively, but I need to target the imports and the render part separately if possible or careful large replace)
+    // I will split this into two replacements if needed or just one smart one.
+    // Let's do imports first.
+
     vision: {
       title: "Vision",
       content: "Empowering circumstantially challenged, aspiring talent to realize their true potential and become next generation leaders."
@@ -136,7 +140,7 @@ const PhilosophySection = () => {
                 <div key={key} className="space-y-3">
                   <button
                     onClick={() => setActivePhilosophy(activePhilosophy === key ? null : key)}
-                    className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgb(0,0,0,0.15)] hover:scale-105 text-base md:text-lg ${activePhilosophy === key
+                    className={`group w-full text-left px-3 py-2 rounded-lg transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgb(0,0,0,0.15)] hover:scale-105 text-base md:text-lg ${activePhilosophy === key
                       ? 'text-gray-700 shadow-[0_6px_20px_rgba(150,225,135,0.3)]'
                       : 'bg-white text-gray-700 hover:bg-white hover:text-gray-800 border border-gray-200'
                       }`}
@@ -152,6 +156,7 @@ const PhilosophySection = () => {
                       {key === 'confidence' && <FaHandshake className="w-5 h-5" />}
                       {key === 'proof' && <FaUsers className="w-5 h-5" />}
                       {philosophies[key].title}
+                      <FaChevronDown className="ml-auto w-4 h-4 text-gray-400 lg:hidden opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-1" />
                     </div>
                   </button>
 

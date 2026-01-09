@@ -7,7 +7,9 @@ import OurProjects from "./pages/OurProjects.jsx";
 import Donate from "./pages/Donate.jsx";
 import JoinHope3 from "./pages/JoinHope3.jsx";
 import Leaders from "./pages/leaders.jsx";
+import Founders from "./pages/Founders.jsx";
 import Feedback from "./pages/Feedback.jsx";
+import Services from "./pages/Services.jsx";
 
 // Use basename for GitHub Pages deployment
 const basename = import.meta.env.BASE_URL;
@@ -21,8 +23,8 @@ function App() {
         <Route path="/hope3-journey" element={<Hope3Journey />} />
         <Route path="/our-students" element={<OurStudents />} />
         <Route path="/our-projects" element={<OurProjects />} />
-        <Route path="/services" element={<div>Services Page</div>} />
-        <Route path="/leadership-&-board" element={<Leaders />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/leadership-&-board" element={<Founders />} />
         <Route path="/financials" element={<div>Financials Page</div>} />
         <Route path="/faq" element={<div>FAQ Page</div>} />
         <Route path="/be-informed" element={<div>Be Informed Page</div>} />

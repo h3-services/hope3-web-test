@@ -84,6 +84,13 @@
     min-width: 200px;
 }
 
+.navbar-center-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
 .navbar-center-logo {
     height: 55px;
     /* Restored to 55px */

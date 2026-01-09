@@ -108,12 +108,12 @@ n
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .pillars-hero h1 {
         font-size: 2.5rem;
     }
 
-    .sticky top-20 {
+    .sticky.top-20 {
         position: relative !important;
         height: auto !important;
         top: 0 !important;

@@ -21,26 +21,20 @@ const HeroSection = () => {
 
       {/* Text */}
       <div
-        className={`relative z-10 max-w-5xl px-6 transition-all duration-1000 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        className={`relative z-10 max-w-5xl px-6 flex flex-col items-center transition-all duration-1000 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
       >
         {/* Quote */}
-        <blockquote className="text-white text-[28px] md:text-[38px] font-jaini leading-relaxed text-center">
+        <blockquote className="text-white text-[24px] md:text-[38px] font-jaini leading-relaxed text-center w-full">
           "Learning gives creativity, creativity leads to thinking,
           thinking provides knowledge, knowledge makes you great."
         </blockquote>
-      </div>
 
-      {/* Author – positioned below About Us button */}
-      <cite
-        className={`absolute z-10 text-white text-[14px] md:text-[16px] font-medium not-italic transition-all duration-1000 ${show ? "opacity-90" : "opacity-0"}`}
-        style={{
-          top: '55%',
-          right: '12%'
-        }}
-      >
-        — Dr. A. P. J. Abdul Kalam
-      </cite>
+        {/* Author */}
+        <cite className="mt-6 text-white text-[16px] md:text-[20px] font-medium not-italic w-full text-right md:pr-10">
+          — Dr. A. P. J. Abdul Kalam
+        </cite>
+      </div>
 
     </section>
   )

@@ -248,9 +248,9 @@ const Donate = () => {
                                     </p>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                                     {/* Hope Builder */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-4 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1000' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1000' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -259,12 +259,12 @@ const Donate = () => {
                                             onChange={() => handleAmountChange('1000')}
                                             className="hidden"
                                         />
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full overflow-hidden shadow-sm">
+                                        <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={hopeBuilderIcon} alt="Hope Builder" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-base sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Builder</h3>
-                                        <div className="mb-2">
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">$1000</span>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Builder</h3>
+                                        <div className="mb-1 sm:mb-2">
+                                            <span className="text-base sm:text-xl font-bold text-green-600">$1000</span>
                                             <span className="text-gray-500 text-xs sm:text-sm">/year</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
@@ -273,7 +273,7 @@ const Donate = () => {
                                     </label>
 
                                     {/* Hope Enabler */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-4 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1500' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1500' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -282,12 +282,12 @@ const Donate = () => {
                                             onChange={() => handleAmountChange('1500')}
                                             className="hidden"
                                         />
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full overflow-hidden shadow-sm">
+                                        <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={hopeEnablerIcon} alt="Hope Enabler" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-base sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Enabler</h3>
-                                        <div className="mb-2">
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">$1500</span>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Enabler</h3>
+                                        <div className="mb-1 sm:mb-2">
+                                            <span className="text-base sm:text-xl font-bold text-green-600">$1500</span>
                                             <span className="text-gray-500 text-xs sm:text-sm">/year</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
@@ -296,7 +296,7 @@ const Donate = () => {
                                     </label>
 
                                     {/* Dream Enabler */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-4 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '3000' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '3000' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -305,12 +305,12 @@ const Donate = () => {
                                             onChange={() => handleAmountChange('3000')}
                                             className="hidden"
                                         />
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full overflow-hidden shadow-sm">
+                                        <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={dreamEnablerIcon} alt="Dream Enabler" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-base sm:text-lg font-bold mb-1 text-gray-800 font-serif">Dream Enabler</h3>
-                                        <div className="mb-2">
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">$3000</span>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Dream Enabler</h3>
+                                        <div className="mb-1 sm:mb-2">
+                                            <span className="text-base sm:text-xl font-bold text-green-600">$3000</span>
                                             <span className="text-gray-500 text-xs sm:text-sm">/year</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
@@ -319,7 +319,7 @@ const Donate = () => {
                                     </label>
 
                                     {/* Hope Maker */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-4 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === 'custom' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === 'custom' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -328,12 +328,12 @@ const Donate = () => {
                                             onChange={() => handleAmountChange('custom')}
                                             className="hidden"
                                         />
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full overflow-hidden shadow-sm">
+                                        <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={customAmountIcon} alt="Hope Maker" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-base sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Maker</h3>
-                                        <div className="mb-2">
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">Custom</span>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Maker</h3>
+                                        <div className="mb-1 sm:mb-2">
+                                            <span className="text-base sm:text-xl font-bold text-green-600">Custom</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
                                             Your choice of amount
