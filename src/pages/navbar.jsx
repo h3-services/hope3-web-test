@@ -73,7 +73,7 @@ const Navbar = () => {
     'Our Work': ['Our Students', 'Our Projects'],
     'Our Impact': ['Why HOPE3?', 'HOPE3 Journey'],
     'Services': ['Services'],
-    'About Us': ['Leadership & Board', 'Financials', 'FAQ']
+    'About Us': ['Leadership & Board', 'Financials', 'Media & FAQ']
   };
 
   return (
@@ -94,40 +94,56 @@ const Navbar = () => {
           <div className="mobile-menu-content">
             {Object.entries(menuItems).map(([section, items]) => (
               <div key={section} className="mobile-nav-item">
-                <button
-                  className={`mobile-nav-button ${activeDropdown === section ? 'active' : ''}`}
-                  onClick={() => {
-                    const newState = activeDropdown === section ? null : section;
-                    setActiveDropdown(newState);
-                  }}
-                >
-                  {section}
-                  <span className="mobile-arrow">▼</span>
-                </button>
-                {activeDropdown === section && (
-                  <div className="mobile-submenu">
-                    {items.map((item) => (
-                      <button
-                        key={item}
-                        onClick={() => {
-                          const routes = {
-                            'Our Students': 'our-students',
-                            'Our Projects': 'our-projects',
-                            'Why HOPE3?': 'why-hope3',
-                            'HOPE3 Journey': 'hope3-journey',
-                            'Leadership & Board': 'leadership-&-board'
-                          };
-                          if (routes[item]) {
-                            window.location.href = import.meta.env.BASE_URL + routes[item];
-                          }
-                          setMobileOpen(false);
-                          setActiveDropdown(null);
-                        }}
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
+                {section === 'Services' ? (
+                  <button
+                    className="mobile-nav-button"
+                    onClick={() => {
+                      navigate('/services');
+                      setMobileOpen(false);
+                      setActiveDropdown(null);
+                    }}
+                  >
+                    {section}
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      className={`mobile-nav-button ${activeDropdown === section ? 'active' : ''}`}
+                      onClick={() => {
+                        const newState = activeDropdown === section ? null : section;
+                        setActiveDropdown(newState);
+                      }}
+                    >
+                      {section}
+                      <span className="mobile-arrow">▼</span>
+                    </button>
+                    {activeDropdown === section && (
+                      <div className="mobile-submenu">
+                        {items.map((item) => (
+                          <button
+                            key={item}
+                            onClick={() => {
+                              const routes = {
+                                'Our Students': '/our-students',
+                                'Our Projects': '/our-projects',
+                                'Why HOPE3?': '/why-hope3',
+                                'HOPE3 Journey': '/hope3-journey',
+                                'Leadership & Board': '/leadership-&-board',
+                                'Services': '/services'
+                              };
+                              if (routes[item]) {
+                                navigate(routes[item]);
+                              }
+                              setMobileOpen(false);
+                              setActiveDropdown(null);
+                            }}
+                          >
+                            {item}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             ))}
@@ -156,7 +172,7 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.location.href = import.meta.env.BASE_URL + 'our-students';
+                    navigate('/our-students');
                   }}
                 >
                   Our Students
@@ -165,7 +181,7 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.location.href = import.meta.env.BASE_URL + 'our-projects';
+                    navigate('/our-projects');
                   }}
                 >
                   Our Projects
@@ -195,7 +211,7 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     console.log("hope");
-                    window.location.href = import.meta.env.BASE_URL + 'why-hope3';
+                    navigate('/why-hope3');
                   }}
                 >
                   Why HOPE3?
@@ -205,7 +221,7 @@ const Navbar = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     console.log("hope3 journey");
-                    window.location.href = import.meta.env.BASE_URL + 'hope3-journey';
+                    navigate('/hope3-journey');
                   }}
                 >
                   HOPE3 Journey
@@ -215,27 +231,20 @@ const Navbar = () => {
           </div>
         </div>
 
-        <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
+        <Link to="/" className="navbar-center-logo-link">
+          <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
+        </Link>
 
         <div className="navbar-right">
-          <div className="navbar-section" ref={el => dropdownRefs.current['Services'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('Services')}
-            onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
+          <div className="navbar-section">
             <button
               className="section-title"
               onClick={() => {
-                const newState = activeDropdown === 'Services' ? null : 'Services';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                navigate('/services');
               }}
             >
               Services
             </button>
-            {activeDropdown === 'Services' && (
-              <div className="dropdown show">
-                <div className="dropdown-link">Services</div>
-              </div>
-            )}
           </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['About Us'] = el}
             onMouseEnter={() => !clickedDropdown && setActiveDropdown('About Us')}
@@ -256,13 +265,13 @@ const Navbar = () => {
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.location.href = import.meta.env.BASE_URL + 'leadership-&-board';
+                    navigate('/leadership-&-board');
                   }}
                 >
                   Leadership & Board
                 </button>
                 <div className="dropdown-link">Financials</div>
-                <div className="dropdown-link">FAQ</div>
+                <div className="dropdown-link">Media & FAQ</div>
               </div>
             )}
           </div>

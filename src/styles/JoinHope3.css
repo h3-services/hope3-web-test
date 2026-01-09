@@ -64,13 +64,14 @@
 /* Gold/Yellow highlight removed/replaced */
 .blue-text {
     color: #4FB3E8;
-    font-size: 3.5rem;
+    font-size: 3rem;
+    font-weight: 800;
     /* Larger blue text */
     /* text-transform removed to allow mixed case in JSX */
 }
 
 .banner-subtext {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: white;
     opacity: 0.9;
     font-weight: 600;
@@ -87,7 +88,7 @@
 
 .join-description-text {
     font-family: 'El Messiri', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 1.8;
     color: #1f2937;
     max-width: 900px;
@@ -209,12 +210,29 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .join-banner-text {
+        padding: 0 15px;
+    }
+
     .join-banner-text h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        line-height: 1.1;
+    }
+
+    .blue-text {
+        font-size: 2rem;
+        display: block;
+        margin: 2px 0;
+    }
+
+    .banner-subtext {
+        font-size: 1rem;
+        margin: 2px 0 15px 0;
     }
 
     .join-description-text {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        padding: 0 10px;
     }
 
     .student-registration-form {
@@ -223,6 +241,6 @@
     }
 
     .join-form-container {
-        padding: 25px;
+        padding: 20px;
     }
 }
