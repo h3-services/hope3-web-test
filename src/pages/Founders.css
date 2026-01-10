@@ -22,6 +22,20 @@
     flex-wrap: wrap;
     max-width: 1200px;
     padding: 0 20px;
+    position: relative;
+    border: none !important;
+    /* Ensure no border */
+}
+
+/* Aggressively remove any rogue decorative line */
+.founders-filter::before,
+.founders-filter::after {
+    content: none !important;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    border: none !important;
 }
 
 .filter-btn {
@@ -51,6 +65,8 @@
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
     transform: translateY(-2px);
 }
+
+
 
 @media (max-width: 768px) {
     .founders-filter {
@@ -301,6 +317,33 @@
     transform: translateX(4px);
 }
 
+.founder-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0077b5;
+    /* LinkedIn Blue */
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    background: rgba(0, 119, 181, 0.1);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    /* Spacing between buttons */
+}
+
+.founder-linkedin:hover {
+    background: rgba(0, 119, 181, 0.2);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.15);
+}
+
+.linkedin-icon {
+    font-size: 1.1em;
+}
+
 .founder-quote-box {
     background: #f8fafc;
     border-left: 4px solid #3b82f6;
@@ -437,4 +480,517 @@
     .achievements-list {
         text-align: left;
     }
+}
+
+.category-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 30px;
+    padding-left: 20px;
+    border-left: 5px solid #3b82f6;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+/* --- Board Interaction Styles --- */
+.board-interaction-container {
+    width: 100%;
+    /* removed min-height to allow content to flow naturally */
+}
+
+/* Horizontal Scroll Container (For Varsity) */
+/* --- Varsity Carousel Styles --- */
+.varsity-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 10px 0;
+}
+
+.varsity-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    flex: 1;
+    /* Ensure cards take full height relative to grid */
+    align-items: stretch;
+}
+
+/* Arrows */
+.carousel-arrow {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 20;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px rgba(59, 130, 246, 0.2);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    /* background: #f1f5f9;  Keep it cleaner */
+    border-color: #cbd5e1;
+    color: #94a3b8;
+}
+
+/* Ensure card content matches Board Card dimensions/style */
+.varsity-grid-4 .board-card {
+    height: 220px;
+    /* Same fixed height as standard board cards */
+    width: 100%;
+}
+
+/* Responsive adjustments for Carousel */
+@media (max-width: 1100px) {
+    .varsity-grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    .varsity-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .varsity-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+/* Grid View & Premium Card Styles (Compact) */
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Force 5 columns for Board section on large screens */
+.board-grid-5 {
+    grid-template-columns: repeat(5, 1fr) !important;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.board-grid-5 .board-card {
+    height: 190px !important;
+    /* Slightly reduced height for narrower cards */
+}
+
+.board-grid-5 .board-card-name {
+    font-size: 0.85rem !important;
+}
+
+.board-grid-5 .board-card-title {
+    font-size: 0.75rem !important;
+}
+
+@media (max-width: 1100px) {
+    .board-grid-5 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .board-grid-5 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .board-grid-5 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Force 4 columns for Student Relations on large screens */
+.board-grid-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.board-grid-4 .board-card {
+    height: 200px !important;
+}
+
+.board-grid-4 .board-card-name {
+    font-size: 0.9rem !important;
+}
+
+.board-grid-4 .board-card-title {
+    font-size: 0.8rem !important;
+}
+
+@media (max-width: 992px) {
+    .board-grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .board-grid-4 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Partner Sections (Infinite Marquee) */
+.partner-marquee-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    background: transparent;
+    position: relative;
+    user-select: none;
+}
+
+.partner-marquee-container::before,
+.partner-marquee-container::after {
+    content: "";
+    height: 100%;
+    top: 0;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.partner-marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #f8faff 0%, rgba(248, 250, 255, 0) 100%);
+}
+
+.partner-marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #f8faff 0%, rgba(248, 250, 255, 0) 100%);
+}
+
+.partner-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+}
+
+.partner-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 150px;
+    margin: 0 25px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.marquee-item:hover,
+.marquee-item.selected-marquee-item {
+    transform: scale(1.05);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3), 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-item.selected-marquee-item .marquee-logo-container img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.marquee-logo-container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marquee-logo-container img {
+    max-width: 80%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.marquee-item:hover .marquee-logo-container img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.marquee-item-name {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50%));
+    }
+}
+
+.board-card.premium-card {
+    position: relative;
+    height: 220px;
+    background: #0f172a;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    border: none;
+    text-align: left;
+}
+
+/* Overlay Border using pseudo-element to ensure it sits ON TOP of the image */
+.board-card.premium-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    border: 4px solid transparent;
+    pointer-events: none;
+    /* Let clicks pass through */
+    z-index: 50;
+    /* Above everything */
+    transition: border-color 0.2s ease;
+}
+
+.board-card.premium-card.selected-card::after {
+    border-color: #3b82f6 !important;
+    /* Blue border */
+}
+
+.board-card.premium-card:hover::after {
+    border-color: #3b82f6 !important;
+    /* Blue border on hover */
+}
+
+.board-card.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.card-image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.card-image-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+}
+
+.board-card.premium-card:hover .card-image-bg img {
+    transform: scale(1.05);
+}
+
+.card-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.9) 100%);
+    z-index: 2;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.board-card-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+.board-card-title {
+    font-size: 0.7rem;
+    color: #cbd5e1;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+/* Inline Details Panel (Replaces Modal) */
+.board-details-inline {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    animation: slideDown 0.4s ease-out;
+    scroll-margin-top: 100px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.details-close-btn {
+    float: right;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #64748b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.details-close-btn:hover {
+    color: #0f172a;
+}
+
+.inline-detail-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.inline-detail-left {
+    flex: 0 0 200px;
+}
+
+.inline-detail-left img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.inline-detail-right {
+    flex: 1;
+}
+
+.inline-detail-name {
+    font-size: 1.8rem;
+    color: #0f172a;
+    margin: 0 0 5px 0;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.inline-detail-title {
+    color: #3b82f6;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.inline-detail-bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #334155;
+    margin-bottom: 20px;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .board-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .inline-detail-content {
+        flex-direction: column;
+    }
+
+    .inline-detail-left {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 150px;
+        margin: 0 auto;
+    }
+}
+
+/* Role Intro Highlight (Left Blue Vertical Line) */
+.role-intro-highlight {
+    border-left: 4px solid #3b82f6;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-style: normal;
 }
