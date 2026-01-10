@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
+import { FaPaypal } from "react-icons/fa";
+import { SiZelle } from "react-icons/si";
 import Navbar from './navbar';
 import NewFooter from './NewFooter';
+import { ChevronDown } from 'lucide-react';
 import donateImage from '../assets/donate_icon/donate.jpeg';
 import hopeBuilderIcon from '../assets/donate_icon/hope_builder.jpeg';
 import hopeEnablerIcon from '../assets/donate_icon/hope_maker1.jpeg';
@@ -35,6 +38,55 @@ const Donate = () => {
         state: '',
         zipCode: ''
     });
+
+    const CustomSelect = ({ options, value, onChange, placeholder, name }) => {
+        const [isOpen, setIsOpen] = useState(false);
+        const wrapperRef = useRef(null);
+
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+                    setIsOpen(false);
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => document.removeEventListener("mousedown", handleClickOutside);
+        }, [wrapperRef]);
+
+        const handleSelect = (optionValue) => {
+            onChange({ target: { name, value: optionValue } });
+            setIsOpen(false);
+        };
+
+        const selectedOption = options.find(opt => opt.code === value);
+
+        return (
+            <div className="relative" ref={wrapperRef}>
+                <div
+                    className="w-full p-2.5 border border-gray-300 rounded-lg bg-gray-50 flex justify-between items-center cursor-pointer hover:border-purple-400 hover:bg-white transition-colors"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    <span className={!value ? "text-gray-400" : "text-gray-700"}>
+                        {selectedOption ? selectedOption.name : placeholder}
+                    </span>
+                    <ChevronDown size={20} className={`text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {isOpen && (
+                    <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-xl max-h-60 overflow-y-auto">
+                        {options.map((option) => (
+                            <div
+                                key={option.code}
+                                className="p-3 hover:bg-purple-50 cursor-pointer text-gray-700 transition-colors border-b border-gray-50 last:border-none text-sm"
+                                onClick={() => handleSelect(option.code)}
+                            >
+                                {option.name}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+        );
+    };
 
     const usStates = [
         { code: "", name: "Select State" },
@@ -134,7 +186,11 @@ const Donate = () => {
         if (!formData.paymentAmount) newErrors.paymentAmount = 'Payment amount is required';
         if (!formData.firstName) newErrors.firstName = 'First name is required';
         if (!formData.lastName) newErrors.lastName = 'Last name is required';
-        if (!formData.phone) newErrors.phone = 'Phone number is required';
+        if (!formData.phone) {
+            newErrors.phone = 'Phone number is required';
+        } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
+            newErrors.phone = 'Please enter a valid 10-digit phone number';
+        }
         if (!formData.email) newErrors.email = 'Email address is required';
         if (!formData.address1) newErrors.address1 = 'Address is required';
         if (!formData.city) newErrors.city = 'City is required';
@@ -498,19 +554,13 @@ const Donate = () => {
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         State <span className="text-red-500">*</span>
                                     </label>
-                                    <select
+                                    <CustomSelect
                                         name="state"
                                         value={formData.state}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm bg-white ${errors.state ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
-                                            }`}
-                                    >
-                                        {usStates.map((state) => (
-                                            <option key={state.code} value={state.code}>
-                                                {state.name}
-                                            </option>
-                                        ))}
-                                    </select>
+                                        options={usStates.filter(state => state.code !== "")}
+                                        placeholder="Select State"
+                                    />
                                     {errors.state && (
                                         <p className="text-red-500 text-xs mt-1">{errors.state}</p>
                                     )}
@@ -564,12 +614,10 @@ const Donate = () => {
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
-                                                <img
-                                                    src="/src/assets/paypal.png"
-                                                    alt="PayPal"
-                                                    className="h-6 w-auto"
-                                                />
-                                                <span className="font-semibold">Pay using PayPal</span>
+                                                <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
+                                                    <FaPaypal className="text-[#003087]" size={28} />
+                                                </div>
+                                                <span className="font-semibold text-lg">Pay using PayPal</span>
                                             </div>
                                         </div>
                                     </label>
@@ -586,19 +634,17 @@ const Donate = () => {
                                         />
 
                                         <div
-                                            className={`p-3 rounded-lg border transition-all duration-300 transform hover:-translate-y-1
+                                            className={`p-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1
         ${paymentMethod === "zelle"
                                                     ? "bg-purple-600 text-white border-purple-600 shadow-md"
                                                     : "bg-white text-gray-700 border-gray-300 hover:border-purple-400 hover:shadow-sm"
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
-                                                <img
-                                                    src="/src/assets/zelle.png"
-                                                    alt="Zelle"
-                                                    className="h-6 w-auto"
-                                                />
-                                                <span className="font-semibold">Pay using Zelle</span>
+                                                <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
+                                                    <SiZelle className="text-[#6d1e70]" size={24} />
+                                                </div>
+                                                <span className="font-semibold text-lg">Pay using Zelle</span>
                                             </div>
                                         </div>
                                     </label>
