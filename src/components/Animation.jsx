@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import '../styles/animation.css';
 import image1 from '../assets/animation/image1.jpg';
@@ -35,7 +35,20 @@ function Animation() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
+
+  // Detect mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -43,7 +56,11 @@ function Animation() {
   });
 
   // Calculate index based on progress as the user scrolls through the 500vh track
+  // Only active on desktop, disabled on mobile
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Skip scroll tracking on mobile - use arrows only
+    if (isMobile) return;
+
     const stageCount = stages.length;
     // Map 0-1 progress to 0-7 index
     const newIndex = Math.min(
@@ -75,6 +92,20 @@ function Animation() {
           <h2>How we do it</h2>
         </div>
         <div className="carousel">
+          {/* Previous Arrow */}
+          <button
+            className="carousel-nav-arrow carousel-nav-arrow-left"
+            onClick={() => {
+              const newIndex = (currentIndex - 1 + images.length) % images.length;
+              setCurrentIndex(newIndex);
+            }}
+            aria-label="Previous image"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+
           {images.map((img, index) => {
             const pos = getPosition(index);
             return (
@@ -93,6 +124,20 @@ function Animation() {
               </motion.div>
             );
           })}
+
+          {/* Next Arrow */}
+          <button
+            className="carousel-nav-arrow carousel-nav-arrow-right"
+            onClick={() => {
+              const newIndex = (currentIndex + 1) % images.length;
+              setCurrentIndex(newIndex);
+            }}
+            aria-label="Next image"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
         </div>
         <motion.div
           className="stage-card"

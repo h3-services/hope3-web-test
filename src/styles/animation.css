@@ -5,6 +5,14 @@
   width: 100%;
 }
 
+/* Remove scroll on mobile - use arrow navigation only */
+@media (max-width: 768px) {
+  .scroll-track {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
 .animation-container {
   position: sticky;
   top: 0;
@@ -12,10 +20,10 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  padding: 0;
+  padding: 20px 0;
   background: #fbfbfb;
 }
 
@@ -27,7 +35,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
+  flex-shrink: 0;
 }
 
 .image-wrapper {
@@ -106,4 +115,108 @@
   width: 24px;
   height: 24px;
   fill: #333;
+}
+
+/* Carousel Navigation Arrows */
+.carousel-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(150, 225, 135, 0.8);
+  border-radius: 50%;
+  display: none;
+  /* Hidden by default on desktop */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 200;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav-arrow:hover {
+  background: rgba(150, 225, 135, 0.9);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-nav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav-arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: #2c3e50;
+}
+
+.carousel-nav-arrow:hover svg {
+  fill: #ffffff;
+}
+
+.carousel-nav-arrow-left {
+  left: 10px;
+}
+
+.carousel-nav-arrow-right {
+  right: 10px;
+}
+
+/* Show arrows only on mobile/tablet view */
+@media (max-width: 768px) {
+  .carousel-nav-arrow {
+    display: flex;
+  }
+
+  .animation-container {
+    position: relative;
+    height: auto;
+    justify-content: flex-start;
+    padding: 15px 0;
+  }
+
+  .section-title {
+    margin: 10px 0 15px 0;
+    flex-shrink: 0;
+  }
+
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel {
+    max-width: 90%;
+    height: 200px;
+    margin: 15px 0;
+    flex-shrink: 0;
+  }
+
+  .image-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .stage-card {
+    margin: 15px auto;
+    padding: 20px 25px;
+    max-width: 90%;
+    flex-shrink: 0;
+  }
+
+  .stage-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .stage-card p {
+    font-size: 0.95rem;
+  }
+
+  /* Hide the down arrow button on mobile - use left/right arrows instead */
+  .nav-arrow-btn {
+    display: none;
+  }
 }

@@ -393,7 +393,7 @@ const Founders = () => {
             <div className="banner-block" style={{ backgroundImage: `url(${BannerImage})` }}>
                 <div className="banner-quote">
                     <p className="quote-text">
-                        "Empathy And Kindness Are The Greatest Strengths A Leader Can Possess"
+                        Empathy And Kindness Are The Greatest Strengths A Leader Can Possess
                     </p>
                     <p className="quote-author">~ Ratan Tata</p>
                 </div>
