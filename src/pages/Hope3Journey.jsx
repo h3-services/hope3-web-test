@@ -85,7 +85,7 @@ const JourneyTimeline = () => {
           {/* Banner Block with Quote */}
           <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
             <p className="banner-quote">
-              "The Journey Of A Thousand Miles Begins With One Step"
+              The Journey Of A Thousand Miles Begins With One Step
             </p>
             <p className="banner-author">- Lao Tzu</p>
           </div>
@@ -127,7 +127,7 @@ const JourneyTimeline = () => {
                       className={`scroll-icon-item ${isSelected ? 'selected' : ''}`}
                       onClick={() => setMobileSelectedStation(isSelected ? null : year)}
                     >
-                      <div className={`scroll-icon-marker ${isSelected ? 'selected' : ''}`}>
+                      <div className={`scroll-icon-marker ${isSelected ? 'selected' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
                         <span className="scroll-icon-emoji">{icon}</span>
                       </div>
                       <span className="scroll-icon-year">{year}</span>
@@ -168,7 +168,7 @@ const JourneyTimeline = () => {
           {/* Banner Block with Quote - OUTSIDE container for full width */}
           <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
             <p className="banner-quote">
-              "The Journey Of A Thousand Miles Begins With One Step"
+              The Journey Of A Thousand Miles Begins With One Step
             </p>
             <p className="banner-author">- Lao Tzu</p>
           </div>
@@ -216,7 +216,7 @@ const JourneyTimeline = () => {
                       onMouseEnter={() => setSelectedYear(year)}
                       onMouseLeave={() => setSelectedYear(null)}
                     >
-                      <div className={`station - marker ${selectedYear === year ? 'active' : ''} `}>
+                      <div className={`station-marker ${selectedYear === year ? 'active' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
                         <div className="station-icon">{icon}</div>
                       </div>
                       <div className="station-name-label">{station}</div>

@@ -98,11 +98,11 @@ h6 {
 /* Smooth scrolling and global background */
 html {
   scroll-behavior: smooth;
-  background-color: #FFFFF0;
+  background-color: #FFFFFF;
 }
 
 body {
-  background-color: #FFFFF0;
+  background-color: #FFFFFF;
   margin: 0;
   padding: 0;
 }

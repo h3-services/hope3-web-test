@@ -320,6 +320,12 @@
   .stat-number {
     font-size: 2rem;
   }
+
+  .page-title h1 {
+    font-size: 28px;
+    padding: 15px 20px;
+    letter-spacing: 1px;
+  }
 }
 
 @media (max-width: 480px) {

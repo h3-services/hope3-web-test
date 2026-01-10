@@ -42,7 +42,7 @@ const SpotlightSection = () => {
   ]
 
   return (
-    <section className="py-20 px-6 bg-blue-50">
+    <section className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="rounded-2xl p-6 mb-12 text-center" style={{ backgroundColor: 'rgba(0, 120, 188, 0.28)' }}>
           <h2 className="text-4xl font-bold text-black font-kdam">

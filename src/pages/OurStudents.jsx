@@ -261,7 +261,7 @@ const OurStudents = () => {
                 <div className="banner-block" style={{ backgroundImage: `url(${BannerImage})` }}>
                     <div className="banner-quote">
                         <p className="quote-text">
-                            "Everyone can rise above their circumstances and achieve success if they are dedicated to and passionate about what they do."
+                            Everyone can rise above their circumstances and achieve success if they are dedicated to and passionate about what they do.
                         </p>
                         <p className="quote-author">~Nelson Mandela</p>
                     </div>

@@ -13,9 +13,22 @@ const supabase = createClient(
 );
 
 const JoinHope3 = () => {
-    // Scroll to top on component mount
+    // Scroll to top on component mount and handle hash navigation
     useEffect(() => {
-        window.scrollTo(0, 0);
+        const hash = window.location.hash;
+        if (hash === '#volunteer') {
+            // Set active tab to volunteers
+            setActiveTab('volunteers');
+            // Scroll to volunteer section after a short delay to ensure content is rendered
+            setTimeout(() => {
+                const volunteerSection = document.getElementById('volunteer-section');
+                if (volunteerSection) {
+                    volunteerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        } else {
+            window.scrollTo(0, 0);
+        }
     }, []);
 
     const [loading, setLoading] = useState(false);
@@ -489,7 +502,7 @@ const JoinHope3 = () => {
 
 
                     {activeTab === 'volunteers' && (
-                        <>
+                        <div id="volunteer-section">
                             {/* Volunteer Description Text */}
                             <div className="mb-8 text-center">
                                 <h3 className="text-2xl font-bold text-[#332EB2] mb-4" style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}>Join HOPE3 as a Volunteer -</h3>
@@ -629,7 +642,7 @@ const JoinHope3 = () => {
                                     </button>
                                 </form>
                             )}
-                        </>
+                        </div>
                     )}
                 </div>
             </section>

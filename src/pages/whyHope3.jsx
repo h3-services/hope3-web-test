@@ -58,7 +58,7 @@ const WhyHope3 = () => {
       <section className="cta-section">
         <div className="cta-buttons">
           <button className="cta-btn" onClick={() => navigate('/join-hope3')}>Apply to Join HOPE3</button>
-          <button className="cta-btn" onClick={() => navigate('/join-hope3')}>Volunteer with HOPE3</button>
+          <button className="cta-btn" onClick={() => navigate('/join-hope3#volunteer')}>Volunteer with HOPE3</button>
         </div>
       </section>
 

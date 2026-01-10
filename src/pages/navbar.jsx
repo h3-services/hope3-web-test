@@ -39,6 +39,7 @@ const Navbar = () => {
   const [showGetInvolved, setShowGetInvolved] = useState(false);
   const getInvolvedRef = useRef(null);
   const dropdownRefs = useRef({});
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,13 +62,23 @@ const Navbar = () => {
       if (getInvolvedRef.current && !getInvolvedRef.current.contains(event.target)) {
         setShowGetInvolved(false);
       }
+
+      // Handle mobile menu - close when clicking outside
+      if (mobileOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        // Check if click is not on hamburger button
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger && !hamburger.contains(event.target)) {
+          setMobileOpen(false);
+          setActiveDropdown(null);
+        }
+      }
     };
 
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [clickedDropdown]);
+  }, [clickedDropdown, mobileOpen]);
 
   const menuItems = {
     'Our Work': ['Our Students', 'Our Projects'],
@@ -91,7 +102,7 @@ const Navbar = () => {
         </button>
 
         <div className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`}>
-          <div className="mobile-menu-content">
+          <div className="mobile-menu-content" ref={mobileMenuRef}>
             {Object.entries(menuItems).map(([section, items]) => (
               <div key={section} className="mobile-nav-item">
                 {section === 'Services' ? (
@@ -162,6 +173,7 @@ const Navbar = () => {
                 const newState = activeDropdown === 'Our Work' ? null : 'Our Work';
                 setActiveDropdown(newState);
                 setClickedDropdown(newState);
+                setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
               Our Work
@@ -198,6 +210,7 @@ const Navbar = () => {
                 const newState = activeDropdown === 'Our Impact' ? null : 'Our Impact';
                 setActiveDropdown(newState);
                 setClickedDropdown(newState);
+                setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
               Our Impact
@@ -255,6 +268,7 @@ const Navbar = () => {
                 const newState = activeDropdown === 'About Us' ? null : 'About Us';
                 setActiveDropdown(newState);
                 setClickedDropdown(newState);
+                setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
               About Us
@@ -280,7 +294,12 @@ const Navbar = () => {
         <div className="profile-dropdown-container" ref={getInvolvedRef}>
           <button
             className={`getinv-btn-neumorphic ${showGetInvolved ? 'active' : ''}`}
-            onClick={() => setShowGetInvolved(!showGetInvolved)}
+            onClick={() => {
+              setShowGetInvolved(!showGetInvolved);
+              setActiveDropdown(null); // Close any open nav dropdowns
+              setClickedDropdown(null);
+              setMobileOpen(false); // Close mobile menu
+            }}
           >
             <span className="btn-icon-circle">
               <img src={getInvolvedIcon} alt="" className="get-involved-btn-img" />

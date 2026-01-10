@@ -739,6 +739,12 @@
     .get-involved-card.show {
         transform: translateY(0) scale(1);
     }
+
+    /* Disable icon rotation on mobile */
+    .getinv-btn-neumorphic.active .btn-icon-circle {
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
 }
 
 @media (max-width: 480px) {
