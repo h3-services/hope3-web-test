@@ -1,6 +1,7 @@
 "use client"
 
 import '../styles/spotlightSection.css'
+import { Newspaper, Trophy, Zap, Handshake } from 'lucide-react'
 
 const SpotlightSection = () => {
   const news = [
@@ -9,67 +10,69 @@ const SpotlightSection = () => {
       title: "HOPE3 Launches New Entrepreneurship Program",
       date: "December 2024",
       description: "Empowering 100+ young entrepreneurs with mentorship and resources",
-      link: "#"
+      link: "#",
+      size: "large"
     },
     {
       id: 2,
       title: "Education Initiative Reaches 500 Students",
       date: "November 2024",
       description: "Our comprehensive education program expands to rural communities",
-      link: "#"
+      link: "#",
+      size: "medium"
     },
     {
       id: 3,
       title: "Women Empowerment Workshop Success",
       date: "October 2024",
       description: "Building confidence and leadership skills among women",
-      link: "#"
+      link: "#",
+      size: "small"
     },
     {
       id: 4,
       title: "Partnership with Local Universities",
       date: "September 2024",
       description: "Collaborating to enhance educational opportunities",
-      link: "#"
+      link: "#",
+      size: "large"
     },
     {
       id: 5,
       title: "Innovation Hub Opens in Chennai",
       date: "August 2024",
       description: "New space for entrepreneurs and innovators to collaborate",
-      link: "#"
+      link: "#",
+      size: "medium"
     }
   ]
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="spotlight-section">
+      <div className="spotlight-container">
         <div className="rounded-2xl p-6 mb-12 text-center" style={{ backgroundColor: 'rgba(0, 120, 188, 0.28)' }}>
-          <h2 className="text-4xl font-bold text-black font-kdam">
+          <h2 className="text-4xl font-bold text-black font-kdam" style={{ marginBottom: '0', color: '#333' }}>
             Spotlight & News
           </h2>
         </div>
 
-        <div className="rounded-3xl p-8 shadow-lg" style={{ backgroundColor: 'rgba(150, 225, 135, 0.47)' }}>
-          <div className="space-y-6">
-            {news.map((item) => (
-              <div
-                key={item.id}
-                className="border-b border-white/20 last:border-b-0 pb-6 last:pb-0 cursor-pointer hover:bg-white/10 p-4 rounded-lg transition-colors duration-200"
-                onClick={() => window.open(item.link, '_blank')}
-              >
-                <div className="text-sm text-black font-medium mb-2">
-                  {item.date}
-                </div>
-                <h3 className="text-lg font-semibold text-black hover:text-gray-700 transition-colors mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-black">
-                  {item.description}
-                </p>
+        <div className="spotlight-grid">
+          {news.map((item) => (
+            <div
+              key={item.id}
+              className={`news-card card-${item.size}`}
+            >
+              <div className="news-card-date">
+                {item.date}
               </div>
-            ))}
-          </div>
+              <h3 className="news-card-title">
+                {item.title}
+              </h3>
+              <p className="news-card-description">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

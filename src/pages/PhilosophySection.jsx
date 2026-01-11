@@ -124,7 +124,7 @@ const PhilosophySection = () => {
   };
 
   return (
-    <section className="py-20 px-4 md:px-8">
+    <section className="py-10 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="rounded-2xl p-6 mb-12 text-center" style={{ backgroundColor: 'rgba(0, 120, 188, 0.28)' }}>
           <h2 className="text-3xl md:text-4xl font-bold text-black font-kdam">

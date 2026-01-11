@@ -1,77 +1,79 @@
 /* NewFooter Component Styles */
 .footer {
-  background-color: #1f2937;
-  color: white;
+  background-color: transparent;
+  color: #333333;
   padding: 2rem 0 1rem 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .footer-outer-box {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  width: 100%;
+  padding: 2.5rem;
+  background-color: #f3f4f6;
+  border-radius: 0;
 }
 
 .footer-box {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-bottom: 2rem;
+  background-color: white;
+  padding: 1rem 2.5rem 2.5rem 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .footer-left {
   flex: 1;
   min-width: 250px;
+  line-height: 1.2;
 }
 
 .footer-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #60a5fa;
-  margin-bottom: 0.5rem;
+  color: #007bff;
+  margin-bottom: 2px;
 }
 
 .footer-address {
-  color: #d1d5db;
-  margin-bottom: 0.5rem;
+  color: #555555;
+  margin-bottom: 2px;
+  font-size: 14px;
 }
 
 .footer-email {
-  color: #60a5fa;
+  color: #007bff;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 14px;
 }
 
 .footer-email:hover {
-  color: #93c5fd;
+  color: #0056b3;
 }
 
 .social-links {
   display: flex;
-  gap: 12px;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
 .social-icon-wrapper {
-  width: 34px;
-  height: 34px;
-  background-color: white;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1f2937;
-  /* Match footer background or pure black */
-  transition: all 0.3s ease;
+  color: #333333;
+  transition: opacity 0.3s ease, color 0.3s ease;
   text-decoration: none;
+  opacity: 0.8;
 }
 
 .social-icon-wrapper:hover {
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  background-color: #60a5fa;
-  color: white;
+  opacity: 1;
+  color: #007bff;
 }
 
 .footer-right {
@@ -81,27 +83,27 @@
 }
 
 .footer-nonprofit {
-  color: #d1d5db;
-  font-size: 1rem;
+  color: #555555;
+  font-size: 14px;
   margin-bottom: 0.5rem;
 }
 
 .footer-ein {
-  color: #d1d5db;
-  font-size: 1rem;
+  color: #555555;
+  font-size: 14px;
   margin-bottom: 0.5rem;
 }
 
 .footer-copyright {
-  color: #d1d5db;
-  font-size: 1rem;
+  color: #555555;
+  font-size: 14px;
 }
 
 .footer-bottom {
-  border-top: 1px solid #374151;
+  border-top: 1px solid #eeeeee;
   padding-top: 1rem;
   text-align: center;
-  color: #9ca3af;
+  color: #666666;
   font-size: 0.875rem;
 }
 

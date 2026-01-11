@@ -1,55 +1,65 @@
-import { useState } from 'react'
-import { Linkedin, Facebook, Youtube, Instagram } from 'lucide-react'
-// import '../styles/NewFooter.css'
+import { useState, useEffect } from 'react'
+import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram, FaUsers } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+import TargetCursor from '../components/TargetCursor'
+import '../styles/newFooter.css'
 
 const NewFooter = () => {
   const [showTeamPopup, setShowTeamPopup] = useState(false)
 
   const teamMembers = [
-    'Mohammed Aarif',
-    'Beulah',
-    'Nivedha',
-    'Biruntha',
-    'Mei Palaniappan',
-    'Shivakumar'
+    { name: 'Beulah', link: 'https://www.linkedin.com/in/beulah-francis-55a439349/' },
+    { name: 'Biruntha', link: 'https://www.linkedin.com/in/biruntha-mageshwaran-226a95306/' },
+    { name: 'Nivedha', link: 'https://www.linkedin.com/in/nivedha-k-706b03306' },
+    { name: 'Mohammed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
+    { name: 'Shivakumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
+    { name: 'Meiy Palaniappan', link: 'https://www.linkedin.com/in/meiytx' }
   ]
+
+  // Manage body class for cursor visibility
+  useEffect(() => {
+    if (showTeamPopup) {
+      document.body.classList.add('custom-cursor-active')
+    } else {
+      document.body.classList.remove('custom-cursor-active')
+    }
+    return () => {
+      document.body.classList.remove('custom-cursor-active')
+    }
+  }, [showTeamPopup])
 
   return (
     <div className="footer">
       <div className="footer-outer-box">
         <div className="footer-box">
-          <div className="footer-left" style={{ lineHeight: '1.2' }}>
-            <div className="footer-title" style={{ marginBottom: '0' }}>HOPE3 FOUNDATION</div>
-            <div className="footer-address" style={{ marginBottom: '0', marginTop: '0' }}>
+          <div className="footer-left">
+            <div className="footer-title">HOPE3 FOUNDATION</div><br></br>
+
+            <div className="footer-address">
               Sammamish, WA - 98074
             </div>
-            <a href="mailto:contact@hope3.org" className="footer-email" style={{ marginTop: '0' }}>
+            <a href="mailto:contact@hope3.org" className="footer-email">
               contact@hope3.org
             </a>
-            <div className="social-links" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+            <div className="social-links" style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
               <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
-                <Linkedin size={18} fill="currentColor" strokeWidth={0} />
+                <FaLinkedinIn size={18} />
               </a>
               <a href="https://www.facebook.com/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
-                <Facebook size={18} fill="currentColor" strokeWidth={0} />
+                <FaFacebookF size={18} />
               </a>
               <a href="https://www.youtube.com/channel/UCbtzvET5Ev2spcIDWraFguA" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" fill="currentColor" />
-                  <path d="M9.75 15.02s0-6 0-6l5.25 3-5.25 3z" fill="white" />
-                </svg>
+                <FaYoutube size={18} />
               </a>
               <a href="https://www.instagram.com/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
-                <Instagram size={18} strokeWidth={2.5} />
+                <FaInstagram size={18} />
               </a>
               <a href="https://x.com/hope3org" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
-                </svg>
+                <FaXTwitter size={18} />
               </a>
             </div>
           </div>
-          <div className="footer-right" style={{ lineHeight: '1.2', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+          <div className="footer-right" style={{ lineHeight: '1.2', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '10px' }}>
             <div>
               <div className="footer-nonprofit" style={{ marginBottom: '0', fontSize: '14px' }}>
                 US IRS 501(C)(3) Non-Profit Organization
@@ -58,13 +68,13 @@ const NewFooter = () => {
                 ID: EIN 94-3184861
               </div>
             </div>
-            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '20px', fontSize: '14px' }}>
+            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '0', fontSize: '14px' }}>
               © 2024 All Rights Reserved      |  Privacy Policy
             </div>
             <div
               className="footer-developed-by"
               style={{
-                marginTop: '15px',
+                marginTop: '10px',
                 fontSize: '0.25rem',
                 textAlign: 'right'
               }}
@@ -78,13 +88,17 @@ const NewFooter = () => {
                   textDecoration: 'underline',
                   fontSize: '12px'
                 }}
+                className="footer-powered-link"
               >
-                Developed by HOPE3 Team
+                Powered By Hope3
               </span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Target Cursor Animation */}
+      {showTeamPopup && <TargetCursor targetSelector=".cursor-target" />}
 
       {/* Centered Popup with Blurred Background */}
       {showTeamPopup && (
@@ -124,6 +138,7 @@ const NewFooter = () => {
           >
             {/* Close button */}
             <button
+              className="cursor-target"
               onClick={() => setShowTeamPopup(false)}
               style={{
                 position: 'absolute',
@@ -134,8 +149,17 @@ const NewFooter = () => {
                 fontSize: '1.5rem',
                 cursor: 'pointer',
                 color: '#999',
-                lineHeight: 1
+                lineHeight: 1,
+                width: '32px',
+                height: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '50%',
+                transition: 'background-color 0.2s',
               }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               ×
             </button>
@@ -146,9 +170,14 @@ const NewFooter = () => {
               fontSize: '1rem',
               borderBottom: '2px solid #007bff',
               paddingBottom: '10px',
-              textAlign: 'center'
+              textAlign: 'center',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px'
             }}>
-              🚀 HOPE3 Development Team
+              <FaUsers size={20} color="#007bff" />
+              HOPE3 Development Team
             </div>
             <ul style={{
               listStyle: 'none',
@@ -160,17 +189,43 @@ const NewFooter = () => {
                 <li
                   key={index}
                   style={{
-                    padding: '8px 0',
-                    color: '#555',
-                    fontSize: '0.9rem',
+                    padding: '2px 0',
                     borderBottom: index < teamMembers.length - 1 ? '1px solid #f0f0f0' : 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
                   }}
                 >
-                  <span style={{ color: '#007bff' }}>•</span>
-                  {member}
+                  <a
+                    href={member.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-target"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      width: '100%',
+                      background: 'none',
+                      border: 'none',
+                      padding: '8px 12px',
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      borderRadius: '8px',
+                      transition: 'all 0.2s ease',
+                      color: '#555',
+                      fontSize: '0.9rem',
+                      textDecoration: 'none'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = '#f0f7ff';
+                      e.currentTarget.style.color = '#007bff';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = '#555';
+                    }}
+                  >
+                    <span style={{ color: '#007bff', fontSize: '1.2rem' }}>•</span>
+                    {member.name}
+                  </a>
                 </li>
               ))}
             </ul>

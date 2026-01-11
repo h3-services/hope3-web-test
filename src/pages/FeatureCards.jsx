@@ -41,7 +41,7 @@ const FeatureCards = () => {
   ]
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-10 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {features.map((feature) => (
