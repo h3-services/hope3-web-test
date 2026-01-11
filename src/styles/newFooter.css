@@ -49,18 +49,29 @@
 
 .social-links {
   display: flex;
-  gap: 1rem;
+  gap: 12px;
   margin-top: 1rem;
 }
 
-.social-links img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
+.social-icon-wrapper {
+  width: 34px;
+  height: 34px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+  /* Match footer background or pure black */
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.social-links img:hover {
-  transform: scale(1.1);
+.social-icon-wrapper:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: #60a5fa;
+  color: white;
 }
 
 .footer-right {

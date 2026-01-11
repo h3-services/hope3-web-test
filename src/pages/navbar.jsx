@@ -18,6 +18,13 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
+      // Close popups/dropdowns on scroll
+      if (Math.abs(currentScrollY - lastScrollY) > 5) {
+        setShowGetInvolved(false);
+        setActiveDropdown(null);
+        setClickedDropdown(null);
+      }
+
       if (currentScrollY > 100) { // Only trigger after scrolling down a bit
         if (currentScrollY > lastScrollY) {
           setIsVisible(false); // Hide on scroll down
@@ -244,9 +251,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Link to="/" className="navbar-center-logo-link">
-          <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
-        </Link>
+        <div className="navbar-center-spacer">
+          <Link to="/" className="navbar-center-logo-link">
+            <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
+          </Link>
+        </div>
 
         <div className="navbar-right">
           <div className="navbar-section">

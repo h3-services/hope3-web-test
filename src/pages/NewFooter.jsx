@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import linkedinLogo from '../assets/footer_logo/linkedin.png'
-import fbLogo from '../assets/footer_logo/facebook.png'
-import youtubeLogo from '../assets/footer_logo/youtube.png'
-import instaLogo from '../assets/footer_logo/instagram.png'
-import twitter from '../assets/footer_logo/twitter.png'
+import { Linkedin, Facebook, Youtube, Instagram } from 'lucide-react'
 // import '../styles/NewFooter.css'
 
 const NewFooter = () => {
@@ -30,21 +26,26 @@ const NewFooter = () => {
             <a href="mailto:contact@hope3.org" className="footer-email" style={{ marginTop: '0' }}>
               contact@hope3.org
             </a>
-            <div className="social-links" style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
-              <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer">
-                <img src={linkedinLogo} alt="LinkedIn" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+            <div className="social-links" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+              <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <Linkedin size={18} fill="currentColor" strokeWidth={0} />
               </a>
-              <a href="https://www.facebook.com/hope3org/" target="_blank" rel="noopener noreferrer">
-                <img src={fbLogo} alt="Facebook" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.facebook.com/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <Facebook size={18} fill="currentColor" strokeWidth={0} />
               </a>
-              <a href="https://www.youtube.com/channel/UCbtzvET5Ev2spcIDWraFguA" target="_blank" rel="noopener noreferrer">
-                <img src={youtubeLogo} alt="Youtube" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.youtube.com/channel/UCbtzvET5Ev2spcIDWraFguA" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" fill="currentColor" />
+                  <path d="M9.75 15.02s0-6 0-6l5.25 3-5.25 3z" fill="white" />
+                </svg>
               </a>
-              <a href="https://www.instagram.com/hope3org/" target="_blank" rel="noopener noreferrer">
-                <img src={instaLogo} alt="Instagram" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.instagram.com/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <Instagram size={18} strokeWidth={2.5} />
               </a>
-              <a href="https://x.com/hope3org" target="_blank" rel="noopener noreferrer">
-                <img src={twitter} alt="Twitter" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://x.com/hope3org" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+                </svg>
               </a>
             </div>
           </div>
