@@ -1,6 +1,6 @@
 import Navbar from "./navbar.jsx"
 import HeroSection from "./HeroSection.jsx"
-import HomeVideo from "../components/HomeVideo.jsx"
+import InfoCardsSection from "../components/InfoCardsSection.jsx"
 import FeatureCards from "./FeatureCards.jsx"
 import PhilosophySection from "./PhilosophySection.jsx"
 import SpotlightSection from "./SpotlightSection.jsx"
@@ -11,7 +11,7 @@ function Home() {
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <HomeVideo />
+      <InfoCardsSection />
       <FeatureCards />
       <PhilosophySection />
       <SpotlightSection />

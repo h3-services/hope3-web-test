@@ -126,11 +126,9 @@ const PhilosophySection = () => {
   return (
     <section className="py-10 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="rounded-2xl p-6 mb-12 text-center" style={{ backgroundColor: 'rgba(0, 120, 188, 0.28)' }}>
-          <h2 className="text-3xl md:text-4xl font-bold text-black font-kdam">
-            Philosophy of HOPE3
-          </h2>
-        </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-black font-kdam text-center mb-12">
+          Philosophy of HOPE3
+        </h2>
 
         <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-4 md:p-8 border-l-4 border-r-4 border-blue-500">
           <div className="flex flex-col lg:flex-row gap-8 justify-center items-stretch">

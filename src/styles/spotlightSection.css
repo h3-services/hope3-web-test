@@ -32,25 +32,54 @@
 /* Card Styling */
 .news-card {
   background-color: #ffffff;
-  padding: 1.5rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   text-align: left;
-  /* min-height removed, controlled by specific classes */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
+  /* Restored to original */
   position: relative;
   transition: transform 0.2s ease;
+  /* Restored speed */
   break-inside: avoid;
-  /* Prevent card from splitting across columns */
   margin-bottom: 1rem;
-  /* Reduced gap between vertically stacked cards */
-  border: 1px solid #e0e0e0;
-  /* Light gray border */
+  /* Restored original margin */
+  border: 1px solid #ccc;
+  /* Slightly darker gray border */
+  overflow: hidden;
 }
 
-/* Variable Heights */
+.news-card-image-wrapper {
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  max-height: 240px;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  /* Darkened divider */
+}
+
+.news-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Removed hover zoom effect */
+
+
+.news-card-content {
+  padding: 1.5rem;
+  /* Restored original padding */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Variable Heights (Restored original min-heights) */
 .card-large {
   min-height: 400px;
 }
@@ -63,19 +92,30 @@
   min-height: 200px;
 }
 
-.news-card:hover {
-  transform: translateY(-2px);
+/* Items without images */
+.news-card:not(.has-image) {
+  min-height: auto !important;
 }
 
-/* Date Tag */
+.news-card:not(.has-image) .news-card-content {
+  padding-top: 1.5rem;
+  /* Match card-content padding */
+}
+
+/* Removed card hover lift effect */
+
+
+/* Date Tag - Restored original style */
 .news-card-date {
   font-size: 0.75rem;
   color: #888;
   margin-bottom: 1rem;
   font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
-/* Typography */
+/* Typography - Restored original style */
 .news-card-title {
   font-size: 1.1rem;
   font-weight: 700;
