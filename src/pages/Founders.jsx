@@ -41,6 +41,13 @@ import namcoImage from '../assets/leadersboard/nonProfitPartners/namco.png';
 import shootingStarsImage from '../assets/leadersboard/nonProfitPartners/shootingstarFundation.png';
 import tamilnaduFoundationImage from '../assets/leadersboard/nonProfitPartners/tamilanduFoundation.png';
 
+// Industrial Partners
+import anvithaImage from '../assets/industrialPartner/unwita.jpeg';
+import arjavaImage from '../assets/industrialPartner/arjava_desk.png';
+import cytronicxImage from '../assets/industrialPartner/cytronix.jpeg';
+import elarchitekImage from '../assets/industrialPartner/elarchitek.jpeg';
+import dnlogoImage from '../assets/industrialPartner/TNlogo.png';
+
 // Placeholder for industrial partners (use a generic image)
 const placeholderImage = palaniImage;
 
@@ -48,19 +55,13 @@ const placeholderImage = palaniImage;
 const foundersData = [
     {
         id: 1,
-        name: "Mr. Palani Vairavan",
-        title: "Founder",
+        name: "Mr. Palaniappan (Palani) Vairavan",
+        title: "President",
         image: palaniImage,
         roleIntro: "Palani is the founder of HOPE3. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
-        bio: "Mr. Palaniappan Vairavan is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today’s societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity. Since 2016, Palaniappan has been actively volunteering with several educational nonprofit organizations, working to level the playing field for circumstantially challenged students. He was instrumental in the conception of HOPE3, recognizing the need to provide high-quality educational opportunities to talented students who lack adequate resources or exposure. At HOPE3 Varsity, he teaches data structures, algorithms, and web and mobile application development. Professionally, Palaniappan is a Software Engineering manager at Amazon in Washington. He holds a Master of Science degree in Computer Science from East Carolina University. Outside of his professional and educational pursuits, he enjoys playing tennis, pickle ball and spending time outdoors with his family.",
+        bio: "Palani is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today’s societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity.",
         email: "palani@hope3.org",
-        quote: "Education can alleviate most of the key challenges faced by society today.",
-        achievements: [
-            "President of HOPE3 Foundation",
-            "Dean of Computer Science at HOPE3 Varsity",
-            "Software Engineering Manager at Amazon",
-            "MS in Computer Science from East Carolina University"
-        ],
+        // quote: "Education is the key to addressing many of today’s societal challenges.",
         categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
     },
     {
@@ -69,32 +70,20 @@ const foundersData = [
         title: "Co-Founder",
         image: neelImage,
         roleIntro: "Neel is the co-founder of HOPE3. He also serves on the HOPE3 Board and HOPE3 Varsity.",
-        bio: "Neel Venkataraman is passionate about learning and teaching. Neel has been part of the Hope 3 Foundation as a member in governing body since the inception of the non profit organization. Neel is motivated to create a change through personal awareness and social engagement, especially within upcoming generation. In addition to being an advisor to the Hope 3 foundation long term strategy and regular activities, Neel enjoys connecting with students through Soft Skills club, as part of Hope3 Varsity. Professionally, Neel is a Director of Hardware Engineering at Apple. Prior to that Neel was working at Microsoft for more than 17 years. Neelakandan has a Masters in Business Administration degree from University of Wisconsin and Bachelors of Mechanical Engineering from Kumaraguru College of Technology, Coimbatore, India.",
+        bio: "Neel is the co-founder of HOPE3. He also serves on the HOPE3 Board and HOPE3 Varsity. In addition to being an advisor to the Hope 3 foundation long term strategy and regular activities, Neel enjoys connecting with students through Soft Skills club, as part of HOPE3 Varsity.",
         email: "neel@hope3.org",
-        quote: "Creating change through personal and social awareness, especially within the upcoming generation.",
-        achievements: [
-            "Director of Hardware Engineering at Apple",
-            "Former Microsoft (17+ years)",
-            "MBA from University of Wisconsin",
-            "Governing Body Member of HOPE3"
-        ],
-        categories: ['Founders', 'HOPE3 Board']
+        // quote: "Creating change through personal and social awareness.",
+        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity']
     },
     {
         id: 3,
         name: "Dr. Meenakshi Sundaram",
-        title: "Co-Founder",
+        title: "President of HOPE3 Varsity",
         image: meenachiImage,
-        roleIntro: "Meenakshi is the founder of HOPE3. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
-        bio: "Dr. Meenakshi Sundaram is an educator, scientist, and a yoga, meditation enthusiast. He is one of the founding members of HOPE3 Foundation and is the president of HOPE3 Varsity the educational wing of HOPE3 Foundation. He believes in education that is actionable and education that builds a seeking (research) mindset. Meenakshi actively engages in a wide variety of HOPE3 Varsity classes as a mentor and many a time as a student. He is also a certified breathwork and meditation instructor with the Art of Living Foundation. Meenakshi works in Intel Corporation, Oregon, as a process engineer helping in the manufacturing process of semiconductor chips. He holds a MS and PhD from Cornell University, New York, in Mechanical Engineering, and a M Tech in Computational Science from Indian Institute of Science, Bangalore.",
+        roleIntro: "Meenakshi is one of the founding members of HOPE3 Foundation and is the president of HOPE3 Varsity the educational wing of HOPE3 Foundation. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
+        bio: "Meenakshi actively engages in a wide variety of HOPE3 Varsity classes as a mentor and many a time as a student.",
         email: "meenakshi.sundaram@hope3.org",
-        quote: "Education should be actionable and build a seeking (research) mindset.",
-        achievements: [
-            "Process Engineer at Intel Corporation",
-            "PhD within Mechanical Engineering from Cornell University",
-            "Certified Breathwork & Meditation Instructor",
-            "President of HOPE3 Varsity"
-        ],
+        // quote: "Education should be actionable and build a seeking (research) mindset.",
         categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
     },
     {
@@ -102,19 +91,19 @@ const foundersData = [
         name: "Mr. Ganesh Gopalakrishnan",
         title: "HOPE3 Board Member",
         image: ganeshImage,
-        bio: "Ganesh serves on the HOPE3 Board, Finance, Admissions and Student Relations. Ganesh has been volunteering for Hope3 from 2020. He is working behind the scenes in the accounting and finance section of the organization. He is also involved in admissions and student relations. As a day job, Ganesh is a Director at AlixPartners LLP.",
+        bio: "Ganesh serves on the HOPE3 Board, Finance, Admissions and Student Relations. Ganesh has been volunteering for HOPE3 from 2020. He is working behind the scenes in the accounting and finance section of the organization. He is also involved in admissions and student relations. As a day job, Ganesh is a Director at AlixPartners LLP.",
         email: "ganesh@hope3.org",
-        quote: "Supporting the backbone of HOPE3's mission through financial stewardship.",
-        categories: ['HOPE3 Board', 'Student Relations']
+        linkedin: "https://www.linkedin.com/in/ganeshagopal/",
+        categories: ['HOPE3 Board', 'Finance', 'Admissions', 'Student Relations']
     },
     {
         id: 5,
-        name: "Mr. Manickam",
+        name: "Mr. Manickam Chockalingam",
         title: "HOPE3 Board Member",
         image: manickamImage,
         bio: "Manickam serves on the HOPE3 Board, HOPE3 Varsity and Admissions. Manickam is a technology leader and mentor who firmly believes that education and meaningful exposure are powerful catalysts for long-term social impact. Professionally, Manickam serves as a Software Engineering Manager at Axon Enterprise.",
         email: "manickam@hope3.org",
-        quote: "Education and meaningful exposure are powerful catalysts for long-term social impact.",
+        linkedin: "https://www.linkedin.com/in/manickam-chockalingam-3846223/",
         categories: ['HOPE3 Board', 'HOPE3 Varsity', 'Admissions']
     },
     {
@@ -122,8 +111,16 @@ const foundersData = [
         name: "Mr. Amrish",
         title: "HOPE3 Varsity Member",
         image: amrishImage,
-        bio: "Bio coming soon.",
-        quote: "Empowering the next generation.",
+        bio: "Amrish has been part of HOPE3 Varsity since his college days, where he learnt computer science. He has worked on several projects like Find a Bed, Sorting Analysis, Bright Brains, etc. HOPE3 has played a major role in shaping his career journey. He actively mentors and guides students in their learning and project journeys, continuing the HOPE3 spirit of giving back.",
+        linkedin: "https://www.linkedin.com/in/amrish-k-s-1562b5190/",
+        categories: ['HOPE3 Varsity']
+    },
+    {
+        id: 27,
+        name: "Miss. Ananya Somasundaram",
+        title: "Vocabulary Mentor",
+        image: placeholderImage,
+        bio: "Ananya is in tenth grade, living in Plano, Texas. She selects a word and provides its meaning along with an example sentence in both English and Tamil to help the students expand their vocabulary.",
         categories: ['HOPE3 Varsity']
     },
     {
@@ -132,7 +129,6 @@ const foundersData = [
         title: "Product Management Leader",
         image: anirudhImage,
         bio: "At HOPE3 Varsity, Anirudh teaches students how to test business ideas using the business model canvas and value proposition design. Professionally, He is a product management leader in Healthcare Technology and the founder of https://FolioForge.org. He is based in Boston, MA, USA.",
-        quote: "Driving healthcare technology forward.",
         linkedin: "https://www.linkedin.com/in/anirudhashok",
         categories: ['HOPE3 Varsity']
     },
@@ -141,36 +137,34 @@ const foundersData = [
         name: "Mr. Balaji Ganesan",
         title: "AI Engineer",
         image: balajiImage,
-        bio: "Balaji is a Master’s graduate in Software Engineering and currently working as an AI Engineer at Wolken Software. He is based in Seattle, Washington. During his undergraduate studies in India, he was an active member of the Hope3 Varsity program, participating in TypeScript and Data Structures & Algorithms (DSA) training. He also volunteered in several Hope events across Tamilnadu. After completing his undergraduate degree, he conducted a JavaScript course for the next batch of students, mentoring and sharing practical industry knowledge.",
-        quote: "Sharing practical industry knowledge to empower others.",
-        linkedin: "https://www.linkedin.com/in/balaji-ganesan-492358145/",
+        bio: "Balaji, a Master’s graduate in Software Engineering and currently working as an AI Engineer at Wolken Software. He is based in Seattle, Washington. During his undergraduate studies in India, he was an active member of the HOPE3 Varsity program, where he participated in TypeScript and Data Structures & Algorithms (DSA) training. He also volunteered in several Hope events conducted across Tamilnadu. After completing his undergraduate degree, he conducted a JavaScript course for the next batch of students, mentoring and sharing practical industry knowledge.",
+        linkedin: "https://www.linkedin.com/in/balaji-ganesan-492358145",
         categories: ['HOPE3 Varsity']
     },
     {
         id: 19,
-        name: "Mrs. Hema",
-        title: "HOPE3 Varsity Member",
+        name: "Mrs. Hemalatha Kannappan",
+        title: "Vocabulary Facilitator",
         image: hemaImage,
-        bio: "Bio coming soon.",
-        quote: "Supporting educational initiatives.",
+        bio: "She shares an English word with its definition provided by Ananya in a group chat for the students and asks them to use it in a sentence. She then reviews their sentences, verify correctness, and provide feedback when needed. This helps them grow their vocabulary gradually. Hema lives in Plano, Texas.",
         categories: ['HOPE3 Varsity']
     },
     {
         id: 20,
-        name: "Mr. Karthikeyan",
-        title: "HOPE3 Varsity Member",
+        name: "Mr. Karthikeyan Rajendran",
+        title: "Senior Software Engineer at Amazon",
         image: karthikeyanImage,
-        bio: "Bio coming soon.",
-        quote: "Empowering students for a bright future.",
+        bio: "Karthikeyan is a Senior Software Engineer at Amazon based in Washington, USA. Passionate about software architecture, AI, and developer productivity, he brings deep technical expertise to his volunteer work. Outside of technology, Karthikeyan is an avid hiker and a martial artist who practices and teaches Silambam. He has been involved with HOPE3 since 2021, mentoring and guiding students through their learning journeys and projects.",
+        linkedin: "https://www.linkedin.com/in/karthikeyanrajendran/",
         categories: ['HOPE3 Varsity']
     },
     {
         id: 21,
-        name: "Mr. Nachiappan",
-        title: "HOPE3 Varsity & Media Team",
+        name: "Mr. Nachiappan Ramasamy",
+        title: "Software Engineer at Google",
         image: nachiappanImage,
-        bio: "Nachiappan serves on HOPE3 Varsity and HOPE3 Media team. Bio coming soon.",
-        quote: "Connecting through media and education.",
+        bio: "Nachi is a software engineer at Google based in the Bay Area, California. At Hope3, he volunteers by learning and teaching alongside students through hands-on tech projects. Together, they break down concepts, build solutions, and learn by doing. He believes in learning through practice, teamwork, and shared curiosity.",
+        linkedin: "https://www.linkedin.com/in/nachiappan-rm/",
         categories: ['HOPE3 Varsity', 'Media']
     },
     {
@@ -193,74 +187,70 @@ const foundersData = [
     },
     {
         id: 24,
-        name: "Mr. Shivakumar",
-        title: "Admissions, Media & Student Relations",
+        name: "Mr. Sivakumar (Shiva) KS",
+        title: "Operations Manager & Mentor",
         image: shivakumarImage,
-        bio: "Shivakumar serves on Admissions, Student Relations and HOPE3 Media team. Bio coming soon.",
-        quote: "Building relationships for student success.",
+        bio: "Shiva is a Mentor and Caretaker for HOPE3 students at the Karaikudi facility. He is also the Operations Manager for HOPE3 Services. His vision is to build a Nanban School. He also serves on the Admissions, Student Relations and HOPE3 Media team.",
         categories: ['HOPE3 Varsity', 'Admissions', 'Student Relations', 'Media']
     },
     {
         id: 25,
-        name: "Mr. Vijaya Kumar",
-        title: "HOPE3 Varsity Member",
+        name: "Mr. Vijaya Kumar S",
+        title: "Associate Software Engineer at Informatica",
         image: vijayakumarImage,
-        bio: "Bio coming soon.",
-        quote: "Commited to educational excellence.",
+        bio: "Vijaya Kumar is an Associate Software Engineer at Informatica in Bangalore, Karnataka. As part of Hope3 Varsity, he volunteers by supporting students with Java sessions, subject guidance, and placement preparation.",
+        linkedin: "https://www.linkedin.com/in/vijaya-kumar--s/",
         categories: ['HOPE3 Varsity']
     },
     {
         id: 17,
-        name: "Mr. Arumugam",
-        title: "Admissions Team",
+        name: "Mr. Arumugam AP",
+        title: "Graduate Science Teacher",
         image: arumugamImage,
-        bio: "Bio coming soon.",
-        quote: "Identifying grit over grades.",
+        bio: "Arumugam is no stranger to helping students. He is a graduate science teacher at govt. higher secondary schools. He provides free NEET coaching to deserving students and free career guidance to thousands of students. He received several awards – Anbu Aasiriyar Award in 2025, Kalvi Ratna for Education and Kalam Award for social services in 2019, among many more. He works with the Admissions team at HOPE3 for student intake.",
         categories: ['Admissions']
     },
     {
         id: 18,
         name: "Mr. Gokul Kittusamy",
-        title: "Admissions & Facilitator",
+        title: "Admissions Facilitator",
         image: gokulImage,
-        bio: "Gokul is a Production Engineer from MIT from Anna University. He is the facilitator at HOPE3's Chennai residence, helps identify students in tribal zones and camps, and co-leads a visual communication program. He co-founded Iyal Foundation, bringing practical science education to government schools. He is the founder and CEO of Elarchitek ( https://elarchitek.com/ ) , an electronics kit company with NIT students, sourcing components, building manuals, and distributing 50+ kits to schools. Elarchitek, a 3D printing startup focuses on practical innovation.",
+        bio: "Gokul is a Production Engineer from MIT from Anna University. He is the facilitator at HOPE3's Chennai residence, helps identify students in tribal zones and camps, and co-leads a visual communication program. He co-founded Iyal Foundation, bringing practical science education to government schools. He is the founder and CEO of Elarchitek (https://elarchitek.com/) , an electronics kit company with NIT students, sourcing components, building manuals, and distributing 50+ kits to schools. Elarchitek, a 3D printing startup focuses on practical innovation.",
         email: "gokul@hope3.org",
-        quote: "Practical innovation for social impact.",
-        linkedin: "https://www.linkedin.com/in/gokul-kittusamy-aaa66328b/",
-        categories: ['Admissions']
+        linkedin: "https://www.linkedin.com/in/gokul-kittusamy-aaa66328b",
+        categories: ['Admissions', 'Student Relations']
     },
     {
         id: 26,
-        name: "Mr. Raghul",
-        title: "Finance Team",
+        name: "Mr. Raghul Vijayan",
+        title: "Validation Test Lead",
         image: raghulImage,
-        bio: "Bio coming soon.",
-        quote: "Ensuring financial integrity.",
+        bio: "Raghul Works as Validation Test Lead at Cognizant for 6 years in Chennai. He takes care of all India related expenses - student fees, administrative expenses. He coordinateds with other supporting NGOs like LIONS, ARPNA to get FCRA funds processed. He also helps take care of Chennai RCD students and alumni relations.",
         categories: ['Finance']
     },
     {
         id: 27,
-        name: "Mr. Ganesh",
-        title: "Finance Team",
-        image: ganeshImage,
-        bio: "Bio coming soon.",
-        quote: "Supporting HOPE3's mission.",
-        categories: ['Finance', 'Admissions']
+        name: "Mr. Meiy palaniappan",
+        title: "Validation Test Lead",
+        image: pichumaniImage,
+        bio: "Coming soon",
+        categories: ['HOPE3 Varsity']
     },
+
     // --- Industrial Partners ---
-    { id: 101, name: 'Anvitha Insights', title: 'Industrial Partner', image: placeholderImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'] },
-    { id: 102, name: 'Arjavatech', title: 'Industrial Partner', image: placeholderImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'] },
-    { id: 103, name: 'cytronicx', title: 'Industrial Partner', image: placeholderImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'] },
-    { id: 104, name: 'Elarchitek', title: 'Industrial Partner', image: placeholderImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'] },
-    { id: 105, name: 'TNNGO', title: 'Industrial Partner', image: placeholderImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'] },
+    { id: 101, name: 'Anvitha Insights', title: 'Industrial Partner', image: anvithaImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'http://www.unwita.com' },
+    { id: 102, name: 'Arjavatech', title: 'Industrial Partner', image: arjavaImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://arjavatech.com/' },
+    { id: 103, name: 'cytronicx', title: 'Industrial Partner', image: cytronicxImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://www.cytronicx.com/' },
+    { id: 104, name: 'Elarchitek', title: 'Industrial Partner', image: elarchitekImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://elarchitek.com/' },
+    { id: 105, name: 'TNNGO', title: 'Industrial Partner', image: dnlogoImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://tnngo.org/' },
 
     // --- Non-Profit Partners ---
-    { id: 201, name: 'Abdul Kalam Foundation', title: 'Non-Profit Partner', image: abdulKalamFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'] },
-    { id: 202, name: 'Abdul Kalam Trust', title: 'Non-Profit Partner', image: abdulKalamTrustImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'] },
-    { id: 203, name: 'Mugavari Foundation', title: 'Non-Profit Partner', image: mugavariImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'] },
-    { id: 204, name: 'Namco', title: 'Non-Profit Partner', image: namcoImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'] },
-    { id: 205, name: 'Shooting Stars Foundation', title: 'Non-Profit Partner', image: shootingStarsImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'] },
-    { id: 206, name: 'Tamilnadu Foundation', title: 'Non-Profit Partner', image: tamilnaduFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'] }
+    { id: 201, name: 'Abdul Kalam Foundation', title: 'Non-Profit Partner', image: abdulKalamFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://apjabdulkalamfoundation.org/' },
+    { id: 202, name: 'Abdul Kalam Trust', title: 'Non-Profit Partner', image: abdulKalamTrustImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://www.drabdulkalamtrust.org/' },
+    { id: 203, name: 'Mugavari Foundation', title: 'Non-Profit Partner', image: mugavariImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://www.mugavarifoundation.org/' },
+    { id: 204, name: 'Namco', title: 'Non-Profit Partner', image: namcoImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://namcoindia.org.in/' },
+    { id: 205, name: 'Shooting Stars Foundation', title: 'Non-Profit Partner', image: shootingStarsImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://shooting-stars-foundation.org/' },
+    { id: 206, name: 'Tamilnadu Foundation', title: 'Non-Profit Partner', image: tamilnaduFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://tnfindia.org/' }
 ];
 
 const categories = [
@@ -392,13 +382,12 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
         filteredFounders.sort((a, b) => stripPrefix(a.name).localeCompare(stripPrefix(b.name)));
     } else if (activeCategory === 'Admissions') {
         const order = [
-            "Mr. Arumugam",
-            "Mr. Ganesh",
+            "Mr. Arumugam AP",
+            "Mr. Ganesh Gopalakrishnan",
             "Mr. Gokul Kittusamy",
-            "Mr. Manickam",
+            "Mr. Manickam Chockalingam",
             "Dr. Meenakshi Sundaram",
-            "Mr. Palani Vairavan",
-            "Mr. Shivakumar"
+            "Mr. Palaniappan (Palani) Vairavan"
         ];
         filteredFounders.sort((a, b) => {
             const indexA = order.indexOf(a.name);
@@ -412,8 +401,9 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
         const order = [
             "Mr. Ganesh Gopalakrishnan",
             "Dr. Meenakshi Sundaram",
-            "Mr. Palani Vairavan",
-            "Mr. Shivakumar"
+            "Mr. Gokul Kittusamy",
+            "Mr. Palaniappan (Palani) Vairavan",
+            "Mr. Sivakumar (Shiva) KS"
         ];
         filteredFounders.sort((a, b) => {
             const indexA = order.indexOf(a.name);
@@ -506,13 +496,12 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                     categoryFounders.sort((a, b) => stripPrefix(a.name).localeCompare(stripPrefix(b.name)));
                                 } else if (category === 'Admissions') {
                                     const order = [
-                                        "Mr. Arumugam",
-                                        "Mr. Ganesh",
+                                        "Mr. Arumugam AP",
+                                        "Mr. Ganesh Gopalakrishnan",
                                         "Mr. Gokul Kittusamy",
-                                        "Mr. Manickam",
+                                        "Mr. Manickam Chockalingam",
                                         "Dr. Meenakshi Sundaram",
-                                        "Mr. Palani Vairavan",
-                                        "Mr. Shivakumar"
+                                        "Mr. Palaniappan (Palani) Vairavan"
                                     ];
                                     categoryFounders.sort((a, b) => {
                                         const indexA = order.indexOf(a.name);
@@ -526,8 +515,9 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                     const order = [
                                         "Mr. Ganesh Gopalakrishnan",
                                         "Dr. Meenakshi Sundaram",
-                                        "Mr. Palani Vairavan",
-                                        "Mr. Shivakumar"
+                                        "Mr. Gokul Kittusamy",
+                                        "Mr. Palaniappan (Palani) Vairavan",
+                                        "Mr. Sivakumar (Shiva) KS"
                                     ];
                                     categoryFounders.sort((a, b) => {
                                         const indexA = order.indexOf(a.name);
@@ -568,7 +558,13 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                                             key={`${partner.id}-${idx}`}
                                                             className="marquee-item"
                                                             style={{ cursor: 'pointer' }}
-                                                            onClick={() => handleCategoryChange(category)}
+                                                            onClick={() => {
+                                                                if (partner.website) {
+                                                                    window.open(partner.website, '_blank', 'noopener,noreferrer');
+                                                                } else {
+                                                                    handleCategoryChange(category);
+                                                                }
+                                                            }}
                                                         >
                                                             <div className="marquee-logo-container">
                                                                 <img src={partner.image} alt={partner.name} />
@@ -586,7 +582,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                 return (
                                     <div key={category} className="category-section">
                                         <h2 className="section-title">{category}</h2>
-                                        <div className={`board-grid ${category === 'HOPE3 Board' ? 'board-grid-5' : (category === 'Student Relations' ? 'board-grid-4' : '')}`}>
+                                        <div className={`board-grid ${category === 'HOPE3 Board' || category === 'Student Relations' ? 'board-grid-5' : ''}`}>
                                             {categoryFounders.map((founder) => (
                                                 <div
                                                     key={`${category}-${founder.id}`}
@@ -661,7 +657,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                 ) : (['HOPE3 Board', 'Finance', 'Student Relations', 'Media'].includes(activeCategory)) ? (
                     // --- GRID MODE (Common Layout) ---
                     <div className="board-interaction-container">
-                        <div className={`board-grid ${activeCategory === 'HOPE3 Board' ? 'board-grid-5' : (activeCategory === 'Student Relations' ? 'board-grid-4' : '')}`}>
+                        <div className={`board-grid ${activeCategory === 'HOPE3 Board' || activeCategory === 'Student Relations' ? 'board-grid-5' : ''}`}>
                             {filteredFounders.map((founder) => (
                                 <div
                                     key={founder.id}
@@ -727,7 +723,12 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                     <div
                                         key={`${partner.id}-${idx}`}
                                         className={`marquee-item ${selectedMemberId === partner.id ? 'selected-marquee-item' : ''}`}
-                                        onClick={() => setSelectedMemberId(partner.id)}
+                                        onClick={() => {
+                                            if (partner.website) {
+                                                window.open(partner.website, '_blank', 'noopener,noreferrer');
+                                            }
+                                            setSelectedMemberId(partner.id);
+                                        }}
                                         onMouseEnter={() => setSelectedMemberId(partner.id)}
                                     >
                                         <div className="marquee-logo-container">
@@ -754,6 +755,11 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                             {selectedMember.email && (
                                                 <a href={`mailto:${selectedMember.email}`} className="founder-email">
                                                     <span className="email-icon">✉</span> {selectedMember.email}
+                                                </a>
+                                            )}
+                                            {selectedMember.website && (
+                                                <a href={selectedMember.website} target="_blank" rel="noopener noreferrer" className="founder-linkedin" style={{ marginLeft: '10px' }}>
+                                                    <span className="website-icon">🌐</span> Visit Website
                                                 </a>
                                             )}
                                         </div>
@@ -794,6 +800,11 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                         {founder.linkedin && (
                                             <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
                                                 <span className="linkedin-icon">🔗</span> LinkedIn
+                                            </a>
+                                        )}
+                                        {founder.website && (
+                                            <a href={founder.website} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
+                                                <span className="website-icon">🌐</span> Website
                                             </a>
                                         )}
                                     </div>
