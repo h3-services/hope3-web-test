@@ -15,7 +15,7 @@ const WhyHope3 = () => {
       <div className="whyhope3-banner">
         <img src={bannerImg} alt="Why Hope3 Banner" className="banner-image" />
         <div className="banner-text-overlay">
-          <p className="font-jaini">
+          <p className="font-cinzel">
             This earth is filled with people who find joy in seeing the happiness of their fellow human beings.
             All that is needed to bring that out is a little love!
           </p>
@@ -23,9 +23,9 @@ const WhyHope3 = () => {
       </div>
 
       {/* Page Title */}
-      <div className="page-title">
-        <div className="container">
-          <h1>Why HOPE3?</h1>
+      <div className="container mx-auto mt-10 mb-0">
+        <div className="rounded-2xl p-6 text-center">
+          <h1 className="cinzel-section-header">Why HOPE3?</h1>
         </div>
       </div>
 

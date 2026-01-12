@@ -229,10 +229,10 @@ const Donate = () => {
                     backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${donateImage})`
                 }}
             >
-                <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h1 className="text-white text-xl sm:text-3xl md:text-5xl font-medium leading-tight animate-fade-in" style={{
+                <div className="max-w-4xl mx-auto px-4 text-left">
+                    <h1 className="text-white text-lg sm:text-2xl md:text-3xl font-medium leading-tight animate-fade-in" style={{
                         textShadow: 'rgba(0, 0, 0, 0.6) 0px 4px 12px',
-                        fontFamily: '"Jaini", "Inter", sans-serif'
+                        fontFamily: '"Cinzel Decorative", cursive'
                     }}>
                         Every student deserves a chance to rise and achieve their fullest potential.
                     </h1>

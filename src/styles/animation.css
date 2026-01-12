@@ -107,3 +107,106 @@
   height: 24px;
   fill: #333;
 }
+
+.animation-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  background: #fbfbfb;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-wrapper {
+  position: absolute;
+  transition: all 0.5s ease;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stage-card {
+  background: rgba(59, 130, 246, 0.15);
+  padding: 30px 40px;
+  border-radius: 20px;
+  border-left: 8px solid #3b82f6;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  width: 90%;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+}
+
+.stage-card h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.stage-card p {
+  margin: 0;
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.stage-card {
+  position: relative;
+  /* Ensure button aligns to card */
+}
+
+.nav-arrow-btn {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 50px;
+  height: 50px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.nav-arrow-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-arrow-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+}

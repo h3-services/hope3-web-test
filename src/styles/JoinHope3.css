@@ -41,30 +41,31 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding: 20px;
 }
 
 .join-banner-text {
     color: #fff;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .join-banner-text h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.4;
     letter-spacing: 1px;
     margin-bottom: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Cinzel Decorative', cursive;
 }
 
 /* Gold/Yellow highlight removed/replaced */
 .blue-text {
     color: #4FB3E8;
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 800;
     /* Larger blue text */
     /* text-transform removed to allow mixed case in JSX */
@@ -216,11 +217,11 @@
 
     .join-banner-text h1 {
         font-size: 1.5rem;
-        line-height: 1.1;
+        line-height: 1.2;
     }
 
     .blue-text {
-        font-size: 2rem;
+        font-size: 1.8rem;
         display: block;
         margin: 2px 0;
     }

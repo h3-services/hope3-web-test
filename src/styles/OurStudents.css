@@ -14,8 +14,8 @@
 
 /* Banner Block */
 .banner-block {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    margin-left: 0;
     height: 75vh;
     min-height: 500px;
     background-image: url('../assets/our-students/ourStudentBanner.jpeg');

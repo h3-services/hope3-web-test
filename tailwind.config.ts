@@ -11,6 +11,7 @@ const config: Config = {
         'heading': ['"Inter"', 'sans-serif'],
         'content': ['"Inter"', 'sans-serif'],
         'jaini': ['Jaini', 'cursive', 'sans-serif'],
+        'cinzel': ['"Cinzel Decorative"', 'cursive'],
       },
       colors: {
         'heading': '#332EB2',

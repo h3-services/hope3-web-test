@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Users } from 'lucide-react'
+import TargetCursor from '../components/TargetCursor'
 import linkedinLogo from '../assets/footer_logo/linkedin.png'
 import fbLogo from '../assets/footer_logo/facebook.png'
 import youtubeLogo from '../assets/footer_logo/youtube.png'
@@ -10,13 +12,25 @@ const NewFooter = () => {
   const [showTeamPopup, setShowTeamPopup] = useState(false)
 
   const teamMembers = [
-    'Mohammed Aarif',
-    'Beulah',
-    'Nivedha',
-    'Biruntha',
-    'Mei Palaniappan',
-    'Shivakumar'
+    { name: 'Beulah', link: 'https://www.linkedin.com/in/beulah-francis-55a439349/' },
+    { name: 'Biruntha', link: 'https://www.linkedin.com/in/biruntha-mageshwaran-226a95306/' },
+    { name: 'Nivedha', link: 'https://www.linkedin.com/in/nivedha-k-706b03306' },
+    { name: 'Mohammed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
+    { name: 'Shivakumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
+    { name: 'Mei Palaniappan', link: 'https://www.linkedin.com/in/mei-palaniappan-02919315/' }
   ]
+
+  // Manage body class for cursor visibility
+  useEffect(() => {
+    if (showTeamPopup) {
+      document.body.classList.add('custom-cursor-active')
+    } else {
+      document.body.classList.remove('custom-cursor-active')
+    }
+    return () => {
+      document.body.classList.remove('custom-cursor-active')
+    }
+  }, [showTeamPopup])
 
   return (
     <div className="footer">
@@ -78,12 +92,15 @@ const NewFooter = () => {
                   fontSize: '12px'
                 }}
               >
-                Developed by HOPE3 Team
+                Powered By Hope3
               </span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Target Cursor Animation */}
+      {showTeamPopup && <TargetCursor targetSelector=".cursor-target" />}
 
       {/* Centered Popup with Blurred Background */}
       {showTeamPopup && (
@@ -123,6 +140,7 @@ const NewFooter = () => {
           >
             {/* Close button */}
             <button
+              className="cursor-target"
               onClick={() => setShowTeamPopup(false)}
               style={{
                 position: 'absolute',
@@ -133,8 +151,17 @@ const NewFooter = () => {
                 fontSize: '1.5rem',
                 cursor: 'pointer',
                 color: '#999',
-                lineHeight: 1
+                lineHeight: 1,
+                width: '32px',
+                height: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '50%',
+                transition: 'background-color 0.2s',
               }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               ×
             </button>
@@ -145,9 +172,14 @@ const NewFooter = () => {
               fontSize: '1rem',
               borderBottom: '2px solid #007bff',
               paddingBottom: '10px',
-              textAlign: 'center'
+              textAlign: 'center',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px'
             }}>
-              🚀 HOPE3 Development Team
+              <Users size={20} color="#007bff" />
+              HOPE3 Development Team
             </div>
             <ul style={{
               listStyle: 'none',
@@ -159,17 +191,43 @@ const NewFooter = () => {
                 <li
                   key={index}
                   style={{
-                    padding: '8px 0',
-                    color: '#555',
-                    fontSize: '0.9rem',
+                    padding: '2px 0',
                     borderBottom: index < teamMembers.length - 1 ? '1px solid #f0f0f0' : 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
                   }}
                 >
-                  <span style={{ color: '#007bff' }}>•</span>
-                  {member}
+                  <a
+                    href={member.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-target"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      width: '100%',
+                      background: 'none',
+                      border: 'none',
+                      padding: '8px 12px',
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      borderRadius: '8px',
+                      transition: 'all 0.2s ease',
+                      color: '#555',
+                      fontSize: '0.9rem',
+                      textDecoration: 'none'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = '#f0f7ff';
+                      e.currentTarget.style.color = '#007bff';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = '#555';
+                    }}
+                  >
+                    <span style={{ color: '#007bff', fontSize: '1.2rem' }}>•</span>
+                    {member.name}
+                  </a>
                 </li>
               ))}
             </ul>
