@@ -41,37 +41,32 @@ const FeatureCards = () => {
   ]
 
   return (
-    <section className="py-10 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <section className="feature-cards-section py-16 px-6">
+      <div className="feature-cards-container mx-auto">
+        <div className="feature-cards-grid">
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="rounded-xl p-4 shadow-[0_15px_35px_rgba(0,_0,_0,_0.3)] border-0 h-full flex flex-col max-w-xs mx-auto transition-all duration-300 ease-in-out hover:shadow-[0_20px_45px_rgba(0,_0,_0,_0.4)] hover:scale-105 hover:-translate-y-2"
-              style={{ backgroundColor: '#e8f5e8' }}
+              className="feature-card-modern"
             >
-              <div className="h-28 w-full mb-3">
-                <img src={feature.image} alt={feature.title} className="w-full h-full object-cover rounded-lg" />
-              </div>
-
-              <h3 className="text-2xl font-bold mb-2 text-[#332EB2] font-kavoon">
-                {feature.title}
-              </h3>
-
-              <div className="space-y-1.5 mb-3 flex-1">
-                {feature.details.map((detail, index) => (
-                  <div key={index} className="flex items-start">
-                    <img src={hope3Logo} alt="bullet" className="w-3 h-3 mt-1 mr-2 flex-shrink-0" />
-                    <p className="text-black text-sm leading-relaxed">
-                      {detail}
-                    </p>
+              <img src={feature.image} alt={feature.title} className="feature-card-bg-image" />
+              <div className="feature-card-overlay">
+                <div className="feature-card-content">
+                  <h3 className="feature-card-title-modern">
+                    {feature.title}
+                  </h3>
+                  <div className="feature-card-details-modern">
+                    {feature.details.map((detail, index) => (
+                      <div key={index} className={`feature-detail-item-modern ${index > 0 ? 'detail-extra' : ''}`}>
+                        <img src={hope3Logo} alt="bullet" className="feature-bullet-modern" />
+                        <p className="feature-text-modern">
+                          {detail}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
-
-              {/* <button className="text-red-500 font-medium text-sm">
-                Read More
-              </button> */}
             </div>
           ))}
         </div>
@@ -79,5 +74,6 @@ const FeatureCards = () => {
     </section>
   )
 }
+
 
 export default FeatureCards

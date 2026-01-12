@@ -168,41 +168,86 @@
 
 @media (max-width: 768px) {
     .info-cards-section {
-        padding: 2.5rem 0.5rem 3rem 0.5rem;
-        /* Less top padding */
+        padding: 4rem 1rem 10rem 1rem;
+        /* Increased bottom padding for deeper cave */
+        overflow-x: hidden;
     }
 
     .info-cards-section::after {
-        height: 180px;
-        /* Reduced cave height on mobile to avoid overlap */
+        height: 220px;
+        /* Dramatically increased cave height */
+        clip-path: ellipse(140% 100% at 50% 100%);
+        /* Sharper, more elegant curve */
     }
+
 
     .info-cards-container {
         max-width: 100%;
+        padding: 0;
+    }
+
+    .info-cards-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.25rem;
+        padding-bottom: 2rem;
+        /* Space for cards to breathe */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        scrollbar-width: none;
+        /* Hide scrollbar Firefox */
+        -ms-overflow-style: none;
+        /* Hide scrollbar IE/Edge */
+    }
+
+    .info-cards-grid::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar Chrome/Safari */
     }
 
     .info-card {
-        padding: 0.75rem 0.4rem;
-        gap: 0.35rem;
-        border-radius: 6px;
+        flex: 0 0 85vw;
+        /* Show one at a time */
+        scroll-snap-align: center;
+        padding: 2rem 1.5rem;
+        gap: 1rem;
+        border-radius: 12px;
+        min-height: 280px;
+        justify-content: flex-start;
+        background: rgba(255, 255, 255, 1);
+        /* Solid white background */
     }
 
     .info-card-title {
-        font-size: 0.72rem;
-        /* Shrunken for single row */
-        font-weight: 700;
+        font-size: 1.4rem;
+        /* Restored visibility */
+        font-weight: 800;
+        color: #1a1a1a;
+    }
+
+    .info-card-description {
+        display: block;
+        /* RESTORED BODY TEXT */
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
     }
 
     .info-card-button {
-        padding: 0.3rem 0.4rem;
-        font-size: 0.65rem;
-        /* Shrunken button */
-        border-radius: 4px;
-        min-height: 28px;
-        justify-content: center;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        width: fit-content;
+        min-height: auto;
+        margin-top: auto;
+        /* Push to bottom */
     }
 
     .info-card-button span:first-child {
-        display: none;
+        display: inline;
+        /* Restore arrow */
+        font-size: 1.2rem;
     }
 }
