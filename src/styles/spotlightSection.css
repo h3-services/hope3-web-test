@@ -1,7 +1,6 @@
 /* SpotlightSection Component Styles */
 .spotlight-section {
-  padding: 2.5rem 10%;
-  /* Increased vertical padding a bit */
+  padding: 4rem 10%;
   background-color: transparent;
 }
 
@@ -10,124 +9,130 @@
   margin: 0 auto;
 }
 
-/* Grid Layout (Masonry using columns) */
+/* New Banner Text style */
+.spotlight-banner-text {
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #332eb2;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.spotlight-header-title {
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
 .spotlight-grid {
-  column-count: 1;
-  column-gap: 1rem;
-  /* Reduced gap */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
 }
 
-@media (min-width: 640px) {
-  .spotlight-grid {
-    column-count: 2;
-  }
-}
-
-@media (min-width: 1024px) {
-  .spotlight-grid {
-    column-count: 4;
-  }
-}
-
-/* Card Styling */
 .news-card {
-  background-color: #ffffff;
-  padding: 0;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  text-align: left;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  /* Restored to original */
-  position: relative;
-  transition: transform 0.2s ease;
-  /* Restored speed */
-  break-inside: avoid;
-  margin-bottom: 1rem;
-  /* Restored original margin */
-  border: 1px solid #ccc;
-  /* Slightly darker gray border */
-  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.news-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .news-card-image-wrapper {
   width: 100%;
-  height: auto;
-  min-height: 120px;
-  max-height: 240px;
+  height: 240px;
   overflow: hidden;
-  border-bottom: 1px solid #ccc;
-  /* Darkened divider */
 }
 
 .news-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
-/* Removed hover zoom effect */
+.news-card:hover .news-card-image {
+  transform: scale(1.08);
+}
 
+.news-card-icon-wrapper {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+  color: #332eb2;
+}
+
+.news-card-icon {
+  width: 80px;
+  height: 80px;
+  opacity: 0.9;
+}
 
 .news-card-content {
-  padding: 1.5rem;
-  /* Restored original padding */
+  padding: 2rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
-/* Variable Heights (Restored original min-heights) */
-.card-large {
-  min-height: 400px;
-}
-
-.card-medium {
-  min-height: 300px;
-}
-
-.card-small {
-  min-height: 200px;
-}
-
-/* Items without images */
-.news-card:not(.has-image) {
-  min-height: auto !important;
-}
-
-.news-card:not(.has-image) .news-card-content {
-  padding-top: 1.5rem;
-  /* Match card-content padding */
-}
-
-/* Removed card hover lift effect */
-
-
-/* Date Tag - Restored original style */
 .news-card-date {
-  font-size: 0.75rem;
-  color: #888;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: normal;
+  font-family: 'El Messiri', sans-serif;
+  font-size: 0.9rem;
+  color: #003668;
+  /* Highlighted text color */
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
 }
 
-/* Typography - Restored original style */
 .news-card-title {
-  font-size: 1.1rem;
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #111;
-  margin-bottom: 1rem;
+  color: #1e3a8a;
+  /* Deep Blue Heading */
+  margin-bottom: 1.25rem;
   line-height: 1.3;
 }
 
 .news-card-description {
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 0;
-  font-family: sans-serif;
+  font-family: 'El Messiri', sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #444444;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .spotlight-header-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .spotlight-section {
+    padding: 3rem 5%;
+  }
+
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
 }

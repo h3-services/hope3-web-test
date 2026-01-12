@@ -139,10 +139,10 @@ const PhilosophySection = () => {
                   <button
                     onClick={() => setActivePhilosophy(activePhilosophy === key ? null : key)}
                     className={`group w-full text-left px-3 py-2 rounded-lg transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgb(0,0,0,0.15)] hover:scale-105 text-base md:text-lg ${activePhilosophy === key
-                      ? 'text-gray-700 shadow-[0_6px_20px_rgba(150,225,135,0.3)]'
+                      ? 'text-gray-700 shadow-[0_6px_20px_rgba(59,130,246,0.3)]'
                       : 'bg-white text-gray-700 hover:bg-white hover:text-gray-800 border border-gray-200'
                       }`}
-                    style={activePhilosophy === key ? { backgroundColor: 'rgba(150, 225, 135, 0.4)' } : {}}
+                    style={activePhilosophy === key ? { backgroundColor: 'rgba(59, 130, 246, 0.1)' } : {}}
                   >
                     <div className="flex items-center gap-3">
                       {key === 'vision' && <LightbulbIcon className="w-5 h-5" />}
@@ -160,7 +160,7 @@ const PhilosophySection = () => {
 
                   {/* Mobile Content Box - appears below button on mobile only */}
                   {activePhilosophy === key && (
-                    <div className="lg:hidden relative rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-5 animate-fade-in" style={{ backgroundColor: 'rgba(150, 225, 135, 0.47)' }}>
+                    <div className="lg:hidden relative rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-5 animate-fade-in" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)' }}>
                       <button
                         onClick={(e) => { e.stopPropagation(); setActivePhilosophy(null); }}
                         className="absolute top-2 right-2 text-gray-700 hover:text-black transition-colors bg-white/20 p-1 rounded-full"
@@ -179,7 +179,7 @@ const PhilosophySection = () => {
             {/* Right Side - Dynamic Content (Desktop only) */}
             <div className="hidden lg:flex items-center justify-center flex-1">
               {activePhilosophy && (
-                <div className="rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6 w-full min-h-[300px] flex items-center" style={{ backgroundColor: 'rgba(150, 225, 135, 0.47)' }}>
+                <div className="rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6 w-full min-h-[300px] flex items-center" style={{ backgroundColor: 'rgba(59, 130, 246, 0.15)' }}>
                   {renderContent(activePhilosophy, false)}
                 </div>
               )}
@@ -190,4 +190,5 @@ const PhilosophySection = () => {
     </section>
   )
 }
+
 export default PhilosophySection

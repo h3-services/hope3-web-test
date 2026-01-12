@@ -316,7 +316,7 @@ const OurStudents = () => {
 
                 {/* Description below banner */}
                 <div className="students-description">
-                    <p>We are proud of each and every student have passed through HOPE3. We would like to highlight some of our students and their success stories.</p>
+                    <p style={{ fontSize: '16px', color: '#555' }}>We are proud of each and every student have passed through HOPE3. We would like to highlight some of our students and their success stories.</p>
                 </div>
 
                 {/* Galaxy Grid - 4 per row */}

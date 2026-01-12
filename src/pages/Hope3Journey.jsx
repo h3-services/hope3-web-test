@@ -83,15 +83,15 @@ const JourneyTimeline = () => {
         // Mobile-specific layout with scroll-based icons
         <div className="mobile-scroll-journey">
           {/* Banner Block with Quote */}
-          <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
+          <div className="journey-banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
             <p className="banner-quote">
               The Journey Of A Thousand Miles Begins With One Step
             </p>
             <p className="banner-author">- Lao Tzu</p>
           </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <h1 className="journey-headline">HOPE3 Journey</h1>
+          <div className="rounded-2xl p-6 mb-12 text-center">
+            <h1 className="cinzel-section-header">HOPE3 Journey</h1>
           </div>
 
           {/* HOPE3 Story Passage */}
@@ -166,7 +166,7 @@ const JourneyTimeline = () => {
         // Desktop layout
         <>
           {/* Banner Block with Quote - OUTSIDE container for full width */}
-          <div className="banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
+          <div className="journey-banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
             <p className="banner-quote">
               The Journey Of A Thousand Miles Begins With One Step
             </p>
@@ -174,8 +174,8 @@ const JourneyTimeline = () => {
           </div>
 
           <div className="journey-container">
-            <div style={{ textAlign: 'center' }}>
-              <h1 className="journey-headline">HOPE3 Journey</h1>
+            <div className="rounded-2xl p-6 mb-12 text-center">
+              <h1 className="cinzel-section-header">HOPE3 Journey</h1>
             </div>
 
             {/* HOPE3 Story Passage */}

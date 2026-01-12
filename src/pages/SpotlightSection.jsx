@@ -13,50 +13,55 @@ const SpotlightSection = () => {
       title: "HOPE3 Launches New Entrepreneurship Program",
       date: "December 2024",
       description: "Empowering 100+ young entrepreneurs with mentorship and resources",
-      link: "#",
       size: "large",
-      image: getImagePath("entrepreneurship.png")
+      image: getImagePath("entrepreneurship.png"),
+      icon: Newspaper
     },
     {
       id: 2,
       title: "Education Initiative Reaches 500 Students",
       date: "November 2024",
       description: "Our comprehensive education program expands to rural communities",
-      link: "#",
       size: "medium",
-      image: getImagePath("education.png")
+      image: getImagePath("education.png"),
+      icon: Trophy
     },
     {
       id: 3,
       title: "Women Empowerment Workshop Success",
       date: "October 2024",
       description: "Building confidence and leadership skills among women",
+      size: "small",
       link: "#",
-      size: "small"
+      icon: Zap
     },
     {
       id: 4,
       title: "Partnership with Local Universities",
       date: "September 2024",
       description: "Collaborating to enhance educational opportunities",
+      size: "large",
       link: "#",
-      size: "large"
+      icon: Handshake
     },
     {
       id: 5,
       title: "Innovation Hub Opens in Chennai",
       date: "August 2024",
       description: "New space for entrepreneurs and innovators to collaborate",
-      link: "#",
       size: "medium",
-      image: getImagePath("innovation.png")
+      image: getImagePath("innovation.png"),
+      icon: Zap
     }
   ]
 
   return (
     <section className="spotlight-section">
       <div className="spotlight-container">
-        <h2 className="text-4xl font-bold text-black font-kdam text-center mb-12" style={{ color: '#333' }}>
+        <div className="spotlight-banner-text">
+          Latest Updates
+        </div>
+        <h2 className="spotlight-header-title">
           Spotlight & News
         </h2>
 
@@ -66,12 +71,15 @@ const SpotlightSection = () => {
               key={item.id}
               className={`news-card card-${item.size} ${item.image ? 'has-image' : ''}`}
             >
-              {item.image && (
+              {item.image ? (
                 <div className="news-card-image-wrapper">
                   <img src={item.image} alt={item.title} className="news-card-image" />
                 </div>
+              ) : (
+                <div className="news-card-icon-wrapper">
+                  {item.icon && <item.icon className="news-card-icon" />}
+                </div>
               )}
-              {/* Keep contents simple to maintain old style padding/fonts */}
               <div className="news-card-content">
                 <div className="news-card-date">
                   {item.date}
