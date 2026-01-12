@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Users } from 'lucide-react'
+import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram, FaUsers } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 import TargetCursor from '../components/TargetCursor'
-import linkedinLogo from '../assets/footer_logo/linkedin.png'
-import fbLogo from '../assets/footer_logo/facebook.png'
-import youtubeLogo from '../assets/footer_logo/youtube.png'
-import instaLogo from '../assets/footer_logo/instagram.png'
-import twitter from '../assets/footer_logo/twitter.png'
-// import '../styles/NewFooter.css'
+import '../styles/newFooter.css'
 
 const NewFooter = () => {
   const [showTeamPopup, setShowTeamPopup] = useState(false)
@@ -17,7 +13,7 @@ const NewFooter = () => {
     { name: 'Nivedha', link: 'https://www.linkedin.com/in/nivedha-k-706b03306' },
     { name: 'Mohammed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
     { name: 'Shivakumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
-    { name: 'Mei Palaniappan', link: 'https://www.linkedin.com/in/mei-palaniappan-02919315/' }
+    { name: 'Meiy Palaniappan', link: 'https://www.linkedin.com/in/meiytx' }
   ]
 
   // Manage body class for cursor visibility
@@ -36,33 +32,34 @@ const NewFooter = () => {
     <div className="footer">
       <div className="footer-outer-box">
         <div className="footer-box">
-          <div className="footer-left" style={{ lineHeight: '1.2' }}>
-            <div className="footer-title" style={{ marginBottom: '0' }}>HOPE3 FOUNDATION</div>
-            <div className="footer-address" style={{ marginBottom: '0', marginTop: '0' }}>
+          <div className="footer-left">
+            <div className="footer-title">HOPE3 FOUNDATION</div><br></br>
+
+            <div className="footer-address">
               Sammamish, WA - 98074
             </div>
-            <a href="mailto:contact@hope3.org" className="footer-email" style={{ marginTop: '0' }}>
+            <a href="mailto:contact@hope3.org" className="footer-email">
               contact@hope3.org
             </a>
-            <div className="social-links" style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
-              <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer">
-                <img src={linkedinLogo} alt="LinkedIn" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+            <div className="social-links" style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+              <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <FaLinkedinIn size={18} />
               </a>
-              <a href="https://www.facebook.com/hope3org/" target="_blank" rel="noopener noreferrer">
-                <img src={fbLogo} alt="Facebook" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.facebook.com/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <FaFacebookF size={18} />
               </a>
-              <a href="https://www.youtube.com/channel/UCbtzvET5Ev2spcIDWraFguA" target="_blank" rel="noopener noreferrer">
-                <img src={youtubeLogo} alt="Youtube" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.youtube.com/channel/UCbtzvET5Ev2spcIDWraFguA" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <FaYoutube size={18} />
               </a>
-              <a href="https://www.instagram.com/hope3org/" target="_blank" rel="noopener noreferrer">
-                <img src={instaLogo} alt="Instagram" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://www.instagram.com/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <FaInstagram size={18} />
               </a>
-              <a href="https://x.com/hope3org" target="_blank" rel="noopener noreferrer">
-                <img src={twitter} alt="Twitter" style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'contain' }} />
+              <a href="https://x.com/hope3org" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
+                <FaXTwitter size={18} />
               </a>
             </div>
           </div>
-          <div className="footer-right" style={{ lineHeight: '1.2', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+          <div className="footer-right" style={{ lineHeight: '1.2', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '10px' }}>
             <div>
               <div className="footer-nonprofit" style={{ marginBottom: '0', fontSize: '14px' }}>
                 US IRS 501(C)(3) Non-Profit Organization
@@ -71,13 +68,13 @@ const NewFooter = () => {
                 ID: EIN 94-3184861
               </div>
             </div>
-            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '20px', fontSize: '14px' }}>
+            <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '0', fontSize: '14px' }}>
               © 2024 All Rights Reserved      |  Privacy Policy
             </div>
             <div
               className="footer-developed-by"
               style={{
-                marginTop: '15px',
+                marginTop: '10px',
                 fontSize: '0.25rem',
                 textAlign: 'right'
               }}
@@ -91,6 +88,7 @@ const NewFooter = () => {
                   textDecoration: 'underline',
                   fontSize: '12px'
                 }}
+                className="footer-powered-link"
               >
                 Powered By Hope3
               </span>
@@ -178,7 +176,7 @@ const NewFooter = () => {
               justifyContent: 'center',
               gap: '8px'
             }}>
-              <Users size={20} color="#007bff" />
+              <FaUsers size={20} color="#007bff" />
               HOPE3 Development Team
             </div>
             <ul style={{

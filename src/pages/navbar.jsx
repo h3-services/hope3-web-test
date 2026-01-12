@@ -18,6 +18,13 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
+      // Close popups/dropdowns on scroll
+      if (Math.abs(currentScrollY - lastScrollY) > 5) {
+        setShowGetInvolved(false);
+        setActiveDropdown(null);
+        setClickedDropdown(null);
+      }
+
       if (currentScrollY > 100) { // Only trigger after scrolling down a bit
         if (currentScrollY > lastScrollY) {
           setIsVisible(false); // Hide on scroll down
@@ -140,7 +147,8 @@ const Navbar = () => {
                                 'Why HOPE3?': '/why-hope3',
                                 'HOPE3 Journey': '/hope3-journey',
                                 'Leadership & Board': '/leadership-&-board',
-                                'Services': '/services'
+                                'Services': '/services',
+                                'Financials': '/financials'
                               };
                               if (routes[item]) {
                                 navigate(routes[item]);
@@ -244,9 +252,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Link to="/" className="navbar-center-logo-link">
-          <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
-        </Link>
+        <div className="navbar-center-spacer">
+          <Link to="/" className="navbar-center-logo-link">
+            <img src={hope3} alt="HOPE3" className="navbar-center-logo" />
+          </Link>
+        </div>
 
         <div className="navbar-right">
           <div className="navbar-section">
@@ -284,7 +294,15 @@ const Navbar = () => {
                 >
                   Leadership & Board
                 </button>
-                <div className="dropdown-link">Financials</div>
+                <button
+                  className="dropdown-link"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/financials');
+                  }}
+                >
+                  Financials
+                </button>
                 <div className="dropdown-link">Media & FAQ</div>
               </div>
             )}

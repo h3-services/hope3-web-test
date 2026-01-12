@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+import { FaPaypal } from "react-icons/fa";
+import { SiZelle } from "react-icons/si";
 import Navbar from './navbar';
 import NewFooter from './NewFooter';
+import { ChevronDown } from 'lucide-react';
+import ErrorTooltip from '../components/ErrorTooltip';
+import SearchableSelect from '../components/SearchableSelect';
 import donateImage from '../assets/donate_icon/donate.jpeg';
 import hopeBuilderIcon from '../assets/donate_icon/hope_builder.jpeg';
 import hopeEnablerIcon from '../assets/donate_icon/hope_maker1.jpeg';
@@ -35,6 +40,8 @@ const Donate = () => {
         state: '',
         zipCode: ''
     });
+
+
 
     const usStates = [
         { code: "", name: "Select State" },
@@ -131,15 +138,25 @@ const Donate = () => {
     const validateForm = () => {
         const newErrors = {};
 
-        if (!formData.paymentAmount) newErrors.paymentAmount = 'Payment amount is required';
-        if (!formData.firstName) newErrors.firstName = 'First name is required';
-        if (!formData.lastName) newErrors.lastName = 'Last name is required';
-        if (!formData.phone) newErrors.phone = 'Phone number is required';
-        if (!formData.email) newErrors.email = 'Email address is required';
-        if (!formData.address1) newErrors.address1 = 'Address is required';
-        if (!formData.city) newErrors.city = 'City is required';
-        if (!formData.state) newErrors.state = 'State is required';
-        if (!formData.zipCode) {
+        if (!formData.paymentAmount) {
+            newErrors.paymentAmount = 'Payment amount is required';
+        } else if (!formData.firstName) {
+            newErrors.firstName = 'First name is required';
+        } else if (!formData.lastName) {
+            newErrors.lastName = 'Last name is required';
+        } else if (!formData.phone) {
+            newErrors.phone = 'Phone number is required';
+        } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
+            newErrors.phone = 'Please enter a valid 10-digit phone number';
+        } else if (!formData.email) {
+            newErrors.email = 'Email address is required';
+        } else if (!formData.address1) {
+            newErrors.address1 = 'Address is required';
+        } else if (!formData.city) {
+            newErrors.city = 'City is required';
+        } else if (!formData.state) {
+            newErrors.state = 'State is required';
+        } else if (!formData.zipCode) {
             newErrors.zipCode = 'ZIP code is required';
         } else if (!/^\d{5}$/.test(formData.zipCode)) {
             newErrors.zipCode = 'ZIP code must be exactly 5 digits';
@@ -347,7 +364,7 @@ const Donate = () => {
                         <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto mt-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {/* Payment Amount */}
-                                <div className="sm:col-span-2">
+                                <div className="sm:col-span-2 relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         {selectedAmount === 'custom' ? 'Enter the Amount ($)' : 'Payment Amount'} <span className="text-red-500">*</span>
                                     </label>
@@ -366,13 +383,11 @@ const Donate = () => {
                                             placeholder="0.00"
                                         />
                                     </div>
-                                    {errors.paymentAmount && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.paymentAmount}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.paymentAmount} isVisible={!!errors.paymentAmount} />
                                 </div>
 
                                 {/* First Name */}
-                                <div>
+                                <div className="relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         First Name <span className="text-red-500">*</span>
                                     </label>
@@ -384,13 +399,11 @@ const Donate = () => {
                                         className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.firstName ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
                                             }`}
                                     />
-                                    {errors.firstName && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.firstName} isVisible={!!errors.firstName} />
                                 </div>
 
                                 {/* Last Name */}
-                                <div>
+                                <div className="relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         Last Name <span className="text-red-500">*</span>
                                     </label>
@@ -402,13 +415,11 @@ const Donate = () => {
                                         className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.lastName ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
                                             }`}
                                     />
-                                    {errors.lastName && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.lastName} isVisible={!!errors.lastName} />
                                 </div>
 
                                 {/* Phone Number */}
-                                <div>
+                                <div className="relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         Phone Number <span className="text-red-500">*</span>
                                     </label>
@@ -420,13 +431,11 @@ const Donate = () => {
                                         className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.phone ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
                                             }`}
                                     />
-                                    {errors.phone && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.phone} isVisible={!!errors.phone} />
                                 </div>
 
                                 {/* Email */}
-                                <div>
+                                <div className="relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         Email Address <span className="text-red-500">*</span>
                                     </label>
@@ -438,13 +447,11 @@ const Donate = () => {
                                         className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.email ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
                                             }`}
                                     />
-                                    {errors.email && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.email} isVisible={!!errors.email} />
                                 </div>
 
                                 {/* Address 1 */}
-                                <div className="sm:col-span-2">
+                                <div className="sm:col-span-2 relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         Address 1 <span className="text-red-500">*</span>
                                     </label>
@@ -456,9 +463,7 @@ const Donate = () => {
                                         className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.address1 ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
                                             }`}
                                     />
-                                    {errors.address1 && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.address1}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.address1} isVisible={!!errors.address1} />
                                 </div>
 
                                 {/* Address 2 */}
@@ -476,7 +481,7 @@ const Donate = () => {
                                 </div>
 
                                 {/* City */}
-                                <div>
+                                <div className="relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         City <span className="text-red-500">*</span>
                                     </label>
@@ -488,36 +493,26 @@ const Donate = () => {
                                         className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.city ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
                                             }`}
                                     />
-                                    {errors.city && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.city}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.city} isVisible={!!errors.city} />
                                 </div>
 
                                 {/* State */}
-                                <div>
+                                <div className="relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         State <span className="text-red-500">*</span>
                                     </label>
-                                    <select
+                                    <SearchableSelect
                                         name="state"
                                         value={formData.state}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm bg-white ${errors.state ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
-                                            }`}
-                                    >
-                                        {usStates.map((state) => (
-                                            <option key={state.code} value={state.code}>
-                                                {state.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {errors.state && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.state}</p>
-                                    )}
+                                        options={usStates}
+                                        placeholder="Select State"
+                                    />
+                                    <ErrorTooltip message={errors.state} isVisible={!!errors.state} />
                                 </div>
 
                                 {/* ZIP Code */}
-                                <div className="sm:col-span-2">
+                                <div className="sm:col-span-2 relative">
                                     <label className="block text-gray-700 font-semibold mb-1.5 text-sm">
                                         ZIP Code <span className="text-red-500">*</span>
                                     </label>
@@ -531,9 +526,7 @@ const Donate = () => {
                                             }`}
                                         placeholder="12345"
                                     />
-                                    {errors.zipCode && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.zipCode}</p>
-                                    )}
+                                    <ErrorTooltip message={errors.zipCode} isVisible={!!errors.zipCode} />
                                 </div>
                             </div>
 
@@ -564,12 +557,10 @@ const Donate = () => {
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
-                                                <img
-                                                    src="/src/assets/paypal.png"
-                                                    alt="PayPal"
-                                                    className="h-6 w-auto"
-                                                />
-                                                <span className="font-semibold">Pay using PayPal</span>
+                                                <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
+                                                    <FaPaypal className="text-[#003087]" size={28} />
+                                                </div>
+                                                <span className="font-semibold text-lg">Pay using PayPal</span>
                                             </div>
                                         </div>
                                     </label>
@@ -586,19 +577,17 @@ const Donate = () => {
                                         />
 
                                         <div
-                                            className={`p-3 rounded-lg border transition-all duration-300 transform hover:-translate-y-1
+                                            className={`p-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1
         ${paymentMethod === "zelle"
                                                     ? "bg-purple-600 text-white border-purple-600 shadow-md"
                                                     : "bg-white text-gray-700 border-gray-300 hover:border-purple-400 hover:shadow-sm"
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
-                                                <img
-                                                    src="/src/assets/zelle.png"
-                                                    alt="Zelle"
-                                                    className="h-6 w-auto"
-                                                />
-                                                <span className="font-semibold">Pay using Zelle</span>
+                                                <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
+                                                    <SiZelle className="text-[#6d1e70]" size={24} />
+                                                </div>
+                                                <span className="font-semibold text-lg">Pay using Zelle</span>
                                             </div>
                                         </div>
                                     </label>

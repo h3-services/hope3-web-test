@@ -188,6 +188,49 @@
     transform: scale(1.1);
 }
 
+/* Galaxy Content Overlay - positioned at bottom of image */
+.galaxy-content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.student-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.student-role {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.student-company {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
 /* Galaxy Front Camera */
 .galaxy-camera {
     position: absolute;
@@ -529,6 +572,27 @@
         border-radius: 22px;
     }
 
+    .galaxy-content-box {
+        padding: 6px 10px;
+        gap: 1px;
+    }
+
+    .student-name {
+        font-size: 0.9rem;
+    }
+
+    .student-role {
+        font-size: 0.7rem;
+    }
+
+    .student-company {
+        font-size: 0.65rem;
+    }
+
+    .student-location {
+        font-size: 0.6rem;
+    }
+
     .ipad-frame {
         width: 95vw;
         height: 85vh;
@@ -606,6 +670,27 @@
 
     .galaxy-screen {
         border-radius: 20px;
+    }
+
+    .galaxy-content-box {
+        padding: 5px 8px;
+        gap: 1px;
+    }
+
+    .student-name {
+        font-size: 0.8rem;
+    }
+
+    .student-role {
+        font-size: 0.65rem;
+    }
+
+    .student-company {
+        font-size: 0.6rem;
+    }
+
+    .student-location {
+        font-size: 0.55rem;
     }
 
     .tap-hint {

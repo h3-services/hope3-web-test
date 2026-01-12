@@ -164,6 +164,48 @@ const allStudents = [
 
 // Samsung Galaxy A12 Mockup Component
 const GalaxyMockup = ({ student, onClick }) => {
+    // Extract achievement details for display
+    const getStudentDetails = () => {
+        // Parse achievement to extract role and company
+        const achievement = student.achievement || "";
+
+        // Default values
+        let role = "Software Developer";
+        let company = "HCL Technologies";
+        let location = "Chennai";
+
+        // Try to extract from achievement text
+        if (achievement.toLowerCase().includes("doctor") || achievement.toLowerCase().includes("mbbs")) {
+            role = "Medical Student";
+            company = "Medical College";
+        } else if (achievement.toLowerCase().includes("analyst")) {
+            role = "Analyst";
+            company = "HCL Technologies";
+        } else if (achievement.toLowerCase().includes("nit")) {
+            role = "Engineering Student";
+            company = "NIT";
+        } else if (achievement.toLowerCase().includes("tcs")) {
+            role = "Software Developer";
+            company = "TCS";
+        } else if (achievement.toLowerCase().includes("zoho")) {
+            role = "Software Developer";
+            company = "ZOHO";
+        } else if (achievement.toLowerCase().includes("ericsson")) {
+            role = "Software Developer";
+            company = "Ericsson";
+        } else if (achievement.toLowerCase().includes("walmart")) {
+            role = "Software Developer";
+            company = "Walmart";
+        } else if (achievement.toLowerCase().includes("bosch")) {
+            role = "Software Developer";
+            company = "Bosch";
+        }
+
+        return { role, company, location };
+    };
+
+    const details = getStudentDetails();
+
     return (
         <div className="galaxy-mockup" onClick={() => onClick(student)}>
             <div className="galaxy-frame">
@@ -176,6 +218,11 @@ const GalaxyMockup = ({ student, onClick }) => {
                         alt={student.name}
                         className="galaxy-student-image"
                     />
+                    <div className="galaxy-content-overlay">
+                        <h3 className="student-name">{student.name}</h3>
+                        <p className="student-role">{details.role}</p>
+                        <p className="student-company">{details.company}</p>
+                    </div>
                 </div>
                 {/* Home Button */}
                 <div className="galaxy-home-button"></div>

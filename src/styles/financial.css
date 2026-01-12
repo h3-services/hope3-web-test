@@ -1,0 +1,173 @@
+.financial-page {
+    min-height: 100vh;
+    background: #FFFFFF;
+}
+
+.financial-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 40px 60px;
+}
+
+.financial-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.financial-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #332EB2;
+    margin-bottom: 16px;
+}
+
+.financial-subtitle {
+    font-size: 20px;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.financial-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.pdf-viewer-container {
+    background: #FFFFFF;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.pdf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    background: #F9FAFB;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.pdf-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #332EB2;
+    margin: 0;
+}
+
+.pdf-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #332EB2;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.pdf-download-btn:hover {
+    background: #2a2696;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(51, 46, 178, 0.3);
+}
+
+.pdf-download-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.pdf-embed-wrapper {
+    width: 100%;
+    height: 800px;
+    background: #525659;
+    position: relative;
+}
+
+.pdf-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.financial-info-box {
+    background: #F9FAFB;
+    border-left: 4px solid #332EB2;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.financial-info-box h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #332EB2;
+    margin-bottom: 16px;
+}
+
+.financial-info-box p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.financial-info-box p:last-child {
+    margin-bottom: 0;
+}
+
+.financial-info-box a {
+    color: #332EB2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.financial-info-box a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .financial-container {
+        padding: 100px 20px 40px;
+    }
+
+    .financial-title {
+        font-size: 36px;
+    }
+
+    .financial-subtitle {
+        font-size: 18px;
+    }
+
+    .pdf-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .pdf-title {
+        font-size: 20px;
+    }
+
+    .pdf-embed-wrapper {
+        height: 600px;
+    }
+
+    .financial-info-box {
+        padding: 20px;
+    }
+}
