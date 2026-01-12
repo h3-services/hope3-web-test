@@ -1,0 +1,170 @@
+.not-found-wrapper {
+    background: #333333;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.not-found-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Depth effect with grey shades */
+.radial-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(80, 80, 80, 0.8) 0%, rgba(30, 30, 30, 1) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.not-found-content {
+    z-index: 10;
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.not-found-title {
+    font-size: 160px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: normal;
+    letter-spacing: -6px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.not-found-subtitle {
+    font-family: 'Cantata One', serif;
+    font-size: 36px;
+    color: #FFFFFF;
+    margin-top: -20px;
+    margin-bottom: 24px;
+}
+
+.not-found-description {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+}
+
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 36px;
+    background: #FFFFFF;
+    color: #000000;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.back-home-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: #f0f0f0;
+}
+
+.back-home-btn span {
+    margin-right: 12px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.back-home-btn:hover span {
+    transform: translateX(-5px);
+}
+
+/* Sharp, clear golden bubbles with shadows and gradients like the reference */
+.golden-bubble {
+    position: absolute;
+    background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    /* Removed blur for clarity */
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        inset 0 4px 15px rgba(255, 255, 255, 0.4);
+    /* Inner glow for 3D effect */
+    animation: floatAround infinite ease-in-out;
+}
+
+.click-bubble {
+    animation: bubbleSpawn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, floatAround 15s infinite ease-in-out 0.5s;
+}
+
+@keyframes bubbleSpawn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes floatAround {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(10px, -20px) scale(1.02);
+    }
+
+    50% {
+        transform: translate(-10px, 20px) scale(0.98);
+    }
+
+    75% {
+        transform: translate(8px, 15px) scale(1.01);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .not-found-title {
+        font-size: 100px;
+        letter-spacing: -4px;
+    }
+
+    .not-found-subtitle {
+        font-size: 28px;
+        margin-top: -10px;
+    }
+}

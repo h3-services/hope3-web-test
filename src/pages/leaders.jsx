@@ -2,9 +2,9 @@ import Navbar from "./navbar.jsx"
 import NewFooter from "./NewFooter.jsx"
 import { useEffect, useState, useRef } from 'react'
 import './leaders.css'
-import palaniImage from '../assets/pillars/palani.png' // Fixed spelling to match existing directory
-import neelImage from '../assets/pillars/neel.png'     // Fixed spelling to match existing directory
-import meenachiImage from '../assets/pillars/meenachi.png' // Fixed spelling to match existing directory
+import palaniImage from '../assets/leadersboard/founders/Palani.jpeg'
+import neelImage from '../assets/leadersboard/founders/neel.jpeg'
+import meenachiImage from '../assets/leadersboard/founders/Meenakshi-02.jpeg'
 import SwipeableVideoStack from '../components/SwipeableVideoStack.jsx'
 
 function Leaders() { // Renamed to Leaders to match the route and file name
@@ -283,4 +283,5 @@ function Leaders() { // Renamed to Leaders to match the route and file name
 }
 
 export default Leaders
+
 

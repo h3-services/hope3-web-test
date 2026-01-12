@@ -147,7 +147,8 @@ const Navbar = () => {
                                 'Why HOPE3?': '/why-hope3',
                                 'HOPE3 Journey': '/hope3-journey',
                                 'Leadership & Board': '/leadership-&-board',
-                                'Services': '/services'
+                                'Services': '/services',
+                                'Financials': '/financials'
                               };
                               if (routes[item]) {
                                 navigate(routes[item]);
@@ -293,7 +294,15 @@ const Navbar = () => {
                 >
                   Leadership & Board
                 </button>
-                <div className="dropdown-link">Financials</div>
+                <button
+                  className="dropdown-link"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/financials');
+                  }}
+                >
+                  Financials
+                </button>
                 <div className="dropdown-link">Media & FAQ</div>
               </div>
             )}
