@@ -8,12 +8,12 @@ const NewFooter = () => {
   const [showTeamPopup, setShowTeamPopup] = useState(false)
 
   const teamMembers = [
-    { name: 'Beulah', link: 'https://www.linkedin.com/in/beulah-francis-55a439349/' },
     { name: 'Biruntha', link: 'https://www.linkedin.com/in/biruntha-mageshwaran-226a95306/' },
-    { name: 'Nivedha', link: 'https://www.linkedin.com/in/nivedha-k-706b03306' },
-    { name: 'Mohammed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
-    { name: 'Shivakumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
-    { name: 'Meiy Palaniappan', link: 'https://www.linkedin.com/in/meiytx' }
+    { name: 'Nivetha', link: 'https://www.linkedin.com/in/nivedha-k-706b03306' },
+    { name: 'Beulah Francis', link: 'https://www.linkedin.com/in/beulah-francis-55a439349/' },
+    { name: 'Mohamed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
+    { name: 'siva kumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
+    { name: 'meiy Anna', link: 'https://www.linkedin.com/in/meiytx' }
   ]
 
   // Manage body class for cursor visibility
@@ -90,7 +90,7 @@ const NewFooter = () => {
                 }}
                 className="footer-powered-link"
               >
-                Powered By Hope3
+                Powered By HOPE3
               </span>
             </div>
           </div>

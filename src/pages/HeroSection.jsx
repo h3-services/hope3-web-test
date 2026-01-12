@@ -25,13 +25,19 @@ const HeroSection = () => {
           }`}
       >
         {/* Quote */}
-        <blockquote className="text-white text-[24px] md:text-[38px] font-jaini leading-relaxed text-center w-full">
+        <blockquote
+          className="text-white text-[18px] md:text-[26px] leading-tight text-center w-full uppercase"
+          style={{
+            fontFamily: "'Libre Baskerville', serif",
+            fontWeight: '700'
+          }}
+        >
           Learning gives creativity, creativity leads to thinking,
           thinking provides knowledge, knowledge makes you great.
         </blockquote>
 
         {/* Author */}
-        <cite className="mt-6 text-white text-[16px] md:text-[20px] font-medium not-italic w-full text-right md:pr-10">
+        <cite className="mt-6 text-white text-[16px] md:text-[20px] font-bold not-italic w-full text-right md:pr-10">
           — Dr. A. P. J. Abdul Kalam
         </cite>
       </div>

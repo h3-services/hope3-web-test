@@ -121,11 +121,14 @@
 @media (max-width: 768px) {
   .footer-box {
     flex-direction: column;
-    text-align: center;
+    align-items: stretch;
+    padding: 1.5rem;
   }
 
   .footer-right {
-    text-align: center;
+    text-align: right;
+    width: 100%;
+    margin-top: 2rem;
   }
 
   .footer-bottom a {

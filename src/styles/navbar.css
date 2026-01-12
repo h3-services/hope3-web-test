@@ -690,9 +690,16 @@
     /* Hide desktop nav elements */
     .navbar-left,
     .navbar-right,
-    .desktop-logo-link,
-    .navbar-center-spacer {
+    .desktop-logo-link {
         display: none;
+    }
+
+    .navbar-center-spacer {
+        display: block;
+        width: 0;
+        height: 0;
+        position: static;
+        /* Let the child link relate to the container if possible, or just stay static */
     }
 
     /* Show hamburger on left */
@@ -708,6 +715,8 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        z-index: 1001;
+        /* Higher than overlay but less than hamburger */
     }
 
     .navbar-center-logo {
