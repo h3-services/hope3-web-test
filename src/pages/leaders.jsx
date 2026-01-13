@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import NewFooter from '../layouts/Footer.jsx';
 import { useEffect, useState, useRef } from 'react'
 import '../styles/leaders.css'
-import palaniImage from '../assets/leadersboard/founders/Palani.jpeg'
-import neelImage from '../assets/leadersboard/founders/neel.jpeg'
-import meenachiImage from '../assets/leadersboard/founders/Meenakshi-02.jpeg'
+import palaniImage from '../assets/images/pages/leaders/founders/Palani.jpeg'
+import neelImage from '../assets/images/pages/leaders/founders/neel.jpeg'
+import meenachiImage from '../assets/images/pages/leaders/founders/Meenakshi-02.jpeg'
 import SwipeableVideoStack from '../components/common/SwipeableVideoStack.jsx';
 
 function Leaders() { // Renamed to Leaders to match the route and file name

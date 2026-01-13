@@ -4,16 +4,16 @@ import Navbar from '../layouts/Navbar.jsx';
 import { useNavigate } from 'react-router-dom';
 import NewFooter from '../layouts/Footer.jsx';
 import '../styles/whyHope3.css';
-import bannerImg from '../assets/whyHope3Banner.jpeg';
+import bannerImg from '../assets/images/pages/why-hope3/whyHope3Banner.jpeg';
 import Stack from '../components/common/Stack.jsx';
-import image1 from '../assets/animation/image1.jpg';
-import image2 from '../assets/animation/image2.jpg';
-import image3 from '../assets/animation/image3.jpg';
-import image4 from '../assets/animation/image4.jpg';
-import image5 from '../assets/animation/image5.jpg';
-import image6 from '../assets/animation/image6.jpg';
-import image7 from '../assets/animation/image7.jpg';
-import image8 from '../assets/animation/image8.jpg';
+import image1 from '../assets/images/animations/image1.jpg';
+import image2 from '../assets/images/animations/image2.jpg';
+import image3 from '../assets/images/animations/image3.jpg';
+import image4 from '../assets/images/animations/image4.jpg';
+import image5 from '../assets/images/animations/image5.jpg';
+import image6 from '../assets/images/animations/image6.jpg';
+import image7 from '../assets/images/animations/image7.jpg';
+import image8 from '../assets/images/animations/image8.jpg';
 
 const WhyHope3 = () => {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Hope3Journey.css';
-import bannerImage from '../assets/journey/bannerForJourney.png';
-import statsBanner from '../assets/statistics banner.png';
+import bannerImage from '../assets/images/pages/journey/bannerForJourney.png';
+import statsBanner from '../assets/images/pages/home/statistics banner.png';
 import Navbar from '../layouts/Navbar';
 import NewFooter from '../layouts/Footer';
 

@@ -6,12 +6,12 @@ import NewFooter from '../layouts/Footer';
 import { ChevronDown, Coins, Monitor } from 'lucide-react';
 import ErrorTooltip from '../components/common/ErrorTooltip';
 import SearchableSelect from '../components/common/SearchableSelect';
-import donateImage from '../assets/donate_icon/donate.jpeg';
-import hopeBuilderIcon from '../assets/donate_icon/hope_builder.jpeg';
-import hopeEnablerIcon from '../assets/donate_icon/hope_maker1.jpeg';
-import dreamEnablerIcon from '../assets/donate_icon/dream_enabler.jpeg';
-import customAmountIcon from '../assets/donate_icon/hope_maker.jpeg';
-import zelleQR from '../assets/donate_icon/zelle_qr.png';
+import donateImage from '../assets/images/pages/donate/donate.jpeg';
+import hopeBuilderIcon from '../assets/images/pages/donate/hope_builder.jpeg';
+import hopeEnablerIcon from '../assets/images/pages/donate/hope_maker1.jpeg';
+import dreamEnablerIcon from '../assets/images/pages/donate/dream_enabler.jpeg';
+import customAmountIcon from '../assets/images/pages/donate/hope_maker.jpeg';
+import zelleQR from '../assets/images/pages/donate/zelle_qr.png';
 
 const Donate = () => {
     const [activeTab, setActiveTab] = useState('monetary');

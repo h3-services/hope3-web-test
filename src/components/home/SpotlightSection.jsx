@@ -39,6 +39,22 @@ const SpotlightSection = () => {
         </>
       ),
       size: "medium"
+    },
+    {
+      id: 5,
+      title: "Community Outreach Program",
+      date: "February 2026",
+      description: "Expanding our reach to local villages, providing essential resources and educational support to underprivileged families. Our volunteers spent the weekend conducting workshops.",
+      size: "medium",
+      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: 6,
+      title: "Tech Innovation Award",
+      date: "March 2026",
+      description: "Hope3 students have secured the first prize in the Regional Tech Innovation Contest for their AI-driven project on sustainable agriculture practices.",
+      size: "medium",
+      image: "https://images.unsplash.com/photo-1569429760223-99485e96726c?auto=format&fit=crop&q=80&w=800"
     }
   ]
 

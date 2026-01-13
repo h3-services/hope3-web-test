@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
-import logo from '../assets/home/hope3_logo.png';
-import hope3 from '../assets/home/hope3.png';
-import usericon from '../assets/home/img1.png';
-import getInvolvedIcon from '../assets/home/Gemini_Generated_Image_odj8ogodj8ogodj8.png';
+import logo from '../assets/images/pages/home/hope3_logo.png';
+import hope3 from '../assets/images/pages/home/hope3.png';
+import usericon from '../assets/images/pages/home/img1.png';
+import getInvolvedIcon from '../assets/images/pages/home/Gemini_Generated_Image_odj8ogodj8ogodj8.png';
 
 
 const Navbar = () => {
@@ -303,7 +303,15 @@ const Navbar = () => {
                 >
                   Financials
                 </button>
-                <div className="dropdown-link">Media & FAQ</div>
+                <button
+                  className="dropdown-link"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/media');
+                  }}
+                >
+                  Media & FAQ
+                </button>
               </div>
             )}
           </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import '../../styles/spinningLogo.css'
-import hope3Logo from '../../assets/home/hope3_logo.png'
+import hope3Logo from '../../assets/images/pages/home/hope3_logo.png'
 
 function SpinningLogo() {
 

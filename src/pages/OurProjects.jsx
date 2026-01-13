@@ -4,18 +4,18 @@ import Navbar from '../layouts/Navbar';
 import NewFooter from '../layouts/Footer';
 
 // Use local assets for the gallery
-import img1 from '../assets/transformation/img1.jpeg';
-import img2 from '../assets/transformation/img2.jpeg';
-import img3 from '../assets/transformation/img3.jpeg';
-import img4 from '../assets/transformation/img4.jpeg';
-import img5 from '../assets/transformation/img5.jpeg';
-import img6 from '../assets/transformation/img6.jpeg';
-import img7 from '../assets/transformation/img7.jpeg';
-import img8 from '../assets/transformation/img8.jpeg';
-import educationImg from '../assets/home/education.jpeg';
-import empowermentImg from '../assets/home/empowerment.jpeg';
-import entrepreneurshipImg from '../assets/home/enterpreneurship.jpeg';
-import graduationImg from '../assets/home/college-graduation-pictures.jpg';
+import img1 from '../assets/images/pages/transformation/img1.jpeg';
+import img2 from '../assets/images/pages/transformation/img2.jpeg';
+import img3 from '../assets/images/pages/transformation/img3.jpeg';
+import img4 from '../assets/images/pages/transformation/img4.jpeg';
+import img5 from '../assets/images/pages/transformation/img5.jpeg';
+import img6 from '../assets/images/pages/transformation/img6.jpeg';
+import img7 from '../assets/images/pages/transformation/img7.jpeg';
+import img8 from '../assets/images/pages/transformation/img8.jpeg';
+import educationImg from '../assets/images/pages/home/education.jpeg';
+import empowermentImg from '../assets/images/pages/home/empowerment.jpeg';
+import entrepreneurshipImg from '../assets/images/pages/home/enterpreneurship.jpeg';
+import graduationImg from '../assets/images/pages/home/college-graduation-pictures.jpg';
 
 const OurProjects = () => {
     const [activeFilter, setActiveFilter] = useState('All');

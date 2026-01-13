@@ -1,6 +1,6 @@
 import Navbar from '../layouts/Navbar';
 import NewFooter from '../layouts/Footer';
-import bannerImg from '../assets/feedback/banner.jpeg';
+import bannerImg from '../assets/images/pages/feedback/banner.jpeg';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { Send } from 'lucide-react';

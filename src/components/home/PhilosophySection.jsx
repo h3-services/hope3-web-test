@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import hope3Logo from '../../assets/home/hope3_logo.png'
+import hope3Logo from '../../assets/images/pages/home/hope3_logo.png'
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import { FaBullseye, FaLocationArrow, FaUnlink, FaGem, FaUsers, FaHandshake, FaArrowUp, FaChevronDown } from "react-icons/fa";
 import { MdCenterFocusStrong } from "react-icons/md";

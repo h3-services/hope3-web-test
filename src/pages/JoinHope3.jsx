@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Navbar from '../layouts/Navbar.jsx';
 import NewFooter from '../layouts/Footer.jsx';
-import bannerImage from '../assets/Join Hope3.jpg';
+import bannerImage from '../assets/images/pages/join/Join Hope3.jpg';
 import '../styles/JoinHope3.css';
 import { GraduationCap, Handshake, ChevronDown, Check } from 'lucide-react';
 import ErrorTooltip from '../components/common/ErrorTooltip';

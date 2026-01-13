@@ -4,24 +4,24 @@ import Navbar from '../layouts/Navbar';
 import NewFooter from '../layouts/Footer';
 
 // Import student images from assets
-import IrfanaImg from '../assets/our-students/Irfana.png';
-import IyappanImg from '../assets/our-students/Iyappan.png';
-import AmrishImg from '../assets/our-students/amrish.png';
-import AnithaImg from '../assets/our-students/anitha.png';
-import ArshithaImg from '../assets/our-students/arshitha.png';
-import BalajiImg from '../assets/our-students/balaji.png';
-import BalasaranyaImg from '../assets/our-students/balasaranya.png';
-import DevadharshiniImg from '../assets/our-students/devadharshini.png';
-import GovindaramanImg from '../assets/our-students/govindaraman.png';
-import JananiImg from '../assets/our-students/janani.png';
-import JijithImg from '../assets/our-students/jijith.png';
-import KalaiarasanImg from '../assets/our-students/kalaiarasan.png';
-import KaviyaImg from '../assets/our-students/kaviya.png';
-import PoojaImg from '../assets/our-students/pooja.png';
-import PrathiswaranImg from '../assets/our-students/prathiswaran.png';
-import SornamImg from '../assets/our-students/sornam.png';
-import ViswanathanImg from '../assets/our-students/viswanathan.png';
-import BannerImage from '../assets/our-students/ourStudentBanner.jpeg';
+import IrfanaImg from '../assets/images/pages/students/Irfana.png';
+import IyappanImg from '../assets/images/pages/students/Iyappan.png';
+import AmrishImg from '../assets/images/pages/students/amrish.png';
+import AnithaImg from '../assets/images/pages/students/anitha.png';
+import ArshithaImg from '../assets/images/pages/students/arshitha.png';
+import BalajiImg from '../assets/images/pages/students/balaji.png';
+import BalasaranyaImg from '../assets/images/pages/students/balasaranya.png';
+import DevadharshiniImg from '../assets/images/pages/students/devadharshini.png';
+import GovindaramanImg from '../assets/images/pages/students/govindaraman.png';
+import JananiImg from '../assets/images/pages/students/janani.png';
+import JijithImg from '../assets/images/pages/students/jijith.png';
+import KalaiarasanImg from '../assets/images/pages/students/kalaiarasan.png';
+import KaviyaImg from '../assets/images/pages/students/kaviya.png';
+import PoojaImg from '../assets/images/pages/students/pooja.png';
+import PrathiswaranImg from '../assets/images/pages/students/prathiswaran.png';
+import SornamImg from '../assets/images/pages/students/sornam.png';
+import ViswanathanImg from '../assets/images/pages/students/viswanathan.png';
+import BannerImage from '../assets/images/pages/students/ourStudentBanner.jpeg';
 
 // All students data
 const allStudents = [

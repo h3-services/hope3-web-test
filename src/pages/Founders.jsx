@@ -2,51 +2,51 @@ import React, { useState, useRef, useEffect } from 'react';
 import Navbar from '../layouts/Navbar.jsx';
 import NewFooter from '../layouts/Footer.jsx';
 import '../styles/founders.css';
-import BannerImage from '../assets/leader-banner.webp';
+import BannerImage from '../assets/images/pages/leaders/leader-banner.webp';
 
 
 // Founders images
-import palaniImage from '../assets/leadersboard/founders/Palani.jpeg';
-import neelImage from '../assets/leadersboard/founders/neel.jpeg';
-import meenachiImage from '../assets/leadersboard/founders/Meenakshi-02.jpeg';
+import palaniImage from '../assets/images/pages/leaders/founders/Palani.jpeg';
+import neelImage from '../assets/images/pages/leaders/founders/neel.jpeg';
+import meenachiImage from '../assets/images/pages/leaders/founders/Meenakshi-02.jpeg';
 
 // Board members
-import ganeshImage from '../assets/leadersboard/board/Ganesh (2).jpeg';
-import manickamImage from '../assets/leadersboard/board/Manickam (1).jpeg';
+import ganeshImage from '../assets/images/pages/leaders/board/Ganesh (2).jpeg';
+import manickamImage from '../assets/images/pages/leaders/board/Manickam (1).jpeg';
 
 // Varsity members
-import anirudhImage from '../assets/leadersboard/varsity/Anirudh.jpeg';
-import balajiImage from '../assets/leadersboard/varsity/Balaji-01.jpeg';
-import amrishImage from '../assets/leadersboard/varsity/Amrish.jpg';
-import hemaImage from '../assets/leadersboard/varsity/Hema.jpg';
-import karthikeyanImage from '../assets/leadersboard/varsity/Karthikeyan.jpeg';
-import nachiappanImage from '../assets/leadersboard/varsity/Nachiappan.jpeg';
-import pichumaniImage from '../assets/leadersboard/varsity/Pichumani.jpg';
-import ramuImage from '../assets/leadersboard/varsity/Ramu Palaniappan.jpg';
-import vijayakumarImage from '../assets/leadersboard/varsity/VijayaKumar.jpg';
-import shivakumarImage from '../assets/leadersboard/varsity/shivakumar.png';
+import anirudhImage from '../assets/images/pages/leaders/varsity/Anirudh.jpeg';
+import balajiImage from '../assets/images/pages/leaders/varsity/Balaji-01.jpeg';
+import amrishImage from '../assets/images/pages/leaders/varsity/Amrish.jpg';
+import hemaImage from '../assets/images/pages/leaders/varsity/Hema.jpg';
+import karthikeyanImage from '../assets/images/pages/leaders/varsity/Karthikeyan.jpeg';
+import nachiappanImage from '../assets/images/pages/leaders/varsity/Nachiappan.jpeg';
+import pichumaniImage from '../assets/images/pages/leaders/varsity/Pichumani.jpg';
+import ramuImage from '../assets/images/pages/leaders/varsity/Ramu Palaniappan.jpg';
+import vijayakumarImage from '../assets/images/pages/leaders/varsity/VijayaKumar.jpg';
+import shivakumarImage from '../assets/images/pages/leaders/varsity/shivakumar.png';
 
 // Admissions
-import arumugamImage from '../assets/leadersboard/admission/Arumugam.jpeg';
-import gokulImage from '../assets/leadersboard/admission/Gokul.jpeg';
+import arumugamImage from '../assets/images/pages/leaders/admission/Arumugam.jpeg';
+import gokulImage from '../assets/images/pages/leaders/admission/Gokul.jpeg';
 
 // Finance
-import raghulImage from '../assets/leadersboard/finance/Raghul-01 (2).jpg';
+import raghulImage from '../assets/images/pages/leaders/finance/Raghul-01 (2).jpg';
 
 // Non-Profit Partners
-import abdulKalamFoundationImage from '../assets/leadersboard/nonProfitPartners/abdulkalamFoundation.png';
-import abdulKalamTrustImage from '../assets/leadersboard/nonProfitPartners/abdulkalamTrust.png';
-import mugavariImage from '../assets/leadersboard/nonProfitPartners/mugavariFoundation.png';
-import namcoImage from '../assets/leadersboard/nonProfitPartners/namco.png';
-import shootingStarsImage from '../assets/leadersboard/nonProfitPartners/shootingstarFundation.png';
-import tamilnaduFoundationImage from '../assets/leadersboard/nonProfitPartners/tamilanduFoundation.png';
+import abdulKalamFoundationImage from '../assets/images/pages/leaders/nonProfitPartners/abdulkalamFoundation.png';
+import abdulKalamTrustImage from '../assets/images/pages/leaders/nonProfitPartners/abdulkalamTrust.png';
+import mugavariImage from '../assets/images/pages/leaders/nonProfitPartners/mugavariFoundation.png';
+import namcoImage from '../assets/images/pages/leaders/nonProfitPartners/namco.png';
+import shootingStarsImage from '../assets/images/pages/leaders/nonProfitPartners/shootingstarFundation.png';
+import tamilnaduFoundationImage from '../assets/images/pages/leaders/nonProfitPartners/tamilanduFoundation.png';
 
 // Industrial Partners
-import anvithaImage from '../assets/industrialPartner/unwita.jpeg';
-import arjavaImage from '../assets/industrialPartner/arjava_desk.png';
-import cytronicxImage from '../assets/industrialPartner/cytronix.jpeg';
-import elarchitekImage from '../assets/industrialPartner/elarchitek.jpeg';
-import dnlogoImage from '../assets/industrialPartner/TNlogo.png';
+import anvithaImage from '../assets/images/partners/unwita.jpeg';
+import arjavaImage from '../assets/images/partners/arjava_desk.png';
+import cytronicxImage from '../assets/images/partners/cytronix.jpeg';
+import elarchitekImage from '../assets/images/partners/elarchitek.jpeg';
+import dnlogoImage from '../assets/images/partners/TNlogo.png';
 
 // Placeholder for industrial partners (use a generic image)
 const placeholderImage = palaniImage;

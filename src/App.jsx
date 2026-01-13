@@ -12,6 +12,7 @@ import Feedback from "./pages/Feedback.jsx";
 import Services from "./pages/Services.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Financial from "./pages/Financial.jsx";
+import Media from "./pages/Media.jsx";
 
 // Use basename for GitHub Pages deployment
 const basename = import.meta.env.BASE_URL;
@@ -28,6 +29,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/leadership-&-board" element={<Founders />} />
         <Route path="/financials" element={<Financial />} />
+        <Route path="/media" element={<Media />} />
         <Route path="/faq" element={<div>FAQ Page</div>} />
         <Route path="/be-informed" element={<div>Be Informed Page</div>} />
         <Route path="/donate" element={<Donate />} />

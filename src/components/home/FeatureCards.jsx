@@ -1,8 +1,8 @@
 import '../../styles/featureCards.css'
-import img1 from '../../assets/home/education.jpeg'
-import img3 from '../../assets/home/empowerment.jpeg'
-import img2 from '../../assets/home/enterpreneurship.jpeg'
-import hope3Logo from '../../assets/home/hope3_logo.png'
+import img1 from '../../assets/images/pages/home/education.jpeg'
+import img3 from '../../assets/images/pages/home/empowerment.jpeg'
+import img2 from '../../assets/images/pages/home/enterpreneurship.jpeg'
+import hope3Logo from '../../assets/images/pages/home/hope3_logo.png'
 
 const FeatureCards = () => {
 
