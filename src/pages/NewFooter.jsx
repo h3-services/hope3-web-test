@@ -13,7 +13,7 @@ const NewFooter = () => {
     { name: 'Beulah Francis', link: 'https://www.linkedin.com/in/beulah-francis-55a439349/' },
     { name: 'Mohamed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
     { name: 'siva kumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
-    { name: 'meiy Anna', link: 'https://www.linkedin.com/in/meiytx' }
+    { name: 'Meiy Palaniappan', link: 'https://www.linkedin.com/in/meiytx' }
   ]
 
   // Manage body class for cursor visibility

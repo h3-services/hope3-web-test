@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Navbar from './navbar.jsx';
 import NewFooter from './NewFooter.jsx';
 import './Founders.css';
@@ -61,8 +61,7 @@ const foundersData = [
         roleIntro: "Palani is the founder of HOPE3. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
         bio: "Palani is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today’s societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity.",
         email: "palani@hope3.org",
-        // quote: "Education is the key to addressing many of today’s societal challenges.",
-        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
+        categories: ['HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
     },
     {
         id: 2,
@@ -72,8 +71,7 @@ const foundersData = [
         roleIntro: "Neel is the co-founder of HOPE3. He also serves on the HOPE3 Board and HOPE3 Varsity.",
         bio: "Neel is the co-founder of HOPE3. He also serves on the HOPE3 Board and HOPE3 Varsity. In addition to being an advisor to the Hope 3 foundation long term strategy and regular activities, Neel enjoys connecting with students through Soft Skills club, as part of HOPE3 Varsity.",
         email: "neel@hope3.org",
-        // quote: "Creating change through personal and social awareness.",
-        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity']
+        categories: ['HOPE3 Board', 'HOPE3 Varsity']
     },
     {
         id: 3,
@@ -83,8 +81,7 @@ const foundersData = [
         roleIntro: "Meenakshi is one of the founding members of HOPE3 Foundation and is the president of HOPE3 Varsity the educational wing of HOPE3 Foundation. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
         bio: "Meenakshi actively engages in a wide variety of HOPE3 Varsity classes as a mentor and many a time as a student.",
         email: "meenakshi.sundaram@hope3.org",
-        // quote: "Education should be actionable and build a seeking (research) mindset.",
-        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
+        categories: ['HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
     },
     {
         id: 4,
@@ -119,7 +116,7 @@ const foundersData = [
         id: 27,
         name: "Miss. Ananya Somasundaram",
         title: "Vocabulary Mentor",
-        image: placeholderImage,
+        image: pichumaniImage,
         bio: "Ananya is in tenth grade, living in Plano, Texas. She selects a word and provides its meaning along with an example sentence in both English and Tamil to help the students expand their vocabulary.",
         categories: ['HOPE3 Varsity']
     },
@@ -309,19 +306,27 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
         }
     };
 
-    // Reset index if filtered members change
+    // Reset index ONLY if the members array content actually changes (by comparing IDs)
+    const prevMembersIds = useRef("");
     useEffect(() => {
-        setStartIndex(0);
+        const currentIds = members.map(m => m.id).join(",");
+        if (prevMembersIds.current !== currentIds) {
+            setStartIndex(0);
+            prevMembersIds.current = currentIds;
+        }
     }, [members]);
 
     // Auto-play every 4 seconds
     useEffect(() => {
+        let interval;
         if (!isPaused && members.length > itemsPerPage) {
-            const interval = setInterval(() => {
+            interval = setInterval(() => {
                 handleNext();
             }, 4000);
-            return () => clearInterval(interval);
         }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
     }, [startIndex, isPaused, members.length]);
 
     return (
@@ -360,7 +365,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
             <button
                 className="carousel-arrow right"
                 onClick={handleNext}
-                disabled={members.length <= itemsPerPage}
+                disabled={startIndex + itemsPerPage >= members.length}
                 aria-label="Next"
             >
                 ❯
@@ -373,47 +378,50 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
     const [lastInteractedCategory, setLastInteractedCategory] = useState(null);
     const filterSectionRef = useRef(null);
 
-    const filteredFounders = activeCategory === 'All'
-        ? foundersData
-        : foundersData.filter(founder => founder.categories.includes(activeCategory));
+    const filteredFounders = React.useMemo(() => {
+        let filtered = activeCategory === 'All'
+            ? [...foundersData]
+            : foundersData.filter(founder => founder.categories.includes(activeCategory));
 
-    if (activeCategory === 'HOPE3 Varsity') {
-        const stripPrefix = (name) => name.replace(/^(Mr\.|Mrs\.|Dr\.)\s+/i, '');
-        filteredFounders.sort((a, b) => stripPrefix(a.name).localeCompare(stripPrefix(b.name)));
-    } else if (activeCategory === 'Admissions') {
-        const order = [
-            "Mr. Arumugam AP",
-            "Mr. Ganesh Gopalakrishnan",
-            "Mr. Gokul Kittusamy",
-            "Mr. Manickam Chockalingam",
-            "Dr. Meenakshi Sundaram",
-            "Mr. Palaniappan (Palani) Vairavan"
-        ];
-        filteredFounders.sort((a, b) => {
-            const indexA = order.indexOf(a.name);
-            const indexB = order.indexOf(b.name);
-            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-            if (indexA !== -1) return -1;
-            if (indexB !== -1) return 1;
-            return a.name.localeCompare(b.name);
-        });
-    } else if (activeCategory === 'Student Relations') {
-        const order = [
-            "Mr. Ganesh Gopalakrishnan",
-            "Dr. Meenakshi Sundaram",
-            "Mr. Gokul Kittusamy",
-            "Mr. Palaniappan (Palani) Vairavan",
-            "Mr. Sivakumar (Shiva) KS"
-        ];
-        filteredFounders.sort((a, b) => {
-            const indexA = order.indexOf(a.name);
-            const indexB = order.indexOf(b.name);
-            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-            if (indexA !== -1) return -1;
-            if (indexB !== -1) return 1;
-            return a.name.localeCompare(b.name);
-        });
-    }
+        if (activeCategory === 'HOPE3 Varsity') {
+            const stripPrefix = (name) => name.replace(/^(Mr\.|Mrs\.|Dr\.)\s+/i, '');
+            filtered.sort((a, b) => stripPrefix(a.name).localeCompare(stripPrefix(b.name)));
+        } else if (activeCategory === 'Admissions') {
+            const order = [
+                "Mr. Arumugam AP",
+                "Mr. Ganesh Gopalakrishnan",
+                "Mr. Gokul Kittusamy",
+                "Mr. Manickam Chockalingam",
+                "Dr. Meenakshi Sundaram",
+                "Mr. Palaniappan (Palani) Vairavan"
+            ];
+            filtered.sort((a, b) => {
+                const indexA = order.indexOf(a.name);
+                const indexB = order.indexOf(b.name);
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.name.localeCompare(b.name);
+            });
+        } else if (activeCategory === 'Student Relations') {
+            const order = [
+                "Mr. Ganesh Gopalakrishnan",
+                "Dr. Meenakshi Sundaram",
+                "Mr. Gokul Kittusamy",
+                "Mr. Palaniappan (Palani) Vairavan",
+                "Mr. Sivakumar (Shiva) KS"
+            ];
+            filtered.sort((a, b) => {
+                const indexA = order.indexOf(a.name);
+                const indexB = order.indexOf(b.name);
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.name.localeCompare(b.name);
+            });
+        }
+        return filtered;
+    }, [activeCategory]);
 
     // Reset selection when category changes
     const handleCategoryChange = (category) => {

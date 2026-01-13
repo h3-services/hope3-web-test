@@ -116,7 +116,7 @@ const Navbar = () => {
                   <button
                     className="mobile-nav-button"
                     onClick={() => {
-                      navigate('/services');
+                      window.open('https://www.hope3.org/', '_blank', 'noopener,noreferrer');
                       setMobileOpen(false);
                       setActiveDropdown(null);
                     }}
@@ -263,7 +263,7 @@ const Navbar = () => {
             <button
               className="section-title"
               onClick={() => {
-                navigate('/services');
+                window.open('https://www.hope3.org/', '_blank', 'noopener,noreferrer');
               }}
             >
               Services

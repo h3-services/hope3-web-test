@@ -1,7 +1,5 @@
-"use client"
-
+import { Link } from 'react-router-dom'
 import '../styles/spotlightSection.css'
-import { Newspaper, Trophy, Zap, Handshake } from 'lucide-react'
 
 const SpotlightSection = () => {
   const baseUrl = import.meta.env.BASE_URL || '/'
@@ -10,41 +8,37 @@ const SpotlightSection = () => {
   const news = [
     {
       id: 1,
-      title: "HOPE3 Launches New Entrepreneurship Program",
-      date: "December 2024",
-      description: "Empowering 100+ young entrepreneurs with mentorship and resources",
+      title: "Student placement at Google",
+      date: "November 2025",
+      description: "One of our students has been placed at Google as an AIML engineer and is now working in Mountain View, California—a proud milestone for the HOPE3 family.",
       size: "large",
       image: getImagePath("entrepreneurship.png")
     },
     {
       id: 2,
-      title: "Education Initiative Reaches 500 Students",
-      date: "November 2024",
-      description: "Our comprehensive education program expands to rural communities",
-      size: "medium",
-      image: getImagePath("education.png")
+      title: "HOPE3 Services Launched",
+      date: "December 2025",
+      description: "The HOPE3 team has launched a HOPE3 Services branch, providing students with real-time, hands-on project experience. Link to HOPE3 Services will be provided from HOPE3 Website. Stay tuned.",
+      size: "medium"
     },
     {
       id: 3,
-      title: "Women Empowerment Workshop Success",
-      date: "October 2024",
-      description: "Building confidence and leadership skills among women",
-      size: "small"
+      title: "Investment club for HOPE3 Students",
+      date: "January 2026",
+      description: "We have started an Investment Club for HOPE3 students and alumni to learn, collaborate, and grow together. A webinar was conducted by Mr. G Cholai Managing Director, Pacific Valley Financial Service, for the students.",
+      size: "medium"
     },
     {
       id: 4,
-      title: "Partnership with Local Universities",
-      date: "September 2024",
-      description: "Collaborating to enhance educational opportunities",
-      size: "small"
-    },
-    {
-      id: 5,
-      title: "Innovation Hub Opens in Chennai",
-      date: "August 2024",
-      description: "New space for entrepreneurs and innovators to collaborate",
-      size: "medium",
-      image: getImagePath("innovation.png")
+      title: "Pre-Admissions for students",
+      date: "January 2026",
+      description: (
+        <>
+          Pre-admissions have officially begun for the upcoming academic year, 2026. You can apply at{" "}
+          <Link to="/join-hope3" className="news-link" style={{ color: '#332EB2', textDecoration: 'underline', fontSize: '14px' }}>Join HOPE3</Link>
+        </>
+      ),
+      size: "medium"
     }
   ]
 
@@ -53,10 +47,10 @@ const SpotlightSection = () => {
       <div className="spotlight-container">
         <div className="rounded-2xl p-6 mb-12 text-center">
           <h2 className="cinzel-section-header">
-            Spotlight & News
+            Highlights & Happenings
           </h2>
           <p style={{ fontSize: '14px', marginTop: '10px', color: '#555' }}>
-            We are proud of each and every student have passed through HOPE3. We would like to highlight some of our students and their success stories.
+            We are proud of each and every student have passed through HOPE3. We would like to highlight some of our major milestones and success stories.
           </p>
         </div>
 
@@ -78,9 +72,9 @@ const SpotlightSection = () => {
                 <h3 className="news-card-title">
                   {item.title}
                 </h3>
-                <p className="news-card-description">
+                <div className="news-card-description">
                   {item.description}
-                </p>
+                </div>
               </div>
             </div>
           ))}

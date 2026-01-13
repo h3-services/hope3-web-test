@@ -15,6 +15,7 @@ function Leaders() { // Renamed to Leaders to match the route and file name
     const pillars = [
         {
             id: 1,
+
             name: "Palaniappan Vairavan",
             title: "Founder",
             image: palaniImage,

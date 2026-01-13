@@ -185,7 +185,7 @@
 }
 
 .galaxy-mockup:hover .galaxy-student-image {
-    transform: scale(1.1);
+    transform: scale(1);
 }
 
 /* Galaxy Content Overlay - positioned at bottom of image */
@@ -202,7 +202,7 @@
 }
 
 .student-name {
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 700;
     color: #ffffff;
     margin: 0;
@@ -212,7 +212,7 @@
 }
 
 .student-role {
-    font-size: 0.75rem;
+    font-size: 16px;
     font-weight: 500;
     color: #ffffff;
     margin: 0;
@@ -222,7 +222,7 @@
 }
 
 .student-company {
-    font-size: 0.7rem;
+    font-size: 16px;
     font-weight: 400;
     color: #ffffff;
     margin: 0;
@@ -409,7 +409,7 @@
 }
 
 .ipad-student-name {
-    font-size: 2.2rem;
+    font-size: 1rem;
     font-weight: 700;
     margin: 0 0 5px;
     background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);
@@ -419,8 +419,10 @@
 }
 
 .ipad-subtitle {
-    color: #8b5cf6;
-    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #4274e4;
     margin: 0 0 20px;
     padding-bottom: 15px;
     border-bottom: 2px solid rgba(139, 92, 246, 0.2);
@@ -432,14 +434,14 @@
 }
 
 .ipad-story-text {
-    font-size: 0.95rem;
+    font-size: 14px;
     line-height: 1.7;
     color: #334155;
     margin-bottom: 20px;
 }
 
 .ipad-story-tamil {
-    font-size: 0.9rem;
+    font-size: 14px;
     line-height: 1.6;
     color: #64748b;
     font-style: italic;
@@ -459,14 +461,15 @@
 }
 
 .ipad-achievement h4 {
-    font-size: 1rem;
-    color: #8b5cf6;
+    font-family: "Inter", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #4c6bf7;
     margin: 0 0 10px;
-    font-weight: 600;
 }
 
 .ipad-achievement p {
-    font-size: 0.9rem;
+    font-size: 12px;
     line-height: 1.6;
     color: #334155;
     margin: 0;
@@ -621,7 +624,7 @@
     }
 
     .ipad-story-text {
-        font-size: 0.85rem;
+        font-size: 12px;
     }
 
     .ipad-modal-close {
