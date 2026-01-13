@@ -52,14 +52,14 @@ body.no-scroll {
     padding-left: 0;
     gap: 3rem;
     /* Fixed spacing matches right side */
-    transform: translateX(70px);
+    transform: translateX(110px);
     /* Nudge right */
 }
 
 .navbar-right {
     justify-content: flex-start;
     /* Align texts towards center */
-    padding-left: 160px;
+    padding-left: 200px;
     gap: 3rem;
     /* Fixed spacing matches left side */
 }
@@ -73,6 +73,8 @@ body.no-scroll {
     justify-content: center;
     position: relative;
     flex-shrink: 0;
+    pointer-events: none;
+    /* Allow clicks to pass through to underlying nav items */
 }
 
 .navbar-logo {
@@ -113,7 +115,9 @@ body.no-scroll {
 
 .navbar-center-logo-link {
     position: absolute;
-    left: calc(50% + 120px);
+    pointer-events: auto;
+    /* Re-enable clicks for the logo */
+    left: calc(50% + 160px);
     /* Shifted further right */
     top: 50%;
     transform: translate(-50%, -50%);
@@ -160,49 +164,63 @@ body.no-scroll {
 }
 
 .navbar .section-title {
-    font-size: 0.875rem;
-    font-weight: 400;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    /* Match Get Involved size */
+    font-weight: 500;
+    /* Medium weight */
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     letter-spacing: 0.3px;
+    /* Match Get Involved spacing */
+    text-transform: none;
+    /* uppercase removed */
     color: white !important;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
     border: none;
     background: transparent !important;
     cursor: pointer;
     white-space: nowrap;
     position: relative;
-    padding-bottom: 2px;
+    padding: 0.25rem 0.5rem;
+    /* px-2 py-1 */
     margin-bottom: 0 !important;
-    /* removed margin-top */
     display: flex;
     align-items: center;
 }
 
+/* Glow Effect REMOVED */
+
+/* Underline Effect */
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 1.5px;
-    background: #4FB3E8;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.section-title:hover::after {
-    opacity: 1;
+    height: 1px;
+    background: #3b82f6;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px #3b82f6;
 }
 
 .dropdown-arrow {
-    font-size: 0.8rem;
-    color: white;
-    transition: transform 0.3s;
-    transform: rotate(180deg);
+    display: none;
+    /* Hide arrow for cleaner look with new animation */
 }
 
-.navbar-section:hover .section-title {
-    color: #4FB3E8;
+/* Hover and Active States */
+.navbar-section:hover .section-title,
+.section-title.active {
+    color: #3b82f6 !important;
+    /* Scale removed */
+}
+
+/* Glow hover removed */
+
+.navbar-section:hover .section-title::after,
+.section-title.active::after {
+    transform: scaleX(1);
 }
 
 .navbar-item {

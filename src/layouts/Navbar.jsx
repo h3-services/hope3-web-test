@@ -173,14 +173,18 @@ const Navbar = () => {
             <img src={logo} alt="Logo" className="navbar-logo" />
           </Link>
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Work'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Work')}
+            onMouseEnter={() => { if (clickedDropdown !== 'Our Work') setClickedDropdown(null); setActiveDropdown('Our Work'); }}
             onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
             <button
-              className="section-title"
+              className={`section-title ${activeDropdown === 'Our Work' ? 'active' : ''}`}
               onClick={() => {
-                const newState = activeDropdown === 'Our Work' ? null : 'Our Work';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                if (clickedDropdown === 'Our Work') {
+                  setActiveDropdown(null);
+                  setClickedDropdown(null);
+                } else {
+                  setActiveDropdown('Our Work');
+                  setClickedDropdown('Our Work');
+                }
                 setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
@@ -210,14 +214,18 @@ const Navbar = () => {
             )}
           </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Impact'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Impact')}
+            onMouseEnter={() => { if (clickedDropdown !== 'Our Impact') setClickedDropdown(null); setActiveDropdown('Our Impact'); }}
             onMouseLeave={() => !clickedDropdown && setTimeout(() => setActiveDropdown(null), 100)}>
             <button
-              className="section-title"
+              className={`section-title ${activeDropdown === 'Our Impact' ? 'active' : ''}`}
               onClick={() => {
-                const newState = activeDropdown === 'Our Impact' ? null : 'Our Impact';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                if (clickedDropdown === 'Our Impact') {
+                  setActiveDropdown(null);
+                  setClickedDropdown(null);
+                } else {
+                  setActiveDropdown('Our Impact');
+                  setClickedDropdown('Our Impact');
+                }
                 setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
@@ -270,14 +278,18 @@ const Navbar = () => {
             </button>
           </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['About Us'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('About Us')}
+            onMouseEnter={() => { if (clickedDropdown !== 'About Us') setClickedDropdown(null); setActiveDropdown('About Us'); }}
             onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
             <button
-              className="section-title"
+              className={`section-title ${activeDropdown === 'About Us' ? 'active' : ''}`}
               onClick={() => {
-                const newState = activeDropdown === 'About Us' ? null : 'About Us';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                if (clickedDropdown === 'About Us') {
+                  setActiveDropdown(null);
+                  setClickedDropdown(null);
+                } else {
+                  setActiveDropdown('About Us');
+                  setClickedDropdown('About Us');
+                }
                 setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
