@@ -45,15 +45,23 @@ body.no-scroll {
 }
 
 .navbar-left {
-    justify-content: space-evenly;
-    /* Evenly space links between Far Left and Center */
+    justify-content: flex-end;
+    /* Align texts towards center */
     padding-right: 0;
+    /* Pushed right by reducing padding */
+    padding-left: 0;
+    gap: 3rem;
+    /* Fixed spacing matches right side */
+    transform: translateX(70px);
+    /* Nudge right */
 }
 
 .navbar-right {
-    justify-content: space-evenly;
-    /* Evenly space links between Center and Get Involved */
-    padding-left: 0;
+    justify-content: flex-start;
+    /* Align texts towards center */
+    padding-left: 160px;
+    gap: 3rem;
+    /* Fixed spacing matches left side */
 }
 
 .navbar-center-spacer {
@@ -105,8 +113,8 @@ body.no-scroll {
 
 .navbar-center-logo-link {
     position: absolute;
-    left: calc(50% + 10px);
-    /* Slightly shifted to the right */
+    left: calc(50% + 120px);
+    /* Shifted further right */
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -575,6 +583,10 @@ body.no-scroll {
 /* Desktop Logo Link */
 .desktop-logo-link {
     display: block;
+    margin-right: auto;
+    /* Push logo to far left */
+    transform: translateX(-30px);
+    /* Move logo small left independent of text */
 }
 
 /* Mobile Menu Overlay */
