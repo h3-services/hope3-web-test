@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import '../styles/navbar.css';
 import logo from '../assets/home/hope3_logo.png';
 import hope3 from '../assets/home/hope3.png';
@@ -48,6 +49,18 @@ const Navbar = () => {
   const dropdownRefs = useRef({});
   const mobileMenuRef = useRef(null);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [mobileOpen]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Only close if we have a clicked (frozen) dropdown
@@ -87,6 +100,18 @@ const Navbar = () => {
     };
   }, [clickedDropdown, mobileOpen]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const menuItems = {
     'Our Work': ['Our Students', 'Our Projects'],
     'Our Impact': ['Why HOPE3?', 'HOPE3 Journey'],
@@ -95,7 +120,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`} role="navigation" aria-label="Main navigation">
+    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'} ${mobileOpen ? 'mobile-active' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
         <button
           className={`hamburger ${mobileOpen ? 'active' : ''}`}
@@ -108,66 +133,117 @@ const Navbar = () => {
           <span></span>
         </button>
 
-        <div className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`}>
-          <div className="mobile-menu-content" ref={mobileMenuRef}>
-            {Object.entries(menuItems).map(([section, items]) => (
-              <div key={section} className="mobile-nav-item">
-                {section === 'Services' ? (
-                  <button
-                    className="mobile-nav-button"
-                    onClick={() => {
-                      window.open('https://www.hope3.org/', '_blank', 'noopener,noreferrer');
-                      setMobileOpen(false);
-                      setActiveDropdown(null);
-                    }}
-                  >
-                    {section}
-                  </button>
-                ) : (
-                  <>
-                    <button
-                      className={`mobile-nav-button ${activeDropdown === section ? 'active' : ''}`}
-                      onClick={() => {
-                        const newState = activeDropdown === section ? null : section;
-                        setActiveDropdown(newState);
-                      }}
-                    >
-                      {section}
-                      <span className="mobile-arrow">▼</span>
-                    </button>
-                    {activeDropdown === section && (
-                      <div className="mobile-submenu">
-                        {items.map((item) => (
-                          <button
-                            key={item}
-                            onClick={() => {
-                              const routes = {
-                                'Our Students': '/our-students',
-                                'Our Projects': '/our-projects',
-                                'Why HOPE3?': '/why-hope3',
-                                'HOPE3 Journey': '/hope3-journey',
-                                'Leadership & Board': '/leadership-&-board',
-                                'Services': '/services',
-                                'Financials': '/financials'
-                              };
-                              if (routes[item]) {
-                                navigate(routes[item]);
-                              }
-                              setMobileOpen(false);
-                              setActiveDropdown(null);
-                            }}
-                          >
-                            {item}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                )}
+        {createPortal(
+          <div className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`} onClick={() => setMobileOpen(false)}>
+            <div className="mobile-menu-content" ref={mobileMenuRef} onClick={(e) => e.stopPropagation()}>
+              {/* Header */}
+              <div className="mobile-header">
+                <img src={logo} alt="HOPE3" className="mobile-logo" />
+                <button
+                  className="mobile-close-btn"
+                  onClick={() => setMobileOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-            ))}
-          </div>
-        </div>
+
+              {/* Navigation */}
+              <nav className="mobile-nav">
+                {Object.entries(menuItems).map(([section, items]) => (
+                  <div key={section} className="nav-section">
+                    {section === 'Services' ? (
+                      <a
+                        href="https://www.hope3.org/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-item"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <span>{section}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <>
+                        <button
+                          className={`nav-item ${activeDropdown === section ? 'active' : ''}`}
+                          onClick={() => setActiveDropdown(activeDropdown === section ? null : section)}
+                        >
+                          <span>{section}</span>
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            className={`chevron ${activeDropdown === section ? 'open' : ''}`}
+                          >
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </button>
+
+                        <div className={`nav-dropdown ${activeDropdown === section ? 'open' : ''}`}>
+                          {items.map((item) => (
+                            <button
+                              key={item}
+                              className="nav-subitem"
+                              onClick={() => {
+                                const routes = {
+                                  'Our Students': '/our-students',
+                                  'Our Projects': '/our-projects',
+                                  'Why HOPE3?': '/why-hope3',
+                                  'HOPE3 Journey': '/hope3-journey',
+                                  'Leadership & Board': '/leadership-&-board',
+                                  'Financials': '/financials',
+                                  'Media & FAQ': '/media-faq'
+                                };
+                                if (routes[item]) {
+                                  navigate(routes[item]);
+                                }
+                                setMobileOpen(false);
+                                setActiveDropdown(null);
+                              }}
+                            >
+                              {item}
+                            </button>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </nav>
+
+              {/* Footer Actions */}
+              <div className="mobile-footer">
+                <button
+                  className="cta-primary"
+                  onClick={() => {
+                    navigate('/donate');
+                    setMobileOpen(false);
+                  }}
+                >
+                  Make a Gift
+                </button>
+                <button
+                  className="cta-secondary"
+                  onClick={() => {
+                    navigate('/join-hope3');
+                    setMobileOpen(false);
+                  }}
+                >
+                  Join HOPE3
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
         <div className="navbar-left">
           <Link to="/" className="desktop-logo-link">
             <img src={logo} alt="Logo" className="navbar-logo" />
