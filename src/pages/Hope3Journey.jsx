@@ -1,17 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Hope3Journey.css';
-import journeyImage from '../assets/journey/Gemini_Generated_Image_yyvlsoyyvlsoyyvl-removebg-preview.png';
-import mobileTrackImage from '../assets/journey/_620DED87-C755-4F75-9D5F-3EA3E770D415_-removebg-preview.png';
 import bannerImage from '../assets/journey/bannerForJourney.png';
+import statsBanner from '../assets/statistics banner.png';
 import Navbar from './navbar';
 import NewFooter from './NewFooter';
 
 const JourneyTimeline = () => {
-  const [selectedYear, setSelectedYear] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [mobileSelectedStation, setMobileSelectedStation] = useState(null);
-  const [visibleStartIndex, setVisibleStartIndex] = useState(0);
-  const trackContainerRef = useRef(null);
+
+  const milestones = [
+    { date: "January 2026", title: "Student Investment Clubs", body: "With the intent of encouraging students to start saving and understanding money management, HOPE3 started educating students about investment and kickstarted investment clubs for our students and alumni." },
+    { date: "December 2025", title: "Internship Opportunities", body: "The HOPE3 Services team started with an intent to provide internship projects to our students, giving them practical experience in what they learn." },
+    { date: "November 2025", title: "Placements at Google", body: "Our student, Nachiappan, graduated with an MS from Ohio State University and is now working as an AIML engineer at Google in Mountain View, California." },
+    { date: "November 2024", title: "IIT Madras Admission", body: "A couple of our students secured admission to the IIT Madras online BS Data Science program." },
+    { date: "June 2023", title: "Study Abroad Success", body: "A couple of our students secured US Visas for their Master's degree in Computer Science." },
+    { date: "April 2023", title: "First RCD Batch", body: "Our first Rough Cut Diamonds batch was started with students at our own residential place in Chennai." },
+    { date: "October 2021", title: "NEET State 1st Rank", body: "Our Student, Devadharshini, secured state first in NEET exam and now studying in Madras Medical College, Chennai." },
+    { date: "October 2020", title: "NEET State 7th Rank", body: "Our student, Viswanathan, secured Tamil Nadu State 7th rank in NEET examination." },
+    { date: "January 2020", title: "HOPE3 Varsity", body: "Formation of HOPE3 Varsity. This is the distinguishing factor between other educational NGOs and HOPE3. HOPE3 Varsity helps students overcome language barriers when they move from Tamil medium to starting college in English medium. Volunteers guide and coach students on various technical topics and soft skills." },
+    { date: "April 2019", title: "HOPE3 Foundation", body: "Formation of HOPE3 Foundation, marking the official beginning of our mission to empower students." }
+  ];
 
   // Detect mobile viewport
   useEffect(() => {
@@ -24,218 +32,68 @@ const JourneyTimeline = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle page scroll to update visible icons (show 3 at a time)
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const handlePageScroll = () => {
-      if (trackContainerRef.current) {
-        const rect = trackContainerRef.current.getBoundingClientRect();
-        const containerTop = rect.top;
-        const viewportHeight = window.innerHeight;
-
-        // Calculate scroll progress based on container position
-        const scrollProgress = Math.max(0, (viewportHeight / 2 - containerTop) / 100);
-        const newStartIndex = Math.floor(scrollProgress);
-        const maxStartIndex = 5; // 8 icons - 3 visible = 5 max start index
-
-        setVisibleStartIndex(Math.min(Math.max(0, newStartIndex), maxStartIndex));
-      }
-    };
-
-    window.addEventListener('scroll', handlePageScroll);
-    handlePageScroll(); // Initial check
-
-    return () => window.removeEventListener('scroll', handlePageScroll);
-  }, [isMobile]);
-
-  const studentData = [
-    { year: 2018, students: 7, station: "Social projects findabed", icon: "🏠" },
-    { year: 2019, students: 23, station: "Varsity", icon: "🎓" },
-    { year: 2020, students: 23, station: "RCD", icon: "🔬" },
-    { year: 2021, students: 28, station: "Enters into IIT Game", icon: "🏆" },
-    { year: 2022, students: 55, station: "Study in Abroad", icon: "✈️" },
-    { year: 2023, students: 18, station: "Earn while u Learn", icon: "💼" },
-    { year: 2024, students: 15, station: "Student Entreprenship", icon: "🚀" },
-    { year: 2025, students: 2, station: "Enters into Maang", icon: "💻" }
-  ];
-
-  const totalStudents = 139;
-
-  // Calculate zigzag positions for 8 stations
-  const getZigzagPosition = (index, total) => {
-    const segment = index / (total - 1);
-    const x = 8 + segment * 84; // Spread across width
-    let y = index % 2 === 0 ? 35 : 65; // Zigzag pattern
-    if (index === 2) y = 30; // Move 2020 slightly up from 2018
-    if (index === 4) y = 2; // Move 2022 slightly up from 2020
-    if (index === 6) y = 20; // Move 2024 slightly up from 2022
-    if (index === 3) y = 85; // Move 2021 slightly down from 2019
-    if (index === 5) y = 60; // Move 2023 slightly down from 2021
-    if (index === 7) y = 85; // Move 2025 slightly down from 2023
-    return { x: `${x}% `, y: `${y}% ` };
-  };
-
   return (
     <>
       <Navbar />
-      {isMobile ? (
-        // Mobile-specific layout with scroll-based icons
-        <div className="mobile-scroll-journey">
-          {/* Banner Block with Quote */}
-          <div className="journey-banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
-            <p className="banner-quote">
-              The Journey Of A Thousand Miles Begins With One Step
-            </p>
-            <p className="banner-author">- Lao Tzu</p>
-          </div>
+      <div className={isMobile ? "mobile-scroll-journey" : ""}>
+        {/* Banner Block with Quote */}
+        <div className="journey-banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
+          <p className="banner-quote">
+            The Journey Of A Thousand Miles Begins With One Step
+          </p>
+          <p className="banner-author">- Lao Tzu</p>
+        </div>
 
-          <div className="rounded-2xl p-6 mb-12 text-center">
+        <div className="journey-container">
+          <div className="mb-12 text-center">
             <h1 className="cinzel-section-header">HOPE3 Journey</h1>
           </div>
 
           {/* HOPE3 Story Passage */}
           <div className="hope3-passage">
-            <p className="passage-text">HOPE3 began modestly, driven by a simple vision to make learning accessible to all.</p>
-            <p className="passage-text">Over the years, it has grown steadily, shaping countless student journeys.</p>
-            <p className="passage-text">This transformation was made possible by the unwavering support of volunteers.</p>
-            <p className="passage-text">Generous donors joined hands, strengthening every step of the mission.</p>
-            <p className="passage-text">Each contribution—big or small—added a unique spark of change.</p>
-            <p className="passage-text">Together, they empowered students to learn, dream, and achieve.</p>
+            <p className="passage-text">
+              HOPE3 began modestly, driven by a simple vision to make learning accessible to all.
+              Over the years, it has grown steadily, shaping countless student journeys. This transformation
+              was made possible by the <strong>unwavering support of volunteers.</strong> Generous donors joined hands,
+              strengthening every step of the mission. Each contribution—big or small—added a unique spark of change.
+            </p>
+            <p className="passage-text">
+              Together, they empowered students to <strong>learn, dream, and achieve.</strong> They realized that the
+              students who needed help most weren't the ones already topping their classes. They were the ones
+              with untapped potential—students who hadn't been taught well, who didn't score high, but who had the
+              <strong> hunger to learn.</strong> These were the <strong>"rough cut diamonds,"</strong> and HOPE3 set out to polish them.
+            </p>
             <p className="passage-highlight">Today, HOPE3 stands as a catalyst—transforming every student's life.</p>
           </div>
+        </div>
 
-          {/* Instruction text */}
-          <p className="scroll-instruction">
-            Scroll vertically to see milestones. Tap icons to view details.
-          </p>
+        {/* Branded Stats Banner Image - Full Width */}
+        <div className="journey-stats-image-container">
+          <img src={statsBanner} alt="Impact Statistics" className="journey-stats-banner" />
+        </div>
 
-          {/* Main content area: Track on left, Card on right */}
-          <div className="mobile-journey-content" ref={trackContainerRef}>
-            {/* Left side: Track with icons */}
-            <div className="track-side">
-              <img src={mobileTrackImage} alt="Journey Track" className="track-left-image" />
+        {/* Milestones Section */}
+        <div className="milestones-section">
+          <div className="milestones-header">
+            <h2 className="milestones-title">Our Journey</h2>
+            <div className="scroll-hint">Swipe horizontally to explore ⮕</div>
+          </div>
 
-              {/* Scrollable icons container - shows 3 at a time */}
-              <div className="icons-scroll-box">
-                {studentData.map(({ year, students, station, icon }, index) => {
-                  const isSelected = mobileSelectedStation === year;
-
-                  return (
-                    <div
-                      key={year}
-                      className={`scroll-icon-item ${isSelected ? 'selected' : ''}`}
-                      onClick={() => setMobileSelectedStation(isSelected ? null : year)}
-                    >
-                      <div className={`scroll-icon-marker ${isSelected ? 'selected' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
-                        <span className="scroll-icon-emoji">{icon}</span>
-                      </div>
-                      <span className="scroll-icon-year">{year}</span>
-                    </div>
-                  );
-                })}
+          <div className="milestones-scroll-container">
+            {milestones.map((m, idx) => (
+              <div key={idx} className="milestone-card">
+                <div className="milestone-date">{m.date}</div>
+                <h3 className="milestone-card-title">{m.title}</h3>
+                <p className="milestone-card-body">{m.body}</p>
+                <div className="milestone-card-footer">
+                  <span className="milestone-index">#0{idx + 1}</span>
+                  <div className="milestone-dot"></div>
+                </div>
               </div>
-            </div>
-
-            {/* Right side: Content card */}
-            <div className="card-side">
-              {mobileSelectedStation ? (
-                <div className="mobile-content-card">
-                  <div className="card-icon">
-                    {studentData.find(d => d.year === mobileSelectedStation)?.icon}
-                  </div>
-                  <div className="card-year">
-                    {mobileSelectedStation}
-                  </div>
-                  <div className="card-station-name">
-                    {studentData.find(d => d.year === mobileSelectedStation)?.station}
-                  </div>
-                  <div className="card-students">
-                    {studentData.find(d => d.year === mobileSelectedStation)?.students} Students
-                  </div>
-                </div>
-              ) : (
-                <div className="card-placeholder">
-                  <p>👈 Tap an icon to view details</p>
-                </div>
-              )}
-            </div>
+            ))}
           </div>
         </div>
-      ) : (
-        // Desktop layout
-        <>
-          {/* Banner Block with Quote - OUTSIDE container for full width */}
-          <div className="journey-banner-block" style={{ backgroundImage: `url(${bannerImage})` }}>
-            <p className="banner-quote">
-              The Journey Of A Thousand Miles Begins With One Step
-            </p>
-            <p className="banner-author">- Lao Tzu</p>
-          </div>
-
-          <div className="journey-container">
-            <div className="rounded-2xl p-6 mb-12 text-center">
-              <h1 className="cinzel-section-header">HOPE3 Journey</h1>
-            </div>
-
-            {/* HOPE3 Story Passage */}
-            <div className="hope3-passage">
-              <p className="passage-text">HOPE3 began modestly, driven by a simple vision to make learning accessible to all.</p>
-              <p className="passage-text">Over the years, it has grown steadily, shaping countless student journeys.</p>
-              <p className="passage-text">This transformation was made possible by the unwavering support of volunteers.</p>
-              <p className="passage-text">Generous donors joined hands, strengthening every step of the mission.</p>
-              <p className="passage-text">Each contribution—big or small—added a unique spark of change.</p>
-              <p className="passage-text">Together, they empowered students to learn, dream, and achieve.</p>
-              <p className="passage-highlight">Today, HOPE3 stands as a catalyst—transforming every student's life.</p>
-            </div>
-
-            {/* Fixed Hover Card Container */}
-            <div className="hover-card-container">
-              {selectedYear && (
-                <div className="hover-card show">
-                  <h3>{selectedYear}</h3>
-                  <h4 className="hover-station-name">{studentData.find(d => d.year === selectedYear)?.station}</h4>
-                  <p className="student-count">{studentData.find(d => d.year === selectedYear)?.students} Students</p>
-                </div>
-              )}
-            </div>
-
-            <div className="timeline-wrapper">
-              <div className="track-label-desktop track-label-before">beginning</div>
-              <div className="timeline-container">
-                <img src={journeyImage} alt="Journey Timeline" className="journey-image" />
-
-                {/* Station markers */}
-                {studentData.map(({ year, students, station, icon }, index) => {
-                  const { x, y } = getZigzagPosition(index, studentData.length);
-                  return (
-                    <div
-                      key={year}
-                      className="station-container"
-                      style={{ left: x, top: y }}
-                      onMouseEnter={() => setSelectedYear(year)}
-                      onMouseLeave={() => setSelectedYear(null)}
-                    >
-                      <div className={`station-marker ${selectedYear === year ? 'active' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
-                        <div className="station-icon">{icon}</div>
-                      </div>
-                      <div className="station-name-label">{station}</div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="track-label-desktop track-label-after">ongoing</div>
-            </div>
-
-            {/* Total summary card */}
-            {/*<div className="total-card">
-              <h4>Total Impact</h4>
-              <p className="total-students">{totalStudents} Students</p>
-              <p className="year-range">2018 - 2025</p>
-            </div>*/}
-          </div>
-        </>
-      )}
+      </div>
       <NewFooter />
     </>
   );
