@@ -3,7 +3,7 @@ import { FaPaypal } from "react-icons/fa";
 import { SiZelle } from "react-icons/si";
 import Navbar from './navbar';
 import NewFooter from './NewFooter';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Coins, Monitor } from 'lucide-react';
 import ErrorTooltip from '../components/ErrorTooltip';
 import SearchableSelect from '../components/SearchableSelect';
 import donateImage from '../assets/donate_icon/donate.jpeg';
@@ -14,7 +14,7 @@ import customAmountIcon from '../assets/donate_icon/hope_maker.jpeg';
 import zelleQR from '../assets/donate_icon/zelle_qr.png';
 
 const Donate = () => {
-    const [activeTab, setActiveTab] = useState(null);
+    const [activeTab, setActiveTab] = useState('monetary');
     const [selectedAmount, setSelectedAmount] = useState('');
     const [customAmount, setCustomAmount] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('paypal');
@@ -205,9 +205,9 @@ const Donate = () => {
                 {/* Empowering Dreams Section */}
                 <section className="py-6 sm:py-8 px-4 bg-white animate-fade-in">
                     <div className="max-w-3xl mx-auto">
-                        <div className="rounded-xl shadow-md p-5 sm:p-6 text-center text-gray-800" style={{ backgroundColor: '#e8f5e8' }}>
-                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4" style={{ fontFamily: 'Kavoon' }}>Empowering Dreams, Transforming Lives</h2>
-                            <p className="leading-relaxed text-gray-700 text-left" style={{ fontSize: '1.1em' }}>
+                        <div className="text-center text-gray-800 py-4">
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-[#332EB2]" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>Empowering Dreams, Transforming Lives</h2>
+                            <p className="leading-relaxed text-gray-700 text-left" style={{ fontSize: '16px' }}>
                                 Every student deserves a chance to rise and achieve their fullest potential. This transformative
                                 work at HOPE3 is made possible by a vibrant community of volunteers and generous donors, each
                                 contributing in their own unique way to empower students and drive change. Sustaining the HOPE3
@@ -227,11 +227,11 @@ const Donate = () => {
                         onClick={() => setActiveTab('monetary')}
                         style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
                         className={`w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'monetary'
-                            ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg ring-2 ring-green-200'
-                            : 'bg-white text-gray-700 border border-gray-200 hover:border-green-400 hover:shadow-md'
+                            ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg ring-2 ring-blue-200'
+                            : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:shadow-md'
                             }`}
                     >
-                        <span>💰</span> Monetary Donations
+                        <Coins className="w-5 h-5" /> Monetary Donations
                     </button>
                     <button
                         onClick={() => setActiveTab('electronics')}
@@ -241,7 +241,7 @@ const Donate = () => {
                             : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:shadow-md'
                             }`}
                     >
-                        <span>💻</span> Electronics Donations
+                        <Monitor className="w-5 h-5" /> Electronics Donations
                     </button>
                 </div>
 
@@ -250,24 +250,24 @@ const Donate = () => {
                     <section className="py-8 sm:py-10 px-4 sm:px-6 bg-white rounded-xl shadow-md mt-6 border border-gray-100">
                         <div className="max-w-5xl mx-auto">
                             <div className="py-4 sm:py-6 px-2 sm:px-4">
-                                <div className="text-left mb-8 max-w-4xl mx-auto space-y-4 text-gray-700" style={{ fontSize: '1.1em' }}>
-                                    <p className="leading-relaxed">
+                                <div className="text-left mb-8 max-w-4xl mx-auto space-y-4 text-gray-700">
+                                    <p className="leading-relaxed" style={{ fontSize: '16px' }}>
                                         This transformative work at HOPE3 is made possible by a vibrant community of volunteers and generous donors, each contributing in their own unique way to empower students and drive change.
                                     </p>
-                                    <p className="leading-relaxed">
+                                    <p className="leading-relaxed" style={{ fontSize: '16px' }}>
                                         Sustaining the HOPE3 residential program relies on generous, ongoing support. Every contribution, no matter the size, truly makes a meaningful impact in covering each student's essential expenses, including hostel, meals, healthcare, and utilities. Donations also fund tuition, exam fees, textbooks, commuting expenses, and critical staff salaries, ensuring students always receive guidance and support in their academic journey. Your donation goes a long way toward empowering their journey and shaping brighter futures.
                                     </p>
-                                    <p className="leading-relaxed">
+                                    <p className="leading-relaxed" style={{ fontSize: '16px' }}>
                                         Your generous support is invaluable and has the power to change a student's life forever. Every donation—no matter the amount—makes a meaningful difference and a profound impact in uplifting their journey.
                                     </p>
-                                    <p className="leading-relaxed">
+                                    <p className="leading-relaxed" style={{ fontSize: '16px' }}>
                                         HOPE3 is tax-exempt in the USA (501(C)(3)), making donations both impactful and tax-friendly. Please check with your employer if there is donation match for 501(C)(3) registered organization working towards upliftment through education in India. If there is, please follow the process with your employer.
                                     </p>
                                 </div>
 
                                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                                     {/* Hope Builder */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1000' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1000' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -279,9 +279,9 @@ const Donate = () => {
                                         <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={hopeBuilderIcon} alt="Hope Builder" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Builder</h3>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>Hope Builder</h3>
                                         <div className="mb-1 sm:mb-2">
-                                            <span className="text-base sm:text-xl font-bold text-green-600">$1000</span>
+                                            <span className="text-base sm:text-xl font-bold text-blue-600">$1000</span>
                                             <span className="text-gray-500 text-xs sm:text-sm">/year</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
@@ -290,7 +290,7 @@ const Donate = () => {
                                     </label>
 
                                     {/* Hope Enabler */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1500' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1500' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -302,9 +302,9 @@ const Donate = () => {
                                         <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={hopeEnablerIcon} alt="Hope Enabler" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Enabler</h3>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>Hope Enabler</h3>
                                         <div className="mb-1 sm:mb-2">
-                                            <span className="text-base sm:text-xl font-bold text-green-600">$1500</span>
+                                            <span className="text-base sm:text-xl font-bold text-blue-600">$1500</span>
                                             <span className="text-gray-500 text-xs sm:text-sm">/year</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
@@ -313,7 +313,7 @@ const Donate = () => {
                                     </label>
 
                                     {/* Dream Enabler */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '3000' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '3000' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -325,9 +325,9 @@ const Donate = () => {
                                         <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={dreamEnablerIcon} alt="Dream Enabler" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Dream Enabler</h3>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>Dream Enabler</h3>
                                         <div className="mb-1 sm:mb-2">
-                                            <span className="text-base sm:text-xl font-bold text-green-600">$3000</span>
+                                            <span className="text-base sm:text-xl font-bold text-blue-600">$3000</span>
                                             <span className="text-gray-500 text-xs sm:text-sm">/year</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
@@ -336,7 +336,7 @@ const Donate = () => {
                                     </label>
 
                                     {/* Hope Maker */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === 'custom' ? 'bg-[#f0fdf4] border-green-500 ring-1 ring-green-500' : 'border-gray-100 hover:border-green-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === 'custom' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -348,9 +348,9 @@ const Donate = () => {
                                         <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden shadow-sm">
                                             <img src={customAmountIcon} alt="Hope Maker" className="w-full h-full object-cover" />
                                         </div>
-                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800 font-serif">Hope Maker</h3>
+                                        <h3 className="text-sm sm:text-lg font-bold mb-1 text-gray-800" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>Hope Maker</h3>
                                         <div className="mb-1 sm:mb-2">
-                                            <span className="text-base sm:text-xl font-bold text-green-600">Custom</span>
+                                            <span className="text-base sm:text-xl font-bold text-blue-600">Custom</span>
                                         </div>
                                         <p className="text-gray-500 text-xs font-serif leading-tight">
                                             Your choice of amount
@@ -378,7 +378,7 @@ const Donate = () => {
                                             onChange={handleInputChange}
                                             className={`w-full pl-7 pr-4 py-2.5 border rounded-lg outline-none transition-all text-sm font-medium ${errors.paymentAmount
                                                 ? 'border-red-500 bg-red-50'
-                                                : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200 shadow-sm'
+                                                : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 shadow-sm'
                                                 }`}
                                             placeholder="0.00"
                                         />
@@ -396,7 +396,7 @@ const Donate = () => {
                                         name="firstName"
                                         value={formData.firstName}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.firstName ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.firstName ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                     />
                                     <ErrorTooltip message={errors.firstName} isVisible={!!errors.firstName} />
@@ -412,7 +412,7 @@ const Donate = () => {
                                         name="lastName"
                                         value={formData.lastName}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.lastName ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.lastName ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                     />
                                     <ErrorTooltip message={errors.lastName} isVisible={!!errors.lastName} />
@@ -428,7 +428,7 @@ const Donate = () => {
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.phone ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.phone ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                     />
                                     <ErrorTooltip message={errors.phone} isVisible={!!errors.phone} />
@@ -444,7 +444,7 @@ const Donate = () => {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.email ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.email ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                     />
                                     <ErrorTooltip message={errors.email} isVisible={!!errors.email} />
@@ -460,7 +460,7 @@ const Donate = () => {
                                         name="address1"
                                         value={formData.address1}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.address1 ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.address1 ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                     />
                                     <ErrorTooltip message={errors.address1} isVisible={!!errors.address1} />
@@ -476,7 +476,7 @@ const Donate = () => {
                                         name="address2"
                                         value={formData.address2}
                                         onChange={handleInputChange}
-                                        className="w-full p-2.5 border border-gray-300 rounded-lg outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-200 transition-all text-sm"
+                                        className="w-full p-2.5 border border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all text-sm"
                                     />
                                 </div>
 
@@ -490,7 +490,7 @@ const Donate = () => {
                                         name="city"
                                         value={formData.city}
                                         onChange={handleInputChange}
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.city ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.city ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                     />
                                     <ErrorTooltip message={errors.city} isVisible={!!errors.city} />
@@ -522,7 +522,7 @@ const Donate = () => {
                                         value={formData.zipCode}
                                         onChange={handleInputChange}
                                         maxLength="5"
-                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.zipCode ? 'border-red-500' : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-200'
+                                        className={`w-full p-2.5 border rounded-lg outline-none transition-all text-sm ${errors.zipCode ? 'border-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200'
                                             }`}
                                         placeholder="12345"
                                     />
@@ -532,7 +532,7 @@ const Donate = () => {
 
                             {/* Payment Method */}
                             <div className="mt-8 pt-4 border-t border-gray-100">
-                                <h3 className="text-lg sm:text-xl font-bold mb-4 text-purple-700">
+                                <h3 className="text-lg sm:text-xl font-bold mb-4 text-[#332EB2]">
                                     Select Payment Method
                                 </h3>
 
@@ -579,8 +579,8 @@ const Donate = () => {
                                         <div
                                             className={`p-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1
         ${paymentMethod === "zelle"
-                                                    ? "bg-purple-600 text-white border-purple-600 shadow-md"
-                                                    : "bg-white text-gray-700 border-gray-300 hover:border-purple-400 hover:shadow-sm"
+                                                    ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                                                    : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm"
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
@@ -598,7 +598,7 @@ const Donate = () => {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3.5 px-6 rounded-xl font-bold text-base hover:from-purple-700 hover:to-indigo-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl mt-6"
+                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3.5 px-6 rounded-xl font-bold text-base hover:from-blue-700 hover:to-indigo-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl mt-6"
                             >
                                 Submit Donation
                             </button>
@@ -613,10 +613,10 @@ const Donate = () => {
                             <h2 className="text-xl sm:text-2xl font-bold mb-4 !text-blue-700 text-left">
                                 Donation of Electronics:
                             </h2>
-                            <p className="text-gray-700 leading-relaxed mb-4 text-left" style={{ fontSize: '1.1em' }}>
+                            <p className="text-gray-700 leading-relaxed mb-4 text-left" style={{ fontSize: '16px' }}>
                                 The electronics that you want to recycle or give away can be donated to HOPE3 Foundation for the use by the students. Electronics include laptops, tablets, mobile devices, keyboards, and mice. Donations of such electronics is made easy with the app called ecohome.one.
                             </p>
-                            <p className="text-gray-700 leading-relaxed mb-6 text-left" style={{ fontSize: '1.1em' }}>
+                            <p className="text-gray-700 leading-relaxed mb-6 text-left" style={{ fontSize: '16px' }}>
                                 ecohome.one is an AI-powered digital home inventory platform that empowers households to understand what they own, reduce waste, and participate in more sustainable, community-driven living.
                             </p>
 
@@ -631,7 +631,7 @@ const Donate = () => {
                                     'Choose hope3 as donation channel',
                                     'Arrange handoff based on local availability'
                                 ].map((step, index) => (
-                                    <li key={index} className="flex items-start gap-2 text-gray-700" style={{ fontSize: '1.1em' }}>
+                                    <li key={index} className="flex items-start gap-2 text-gray-700" style={{ fontSize: '16px' }}>
                                         <span className="font-bold">*</span>
                                         <span>{step}</span>
                                     </li>
@@ -648,7 +648,7 @@ const Donate = () => {
                                     <p className="text-[10px] text-gray-400 mt-2 text-center font-medium uppercase tracking-wider">Scan to donate</p>
                                 </div>
                                 <div className="flex flex-col gap-4">
-                                    <p className="text-gray-600 text-left" style={{ fontSize: '1.1em', maxWidth: '320px' }}>
+                                    <p className="text-gray-600 text-left" style={{ fontSize: '16px', maxWidth: '320px' }}>
                                         Scan the QR code to quickly access ecohome.one and start your electronic donation journey.
                                     </p>
                                     <a
@@ -674,7 +674,7 @@ const Donate = () => {
                             <div className="text-center">
                                 {paymentMethod === 'paypal' && (
                                     <>
-                                        <h3 className="text-xl sm:text-2xl font-bold mb-4 !text-purple-700">
+                                        <h3 className="text-xl sm:text-2xl font-bold mb-4 !text-[#332EB2]">
                                             PayPal Payment
                                         </h3>
 
@@ -715,7 +715,7 @@ const Donate = () => {
 
                                 <button
                                     onClick={closeModal}
-                                    className="w-full bg-purple-600 text-white py-2.5 px-4 rounded-lg font-bold hover:bg-purple-700 transition-colors shadow-md"
+                                    className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md"
                                 >
                                     Close
                                 </button>

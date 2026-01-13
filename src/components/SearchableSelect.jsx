@@ -47,7 +47,7 @@ const SearchableSelect = ({ options, value, onChange, placeholder, name, isStrin
     return (
         <div className="relative w-full" ref={wrapperRef}>
             <div
-                className={`w-full p-2.5 border rounded-lg bg-gray-50 flex justify-between items-center cursor-pointer transition-all ${isOpen ? 'border-purple-500 bg-white ring-2 ring-purple-100' : 'border-gray-300 hover:border-purple-400 hover:bg-white'
+                className={`w-full p-2.5 border rounded-lg bg-gray-50 flex justify-between items-center cursor-pointer transition-all ${isOpen ? 'border-blue-500 bg-white ring-2 ring-blue-100' : 'border-gray-300 hover:border-blue-400 hover:bg-white'
                     }`}
                 onClick={() => setIsOpen(!isOpen)}
             >
@@ -86,12 +86,12 @@ const SearchableSelect = ({ options, value, onChange, placeholder, name, isStrin
                             filteredOptions.map((option, index) => (
                                 <div
                                     key={isStringArray ? option : (option.code || index)}
-                                    className="p-3 hover:bg-purple-50 cursor-pointer text-gray-700 transition-colors border-b border-gray-50 last:border-none text-sm flex items-center justify-between"
+                                    className="p-3 hover:bg-blue-50 cursor-pointer text-gray-700 transition-colors border-b border-gray-50 last:border-none text-sm flex items-center justify-center sm:justify-between"
                                     onClick={() => handleSelect(option)}
                                 >
                                     <span>{isStringArray ? option : option.name}</span>
                                     {((isStringArray ? option : option.code) === value) && (
-                                        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                                     )}
                                 </div>
                             ))

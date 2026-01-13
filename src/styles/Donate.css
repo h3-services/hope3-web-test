@@ -9,7 +9,7 @@
 
 /* Hero Section */
 .donate-hero {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #332EB2 0%, #3b82f6 100%);
     padding: 100px 20px 80px;
     text-align: center;
     position: relative;
@@ -61,7 +61,7 @@
 }
 
 .donate-card {
-    background: #e8f5e8;
+    background: #eff6ff;
     border-radius: 24px;
     padding: 50px;
     width: 100%;
@@ -121,9 +121,9 @@
 
 .form-input:focus {
     outline: none;
-    border-color: #8b5cf6;
-    background: #e8f5e8;
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+    border-color: #3b82f6;
+    background: #eff6ff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
 }
 
 .form-input:disabled {
@@ -142,7 +142,7 @@
     font-size: 1.1rem;
     font-weight: 700;
     color: white;
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #332EB2 0%, #3b82f6 100%);
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -168,7 +168,7 @@
 
 .donate-submit-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
 }
 
 .donate-submit-btn:hover:not(:disabled)::before {
@@ -243,7 +243,7 @@
 .success-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -251,12 +251,12 @@
     font-size: 2.5rem;
     color: white;
     margin: 0 auto 24px;
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
 .success-message h2 {
     font-size: 1.8rem;
-    color: #10b981;
+    color: #3b82f6;
     margin-bottom: 12px;
 }
 
@@ -271,23 +271,23 @@
     padding: 14px 28px;
     font-size: 1rem;
     font-weight: 600;
-    color: #8b5cf6;
+    color: #3b82f6;
     background: transparent;
-    border: 2px solid #8b5cf6;
+    border: 2px solid #3b82f6;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .donate-again-btn:hover {
-    background: #8b5cf6;
+    background: #3b82f6;
     color: white;
 }
 
 /* Impact Section */
 .donate-impact-section {
     padding: 80px 20px;
-    background: #e8f5e8;
+    background: #eff6ff;
     text-align: center;
 }
 
@@ -324,7 +324,7 @@
 .impact-number {
     font-size: 3rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+    background: linear-gradient(135deg, #332EB2 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
