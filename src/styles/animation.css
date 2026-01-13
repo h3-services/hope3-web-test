@@ -1,8 +1,11 @@
 .scroll-track {
-  height: 500vh;
-  /* Controlled scroll length for 8 stages */
+  height: 600vh;
+  /* Increased to allow 8 stages to stay sticky for longer */
   position: relative;
   width: 100%;
+  background: #fbfbfb;
+  margin: 0;
+  padding: 0;
 }
 
 /* Remove scroll on mobile - use arrow navigation only */
@@ -15,15 +18,15 @@
 
 .animation-container {
   position: sticky;
-  top: 0;
+  top: 75px;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 20px 0;
+  padding: 0;
   background: #fbfbfb;
 }
 
@@ -31,11 +34,11 @@
   position: relative;
   width: 100%;
   max-width: 600px;
-  height: 300px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin-bottom: 10px;
   flex-shrink: 0;
 }
 
@@ -56,124 +59,22 @@
 }
 
 .stage-card {
-  background: rgba(184, 218, 226, 0.6);
-  padding: 30px 40px;
-  border-radius: 20px;
-  border-left: 8px solid rgba(150, 225, 135, 0.8);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  max-width: 800px;
-  width: 90%;
-  margin: 20px auto;
-  transition: all 0.3s ease;
-}
-
-.stage-card h3 {
-  margin: 0 0 15px 0;
-  color: #2c3e50;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: left;
-}
-
-.stage-card p {
-  margin: 0;
-  color: #444;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  text-align: left;
-}
-
-.stage-card {
-  position: relative;
-  /* Ensure button aligns to card */
-}
-
-.nav-arrow-btn {
-  position: absolute;
-  top: -25px;
-  right: -25px;
-  width: 50px;
-  height: 50px;
-  background: #e0e0e0;
-  border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
-  z-index: 20;
-}
-
-.nav-arrow-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.nav-arrow-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: #333;
-}
-
-.animation-container {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  padding: 0;
-  background: #fbfbfb;
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.image-wrapper {
-  position: absolute;
-  transition: all 0.5s ease;
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.stage-card {
   background: rgba(59, 130, 246, 0.15);
-  padding: 30px 40px;
+  padding: 25px 40px;
   border-radius: 20px;
   border-left: 8px solid #3b82f6;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   max-width: 800px;
   width: 90%;
-  margin: 20px auto;
+  margin: 0 auto;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .stage-card h3 {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   color: #2c3e50;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   text-align: left;
 }
@@ -181,160 +82,69 @@
 .stage-card p {
   margin: 0;
   color: #444;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   text-align: left;
 }
 
-.stage-card {
-  position: relative;
-  /* Ensure button aligns to card */
-}
-
 .nav-arrow-btn {
   position: absolute;
-  top: -25px;
-  right: -25px;
-  width: 50px;
-  height: 50px;
-  background: #e0e0e0;
+  top: -20px;
+  right: -20px;
+  width: 45px;
+  height: 45px;
+  background: #ffffff;
   border-radius: 50%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: none;
+  border: 2px solid #3b82f6;
   transition: all 0.3s ease;
   z-index: 20;
 }
 
 .nav-arrow-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background: #3b82f6;
 }
 
 .nav-arrow-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: #333;
+  width: 20px;
+  height: 20px;
+  fill: #3b82f6;
+  transition: fill 0.3s ease;
 }
 
-.animation-container {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  padding: 0;
-  background: #fbfbfb;
+.nav-arrow-btn:hover svg {
+  fill: #ffffff;
 }
 
-.carousel {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+/* Section Title */
+.section-title {
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
-.image-wrapper {
-  position: absolute;
-  transition: all 0.5s ease;
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.stage-card {
-  background: rgba(59, 130, 246, 0.15);
-  padding: 30px 40px;
-  border-radius: 20px;
-  border-left: 8px solid #3b82f6;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  max-width: 800px;
-  width: 90%;
-  margin: 20px auto;
-  transition: all 0.3s ease;
-}
-
-.stage-card h3 {
-  margin: 0 0 15px 0;
-  color: #2c3e50;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: left;
-}
-
-.stage-card p {
+.section-title h2 {
   margin: 0;
-  color: #444;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  text-align: left;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
 }
 
-.stage-card {
-  position: relative;
-  /* Ensure button aligns to card */
-}
-
-.nav-arrow-btn {
-  position: absolute;
-  top: -25px;
-  right: -25px;
-  width: 50px;
-  height: 50px;
-  background: #e0e0e0;
-  border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
-  z-index: 20;
-}
-
-.nav-arrow-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.nav-arrow-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: #333;
-}
-
-/* Carousel Navigation Arrows */
+/* Carousel Navigation Arrows (Mobile only) */
 .carousel-nav-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(150, 225, 135, 0.8);
+  border: 2px solid #3b82f6;
   border-radius: 50%;
   display: none;
-  /* Hidden by default on desktop */
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -343,35 +153,6 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-nav-arrow:hover {
-  background: rgba(150, 225, 135, 0.9);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.carousel-nav-arrow:active {
-  transform: translateY(-50%) scale(0.95);
-}
-
-.carousel-nav-arrow svg {
-  width: 24px;
-  height: 24px;
-  fill: #2c3e50;
-}
-
-.carousel-nav-arrow:hover svg {
-  fill: #ffffff;
-}
-
-.carousel-nav-arrow-left {
-  left: 10px;
-}
-
-.carousel-nav-arrow-right {
-  right: 10px;
-}
-
-/* Show arrows only on mobile/tablet view */
 @media (max-width: 768px) {
   .carousel-nav-arrow {
     display: flex;
@@ -380,48 +161,32 @@
   .animation-container {
     position: relative;
     height: auto;
-    justify-content: flex-start;
-    padding: 15px 0;
-  }
-
-  .section-title {
-    margin: 10px 0 15px 0;
-    flex-shrink: 0;
-  }
-
-  .section-title h2 {
-    font-size: 1.5rem;
+    top: 0;
+    padding: 30px 0;
   }
 
   .carousel {
     max-width: 90%;
     height: 200px;
-    margin: 15px 0;
-    flex-shrink: 0;
   }
 
   .image-wrapper {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
   }
 
   .stage-card {
-    margin: 15px auto;
-    padding: 20px 25px;
-    max-width: 90%;
-    flex-shrink: 0;
+    padding: 20px;
   }
 
   .stage-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+    font-size: 1.25rem;
   }
 
   .stage-card p {
     font-size: 0.95rem;
   }
 
-  /* Hide the down arrow button on mobile - use left/right arrows instead */
   .nav-arrow-btn {
     display: none;
   }

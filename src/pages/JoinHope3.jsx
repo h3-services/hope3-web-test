@@ -298,10 +298,10 @@ const JoinHope3 = () => {
                 <div className="join-banner-overlay">
                     <div className="join-banner-text">
                         <h1>
-                            <span className="blue-text" style={{ textTransform: 'uppercase' }}>GIVE A MAN FISH</span> <br />
+                            <span className="blue-text">GIVE A MAN FISH</span> <br />
                             <span className="banner-subtext">and you feed him for a day</span> <br />
                             <span className="blue-text">Teach a man to fish</span> <br />
-                            <span className="banner-subtext" style={{ textTransform: 'uppercase' }}>AND YOU FEED HIM FOR A LIFETIME.</span>
+                            <span className="banner-subtext">AND YOU FEED HIM FOR A LIFETIME.</span>
                         </h1>
                     </div>
                 </div>
@@ -349,8 +349,8 @@ const JoinHope3 = () => {
 
                             {/* Description Text Section - Moved Above Form */}
                             <div className="mb-8 text-center">
-                                <h3 className="text-2xl font-bold text-[#332EB2] mb-4" style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}>Join HOPE3 as a Student -</h3>
-                                <p className="join-description-text" style={{ fontSize: '1rem', fontFamily: "'Kdam Thmor Pro', sans-serif" }}>
+                                <h3 className="cinzel-section-header !normal-case !text-[2rem] mb-6">Join HOPE3 as a Student</h3>
+                                <p className="join-description-text text-center">
                                     Every hardworking, deserving student—regardless of their background, language of instruction, or where they come from - deserves a real opportunity to rise, achieve, and build a better future. Together, HOPE3 transforms this dream into action - creating new dimensions of learning, access, and opportunity for Tamil medium students across Tamil Nadu. This belief is the heart of HOPE3.
                                 </p>
                             </div>
@@ -526,8 +526,8 @@ const JoinHope3 = () => {
                         <div id="volunteer-section">
                             {/* Volunteer Description Text */}
                             <div className="mb-8 text-center">
-                                <h3 className="text-2xl font-bold text-[#332EB2] mb-4" style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}>Join HOPE3 as a Volunteer -</h3>
-                                <p className="join-description-text" style={{ fontSize: '1rem', fontFamily: "'Kdam Thmor Pro', sans-serif" }}>
+                                <h3 className="cinzel-section-header !normal-case !text-[2rem] mb-6">Join HOPE3 as a Volunteer</h3>
+                                <p className="join-description-text text-center">
                                     Volunteers play a central role at HOPE3 by teaching various subjects online or organizing subject-specific boot camps. The most urgent needs include English teachers, soft skills trainers, career mentors, and fundraising volunteers who can help broaden opportunities for students.
                                 </p>
                             </div>

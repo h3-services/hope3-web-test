@@ -44,6 +44,13 @@
   margin-bottom: 0 !important;
 }
 
+@media (max-width: 768px) {
+  .cinzel-section-header {
+    font-size: 1.75rem;
+    /* Reduced for mobile single-line fit */
+  }
+}
+
 .font-el-messiri {
   font-family: 'El Messiri', sans-serif;
 }

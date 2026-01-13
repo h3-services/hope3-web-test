@@ -39,7 +39,7 @@ function Animation() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start 75px", "end end"]
   });
 
   // Calculate index based on progress as the user scrolls through the 500vh track
@@ -141,12 +141,17 @@ function Animation() {
 
                 if (currentIndex < stageCount - 1) {
                   const targetIndex = currentIndex + 1;
-                  const targetProgress = (targetIndex + 0.1) / stageCount;
+                  // Scroll to the middle of the next stage's segment
+                  const targetProgress = (targetIndex + 0.5) / stageCount;
                   const targetScrollY = containerTop + (targetProgress * scrollableDistance);
 
                   window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
                 } else {
-                  window.scrollTo({ top: containerTop, behavior: 'smooth' });
+                  // Final stage: scroll directly to the CTA section
+                  const nextSection = document.querySelector('.cta-section');
+                  if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }
               }
             }}

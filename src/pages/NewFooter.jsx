@@ -69,7 +69,7 @@ const NewFooter = () => {
               </div>
             </div>
             <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '0', fontSize: '14px' }}>
-              © 2024 All Rights Reserved      |  Privacy Policy
+              © 2026 All Rights Reserved      |  Privacy Policy
             </div>
             <div
               className="footer-developed-by"

@@ -22,10 +22,10 @@
 }
 
 .financial-subtitle {
-    font-size: 20px;
+    font-size: 14px;
     color: #666;
-    max-width: 700px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 20px auto 0;
     line-height: 1.6;
 }
 

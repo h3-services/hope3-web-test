@@ -1,0 +1,200 @@
+.stack-area {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stack-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    user-select: none;
+    perspective: 1000px;
+}
+
+.stack-item:active {
+    cursor: grabbing;
+}
+
+.card-rotate {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.card-rotate-disabled {
+    width: 100%;
+    height: 100%;
+}
+
+.card-content-wrapper {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.stack-card-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.stack-card-info {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.stack-card-info h3 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.5rem;
+    color: #332eb2;
+    margin-bottom: 12px;
+}
+
+.stack-card-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.stack-card-image-only {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.card-content-wrapper-no-style {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.stack-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.content-navigation-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.content-card-below {
+    width: 650px;
+    /* Hard fixed width */
+    height: 220px;
+    /* Hard fixed height */
+    max-width: 90vw;
+    /* Responsiveness for smaller screens */
+    background: white;
+    padding: 25px 35px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-left: 8px solid #458be6;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: none;
+    /* Removed transition on size/transform to keep it rock steady */
+    overflow: hidden;
+    flex-shrink: 0;
+    /* Prevent shrinking in flex containers */
+}
+
+.content-card-below h3 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.4rem;
+    color: #332eb2;
+    margin-bottom: 8px;
+}
+
+.content-card-below p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    /* Updated to 14px as requested */
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.nav-arrow-btn {
+    background: #f1f5f9;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.nav-arrow-btn:hover {
+    background: #e2e8f0;
+    transform: scale(1.1);
+}
+
+.nav-arrow-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #332eb2;
+}
+
+@media (max-width: 768px) {
+    .stack-area {
+        height: 300px;
+        /* Adjusted from 400px to better fit the smaller cards */
+    }
+
+    .content-navigation-wrapper {
+        padding: 0 10px;
+        gap: 8px;
+    }
+
+    .content-card-below {
+        padding: 15px;
+        min-height: 160px;
+        height: auto;
+        /* Allow auto-height on mobile for longer descriptions if needed */
+        width: 95vw;
+    }
+
+    .content-card-below h3 {
+        font-size: 1.1rem;
+        /* Reduced to ensure "Immersive Parallel Education" fits */
+    }
+
+    .content-card-below p {
+        font-size: 0.85rem;
+    }
+}
