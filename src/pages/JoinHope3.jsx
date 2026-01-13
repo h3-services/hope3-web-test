@@ -8,11 +8,7 @@ import { GraduationCap, Handshake, ChevronDown, Check } from 'lucide-react';
 import ErrorTooltip from '../components/common/ErrorTooltip';
 import SearchableSelect from '../components/common/SearchableSelect';
 
-// Initialize Supabase client
-const supabase = createClient(
-    'https://sykpebdlhqtgpvgqazzw.supabase.co',
-    'sb_publishable_N1oGMqijF1J3m9FN8bUWiQ_r7IMZDZk'
-);
+import { GoogleSheetService } from '../services/GoogleSheetService';
 
 const JoinHope3 = () => {
     // Scroll to top on component mount and handle hash navigation
@@ -36,7 +32,8 @@ const JoinHope3 = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [errors, setErrors] = useState({});
-    const [success, setSuccess] = useState('');
+    const [studentSuccess, setStudentSuccess] = useState('');
+    const [volunteerSuccess, setVolunteerSuccess] = useState('');
     const [activeTab, setActiveTab] = useState('students');
 
     const [formData, setFormData] = useState({
@@ -177,48 +174,21 @@ const JoinHope3 = () => {
         setError('');
 
         try {
-            // Note: Adjust table name and column names as per your Supabase schema
-            // Assuming a table 'student_applications' or similar exists or reusing 'interest_students' with extra data in a JSONB column or new columns
-            // For now, mapping to a generic structure or the existing 'interest_students' table appropriately
-            // If the table schema doesn't match these fields, you might need to update Supabase or adjust this mapping.
-            // Using a flexible insert for now.
+            const result = await GoogleSheetService.createStudent(formData);
 
-            const { error: supabaseError } = await supabase
-                .from('interest_students') // Using existing table for now
-                .insert([{
-                    name: formData.studentName,
-                    district: formData.district,
-                    contact_no: formData.mobileNumber,
-                    // Store other details in a metadata column if specific columns don't exist, 
-                    // or assume columns exist. mapping standard fields:
-                    // For this specific request, I'll assume we might need to store extra data.
-                    // If columns strictly don't exist, this might error. 
-                    // To be safe with the current known schema (name, district, passion, email, contact_no),
-                    // I will map what I can and maybe format the rest into 'passion' or a similar text field if needed,
-                    // BUT ideally, the table should have these columns.
-                    // CHECK: I don't have control over Supabase schema here.
-                    // STRATEGY: I will send the main fields and try to put the rest in 'passion' as a JSON string or description if needed,
-                    // OR just assume the user handles schema updates. TO be safe, I'll try to insert meaningful data.
-
-                    // Actually, looking at previous code, 'passion', 'email' were used.
-                    // This form doesn't have email.
-                    // I'll leave email empty or optional.
-
-                    // Mapping for this specific task:
-                    passion: `Father: ${formData.fatherName}, Mother: ${formData.motherName}, School: ${formData.schoolName}, Medium: ${formData.mediumOfInstruction}, DOB: ${formData.dob}, City: ${formData.city}, Pincode: ${formData.pincode}, 10th: ${formData.score10th}, 12th: ${formData.score12thHalfYearly}`
-                }]);
-
-            if (supabaseError) throw supabaseError;
-
-            setSuccess(' Application submitted successfully! We will contact you soon.');
-            setFormData({
-                studentName: '', fatherName: '', motherName: '', mobileNumber: '',
-                schoolName: '', mediumOfInstruction: '', dob: '', city: '',
-                district: '', pincode: '', score10th: '', score12thHalfYearly: ''
-            });
+            if (result.success) {
+                setStudentSuccess('Application submitted successfully! We will contact you soon.');
+                setFormData({
+                    studentName: '', fatherName: '', motherName: '', mobileNumber: '',
+                    schoolName: '', mediumOfInstruction: '', dob: '', city: '',
+                    district: '', pincode: '', score10th: '', score12thHalfYearly: ''
+                });
+            } else {
+                throw new Error(result.message || 'Submission failed');
+            }
         } catch (err) {
             console.error('Error:', err);
-            setError('Something went wrong. Please try again.');
+            setError('Something went wrong. Please try again or contact us directly.');
         } finally {
             setLoading(false);
         }
@@ -258,31 +228,20 @@ const JoinHope3 = () => {
         setError('');
 
         try {
-            // Mapping to a generic structure for now, similar to students but modifying passion/json
-            const { error: supabaseError } = await supabase
-                .from('interest_volunteers') // Assuming a separate table or we can reuse `interest_students` with a 'type' field if it existed
-                // For safety in this environment without schema access, I'll attempt to use a likely table name 'volunteers' or fall back to 'interest_students' with a note
-                // Let's assume 'interest_students' for now and pack data into 'passion' like before to avoid breaking if table misses columns
-                .insert([{
-                    name: volunteerFormData.volunteerName,
-                    contact_no: volunteerFormData.mobileNumber,
-                    district: volunteerFormData.district,
-                    //  email: '', // No email in form
-                    passion: `VOLUNTEER APPLICATION - Roles: ${volunteerFormData.preferredRoles.join(', ')}. Lang1: ${volunteerFormData.languagePref1}. Lang2: ${volunteerFormData.languagePref2}. City: ${volunteerFormData.city}, Pincode: ${volunteerFormData.pincode}, DOB: ${volunteerFormData.dob}`
-                }]);
+            const result = await GoogleSheetService.createVolunteer(volunteerFormData);
 
-            if (supabaseError) throw supabaseError;
-
-            setSuccess('Volunteer application submitted successfully! We will contact you soon.');
-            setVolunteerFormData({
-                volunteerName: '', dob: '', mobileNumber: '', languagePref1: '', languagePref2: '',
-                city: '', district: '', pincode: '', preferredRoles: []
-            });
+            if (result.success) {
+                setVolunteerSuccess('Volunteer application submitted successfully! We will contact you soon.');
+                setVolunteerFormData({
+                    volunteerName: '', dob: '', mobileNumber: '', languagePref1: '', languagePref2: '',
+                    city: '', district: '', pincode: '', preferredRoles: []
+                });
+            } else {
+                throw new Error(result.message || 'Submission failed');
+            }
         } catch (err) {
             console.error('Error:', err);
-            // Fallback for demo if table doesn't exist
-            setError('Application submitted (Simulation): Backend table for volunteers may not exist yet.');
-            setSuccess('Volunteer application submitted successfully!'); // Optimistic success for user view
+            setError('Something went wrong. Please try again or contact us directly.');
         } finally {
             setLoading(false);
         }
@@ -355,12 +314,14 @@ const JoinHope3 = () => {
                                 </p>
                             </div>
 
-                            {success ? (
-                                <div className="success-state">
-                                    <div className="success-icon">✅</div>
-                                    <h2>Success!</h2>
-                                    <p>{success}</p>
-                                    <button className="reset-btn" onClick={() => setSuccess('')}>Submit Another Application</button>
+                            {studentSuccess ? (
+                                <div className="flex flex-col items-center justify-center py-12 px-6 text-center animate-fade-in bg-white rounded-2xl shadow-sm border border-green-100">
+                                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#332EB2]" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>
+                                        Success!
+                                    </h2>
+                                    <p className="text-gray-600 text-lg mb-8 max-w-lg leading-relaxed font-medium">
+                                        {studentSuccess}
+                                    </p>
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="student-registration-form">
@@ -532,12 +493,14 @@ const JoinHope3 = () => {
                                 </p>
                             </div>
 
-                            {success ? (
-                                <div className="success-state">
-                                    <div className="success-icon">✅</div>
-                                    <h2>Success!</h2>
-                                    <p>{success}</p>
-                                    <button className="reset-btn" onClick={() => setSuccess('')}>Submit Another Application</button>
+                            {volunteerSuccess ? (
+                                <div className="flex flex-col items-center justify-center py-12 px-6 text-center animate-fade-in bg-white rounded-2xl shadow-sm border border-green-100">
+                                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#332EB2]" style={{ fontFamily: '"Cinzel Decorative", cursive' }}>
+                                        Success!
+                                    </h2>
+                                    <p className="text-gray-600 text-lg mb-8 max-w-lg leading-relaxed font-medium">
+                                        {volunteerSuccess}
+                                    </p>
                                 </div>
                             ) : (
                                 <form onSubmit={handleVolunteerSubmit} className="student-registration-form">

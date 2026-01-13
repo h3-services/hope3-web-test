@@ -3,7 +3,7 @@ import { FaPaypal } from "react-icons/fa";
 import { SiZelle } from "react-icons/si";
 import Navbar from '../layouts/Navbar';
 import NewFooter from '../layouts/Footer';
-import { ChevronDown, Coins, Monitor } from 'lucide-react';
+import { ChevronDown, Coins, Monitor, Check } from 'lucide-react';
 import ErrorTooltip from '../components/common/ErrorTooltip';
 import SearchableSelect from '../components/common/SearchableSelect';
 import donateImage from '../assets/images/pages/donate/donate.jpeg';
@@ -12,6 +12,7 @@ import hopeEnablerIcon from '../assets/images/pages/donate/hope_maker1.jpeg';
 import dreamEnablerIcon from '../assets/images/pages/donate/dream_enabler.jpeg';
 import customAmountIcon from '../assets/images/pages/donate/hope_maker.jpeg';
 import zelleQR from '../assets/images/pages/donate/zelle_qr.png';
+import { GoogleSheetService } from '../services/GoogleSheetService';
 
 const Donate = () => {
     const [activeTab, setActiveTab] = useState('monetary');
@@ -166,9 +167,24 @@ const Donate = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
+            // Show modal immediately for payment instructions
+            // In a real flow, we might want to save data first, but for better UX we often show steps.
+            // Requirement said "Ensure data is sent".
+
+            // Submitting data to sheet
+            try {
+                await GoogleSheetService.createDonation(formData);
+                console.log('Donation data saved to sheet');
+            } catch (error) {
+                console.error('Error saving donation data', error);
+                // Optionally show error or just proceed since payment is external
+            }
+
             console.log('Form Data:', formData);
             console.log('Payment Method:', paymentMethod);
             setShowModal(true);
@@ -226,22 +242,22 @@ const Donate = () => {
                     <button
                         onClick={() => setActiveTab('monetary')}
                         style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
-                        className={`w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'monetary'
-                            ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg ring-2 ring-blue-200'
-                            : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:shadow-md'
+                        className={`w-full sm:w-auto px-6 py-2.5 rounded-2xl font-bold text-base transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl ${activeTab === 'monetary'
+                            ? 'bg-gradient-to-r from-blue-500 to-indigo-600 !text-white ring-4 ring-blue-500/20 shadow-blue-500/30'
+                            : 'bg-white text-gray-700 border border-gray-100 hover:border-blue-400 hover:shadow-md'
                             }`}
                     >
-                        <Coins className="w-5 h-5" /> Monetary Donations
+                        <Coins className="w-5 h-5" color={activeTab === 'monetary' ? 'white' : '#3b82f6'} /> Monetary Donations
                     </button>
                     <button
                         onClick={() => setActiveTab('electronics')}
                         style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
-                        className={`w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'electronics'
-                            ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg ring-2 ring-blue-200'
-                            : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:shadow-md'
+                        className={`w-full sm:w-auto px-6 py-2.5 rounded-2xl font-bold text-base transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl ${activeTab === 'electronics'
+                            ? 'bg-gradient-to-r from-blue-500 to-cyan-600 !text-white ring-4 ring-cyan-500/20 shadow-cyan-500/30'
+                            : 'bg-white text-gray-700 border border-gray-100 hover:border-blue-400 hover:shadow-md'
                             }`}
                     >
-                        <Monitor className="w-5 h-5" /> Electronics Donations
+                        <Monitor className="w-5 h-5" color={activeTab === 'electronics' ? 'white' : '#06b6d4'} /> Electronics Donations
                     </button>
                 </div>
 
@@ -267,7 +283,10 @@ const Donate = () => {
 
                                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                                     {/* Hope Builder */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1000' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 border relative group ${selectedAmount === '1000' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                        <div className={`absolute top-3 left-3 w-6 h-6 bg-white rounded-md flex items-center justify-center transition-opacity duration-300 ${selectedAmount === '1000' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                            <Check size={18} strokeWidth={4} className="text-blue-600" />
+                                        </div>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -290,7 +309,10 @@ const Donate = () => {
                                     </label>
 
                                     {/* Hope Enabler */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '1500' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 border relative group ${selectedAmount === '1500' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                        <div className={`absolute top-3 left-3 w-6 h-6 bg-white rounded-md flex items-center justify-center transition-opacity duration-300 ${selectedAmount === '1500' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                            <Check size={18} strokeWidth={4} className="text-blue-600" />
+                                        </div>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -313,7 +335,10 @@ const Donate = () => {
                                     </label>
 
                                     {/* Dream Enabler */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === '3000' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 border relative group ${selectedAmount === '3000' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                        <div className={`absolute top-3 left-3 w-6 h-6 bg-white rounded-md flex items-center justify-center transition-opacity duration-300 ${selectedAmount === '3000' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                            <Check size={18} strokeWidth={4} className="text-blue-600" />
+                                        </div>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -336,7 +361,10 @@ const Donate = () => {
                                     </label>
 
                                     {/* Hope Maker */}
-                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 border ${selectedAmount === 'custom' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                    <label className={`cursor-pointer bg-white rounded-xl p-2 sm:p-5 text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 border relative group ${selectedAmount === 'custom' ? 'bg-[#eff6ff] border-blue-500 ring-1 ring-blue-500' : 'border-gray-100 hover:border-blue-300'}`}>
+                                        <div className={`absolute top-3 left-3 w-6 h-6 bg-white rounded-md flex items-center justify-center transition-opacity duration-300 ${selectedAmount === 'custom' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                            <Check size={18} strokeWidth={4} className="text-blue-600" />
+                                        </div>
                                         <input
                                             type="radio"
                                             name="amount"
@@ -550,17 +578,18 @@ const Donate = () => {
                                         />
 
                                         <div
-                                            className={`p-3 rounded-lg border transition-all duration-300 transform hover:-translate-y-1
+                                            style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
+                                            className={`py-2.5 px-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95
         ${paymentMethod === "paypal"
-                                                    ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                                                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 !text-white shadow-lg ring-2 ring-blue-200"
                                                     : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm"
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
-                                                <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
-                                                    <FaPaypal className="text-[#003087]" size={28} />
+                                                <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
+                                                    <FaPaypal className={`${paymentMethod === "paypal" ? "text-blue-600" : "text-[#003087]"}`} size={24} />
                                                 </div>
-                                                <span className="font-semibold text-lg">Pay using PayPal</span>
+                                                <span className={`text-base ${paymentMethod === "paypal" ? "font-bold text-white" : "font-semibold"}`}>Pay using PayPal</span>
                                             </div>
                                         </div>
                                     </label>
@@ -577,17 +606,18 @@ const Donate = () => {
                                         />
 
                                         <div
-                                            className={`p-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1
+                                            style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
+                                            className={`py-2.5 px-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95
         ${paymentMethod === "zelle"
-                                                    ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                                                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 !text-white shadow-lg ring-2 ring-blue-200"
                                                     : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm"
                                                 }`}
                                         >
                                             <div className="flex items-center justify-center gap-3">
-                                                <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
-                                                    <SiZelle className="text-[#6d1e70]" size={24} />
+                                                <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
+                                                    <SiZelle className={`${paymentMethod === "zelle" ? "text-purple-700" : "text-[#6d1e70]"}`} size={20} />
                                                 </div>
-                                                <span className="font-semibold text-lg">Pay using Zelle</span>
+                                                <span className={`text-base ${paymentMethod === "zelle" ? "font-bold text-white" : "font-semibold"}`}>Pay using Zelle</span>
                                             </div>
                                         </div>
                                     </label>

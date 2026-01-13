@@ -4,6 +4,7 @@ import bannerImg from '../assets/images/pages/feedback/banner.jpeg';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { Send } from 'lucide-react';
+import { GoogleSheetService } from '../services/GoogleSheetService';
 
 const Feedback = () => {
     const navigate = useNavigate();
@@ -31,12 +32,24 @@ const Feedback = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Submitted:', formData);
-        // Add submission logic here
-        alert('Thank you for your feedback!');
-        setFormData({ name: '', mobile: '', email: '', message: '' });
+
+        try {
+            const result = await GoogleSheetService.createFeedback(formData);
+            if (result.success) {
+                alert('Thank you for your feedback!');
+                setFormData({ name: '', mobile: '', email: '', message: '' });
+            } else {
+                console.error('Submission failed:', result.message);
+                alert('Failed to submit feedback. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting feedback:', error);
+            alert('An error occurred. Please try again later.');
+        }
     };
 
     return (
