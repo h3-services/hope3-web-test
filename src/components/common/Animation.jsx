@@ -1,14 +1,14 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
-import '../styles/animation.css';
-import image1 from '../assets/animation/image1.jpg';
-import image2 from '../assets/animation/image2.jpg';
-import image3 from '../assets/animation/image3.jpg';
-import image4 from '../assets/animation/image4.jpg';
-import image5 from '../assets/animation/image5.jpg';
-import image6 from '../assets/animation/image6.jpg';
-import image7 from '../assets/animation/image7.jpg';
-import image8 from '../assets/animation/image8.jpg';
+import '../../styles/animation.css';
+import image1 from '../../assets/animation/image1.jpg';
+import image2 from '../../assets/animation/image2.jpg';
+import image3 from '../../assets/animation/image3.jpg';
+import image4 from '../../assets/animation/image4.jpg';
+import image5 from '../../assets/animation/image5.jpg';
+import image6 from '../../assets/animation/image6.jpg';
+import image7 from '../../assets/animation/image7.jpg';
+import image8 from '../../assets/animation/image8.jpg';
 
 function Animation() {
   const images = [image1, image2, image3, image4, image5, image6, image7, image8];

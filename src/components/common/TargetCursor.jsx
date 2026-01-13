@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import './TargetCursor.css';
+import '../../styles/components/TargetCursor.css';
 
 const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
     const cursorRef = useRef(null);

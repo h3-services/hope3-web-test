@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 
 const Services = () => {
     return (

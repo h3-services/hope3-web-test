@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 import '../styles/financial.css';
 
 const Financial = () => {

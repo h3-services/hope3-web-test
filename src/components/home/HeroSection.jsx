@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import heroBackground from '../assets/home/college-graduation-pictures.jpg'
+import heroBackground from '../../assets/home/college-graduation-pictures.jpg'
 
 const HeroSection = () => {
   const [show, setShow] = useState(false)

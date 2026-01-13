@@ -1,46 +1,125 @@
-.leaders-page {
-    padding-top: 100px;
-    background-color: #f8f9fa;
-    min-height: 100vh;
+n
+/* Hope3Pillers.css - Ultra Premium White Theme Styling */
+
+.pillars-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
 }
 
-.leaders-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+.pillars-hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: hero-shimmer 20s linear infinite;
+    pointer-events: none;
 }
 
-.leaders-content h1 {
-    text-align: center;
-    margin-bottom: 50px;
-    color: #333;
+@keyframes hero-shimmer {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.board-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+.sticky-image-container {
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.board-card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    transition: transform 0.3s ease;
+.founder-section {
+    transition: opacity 0.5s ease;
 }
 
-.board-card:hover {
-    transform: translateY(-5px);
+.youtube-gallery-section {
+    background-color: #f8fafc;
 }
 
-.board-card h3 {
-    margin: 0;
-    color: #1e3a8a;
+.video-card {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
 }
 
-.board-card p {
-    color: #666;
-    margin-top: 10px;
+.video-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Modal Animations */
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Glassmorphism for Featured Tag */
+.backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Shimmer Effect for Loading (Optional) */
+.shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Line Clamp for Descriptions */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .pillars-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .sticky.top-20 {
+        position: relative !important;
+        height: auto !important;
+        top: 0 !important;
+    }
+
+    .lg\:w-2\/5 {
+        margin-bottom: 2rem;
+    }
 }

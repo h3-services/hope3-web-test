@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaPaypal } from "react-icons/fa";
 import { SiZelle } from "react-icons/si";
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 import { ChevronDown, Coins, Monitor } from 'lucide-react';
-import ErrorTooltip from '../components/ErrorTooltip';
-import SearchableSelect from '../components/SearchableSelect';
+import ErrorTooltip from '../components/common/ErrorTooltip';
+import SearchableSelect from '../components/common/SearchableSelect';
 import donateImage from '../assets/donate_icon/donate.jpeg';
 import hopeBuilderIcon from '../assets/donate_icon/hope_builder.jpeg';
 import hopeEnablerIcon from '../assets/donate_icon/hope_maker1.jpeg';

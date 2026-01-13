@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram, FaUsers } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
-import TargetCursor from '../components/TargetCursor'
+import TargetCursor from '../components/common/TargetCursor'
 import '../styles/newFooter.css'
 
 const NewFooter = () => {

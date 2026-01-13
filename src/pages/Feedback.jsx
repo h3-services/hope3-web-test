@@ -1,5 +1,5 @@
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 import bannerImg from '../assets/feedback/banner.jpeg';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';

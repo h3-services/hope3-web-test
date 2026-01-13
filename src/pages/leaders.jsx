@@ -1,11 +1,12 @@
-import Navbar from "./navbar.jsx"
-import NewFooter from "./NewFooter.jsx"
+import Navbar from '../layouts/Navbar.jsx';
+import { useNavigate } from 'react-router-dom';
+import NewFooter from '../layouts/Footer.jsx';
 import { useEffect, useState, useRef } from 'react'
-import './leaders.css'
+import '../styles/leaders.css'
 import palaniImage from '../assets/leadersboard/founders/Palani.jpeg'
 import neelImage from '../assets/leadersboard/founders/neel.jpeg'
 import meenachiImage from '../assets/leadersboard/founders/Meenakshi-02.jpeg'
-import SwipeableVideoStack from '../components/SwipeableVideoStack.jsx'
+import SwipeableVideoStack from '../components/common/SwipeableVideoStack.jsx';
 
 function Leaders() { // Renamed to Leaders to match the route and file name
     const [activeImageIndex, setActiveImageIndex] = useState(0)

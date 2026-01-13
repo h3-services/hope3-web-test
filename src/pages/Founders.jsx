@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Navbar from './navbar.jsx';
-import NewFooter from './NewFooter.jsx';
-import './Founders.css';
+import Navbar from '../layouts/Navbar.jsx';
+import NewFooter from '../layouts/Footer.jsx';
+import '../styles/founders.css';
 import BannerImage from '../assets/leader-banner.webp';
 
 

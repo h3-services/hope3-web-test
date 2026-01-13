@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../styles/spotlightSection.css'
+import '../../styles/spotlightSection.css'
 
 const SpotlightSection = () => {
   const baseUrl = import.meta.env.BASE_URL || '/'

@@ -1,10 +1,10 @@
-import Navbar from "./navbar.jsx"
-import HeroSection from "./HeroSection.jsx"
-import InfoCardsSection from "../components/InfoCardsSection.jsx"
-import FeatureCards from "./FeatureCards.jsx"
-import PhilosophySection from "./PhilosophySection.jsx"
-import SpotlightSection from "./SpotlightSection.jsx"
-import NewFooter from "./NewFooter.jsx"
+import Navbar from "../layouts/Navbar.jsx"
+import HeroSection from "../components/home/HeroSection.jsx"
+import InfoCardsSection from "../components/home/InfoCardsSection.jsx"
+import FeatureCards from "../components/home/FeatureCards.jsx"
+import PhilosophySection from "../components/home/PhilosophySection.jsx"
+import SpotlightSection from "../components/home/SpotlightSection.jsx"
+import NewFooter from "../layouts/Footer.jsx"
 
 function Home() {
   return (

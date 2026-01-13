@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Hope3Journey.css';
 import bannerImage from '../assets/journey/bannerForJourney.png';
 import statsBanner from '../assets/statistics banner.png';
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 
 const JourneyTimeline = () => {
   const [isMobile, setIsMobile] = useState(false);

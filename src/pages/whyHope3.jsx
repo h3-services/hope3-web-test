@@ -1,11 +1,11 @@
 import { useRef, useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import Navbar from './navbar.jsx';
+import Navbar from '../layouts/Navbar.jsx';
 import { useNavigate } from 'react-router-dom';
-import NewFooter from './NewFooter.jsx';
+import NewFooter from '../layouts/Footer.jsx';
 import '../styles/whyHope3.css';
 import bannerImg from '../assets/whyHope3Banner.jpeg';
-import Stack from '../components/Stack.jsx';
+import Stack from '../components/common/Stack.jsx';
 import image1 from '../assets/animation/image1.jpg';
 import image2 from '../assets/animation/image2.jpg';
 import image3 from '../assets/animation/image3.jpg';

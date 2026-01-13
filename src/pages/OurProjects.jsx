@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/OurProjects.css';
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 
 // Use local assets for the gallery
 import img1 from '../assets/transformation/img1.jpeg';

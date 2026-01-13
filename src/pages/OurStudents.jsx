@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/OurStudents.css';
-import Navbar from './navbar';
-import NewFooter from './NewFooter';
+import Navbar from '../layouts/Navbar';
+import NewFooter from '../layouts/Footer';
 
 // Import student images from assets
 import IrfanaImg from '../assets/our-students/Irfana.png';
