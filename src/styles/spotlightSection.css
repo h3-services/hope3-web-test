@@ -104,19 +104,16 @@
   padding: 0;
   position: relative;
   overflow: hidden;
-  justify-content: flex-end;
-  /* Align content to bottom if needed, or center */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Image acts as background */
+/* Image at top of card */
 .news-card.has-image .news-card-image-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  max-height: none;
-  /* Override default limit */
+  height: 200px;
+  overflow: hidden;
   z-index: 0;
   margin: 0;
 }
@@ -125,56 +122,48 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease, filter 0.3s ease;
-  filter: brightness(1);
-  /* Default */
+  display: block;
 }
 
-/* Hover Effect: Darken and Blur Image */
+/* Remove all hover effects on image */
 .news-card.has-image:hover .news-card-image {
-  filter: brightness(0.4) blur(4px);
-  /* "black 40%" interpretation: dark brightness */
-  transform: scale(1.05);
-  /* Slight zoom for premium feel */
+  transform: none;
+  filter: none;
 }
 
-/* Content Overlay */
+/* Content below image */
 .news-card.has-image .news-card-content {
   position: relative;
-  /* Stacks on top of absolute image because of source order, but explicit z-index is safer */
   z-index: 10;
-  padding: 2rem;
-  height: 100%;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* Center content */
-  align-items: center;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: rgba(0, 0, 0, 0.2);
-  /* Slight darkening for text readability on top of blur */
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  opacity: 1;
+  background: #ffffff;
+  flex-grow: 1;
 }
 
-/* Reveal Content on Hover */
+/* Remove hover opacity change */
 .news-card.has-image:hover .news-card-content {
   opacity: 1;
 }
 
-/* Text Colors for Overlay (Must be White) */
+/* Text Colors for cards with images (dark text on white background) */
 .news-card.has-image .news-card-title {
-  color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #1a1a1a;
+  text-shadow: none;
 }
 
 .news-card.has-image .news-card-date {
-  color: #e5e5e5;
+  color: #a0a0a0;
 }
 
 .news-card.has-image .news-card-description {
-  color: #f3f4f6;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: #666;
+  text-shadow: none;
 }
 
 /* Header styles from previous request (keeping for structural support) */

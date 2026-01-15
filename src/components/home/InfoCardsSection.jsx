@@ -28,23 +28,23 @@ const InfoCardsSection = () => {
     const cards = [
         {
             id: 1,
-            title: "Creating Change Through Action",
-            description: "At HOPE3, we turn education into opportunity through meaningful projects that empower individuals and strengthen communities.",
+            title: "Nurturing Dreams: Launchpad to Brighter Future",
+            description: "At HOPE3, we encourage every student to explore projects close to their heart—big dreams or quiet sparks. These projects pave their way to a brighter future.",
             buttonText: "View Projects",
             link: "/our-projects"
         },
         {
             id: 2,
-            title: "Be the Reason a Student Rises",
-            description: "Every student deserves a fair chance to succeed. HOPE3 supports growth through learning, mentorship, and guidance.",
+            title: "Nurturing Potential: Launchpads to Limitless Futures",
+            description: "Every deserving student yearns for that one true opportunity to shine—HOPE3 answers with heartfelt learning, devoted mentorship, and unwavering support, turning hidden potential into soaring success.",
             buttonText: "Get Involved",
             link: "/join-hope3"
         },
         {
             id: 3,
-            title: "Your Gift Changes Lives",
-            description: "Your support fuels education and care for students in need, helping build a brighter and more secure future.",
-            buttonText: "Donate Now",
+            title: "Nurturing Hope: Launchpads to Lasting Change",
+            description: "Your heartfelt gift sustains compassionate education, nurturing care, and boundless opportunity for students who need it most. Every contribution crafts a brighter, more secure tomorrow.",
+            buttonText: "Make a Gift",
             link: "/donate"
         }
     ]

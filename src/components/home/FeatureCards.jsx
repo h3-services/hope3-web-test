@@ -43,6 +43,11 @@ const FeatureCards = () => {
   return (
     <section className="feature-cards-section py-16 px-6">
       <div className="feature-cards-container mx-auto">
+        <div className="rounded-2xl p-6 mb-6 text-center">
+          <h2 className="cinzel-section-header">
+            Our Three Pillars
+          </h2>
+        </div>
         <div className="feature-cards-grid">
           {features.map((feature) => (
             <div
