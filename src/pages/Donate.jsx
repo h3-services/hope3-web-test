@@ -3,7 +3,7 @@ import { FaPaypal } from "react-icons/fa";
 import { SiZelle } from "react-icons/si";
 import Navbar from '../layouts/Navbar';
 import NewFooter from '../layouts/Footer';
-import { ChevronDown, Coins, Monitor, Check } from 'lucide-react';
+import { ChevronDown, Coins, Monitor, Check, Gift } from 'lucide-react';
 import ErrorTooltip from '../components/common/ErrorTooltip';
 import SearchableSelect from '../components/common/SearchableSelect';
 import donateImage from '../assets/images/pages/donate/donate.jpeg';
@@ -241,6 +241,7 @@ const Donate = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                     <button
                         onClick={() => setActiveTab('monetary')}
+                        onMouseEnter={() => setActiveTab('monetary')}
                         style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
                         className={`w-full sm:w-auto px-6 py-2.5 rounded-2xl font-bold text-base transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl ${activeTab === 'monetary'
                             ? 'bg-gradient-to-r from-blue-500 to-indigo-600 !text-white ring-4 ring-blue-500/20 shadow-blue-500/30'
@@ -251,6 +252,7 @@ const Donate = () => {
                     </button>
                     <button
                         onClick={() => setActiveTab('electronics')}
+                        onMouseEnter={() => setActiveTab('electronics')}
                         style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
                         className={`w-full sm:w-auto px-6 py-2.5 rounded-2xl font-bold text-base transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl ${activeTab === 'electronics'
                             ? 'bg-gradient-to-r from-blue-500 to-cyan-600 !text-white ring-4 ring-cyan-500/20 shadow-cyan-500/30'
@@ -564,7 +566,7 @@ const Donate = () => {
                                     Select Payment Method
                                 </h3>
 
-                                <div className="flex flex-col sm:flex-row gap-3">
+                                <div className="flex flex-col sm:flex-row gap-4">
 
                                     {/* PayPal */}
                                     <label className="flex-1 cursor-pointer">
@@ -578,18 +580,27 @@ const Donate = () => {
                                         />
 
                                         <div
-                                            style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
-                                            className={`py-2.5 px-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95
-        ${paymentMethod === "paypal"
-                                                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 !text-white shadow-lg ring-2 ring-blue-200"
-                                                    : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm"
+                                            className={`relative p-3 rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] ${paymentMethod === "paypal"
+                                                ? "border-[#332EB2] bg-blue-50 shadow-md"
+                                                : "border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm"
                                                 }`}
                                         >
-                                            <div className="flex items-center justify-center gap-3">
-                                                <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
-                                                    <FaPaypal className={`${paymentMethod === "paypal" ? "text-blue-600" : "text-[#003087]"}`} size={24} />
+                                            {/* Checkmark indicator */}
+                                            <div className={`absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 ${paymentMethod === "paypal"
+                                                ? "bg-[#332EB2] scale-100"
+                                                : "bg-gray-200 scale-0"
+                                                }`}>
+                                                <Check size={14} className="text-white" strokeWidth={3} />
+                                            </div>
+
+                                            <div className="flex items-center gap-3">
+                                                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shadow-sm">
+                                                    <FaPaypal className="text-[#003087]" size={24} />
                                                 </div>
-                                                <span className={`text-base ${paymentMethod === "paypal" ? "font-bold text-white" : "font-semibold"}`}>Pay using PayPal</span>
+                                                <div>
+                                                    <p className="font-bold text-gray-800 text-sm" style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}>PayPal</p>
+                                                    <p className="text-xs text-gray-500">Fast & Secure</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </label>
@@ -606,18 +617,27 @@ const Donate = () => {
                                         />
 
                                         <div
-                                            style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
-                                            className={`py-2.5 px-4 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95
-        ${paymentMethod === "zelle"
-                                                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 !text-white shadow-lg ring-2 ring-blue-200"
-                                                    : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:shadow-sm"
+                                            className={`relative p-3 rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] ${paymentMethod === "zelle"
+                                                ? "border-[#332EB2] bg-blue-50 shadow-md"
+                                                : "border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm"
                                                 }`}
                                         >
-                                            <div className="flex items-center justify-center gap-3">
-                                                <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shadow-sm p-1.5">
-                                                    <SiZelle className={`${paymentMethod === "zelle" ? "text-purple-700" : "text-[#6d1e70]"}`} size={20} />
+                                            {/* Checkmark indicator */}
+                                            <div className={`absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 ${paymentMethod === "zelle"
+                                                ? "bg-[#332EB2] scale-100"
+                                                : "bg-gray-200 scale-0"
+                                                }`}>
+                                                <Check size={14} className="text-white" strokeWidth={3} />
+                                            </div>
+
+                                            <div className="flex items-center gap-3">
+                                                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center shadow-sm">
+                                                    <SiZelle className="text-[#6d1e70]" size={20} />
                                                 </div>
-                                                <span className={`text-base ${paymentMethod === "zelle" ? "font-bold text-white" : "font-semibold"}`}>Pay using Zelle</span>
+                                                <div>
+                                                    <p className="font-bold text-gray-800 text-sm" style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}>Zelle</p>
+                                                    <p className="text-xs text-gray-500">Direct Transfer</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </label>
@@ -628,9 +648,11 @@ const Donate = () => {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3.5 px-6 rounded-xl font-bold text-base hover:from-blue-700 hover:to-indigo-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl mt-6"
+                                style={{ fontFamily: "'Kdam Thmor Pro', sans-serif" }}
+                                className="w-full px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl bg-gradient-to-br from-[#332EB2] to-[#4FB3E8] !text-white ring-4 ring-blue-500/20 shadow-blue-500/30 mt-6"
                             >
-                                Submit Donation
+                                <Gift size={24} color="white" />
+                                <span className="!text-white font-bold">Submit Donation</span>
                             </button>
                         </form>
                     </section>
