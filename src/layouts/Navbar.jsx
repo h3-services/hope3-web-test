@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import '../styles/navbar.css';
 import logo from '../assets/images/pages/home/hope3_logo.png';
 import hope3 from '../assets/images/pages/home/hope3.png';
@@ -48,6 +49,18 @@ const Navbar = () => {
   const dropdownRefs = useRef({});
   const mobileMenuRef = useRef(null);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [mobileOpen]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Only close if we have a clicked (frozen) dropdown
@@ -87,6 +100,18 @@ const Navbar = () => {
     };
   }, [clickedDropdown, mobileOpen]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const menuItems = {
     'Our Work': ['Our Students', 'Our Projects'],
     'Our Impact': ['Why HOPE3?', 'HOPE3 Journey'],
@@ -95,11 +120,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`} role="navigation" aria-label="Main navigation">
+    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'} ${mobileOpen ? 'mobile-active' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
         <button
           className={`hamburger ${mobileOpen ? 'active' : ''}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={() => {
+            setMobileOpen(!mobileOpen);
+            if (!mobileOpen) setActiveDropdown(null); // Reset dropdowns when opening
+          }}
           aria-expanded={mobileOpen}
           aria-label="Toggle menu"
         >
@@ -108,79 +136,104 @@ const Navbar = () => {
           <span></span>
         </button>
 
-        <div className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`}>
-          <div className="mobile-menu-content" ref={mobileMenuRef}>
-            {Object.entries(menuItems).map(([section, items]) => (
-              <div key={section} className="mobile-nav-item">
-                {section === 'Services' ? (
-                  <button
-                    className="mobile-nav-button"
-                    onClick={() => {
-                      window.open('https://www.hope3.org/', '_blank', 'noopener,noreferrer');
-                      setMobileOpen(false);
-                      setActiveDropdown(null);
-                    }}
-                  >
-                    {section}
-                  </button>
-                ) : (
-                  <>
-                    <button
-                      className={`mobile-nav-button ${activeDropdown === section ? 'active' : ''}`}
-                      onClick={() => {
-                        const newState = activeDropdown === section ? null : section;
-                        setActiveDropdown(newState);
-                      }}
-                    >
-                      {section}
-                      <span className="mobile-arrow">▼</span>
-                    </button>
-                    {activeDropdown === section && (
-                      <div className="mobile-submenu">
-                        {items.map((item) => (
+        {createPortal(
+          <div className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`} onClick={() => setMobileOpen(false)}>
+            <div className="mobile-menu-panel" ref={mobileMenuRef} onClick={(e) => e.stopPropagation()}>
+
+              {/* Brand Header */}
+              <header className="menu-header">
+                <button className="close-btn" onClick={() => setMobileOpen(false)} aria-label="Close">
+                  <span></span>
+                  <span></span>
+                </button>
+                <div className="brand-center">
+                  <img src={logo} alt="HOPE3" className="brand-logo" />
+                  <h2 className="brand-name">HOPE3</h2>
+                  <p className="brand-tagline">Empowering Communities</p>
+                </div>
+              </header>
+
+              {/* Main Navigation */}
+              <main className="menu-body">
+                <nav className="nav-list">
+                  {Object.entries(menuItems).map(([section, items]) => (
+                    <div key={section} className="nav-group">
+                      {section === 'Services' ? (
+                        <a
+                          href="https://www.hope3.org/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="nav-link"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {section}
+                        </a>
+                      ) : (
+                        <>
                           <button
-                            key={item}
-                            onClick={() => {
-                              const routes = {
-                                'Our Students': '/our-students',
-                                'Our Projects': '/our-projects',
-                                'Why HOPE3?': '/why-hope3',
-                                'HOPE3 Journey': '/hope3-journey',
-                                'Leadership & Board': '/leadership-&-board',
-                                'Services': '/services',
-                                'Financials': '/financials'
-                              };
-                              if (routes[item]) {
-                                navigate(routes[item]);
-                              }
-                              setMobileOpen(false);
-                              setActiveDropdown(null);
-                            }}
+                            className={`nav-link has-children ${activeDropdown === section ? 'expanded' : ''}`}
+                            onClick={() => setActiveDropdown(activeDropdown === section ? null : section)}
                           >
-                            {item}
+                            {section}
                           </button>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+                          <div className={`nav-children ${activeDropdown === section ? 'show' : ''}`}>
+                            {items.map((item) => (
+                              <button
+                                key={item}
+                                className="nav-child"
+                                onClick={() => {
+                                  const routes = {
+                                    'Our Students': '/our-students',
+                                    'Our Projects': '/our-projects',
+                                    'Why HOPE3?': '/why-hope3',
+                                    'HOPE3 Journey': '/hope3-journey',
+                                    'Leadership & Board': '/leadership-&-board',
+                                    'Financials': '/financials',
+                                    'Media & FAQ': '/media-faq'
+                                  };
+                                  if (routes[item]) navigate(routes[item]);
+                                  setMobileOpen(false);
+                                  setActiveDropdown(null);
+                                }}
+                              >
+                                {item}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </nav>
+              </main>
+
+              {/* Footer CTAs */}
+              <footer className="menu-footer">
+                <button className="btn-primary" onClick={() => { navigate('/donate'); setMobileOpen(false); }}>
+                  Make a Gift
+                </button>
+              </footer>
+            </div>
+          </div>,
+          document.body
+        )}
         <div className="navbar-left">
           <Link to="/" className="desktop-logo-link">
             <img src={logo} alt="Logo" className="navbar-logo" />
           </Link>
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Work'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Work')}
+            onMouseEnter={() => { if (clickedDropdown !== 'Our Work') setClickedDropdown(null); setActiveDropdown('Our Work'); }}
             onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
             <button
-              className="section-title"
+              className={`section-title ${activeDropdown === 'Our Work' ? 'active' : ''}`}
               onClick={() => {
-                const newState = activeDropdown === 'Our Work' ? null : 'Our Work';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                if (clickedDropdown === 'Our Work') {
+                  setActiveDropdown(null);
+                  setClickedDropdown(null);
+                } else {
+                  setActiveDropdown('Our Work');
+                  setClickedDropdown('Our Work');
+                }
                 setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
@@ -210,14 +263,18 @@ const Navbar = () => {
             )}
           </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['Our Impact'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('Our Impact')}
+            onMouseEnter={() => { if (clickedDropdown !== 'Our Impact') setClickedDropdown(null); setActiveDropdown('Our Impact'); }}
             onMouseLeave={() => !clickedDropdown && setTimeout(() => setActiveDropdown(null), 100)}>
             <button
-              className="section-title"
+              className={`section-title ${activeDropdown === 'Our Impact' ? 'active' : ''}`}
               onClick={() => {
-                const newState = activeDropdown === 'Our Impact' ? null : 'Our Impact';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                if (clickedDropdown === 'Our Impact') {
+                  setActiveDropdown(null);
+                  setClickedDropdown(null);
+                } else {
+                  setActiveDropdown('Our Impact');
+                  setClickedDropdown('Our Impact');
+                }
                 setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >
@@ -270,14 +327,18 @@ const Navbar = () => {
             </button>
           </div>
           <div className="navbar-section" ref={el => dropdownRefs.current['About Us'] = el}
-            onMouseEnter={() => !clickedDropdown && setActiveDropdown('About Us')}
+            onMouseEnter={() => { if (clickedDropdown !== 'About Us') setClickedDropdown(null); setActiveDropdown('About Us'); }}
             onMouseLeave={() => !clickedDropdown && setActiveDropdown(null)}>
             <button
-              className="section-title"
+              className={`section-title ${activeDropdown === 'About Us' ? 'active' : ''}`}
               onClick={() => {
-                const newState = activeDropdown === 'About Us' ? null : 'About Us';
-                setActiveDropdown(newState);
-                setClickedDropdown(newState);
+                if (clickedDropdown === 'About Us') {
+                  setActiveDropdown(null);
+                  setClickedDropdown(null);
+                } else {
+                  setActiveDropdown('About Us');
+                  setClickedDropdown('About Us');
+                }
                 setShowGetInvolved(false); // Close Get Involved dropdown
               }}
             >

@@ -13,6 +13,11 @@
 
 body.no-scroll {
     overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none !important;
+    -webkit-overflow-scrolling: none !important;
 }
 
 .navbar-hidden {
@@ -21,6 +26,11 @@ body.no-scroll {
 
 .navbar-visible {
     transform: translateY(0);
+}
+
+.navbar.mobile-active {
+    z-index: 1;
+    /* Lower z-index so blur overlay covers the navbar */
 }
 
 .navbar-container {
@@ -45,15 +55,23 @@ body.no-scroll {
 }
 
 .navbar-left {
-    justify-content: space-evenly;
-    /* Evenly space links between Far Left and Center */
+    justify-content: flex-end;
+    /* Align texts towards center */
     padding-right: 0;
+    /* Pushed right by reducing padding */
+    padding-left: 0;
+    gap: 3rem;
+    /* Fixed spacing matches right side */
+    transform: translateX(110px);
+    /* Nudge right */
 }
 
 .navbar-right {
-    justify-content: space-evenly;
-    /* Evenly space links between Center and Get Involved */
-    padding-left: 0;
+    justify-content: flex-start;
+    /* Align texts towards center */
+    padding-left: 200px;
+    gap: 3rem;
+    /* Fixed spacing matches left side */
 }
 
 .navbar-center-spacer {
@@ -65,6 +83,8 @@ body.no-scroll {
     justify-content: center;
     position: relative;
     flex-shrink: 0;
+    pointer-events: none;
+    /* Allow clicks to pass through to underlying nav items */
 }
 
 .navbar-logo {
@@ -105,8 +125,10 @@ body.no-scroll {
 
 .navbar-center-logo-link {
     position: absolute;
-    left: calc(50% + 10px);
-    /* Slightly shifted to the right */
+    pointer-events: auto;
+    /* Re-enable clicks for the logo */
+    left: calc(50% + 160px);
+    /* Shifted further right */
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -152,49 +174,63 @@ body.no-scroll {
 }
 
 .navbar .section-title {
-    font-size: 0.875rem;
-    font-weight: 400;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    /* Match Get Involved size */
+    font-weight: 500;
+    /* Medium weight */
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     letter-spacing: 0.3px;
+    /* Match Get Involved spacing */
+    text-transform: none;
+    /* uppercase removed */
     color: white !important;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
     border: none;
     background: transparent !important;
     cursor: pointer;
     white-space: nowrap;
     position: relative;
-    padding-bottom: 2px;
+    padding: 0.25rem 0.5rem;
+    /* px-2 py-1 */
     margin-bottom: 0 !important;
-    /* removed margin-top */
     display: flex;
     align-items: center;
 }
 
+/* Glow Effect REMOVED */
+
+/* Underline Effect */
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 1.5px;
-    background: #4FB3E8;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.section-title:hover::after {
-    opacity: 1;
+    height: 1px;
+    background: #3b82f6;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px #3b82f6;
 }
 
 .dropdown-arrow {
-    font-size: 0.8rem;
-    color: white;
-    transition: transform 0.3s;
-    transform: rotate(180deg);
+    display: none;
+    /* Hide arrow for cleaner look with new animation */
 }
 
-.navbar-section:hover .section-title {
-    color: #4FB3E8;
+/* Hover and Active States */
+.navbar-section:hover .section-title,
+.section-title.active {
+    color: #3b82f6 !important;
+    /* Scale removed */
+}
+
+/* Glow hover removed */
+
+.navbar-section:hover .section-title::after,
+.section-title.active::after {
+    transform: scaleX(1);
 }
 
 .navbar-item {
@@ -575,115 +611,324 @@ body.no-scroll {
 /* Desktop Logo Link */
 .desktop-logo-link {
     display: block;
+    margin-right: auto;
+    /* Push logo to far left */
+    transform: translateX(-30px);
+    /* Move logo small left independent of text */
 }
 
-/* Mobile Menu Overlay */
+/* ==================== MODERN MOBILE MENU ==================== */
+
+/* Overlay */
 .mobile-menu-overlay {
-    display: none;
     position: fixed;
-    top: 75px;
-    left: 0;
-    width: 230px;
-    /* Reduced width from 280px */
-    height: calc(100vh - 75px);
-    background: #000000;
-    /* Solid black as requested */
-    backdrop-filter: blur(20px);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
-    overflow-y: auto;
-}
-
-.navbar.mobile-menu-active {
-    background: #000000 !important;
-    backdrop-filter: none;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bHOPE3 HOPE3 Empowering Communitiesezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-menu-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Panel */
+.mobile-menu-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: 90%;
+    /* Ensure panel takes full viewport height and handles safe areas */
+    height: 100%;
+    height: 100dvh;
+    background: #fff;
+    border-radius: 0 24px 24px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.mobile-menu-overlay.active .mobile-menu-panel {
     transform: translateX(0);
 }
 
-.mobile-menu-content {
-    padding: 20px;
+/* Header */
+.menu-header {
+    position: relative;
+    padding: 32px 24px;
+    background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+    border-bottom: 1px solid #e2e8f0;
+    flex-shrink: 0;
+    /* Prevent header shrinking */
+}
+
+/* Close Button - Top Right */
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #e2e8f0;
+    transform: scale(1.05);
+}
+
+.close-btn span {
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: #475569;
+    border-radius: 2px;
+}
+
+.close-btn span:first-child {
+    transform: rotate(45deg);
+}
+
+.close-btn span:last-child {
+    transform: rotate(-45deg);
+}
+
+.close-btn:hover span {
+    background: #1e293b;
+}
+
+/* Centered Brand */
+.brand-center {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-}
-
-.mobile-nav-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobile-nav-button {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 10px;
-    background: none;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.brand-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: contain;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    font-family: 'Inter', -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Menu Body - Scrollable Area */
+.menu-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 0 100px 0;
+    /* Add bottom padding to prevent content from hiding behind footer */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Navigation... (no changes needed to nav items themselves) */
+
+/* Footer */
+.menu-footer {
+    position: absolute;
+    /* Force to bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    /* Increased padding */
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    z-index: 20;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Navigation */
+.nav-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-group {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.nav-group:last-child {
+    border-bottom: none;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    padding: 18px 24px;
+    background: transparent;
     border: none;
-    color: white;
+    text-align: left;
     font-size: 1rem;
     font-weight: 500;
+    color: #1e293b;
+    font-family: 'Inter', -apple-system, sans-serif;
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.2s ease;
-    text-align: left;
+    position: relative;
 }
 
-.mobile-nav-button:hover,
-.mobile-nav-button.active {
-    color: #4FB3E8;
-    background: rgba(79, 179, 232, 0.1);
+.nav-link:hover {
+    background: #f8fafc;
+    color: #0f172a;
 }
 
-.mobile-arrow {
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.5);
+.nav-link.expanded {
+    color: #2563eb;
+    background: #eff6ff;
 }
 
-.mobile-submenu {
-    padding-left: 15px;
-    padding-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    animation: slideDown 0.2s ease;
+/* Arrow for expandable items */
+.nav-link.has-children::after {
+    content: '';
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #94a3b8;
+    border-bottom: 2px solid #94a3b8;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: all 0.3s ease;
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.nav-link.has-children.expanded::after {
+    border-color: #2563eb;
+    transform: translateY(-70%) rotate(45deg);
 }
 
-.mobile-submenu button {
-    padding: 12px 15px;
-    background: rgba(255, 255, 255, 0.05);
+/* Children/Dropdown */
+.nav-children {
+    max-height: 0;
+    overflow: hidden;
+    background: #f8fafc;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-children.show {
+    max-height: 250px;
+}
+
+.nav-child {
+    display: block;
+    width: 100%;
+    padding: 14px 24px 14px 44px;
+    background: transparent;
     border: none;
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
-    cursor: pointer;
     text-align: left;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #475569;
+    font-family: 'Inter', -apple-system, sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-child::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #cbd5e1;
+    border-radius: 50%;
     transition: all 0.2s ease;
 }
 
-.mobile-submenu button:hover {
-    background: rgba(79, 179, 232, 0.2);
-    color: #4FB3E8;
+.nav-child:hover {
+    color: #2563eb;
+    background: #eff6ff;
 }
 
-/* ==================== Mobile Responsive Styles ==================== */
-@media (max-width: 768px) {
+.nav-child:hover::before {
+    background: #2563eb;
+}
+
+/* Duplicate footer styles removed */
+
+/* Button Design */
+.btn-primary {
+    flex: 1;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+    /* Vivid Blue-Indigo Gradient */
+    border: none;
+    border-radius: 50px;
+    /* Pill Shape */
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Inter', -apple-system, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+    /* Glowing Shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 15px 30px -8px rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 15px -3px rgba(37, 99, 235, 0.4);
+}
+
+/* Unused button styles removed */
+
+/* ==================== Mobile & Tablet (Small Laptop) Responsive Styles ==================== */
+@media (max-width: 1280px) {
     .navbar {
-        height: 55px;
+        height: 70px;
         top: 10px;
         left: 10px;
         right: 10px;
@@ -734,9 +979,91 @@ body.no-scroll {
         height: 40px;
     }
 
-    /* Get Involved button on right - icon only */
+    /* Get Involved button stays full width on tablet/laptop */
     .profile-dropdown-container {
         justify-self: end;
+    }
+
+    /* Show mobile menu overlay */
+    .mobile-menu-overlay {
+        display: block;
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .navbar.mobile-menu-active {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        border-radius: 0;
+    }
+
+    /* Get Involved card adjustments for mobile */
+    .get-involved-card {
+        position: fixed;
+        top: 90px;
+        bottom: auto;
+        right: 15px;
+        width: calc(100vw - 30px);
+        max-width: 300px;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    .get-involved-card.show {
+        transform: translateY(0) scale(1);
+    }
+
+    /* Ensure nav children are collapsed by default */
+    .nav-children {
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .nav-children.show {
+        max-height: 250px;
+    }
+
+    /* Wider panel for tablet */
+    .mobile-menu-panel {
+        width: 450px;
+        max-width: 65%;
+    }
+}
+
+/* Tablet Override: Always show nav sections expanded */
+@media (min-width: 641px) and (max-width: 1280px) {
+    .nav-children {
+        max-height: none !important;
+        overflow: visible;
+        display: block;
+        padding-bottom: 12px;
+    }
+
+    .nav-link.has-children::after {
+        display: none;
+    }
+
+    .nav-link {
+        color: #94a3b8;
+        /* Look like a section title */
+        font-size: 0.85rem;
+        pointer-events: none;
+        /* Non-clickable title */
+        padding-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* Mobile Phone Styles (Collapse Button to Icon) */
+@media (max-width: 640px) {
+
+    /* Widen mobile menu for phones */
+    .mobile-menu-panel {
+        width: 320px;
+        max-width: 92%;
     }
 
     .getinv-btn-neumorphic {
@@ -759,37 +1086,6 @@ body.no-scroll {
     .getinv-btn-neumorphic .hand-heart-icon {
         width: 14px;
         height: 14px;
-    }
-
-    /* Show mobile menu overlay */
-    .mobile-menu-overlay {
-        display: block;
-        top: 65px;
-        /* Navbar 55px + top 10px */
-        height: calc(100vh - 65px);
-    }
-
-    .navbar.mobile-menu-active {
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 65px;
-        border-radius: 0;
-    }
-
-    /* Get Involved card adjustments for mobile */
-    .get-involved-card {
-        position: fixed;
-        top: 75px;
-        bottom: auto;
-        right: 15px;
-        width: calc(100vw - 30px);
-        max-width: 300px;
-        transform: translateY(-20px) scale(0.95);
-    }
-
-    .get-involved-card.show {
-        transform: translateY(0) scale(1);
     }
 
     /* Disable icon rotation on mobile */
@@ -844,8 +1140,9 @@ body.no-scroll {
 
     .mobile-menu-overlay {
         width: 100%;
-        top: 60px;
-        height: calc(100vh - 60px);
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
     }
 
     .mobile-nav-button {
