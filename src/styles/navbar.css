@@ -62,14 +62,15 @@ body.no-scroll {
     padding-left: 0;
     gap: 3rem;
     /* Fixed spacing matches right side */
-    transform: translateX(110px);
-    /* Nudge right */
+    transform: translateX(70px);
+    /* Shifted further right */
 }
 
 .navbar-right {
     justify-content: flex-start;
     /* Align texts towards center */
-    padding-left: 200px;
+    padding-left: 190px;
+    /* Shifted further right */
     gap: 3rem;
     /* Fixed spacing matches left side */
 }
@@ -127,8 +128,8 @@ body.no-scroll {
     position: absolute;
     pointer-events: auto;
     /* Re-enable clicks for the logo */
-    left: calc(50% + 160px);
-    /* Shifted further right */
+    left: calc(50% + 140px);
+    /* Shifted further right as requested */
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -613,8 +614,8 @@ body.no-scroll {
     display: block;
     margin-right: auto;
     /* Push logo to far left */
-    transform: translateX(-30px);
-    /* Move logo small left independent of text */
+    transform: translateX(-40px);
+    /* Moved back to the left independently */
 }
 
 /* ==================== MODERN MOBILE MENU ==================== */
@@ -664,9 +665,9 @@ body.no-scroll {
 /* Header */
 .menu-header {
     position: relative;
-    padding: 32px 24px;
-    background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
-    border-bottom: 1px solid #e2e8f0;
+    padding: 16px 24px;
+    background: transparent;
+    border-bottom: none;
     flex-shrink: 0;
     /* Prevent header shrinking */
 }
@@ -719,31 +720,24 @@ body.no-scroll {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    padding-top: 8px;
+    padding: 20px 0;
 }
 
 .brand-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
     object-fit: contain;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .brand-name {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #0f172a;
     font-family: 'Inter', -apple-system, sans-serif;
-    letter-spacing: -0.02em;
-}
-
-.brand-tagline {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #64748b;
-    font-family: 'Inter', -apple-system, sans-serif;
+    letter-spacing: -0.01em;
 }
 
 /* Menu Body - Scrollable Area */
@@ -766,8 +760,8 @@ body.no-scroll {
     left: 0;
     width: 100%;
     padding: 24px;
-    padding-bottom: calc(64px + env(safe-area-inset-bottom));
-    /* Increased padding */
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+    /* Reduced padding to move button lower */
     background: #f8fafc;
     border-top: 1px solid #e2e8f0;
     display: flex;
@@ -792,11 +786,11 @@ body.no-scroll {
 .nav-link {
     display: block;
     width: 100%;
-    padding: 18px 24px;
+    padding: 14px 24px;
     background: transparent;
     border: none;
     text-align: left;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: #1e293b;
     font-family: 'Inter', -apple-system, sans-serif;
@@ -850,11 +844,11 @@ body.no-scroll {
 .nav-child {
     display: block;
     width: 100%;
-    padding: 14px 24px 14px 44px;
+    padding: 12px 24px 12px 44px;
     background: transparent;
     border: none;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: #475569;
     font-family: 'Inter', -apple-system, sans-serif;
@@ -890,22 +884,23 @@ body.no-scroll {
 /* Button Design */
 .btn-primary {
     flex: 1;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
-    /* Vivid Blue-Indigo Gradient */
+    padding: 14px 20px;
+    background: #0061f2;
+    /* Solid Brand Blue */
     border: none;
-    border-radius: 50px;
-    /* Pill Shape */
+    border-radius: 12px;
+    /* Reduced radius as per user image */
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 700;
     font-family: 'Inter', -apple-system, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: none;
+    /* Removed uppercase */
+    letter-spacing: 0.02em;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
-    /* Glowing Shadow */
+    box-shadow: 0 4px 12px rgba(0, 97, 242, 0.3);
+    /* Softer shadow */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -930,10 +925,10 @@ body.no-scroll {
     .navbar {
         height: 70px;
         top: 10px;
-        left: 10px;
-        right: 10px;
+        left: 0;
+        right: 0;
         padding: 0;
-        border-radius: 12px;
+        border-radius: 0;
     }
 
     .navbar-container {
@@ -1098,10 +1093,10 @@ body.no-scroll {
 @media (max-width: 480px) {
     .navbar {
         top: 5px;
-        left: 5px;
-        right: 5px;
+        left: 0;
+        right: 0;
         height: 50px;
-        border-radius: 10px;
+        border-radius: 0;
     }
 
     .navbar-container {

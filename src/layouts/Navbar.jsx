@@ -146,15 +146,14 @@ const Navbar = () => {
                   <span></span>
                   <span></span>
                 </button>
-                <div className="brand-center">
-                  <img src={logo} alt="HOPE3" className="brand-logo" />
-                  <h2 className="brand-name">HOPE3</h2>
-                  <p className="brand-tagline">Empowering Communities</p>
-                </div>
               </header>
 
               {/* Main Navigation */}
               <main className="menu-body">
+                <Link to="/" className="brand-center" onClick={() => { setMobileOpen(false); setActiveDropdown(null); }}>
+                  <img src={logo} alt="HOPE3" className="brand-logo" />
+                  <h2 className="brand-name">HOPE3</h2>
+                </Link>
                 <nav className="nav-list">
                   {Object.entries(menuItems).map(([section, items]) => (
                     <div key={section} className="nav-group">
