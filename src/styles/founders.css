@@ -583,21 +583,21 @@ html {
     }
 }
 
-@media (max-width: 850px) {
+/* Mobile view: 2 images per row */
+@media (max-width: 768px) {
     .varsity-grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .varsity-grid-4 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
     }
 
     .carousel-arrow {
         width: 36px;
         height: 36px;
         font-size: 1rem;
+    }
+
+    .varsity-carousel-wrapper {
+        gap: 10px;
     }
 }
 
@@ -636,15 +636,11 @@ html {
     }
 }
 
+/* Mobile: 2 images per row for all board grids */
 @media (max-width: 768px) {
     .board-grid-5 {
         grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .board-grid-5 {
-        grid-template-columns: 1fr !important;
+        gap: 15px;
     }
 }
 
@@ -787,6 +783,44 @@ html {
 
     100% {
         transform: translateX(calc(-50%));
+    }
+}
+
+/* Mobile: Convert marquee to 2-column grid */
+@media (max-width: 768px) {
+    .partner-marquee-container {
+        overflow: visible;
+        padding: 20px 0;
+    }
+
+    .partner-marquee-container::before,
+    .partner-marquee-container::after {
+        display: none;
+    }
+
+    .partner-marquee-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 100%;
+        animation: none;
+        padding: 0 10px;
+    }
+
+    .marquee-item {
+        width: 100%;
+        height: 130px;
+        margin: 0;
+        padding: 15px 10px;
+    }
+
+    .marquee-logo-container {
+        height: 50px;
+    }
+
+    .marquee-item-name {
+        font-size: 0.7rem;
+        margin-top: 6px;
     }
 }
 
@@ -982,12 +1016,35 @@ html {
 
 
 
-/* Responsive */
+/* Responsive - Mobile Font Size Reductions */
 @media (max-width: 768px) {
     .board-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
+    /* Section Title */
+    .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 25px;
+    }
+
+    /* Card Content Font Sizes */
+    .board-card-name {
+        font-size: 13px !important;
+    }
+
+    .board-card-title {
+        font-size: 11px !important;
+    }
+
+    /* Card Height Adjustment */
+    .board-card.premium-card,
+    .varsity-grid-4 .board-card {
+        height: 180px !important;
+    }
+
+    /* Detail Panel */
     .inline-detail-content {
         flex-direction: column;
     }
@@ -997,6 +1054,36 @@ html {
         width: 100%;
         max-width: 150px;
         margin: 0 auto;
+    }
+
+    .inline-detail-name {
+        font-size: 18px !important;
+    }
+
+    .inline-detail-title {
+        font-size: 0.75rem !important;
+    }
+
+    .inline-detail-bio {
+        font-size: 12px !important;
+    }
+
+    /* Role Intro */
+    .role-intro-highlight {
+        font-size: 12px !important;
+        padding-left: 15px;
+    }
+
+    /* Founder Contact */
+    .founder-email,
+    .founder-linkedin {
+        font-size: 0.75rem !important;
+        padding: 6px 12px;
+    }
+
+    /* Quote Box */
+    .founder-quote {
+        font-size: 12px !important;
     }
 }
 

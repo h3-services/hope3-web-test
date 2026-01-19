@@ -188,7 +188,7 @@ const Navbar = () => {
                                     'HOPE3 Journey': '/hope3-journey',
                                     'Leadership & Board': '/leadership-&-board',
                                     'Financials': '/financials',
-                                    'Media & FAQ': '/media-faq'
+                                    'Media & FAQ': '/media'
                                   };
                                   if (routes[item]) navigate(routes[item]);
                                   setMobileOpen(false);

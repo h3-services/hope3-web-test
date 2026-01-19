@@ -41,7 +41,7 @@ const NewFooter = () => {
             <a href="mailto:contact@hope3.org" className="footer-email">
               contact@hope3.org
             </a>
-            <div className="social-links" style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+            <div className="social-links">
               <a href="https://www.linkedin.com/company/hope3org/" target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
                 <FaLinkedinIn size={18} />
               </a>
@@ -59,7 +59,7 @@ const NewFooter = () => {
               </a>
             </div>
           </div>
-          <div className="footer-right" style={{ lineHeight: '1.2', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '10px' }}>
+          <div className="footer-right">
             <div>
               <div className="footer-nonprofit" style={{ marginBottom: '0', fontSize: '14px' }}>
                 US IRS 501(C)(3) Non-Profit Organization
@@ -71,14 +71,7 @@ const NewFooter = () => {
             <div className="footer-copyright" style={{ marginBottom: '0', marginTop: '0', fontSize: '14px' }}>
               © 2026 All Rights Reserved      |  Privacy Policy
             </div>
-            <div
-              className="footer-developed-by"
-              style={{
-                marginTop: '10px',
-                fontSize: '0.25rem',
-                textAlign: 'right'
-              }}
-            >
+            <div className="footer-developed-by">
               <span
                 onClick={() => setShowTeamPopup(!showTeamPopup)}
                 style={{
