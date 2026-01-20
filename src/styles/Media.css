@@ -274,12 +274,88 @@
 @media (max-width: 1200px) {
     .news-feed-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
+/* Mobile: Keep 2-column grid like YouTube mobile */
 @media (max-width: 768px) {
     .news-feed-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .media-card-image-wrap {
+        height: 140px;
+    }
+
+    .media-card-body {
+        padding: 12px;
+    }
+
+    .media-card-title {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+        line-height: 1.3;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .media-card-excerpt {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+        -webkit-line-clamp: 2;
+    }
+
+    .media-card-badge {
+        font-size: 0.6rem;
+        padding: 3px 10px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .media-card-footer {
+        font-size: 9px !important;
+        gap: 6px;
+    }
+
+    .media-author,
+    .media-date {
+        font-size: 9px !important;
+    }
+
+    .media-author svg,
+    .media-date svg {
+        width: 9px !important;
+        height: 9px !important;
+    }
+}
+
+/* Very small screens: still 2 columns but more compact */
+@media (max-width: 480px) {
+    .news-feed-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .media-card-image-wrap {
+        height: 120px;
+    }
+
+    .media-card-body {
+        padding: 10px;
+    }
+
+    .media-card-title {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .media-card-excerpt {
+        font-size: 0.7rem;
+        -webkit-line-clamp: 2;
     }
 }
 

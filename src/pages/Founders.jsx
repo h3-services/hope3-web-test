@@ -61,7 +61,7 @@ const foundersData = [
         roleIntro: "Palani is the founder of HOPE3. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
         bio: "Palani is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today’s societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity.",
         email: "palani@hope3.org",
-        categories: ['HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
+        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
     },
     {
         id: 2,
@@ -71,7 +71,7 @@ const foundersData = [
         roleIntro: "Neel is the co-founder of HOPE3. He also serves on the HOPE3 Board and HOPE3 Varsity.",
         bio: "Neel is the co-founder of HOPE3. He also serves on the HOPE3 Board and HOPE3 Varsity. In addition to being an advisor to the Hope 3 foundation long term strategy and regular activities, Neel enjoys connecting with students through Soft Skills club, as part of HOPE3 Varsity.",
         email: "neel@hope3.org",
-        categories: ['HOPE3 Board', 'HOPE3 Varsity']
+        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity']
     },
     {
         id: 3,
@@ -81,7 +81,7 @@ const foundersData = [
         roleIntro: "Meenakshi is one of the founding members of HOPE3 Foundation and is the president of HOPE3 Varsity the educational wing of HOPE3 Foundation. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.",
         bio: "Meenakshi actively engages in a wide variety of HOPE3 Varsity classes as a mentor and many a time as a student.",
         email: "meenakshi.sundaram@hope3.org",
-        categories: ['HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
+        categories: ['Founders', 'HOPE3 Board', 'HOPE3 Varsity', 'Admissions', 'Student Relations']
     },
     {
         id: 4,
@@ -286,9 +286,21 @@ const financeIntro = `Finance team meticulously tracks all income and expenses a
 const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const itemsPerPage = 4;
-
+    const [itemsPerPage, setItemsPerPage] = useState(4);
     const visibleMembers = members.slice(startIndex, startIndex + itemsPerPage);
+
+    useEffect(() => {
+        const updateItemsPerPage = () => {
+            if (window.innerWidth <= 768) {
+                setItemsPerPage(2);
+            } else {
+                setItemsPerPage(4);
+            }
+        };
+        updateItemsPerPage();
+        window.addEventListener('resize', updateItemsPerPage);
+        return () => window.removeEventListener('resize', updateItemsPerPage);
+    }, []);
 
     const handleNext = () => {
         if (startIndex + itemsPerPage < members.length) {
@@ -316,18 +328,18 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
         }
     }, [members]);
 
-    // Auto-play every 4 seconds
+    // Auto-play every 2 seconds
     useEffect(() => {
         let interval;
         if (!isPaused && members.length > itemsPerPage) {
             interval = setInterval(() => {
                 handleNext();
-            }, 4000);
+            }, 2000);
         }
         return () => {
             if (interval) clearInterval(interval);
         };
-    }, [startIndex, isPaused, members.length]);
+    }, [startIndex, isPaused, members.length, itemsPerPage]);
 
     return (
         <div
@@ -499,48 +511,27 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                             .map((category) => {
                                 const categoryFounders = foundersData.filter(founder => founder.categories.includes(category));
 
+                                // Sorting logic
                                 if (category === 'HOPE3 Varsity') {
                                     const stripPrefix = (name) => name.replace(/^(Mr\.|Mrs\.|Dr\.)\s+/i, '');
                                     categoryFounders.sort((a, b) => stripPrefix(a.name).localeCompare(stripPrefix(b.name)));
-                                } else if (category === 'Admissions') {
-                                    const order = [
-                                        "Mr. Arumugam AP",
-                                        "Mr. Ganesh Gopalakrishnan",
-                                        "Mr. Gokul Kittusamy",
-                                        "Mr. Manickam Chockalingam",
-                                        "Dr. Meenakshi Sundaram",
-                                        "Mr. Palaniappan (Palani) Vairavan"
-                                    ];
+                                } else if (category === 'Admissions' || category === 'Student Relations') {
+                                    const order = category === 'Admissions'
+                                        ? ["Mr. Arumugam AP", "Mr. Ganesh Gopalakrishnan", "Mr. Gokul Kittusamy", "Mr. Manickam Chockalingam", "Dr. Meenakshi Sundaram", "Mr. Palaniappan (Palani) Vairavan"]
+                                        : ["Mr. Ganesh Gopalakrishnan", "Dr. Meenakshi Sundaram", "Mr. Gokul Kittusamy", "Mr. Palaniappan (Palani) Vairavan", "Mr. Sivakumar (Shiva) KS"];
+
                                     categoryFounders.sort((a, b) => {
                                         const indexA = order.indexOf(a.name);
                                         const indexB = order.indexOf(b.name);
                                         if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-                                        if (indexA !== -1) return -1;
-                                        if (indexB !== -1) return 1;
-                                        return a.name.localeCompare(b.name);
-                                    });
-                                } else if (category === 'Student Relations') {
-                                    const order = [
-                                        "Mr. Ganesh Gopalakrishnan",
-                                        "Dr. Meenakshi Sundaram",
-                                        "Mr. Gokul Kittusamy",
-                                        "Mr. Palaniappan (Palani) Vairavan",
-                                        "Mr. Sivakumar (Shiva) KS"
-                                    ];
-                                    categoryFounders.sort((a, b) => {
-                                        const indexA = order.indexOf(a.name);
-                                        const indexB = order.indexOf(b.name);
-                                        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-                                        if (indexA !== -1) return -1;
-                                        if (indexB !== -1) return 1;
-                                        return a.name.localeCompare(b.name);
+                                        return indexA !== -1 ? -1 : (indexB !== -1 ? 1 : a.name.localeCompare(b.name));
                                     });
                                 }
 
                                 if (categoryFounders.length === 0) return null;
 
-                                // Carousel Categories
-                                if (category === 'HOPE3 Varsity' || category === 'Admissions') {
+                                // Carousel Categories (including Board and Student Relations)
+                                if (['HOPE3 Board', 'Student Relations', 'HOPE3 Varsity', 'Admissions', 'Founders', 'Finance', 'Media'].includes(category)) {
                                     return (
                                         <div key={category} className="category-section">
                                             <h2 className="section-title">{category}</h2>
@@ -548,13 +539,12 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                                 members={categoryFounders}
                                                 onClick={() => handleCategoryChange(category)}
                                             />
-
                                         </div>
                                     );
                                 }
-                                // Partner Categories (Logo/Company centric Marquee)
+
+                                // Partner Categories (Marquee)
                                 if (category === 'Industrial Partners' || category === 'Non-Profit Partners') {
-                                    // Duplicate items for seamless scroll
                                     const marqueeItems = [...categoryFounders, ...categoryFounders];
                                     return (
                                         <div key={category} className="category-section">
@@ -566,13 +556,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                                             key={`${partner.id}-${idx}`}
                                                             className="marquee-item"
                                                             style={{ cursor: 'pointer' }}
-                                                            onClick={() => {
-                                                                if (partner.website) {
-                                                                    window.open(partner.website, '_blank', 'noopener,noreferrer');
-                                                                } else {
-                                                                    handleCategoryChange(category);
-                                                                }
-                                                            }}
+                                                            onClick={() => partner.website && window.open(partner.website, '_blank', 'noopener,noreferrer')}
                                                         >
                                                             <div className="marquee-logo-container">
                                                                 <img src={partner.image} alt={partner.name} />
@@ -585,49 +569,45 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                         </div>
                                     );
                                 }
-
-
-                                return (
-                                    <div key={category} className="category-section">
-                                        <h2 className="section-title">{category}</h2>
-                                        <div className={`board-grid ${category === 'HOPE3 Board' || category === 'Student Relations' ? 'board-grid-5' : ''}`}>
-                                            {categoryFounders.map((founder) => (
-                                                <div
-                                                    key={`${category}-${founder.id}`}
-                                                    className="board-card premium-card"
-                                                    style={{ cursor: 'pointer' }}
-                                                    onClick={() => handleCategoryChange(category)}
-                                                >
-                                                    <div className="card-image-bg">
-                                                        <img src={founder.image} alt={founder.name} />
-                                                    </div>
-                                                    <div className="card-gradient-overlay"></div>
-                                                    <div className="card-content">
-                                                        <h3 className="board-card-name">{founder.name}</h3>
-                                                        <p className="board-card-title">{founder.title}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                    </div>
-                                );
+                                return null;
                             })}
-
                     </div>
-                ) : (activeCategory === 'HOPE3 Varsity' || activeCategory === 'Admissions') ? (
-                    // --- CAROUSEL MODE (Varsity & Admissions) ---
+                ) : (
+                    // --- SINGLE CATEGORY VIEW ---
                     <div className="board-interaction-container">
-                        <VarsityCarousel
-                            members={filteredFounders}
-                            onHover={setSelectedMemberId}
-                            onClick={setSelectedMemberId}
-                            selectedId={selectedMemberId}
-                        />
+                        {['Industrial Partners', 'Non-Profit Partners'].includes(activeCategory) ? (
+                            <div className="partner-marquee-container">
+                                <div className="partner-marquee-track">
+                                    {[...filteredFounders, ...filteredFounders].map((partner, idx) => (
+                                        <div
+                                            key={`${partner.id}-${idx}`}
+                                            className={`marquee-item ${selectedMemberId === partner.id ? 'selected-marquee-item' : ''}`}
+                                            onClick={() => {
+                                                if (partner.website) window.open(partner.website, '_blank', 'noopener,noreferrer');
+                                                setSelectedMemberId(partner.id);
+                                            }}
+                                            onMouseEnter={() => setSelectedMemberId(partner.id)}
+                                        >
+                                            <div className="marquee-logo-container">
+                                                <img src={partner.image} alt={partner.name} />
+                                            </div>
+                                            <span className="marquee-item-name">{partner.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : (
+                            <VarsityCarousel
+                                members={filteredFounders}
+                                onHover={setSelectedMemberId}
+                                onClick={setSelectedMemberId}
+                                selectedId={selectedMemberId}
+                            />
+                        )}
 
-                        {/* Inline Details Panel */}
+                        {/* Detail Panel */}
                         {selectedMember && (
-                            <div className="board-details-inline">
+                            <div className={`board-details-inline ${['Industrial Partners', 'Non-Profit Partners'].includes(activeCategory) ? 'partner-details' : ''}`}>
                                 <button className="details-close-btn" onClick={() => setSelectedMemberId(null)}>✕</button>
                                 <div className="inline-detail-content">
                                     <div className="inline-detail-left">
@@ -636,10 +616,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                     <div className="inline-detail-right">
                                         <h2 className="inline-detail-name">{selectedMember.name}</h2>
                                         <span className="inline-detail-title">{selectedMember.title}</span>
-                                        {selectedMember.roleIntro && (
-                                            <p className="role-intro-highlight">{selectedMember.roleIntro}</p>
-                                        )}
-                                        <p className="inline-detail-bio">{selectedMember.bio}</p>
+                                        {selectedMember.bio && <p className="inline-detail-bio">{selectedMember.bio}</p>}
                                         <div className="founder-contact">
                                             {selectedMember.email && (
                                                 <a href={`mailto:${selectedMember.email}`} className="founder-email">
@@ -649,120 +626,6 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                             {selectedMember.linkedin && (
                                                 <a href={selectedMember.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
                                                     <span className="linkedin-icon">🔗</span> LinkedIn
-                                                </a>
-                                            )}
-                                        </div>
-                                        {selectedMember.categories.includes('Founders') && (
-                                            <div className="founder-quote-box">
-                                                <p className="founder-quote">"{selectedMember.quote}"</p>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ) : (['HOPE3 Board', 'Finance', 'Student Relations', 'Media'].includes(activeCategory)) ? (
-                    // --- GRID MODE (Common Layout) ---
-                    <div className="board-interaction-container">
-                        <div className={`board-grid ${activeCategory === 'HOPE3 Board' || activeCategory === 'Student Relations' ? 'board-grid-5' : ''}`}>
-                            {filteredFounders.map((founder) => (
-                                <div
-                                    key={founder.id}
-                                    className={`board-card premium-card ${selectedMemberId === founder.id ? 'selected-card' : ''}`}
-                                    onClick={() => setSelectedMemberId(founder.id)}
-                                    onMouseEnter={() => setSelectedMemberId(founder.id)}
-                                >
-                                    <div className="card-image-bg">
-                                        <img src={founder.image} alt={founder.name} />
-                                    </div>
-                                    <div className="card-gradient-overlay"></div>
-                                    <div className="card-content">
-                                        <h3 className="board-card-name">{founder.name}</h3>
-                                        <p className="board-card-title">{founder.title}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Inline Details Panel */}
-                        {selectedMember && (
-                            <div className="board-details-inline">
-                                <button className="details-close-btn" onClick={() => setSelectedMemberId(null)}>✕</button>
-                                <div className="inline-detail-content">
-                                    <div className="inline-detail-left">
-                                        <img src={selectedMember.image} alt={selectedMember.name} />
-                                    </div>
-                                    <div className="inline-detail-right">
-                                        <h2 className="inline-detail-name">{selectedMember.name}</h2>
-                                        <span className="inline-detail-title">{selectedMember.title}</span>
-                                        {selectedMember.roleIntro && (
-                                            <p className="role-intro-highlight">{selectedMember.roleIntro}</p>
-                                        )}
-                                        <p className="inline-detail-bio">{selectedMember.bio}</p>
-                                        <div className="founder-contact">
-                                            {selectedMember.email && (
-                                                <a href={`mailto:${selectedMember.email}`} className="founder-email">
-                                                    <span className="email-icon">✉</span> {selectedMember.email}
-                                                </a>
-                                            )}
-                                            {selectedMember.linkedin && (
-                                                <a href={selectedMember.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
-                                                    <span className="linkedin-icon">🔗</span> LinkedIn
-                                                </a>
-                                            )}
-                                        </div>
-                                        {selectedMember.categories.includes('Founders') && (
-                                            <div className="founder-quote-box">
-                                                <p className="founder-quote">"{selectedMember.quote}"</p>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ) : (activeCategory === 'Industrial Partners' || activeCategory === 'Non-Profit Partners') ? (
-                    // --- PARTNER MARQUEE VIEW (Industrial & Non-Profit) ---
-                    <div className="board-interaction-container">
-                        <div className="partner-marquee-container">
-                            <div className="partner-marquee-track">
-                                {[...filteredFounders, ...filteredFounders].map((partner, idx) => (
-                                    <div
-                                        key={`${partner.id}-${idx}`}
-                                        className={`marquee-item ${selectedMemberId === partner.id ? 'selected-marquee-item' : ''}`}
-                                        onClick={() => {
-                                            if (partner.website) {
-                                                window.open(partner.website, '_blank', 'noopener,noreferrer');
-                                            }
-                                            setSelectedMemberId(partner.id);
-                                        }}
-                                        onMouseEnter={() => setSelectedMemberId(partner.id)}
-                                    >
-                                        <div className="marquee-logo-container">
-                                            <img src={partner.image} alt={partner.name} />
-                                        </div>
-                                        <span className="marquee-item-name">{partner.name}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        {/* Inline Details Panel for Partners in Filtered view */}
-                        {selectedMember && (
-                            <div className="board-details-inline partner-details">
-                                <button className="details-close-btn" onClick={() => setSelectedMemberId(null)}>✕</button>
-                                <div className="inline-detail-content">
-                                    <div className="inline-detail-left">
-                                        <img src={selectedMember.image} alt={selectedMember.name} />
-                                    </div>
-                                    <div className="inline-detail-right">
-                                        <h2 className="inline-detail-name">{selectedMember.name}</h2>
-                                        <span className="inline-detail-title">{selectedMember.title}</span>
-                                        <p className="inline-detail-bio">{selectedMember.bio}</p>
-                                        <div className="founder-contact">
-                                            {selectedMember.email && (
-                                                <a href={`mailto:${selectedMember.email}`} className="founder-email">
-                                                    <span className="email-icon">✉</span> {selectedMember.email}
                                                 </a>
                                             )}
                                             {selectedMember.website && (
@@ -771,72 +634,28 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                                 </a>
                                             )}
                                         </div>
+                                        {selectedMember.quote && (
+                                            <div className="founder-quote-box">
+                                                <p className="founder-quote">"{selectedMember.quote}"</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         )}
-                    </div>
-                ) : (
-                    // --- STANDARD LIST VIEW (For any unlikely leftovers) ---
-                    filteredFounders.length > 0 ? (
-                        filteredFounders.map((founder, index) => (
-                            <div
-                                key={founder.id}
-                                className={`founder-card-row ${index % 2 !== 0 ? 'reversed' : ''}`}
-                            >
-                                <div className="founder-image-col">
-                                    <div className="founder-image-wrapper">
-                                        <img src={founder.image} alt={founder.name} />
-                                    </div>
-                                </div>
-
-                                <div className="founder-content-col">
-                                    <h2 className="founder-name">{founder.name}</h2>
-                                    <span className="founder-title">{founder.title}</span>
-
-                                    {founder.roleIntro && (
-                                        <p className="role-intro-highlight">{founder.roleIntro}</p>
-                                    )}
-                                    <p className="founder-bio">{founder.bio}</p>
-
-                                    <div className="founder-contact">
-                                        {founder.email && (
-                                            <a href={`mailto:${founder.email}`} className="founder-email">
-                                                <span className="email-icon">✉</span> {founder.email}
-                                            </a>
-                                        )}
-                                        {founder.linkedin && (
-                                            <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
-                                                <span className="linkedin-icon">🔗</span> LinkedIn
-                                            </a>
-                                        )}
-                                        {founder.website && (
-                                            <a href={founder.website} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
-                                                <span className="website-icon">🌐</span> Website
-                                            </a>
-                                        )}
-                                    </div>
-
-                                    {founder.categories.includes('Founders') && (
-                                        <div className="founder-quote-box">
-                                            <p className="founder-quote">"{founder.quote}"</p>
-                                        </div>
-                                    )}
-                                </div>
+                        {filteredFounders.length === 0 && (
+                            <div className="text-center py-20">
+                                <h3 className="text-2xl text-gray-400 font-medium">Coming Soon</h3>
+                                <p className="text-gray-500 mt-2">We are currently updating our {activeCategory} team.</p>
                             </div>
-                        ))
-                    ) : (
-                        <div className="text-center py-20">
-                            <h3 className="text-2xl text-gray-400 font-medium">Coming Soon</h3>
-                            <p className="text-gray-500 mt-2">We are currently updating our {activeCategory} team.</p>
-                        </div>
-                    )
+                        )}
+                    </div>
                 )}
             </section>
 
 
             <NewFooter />
-        </div>
+        </div >
     );
 };
 

@@ -16,6 +16,7 @@ import image7 from '../assets/images/animations/image7.jpg';
 import image8 from '../assets/images/animations/image8.jpg';
 
 const WhyHope3 = () => {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const stages = [

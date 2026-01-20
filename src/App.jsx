@@ -30,7 +30,7 @@ function App() {
         <Route path="/leadership-&-board" element={<Founders />} />
         <Route path="/financials" element={<Financial />} />
         <Route path="/media" element={<Media />} />
-        <Route path="/faq" element={<div>FAQ Page</div>} />
+        <Route path="/faq" element={<div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', color: '#666' }}>FAQ - Coming Soon</div>} />
         <Route path="/be-informed" element={<div>Be Informed Page</div>} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/join-hope3" element={<JoinHope3 />} />

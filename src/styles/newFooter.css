@@ -80,6 +80,10 @@
   flex: 1;
   min-width: 250px;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .footer-nonprofit {
@@ -119,16 +123,48 @@
 }
 
 @media (max-width: 768px) {
+  .footer-outer-box {
+    padding: 1.5rem 1rem;
+  }
+
   .footer-box {
     flex-direction: column;
     align-items: stretch;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .footer-left {
+    min-width: unset;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  .social-links {
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: 1rem;
   }
 
   .footer-right {
     text-align: right;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 0;
+    min-width: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .footer-developed-by {
+    text-align: right;
+    width: 100%;
+    margin-top: 10px;
   }
 
   .footer-bottom a {
