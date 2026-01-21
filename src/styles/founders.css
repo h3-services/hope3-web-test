@@ -191,17 +191,28 @@ html {
 
 /* --- Founders Intro Section --- */
 .founders-intro-container {
-    max-width: 1200px;
-    margin: 0 auto 60px;
-    padding: 0 40px;
-    /* Aligned with others */
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.main-section-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #332eb2;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .founders-intro-text {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.8;
     color: #4b5563;
-    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
 }
@@ -217,11 +228,15 @@ html {
 .founder-card-row {
     display: flex;
     align-items: flex-start;
-    /* Changed from center to allow sticky behavior */
-    gap: 60px;
-    /* Reduced from 80px */
-    margin-bottom: 100px;
-    /* Reduced from 120px */
+    gap: 40px;
+    margin-bottom: 80px;
+    position: relative;
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    min-height: 600px;
 }
 
 .founder-card-row.reversed {
@@ -229,26 +244,29 @@ html {
 }
 
 .founder-image-col {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 450px;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     position: sticky;
-    top: calc(50vh - 150px);
-    /* Center image in viewport */
+    top: 40px;
+    /* Adjust based on nav height */
     align-self: flex-start;
-    height: fit-content;
+    padding: 0;
+    height: auto;
+    /* Allow it to take height of image */
 }
 
 
 .founder-image-wrapper {
     position: relative;
     width: 100%;
-    max-width: 280px;
-    /* Reduced from 380px */
+    /* Fixed width/height for the image container */
+    max-width: 400px;
+    height: 500px;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -258,9 +276,10 @@ html {
 
 .founder-image-wrapper img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
-    transform: scale(1.05);
     transition: transform 0.8s ease;
 }
 
@@ -269,8 +288,14 @@ html {
 }
 
 .founder-content-col {
-    flex: 0 0 70%;
-    max-width: 70%;
+    flex: 1;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Ensure responsiveness resets these widths */
@@ -308,6 +333,12 @@ html {
     margin-bottom: 20px;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
+}
+
+.founder-bio p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .founder-contact {
@@ -507,7 +538,7 @@ html {
     line-height: 1.2;
     font-weight: 700;
     color: #332eb2;
-    text-align: left;
+    text-align: center;
     margin-bottom: 40px;
     text-transform: uppercase;
 }
@@ -522,6 +553,7 @@ html {
 .varsity-carousel-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     position: relative;
     padding: 20px 0;
@@ -530,9 +562,26 @@ html {
 .varsity-grid-4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+    place-content: center;
+}
+
+/* Center alignment for Founders, Finance, and Media sections */
+.centered-section .varsity-grid-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-template-columns: unset;
     gap: 20px;
-    flex: 1;
-    transition: all 0.3s ease;
+}
+
+/* Remove auto margin from cards in centered sections */
+.centered-section .board-card.premium-card {
+    margin: 0;
 }
 
 /* Arrows */
@@ -826,13 +875,16 @@ html {
 
 .board-card.premium-card {
     position: relative;
-    height: 220px;
+    width: 100%;
+    max-width: 240px;
+    height: 240px;
     background: #0f172a;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     border: none;
     text-align: left;
 }

@@ -58,7 +58,7 @@ const foundersData = [
         name: "Mr. Palaniappan (Palani) Vairavan",
         title: "Founder",
         image: palaniImage,
-        bio: "Mr. Palaniappan Vairavan is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today’s societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity.\n\nSince 2016, Palani has been actively volunteering with several educational nonprofit organizations, working to level the playing field for circumstantially challenged students. He was instrumental in the conception of HOPE3, recognizing the need to provide high-quality educational opportunities to talented students who lack adequate resources or exposure. At HOPE3 Varsity, he teaches data structures, algorithms, and web and mobile application development.\n\nProfessionally, Palani is a Software Engineering manager at Amazon in Washington. He holds a Master of Science degree in Computer Science from East Carolina University.\n\nOutside of his professional and educational pursuits, he enjoys playing tennis, pickle ball and spending time outdoors with his family. He can be reached at palani@hope3.org.",
+        bio: "Mr. Palaniappan Vairavan is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today's societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity.\n\nSince 2016, Palani has been actively volunteering with several educational nonprofit organizations, working to level the playing field for circumstantially challenged students. He was instrumental in the conception of HOPE3, recognizing the need to provide high-quality educational opportunities to talented students who lack adequate resources or exposure. At HOPE3 Varsity, he teaches data structures, algorithms, and web and mobile application development.\n\nProfessionally, Palani is a Software Engineering manager at Amazon in Washington. He holds a Master of Science degree in Computer Science from East Carolina University.\n\nOutside of his professional and educational pursuits, he enjoys playing tennis, pickle ball and spending time outdoors with his family. He can be reached at palani@hope3.org.",
         boardBio: "Palani is an educator, entrepreneur, and visionary who strongly believes that education is the key to addressing many of today’s societal challenges. He serves as the President of the HOPE3 Foundation and the Dean of the Computer Science Department at HOPE3 Varsity.\n\nPalani is the founder of HOPE3. He also serves on the HOPE3 Board, HOPE3 Varsity, Admissions and Student Relations.\n\nPalani can be reached at palani@hope3.org",
         quote: "HOPE3 Foundation was born from a simple belief—that true learning begins with understanding. Through real-time project experience, we help students find confidence, unlock potential, and become professionals, entrepreneurs, and leaders who make a meaningful difference.",
         email: "palani@hope3.org",
@@ -392,7 +392,54 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = t
             )}
         </div>
     );
-}; const Founders = () => {
+}; const FoundersStickySection = ({ members }) => {
+    return (
+        <div className="founders-sticky-section">
+            {members.map((founder, index) => (
+                <div
+                    key={founder.id}
+                    className={`founder-card-row ${index % 2 !== 0 ? 'reversed' : ''}`}
+                >
+                    <div className="founder-image-col">
+                        <div className="founder-image-wrapper">
+                            <img src={founder.image} alt={founder.name} />
+                        </div>
+                    </div>
+                    <div className="founder-content-col">
+                        <h2 className="founder-name">{founder.name}</h2>
+                        <span className="founder-title">{founder.title}</span>
+                        <div className="founder-bio">
+                            {founder.bio.split('\n\n').map((para, i) => (
+                                <p key={i} style={{ marginBottom: '15px' }}>{para}</p>
+                            ))}
+                        </div>
+
+                        <div className="founder-contact">
+                            {founder.email && (
+                                <a href={`mailto:${founder.email}`} className="founder-email">
+                                    <span className="email-icon">✉</span> {founder.email}
+                                </a>
+                            )}
+                            {founder.linkedin && (
+                                <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin">
+                                    <span className="linkedin-icon">🔗</span> LinkedIn
+                                </a>
+                            )}
+                        </div>
+
+                        {founder.quote && (
+                            <div className="founder-quote-box">
+                                <p className="founder-quote">"{founder.quote}"</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+const Founders = () => {
     const [activeCategory, setActiveCategory] = useState('All');
     const [selectedMemberId, setSelectedMemberId] = useState(null);
     const [lastInteractedCategory, setLastInteractedCategory] = useState(null);
@@ -486,6 +533,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = t
             {/* Intro Content - Conditionally Rendered */}
             {(activeCategory === 'All' || activeCategory === 'Founders') && (
                 <div className="founders-intro-container">
+                    <h1 className="main-section-title">Founders</h1>
                     <p className="founders-intro-text">
                         {foundersIntro}
                     </p>
@@ -539,15 +587,29 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = t
 
                                 if (categoryFounders.length === 0) return null;
 
-                                // Carousel Categories (including Board and Student Relations)
-                                if (['HOPE3 Board', 'HOPE3 Student Relations', 'HOPE3 Varsity', 'HOPE3 Admissions', 'Founders', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(category)) {
+                                // Founders - Show carousel in All view, clicking navigates to Founders filter
+                                if (category === 'Founders') {
                                     return (
-                                        <div key={category} className="category-section">
+                                        <div key={category} className="category-section centered-section">
                                             <h2 className="section-title">{category}</h2>
                                             <VarsityCarousel
                                                 members={categoryFounders}
                                                 onClick={() => handleCategoryChange(category)}
-                                                showArrows={!['Founders', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(category)}
+                                                showArrows={false}
+                                            />
+                                        </div>
+                                    );
+                                }
+
+                                // Carousel Categories (including Board and Student Relations)
+                                if (['HOPE3 Board', 'HOPE3 Student Relations', 'HOPE3 Varsity', 'HOPE3 Admissions', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(category)) {
+                                    return (
+                                        <div key={category} className={`category-section ${['HOPE3 Finance', 'HOPE3 Media Team'].includes(category) ? 'centered-section' : ''}`}>
+                                            <h2 className="section-title">{category}</h2>
+                                            <VarsityCarousel
+                                                members={categoryFounders}
+                                                onClick={() => handleCategoryChange(category)}
+                                                showArrows={!['HOPE3 Finance', 'HOPE3 Media Team'].includes(category)}
                                             />
                                         </div>
                                     );
@@ -606,6 +668,8 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = t
                                     ))}
                                 </div>
                             </div>
+                        ) : activeCategory === 'Founders' ? (
+                            <FoundersStickySection members={filteredFounders} />
                         ) : (
                             <VarsityCarousel
                                 members={filteredFounders}
