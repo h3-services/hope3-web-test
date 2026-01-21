@@ -287,7 +287,7 @@ const nonProfitIntro = `Our non-profit partners provide support to our students 
 const financeIntro = `HOPE3 Finance\n\nFinance team meticulously tracks all income and expenses and makes sure the organization is in compliance with the laws.`;
 
 // Carousel Component for HOPE3 Varsity (4 cards at a time with auto-play)
-const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
+const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = true }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [itemsPerPage, setItemsPerPage] = useState(4);
@@ -347,18 +347,20 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
 
     return (
         <div
-            className="carousel-container"
+            className="varsity-carousel-wrapper"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            <button
-                className="carousel-arrow left"
-                onClick={handlePrev}
-                disabled={startIndex === 0}
-                aria-label="Previous"
-            >
-                ❮
-            </button>
+            {showArrows && members.length > itemsPerPage && (
+                <button
+                    className="carousel-arrow left"
+                    onClick={handlePrev}
+                    disabled={startIndex === 0}
+                    aria-label="Previous"
+                >
+                    ❮
+                </button>
+            )}
             <div className="varsity-grid-4">
                 {visibleMembers.map((founder) => (
                     <div
@@ -378,14 +380,16 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                     </div>
                 ))}
             </div>
-            <button
-                className="carousel-arrow right"
-                onClick={handleNext}
-                disabled={startIndex + itemsPerPage >= members.length}
-                aria-label="Next"
-            >
-                ❯
-            </button>
+            {showArrows && members.length > itemsPerPage && (
+                <button
+                    className="carousel-arrow right"
+                    onClick={handleNext}
+                    disabled={startIndex + itemsPerPage >= members.length}
+                    aria-label="Next"
+                >
+                    ❯
+                </button>
+            )}
         </div>
     );
 }; const Founders = () => {
@@ -543,6 +547,7 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                                             <VarsityCarousel
                                                 members={categoryFounders}
                                                 onClick={() => handleCategoryChange(category)}
+                                                showArrows={!['Founders', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(category)}
                                             />
                                         </div>
                                     );
@@ -605,8 +610,10 @@ const VarsityCarousel = ({ members, onHover, onClick, selectedId }) => {
                             <VarsityCarousel
                                 members={filteredFounders}
                                 onHover={setSelectedMemberId}
+                                onFocus={(e) => { }}
                                 onClick={setSelectedMemberId}
                                 selectedId={selectedMemberId}
+                                showArrows={!['Founders', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(activeCategory)}
                             />
                         )}
 
