@@ -43,10 +43,13 @@ const FeatureCards = () => {
   return (
     <section className="feature-cards-section py-16 px-6">
       <div className="feature-cards-container mx-auto">
-        <div className="rounded-2xl p-6 mb-6 text-center">
-          <h2 className="cinzel-section-header">
-            Our Three Pillars
-          </h2>
+        <div className="max-w-4xl mx-auto text-center mb-12 px-4">
+          <p className="text-gray-700 leading-relaxed mb-6 font-medium" style={{ fontSize: '16px' }}>
+            HOPE3 Foundation started with the vision to empower earnest, circumstantially challenged students to realize their true potential through higher education, parallel immersive learning, one-on-one mentorship, and a powerful network of academic and industry partners.
+          </p>
+          <p className="text-blue-600 font-bold italic" style={{ fontSize: '18px' }}>
+            The three pillars on which HOPE3 stands are Education, Empowerment and Entrepreneurship.
+          </p>
         </div>
         <div className="feature-cards-grid">
           {features.map((feature) => (

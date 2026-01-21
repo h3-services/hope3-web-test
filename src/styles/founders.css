@@ -133,7 +133,6 @@ html {
     font-family: 'Libre Baskerville', serif;
     letter-spacing: 0.5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
 }
 
 .quote-author {
@@ -144,6 +143,7 @@ html {
     font-weight: 700;
     font-family: 'Inter', sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: none;
 }
 
 /* Responsive adjustments for Banner */
@@ -507,7 +507,7 @@ html {
     line-height: 1.2;
     font-weight: 700;
     color: #332eb2;
-    text-align: center;
+    text-align: left;
     margin-bottom: 40px;
     text-transform: uppercase;
 }
@@ -1012,6 +1012,7 @@ html {
     line-height: 1.6;
     color: #334155;
     margin-bottom: 20px;
+    white-space: pre-line;
 }
 
 

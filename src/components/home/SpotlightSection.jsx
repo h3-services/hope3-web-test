@@ -16,14 +16,6 @@ const SpotlightSection = () => {
       image: getImagePath("entrepreneurship.png")
     },
     {
-      id: 8,
-      type: "demo",
-      title: "Global Alumni Meetup",
-      date: "January 2026",
-      description: "Join us for our first-ever virtual global alumni meetup. Connect with fellow Hope3 graduates working in top tech companies worldwide.",
-      size: "medium"
-    },
-    {
       id: 2,
       type: "original",
       title: "HOPE3 Services Launched",
@@ -52,33 +44,6 @@ const SpotlightSection = () => {
         </>
       ),
       size: "medium"
-    },
-    {
-      id: 5,
-      type: "demo",
-      title: "Community Outreach Program",
-      date: "February 2026",
-      description: "Expanding our reach to local villages, providing essential resources and educational support to underprivileged families. Our volunteers spent the weekend conducting workshops.Connect with fellow Hope3 graduates working in top tech companies worldwide.",
-      size: "medium",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: 6,
-      type: "demo",
-      title: "Tech Innovation Award",
-      date: "March 2026",
-      description: "Hope3 students have secured the first prize in the Regional Tech Innovation Contest for their AI-driven project on sustainable agriculture practices.",
-      size: "medium",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: 7,
-      type: "demo",
-      title: "Annual Scholarship Announcement",
-      date: "April 2026",
-      description: "Applications for the Hope3 Annual Scholarship are now open.",
-      size: "medium",
-      image: "https://images.unsplash.com/photo-1627556592933-ffe99c1cd9eb?auto=format&fit=crop&q=80&w=800"
     }
   ]
 
@@ -100,34 +65,6 @@ const SpotlightSection = () => {
               key={item.id}
               className={`news-card card-${item.size} ${item.image ? 'has-image' : ''}`}
             >
-              <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
-                {item.type === 'original' && (
-                  <span style={{
-                    backgroundColor: '#e0f2fe',
-                    color: '#0e7490',
-                    fontSize: '11px',
-                    padding: '2px 8px',
-                    borderRadius: '12px',
-                    fontWeight: 600,
-                    border: '1px solid #bae6fd'
-                  }}>
-                    Original
-                  </span>
-                )}
-                {item.type === 'demo' && (
-                  <span style={{
-                    backgroundColor: '#f3f4f6',
-                    color: '#6b7280',
-                    fontSize: '11px',
-                    padding: '2px 8px',
-                    borderRadius: '12px',
-                    fontWeight: 600,
-                    border: '1px solid #e5e7eb'
-                  }}>
-                    Demo
-                  </span>
-                )}
-              </div>
               {item.image && (
                 <div className="news-card-image-wrapper">
                   <img src={item.image} alt={item.title} className="news-card-image" />

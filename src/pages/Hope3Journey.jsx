@@ -120,7 +120,6 @@ const JourneyTimeline = () => {
                       <div className="timeline-card">
                         <div className="card-header">
                           <span className="year-badge">{year}</span>
-                          <span className="card-number">#{String(idx + 1).padStart(2, '0')}</span>
                         </div>
                         <h3 className="milestone-title">{m.title}</h3>
                         <p className="milestone-body">{m.body}</p>
@@ -168,7 +167,6 @@ const JourneyTimeline = () => {
                         onClick={() => setActiveIndex(idx)}
                       >
                         <div className={`absolute inset-0 flex flex-col items-center justify-center p-4 text-center transition-all duration-500 ${isActive ? 'opacity-0 scale-90 delay-0' : 'opacity-100 scale-100 delay-100'}`}>
-                          <span className="text-3xl md:text-4xl font-mono text-slate-300 mb-2 md:mb-6">0{milestones.length - idx}</span>
                           <span className="text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-slate-500 -rotate-90 whitespace-nowrap">
                             {m.date}
                           </span>

@@ -18,6 +18,7 @@ import image8 from '../assets/images/animations/image8.jpg';
 const WhyHope3 = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
+  const stackRef = useRef(null);
 
   const stages = [
     { title: 'Identification', img: image1, desc: 'Identify students from underdeveloped villages, forest reserves, and refugee camps—not by their grades, but by their grit and desire to learn more.' },
@@ -40,11 +41,15 @@ const WhyHope3 = () => {
   }, []);
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % stages.length);
+    if (stackRef.current) {
+      stackRef.current.next();
+    }
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + stages.length) % stages.length);
+    if (stackRef.current) {
+      stackRef.current.prev();
+    }
   };
 
   return (
@@ -95,6 +100,7 @@ const WhyHope3 = () => {
 
         <div className="stack-container-wrapper">
           <Stack
+            ref={stackRef}
             cards={imageCards}
             randomRotation={true}
             autoplay={true}
