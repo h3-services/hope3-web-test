@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import '../../styles/components/TargetCursor.css';
 
@@ -10,11 +10,38 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
     const mousePos = useRef({ x: 0, y: 0 });
     const currentTarget = useRef(null);
     const spinTween = useRef(null);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
-        // Check if device is mobile/touch
-        const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        if (isMobile) return;
+        // Comprehensive desktop detection
+        const checkIsDesktop = () => {
+            // Check for touch capability
+            const hasTouch = 'ontouchstart' in window || 
+                           navigator.maxTouchPoints > 0 || 
+                           navigator.msMaxTouchPoints > 0;
+            
+            // Check screen size (desktop typically > 1024px)
+            const isLargeScreen = window.innerWidth > 1024;
+            
+            // Check for pointer type (fine = mouse, coarse = touch)
+            const hasFinePrecisionPointer = window.matchMedia('(pointer: fine)').matches;
+            
+            // Device is desktop if: large screen AND (has fine pointer OR no touch)
+            return isLargeScreen && (hasFinePrecisionPointer || !hasTouch);
+        };
+
+        const desktop = checkIsDesktop();
+        setIsDesktop(desktop);
+
+        // If not desktop, don't initialize cursor
+        if (!desktop) {
+            // Ensure body class is removed
+            document.body.classList.remove('custom-cursor-active');
+            return;
+        }
+
+        // Add body class to hide default cursor
+        document.body.classList.add('custom-cursor-active');
 
         const dot = dotRef.current;
         const cornersGroup = cornersGroupRef.current;
@@ -193,17 +220,34 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
         document.addEventListener('mousedown', handleMouseDown);
         document.addEventListener('mouseup', handleMouseUp);
 
+        // Handle window resize to re-check desktop status
+        const handleResize = () => {
+            const stillDesktop = checkIsDesktop();
+            if (stillDesktop !== desktop) {
+                window.location.reload(); // Reload if device type changes
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
         // Cleanup
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mousedown', handleMouseDown);
             document.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('resize', handleResize);
+            document.body.classList.remove('custom-cursor-active');
 
             if (spinTween.current) {
                 spinTween.current.kill();
             }
         };
     }, [targetSelector]);
+
+    // Don't render cursor elements on mobile/tablet
+    if (!isDesktop) {
+        return null;
+    }
 
     return (
         <div className="target-cursor-wrapper" ref={cursorRef}>
