@@ -1,3 +1,56 @@
+/* HOPE3 Main Image Styling */
+.hope3-main-image {
+  width: 210px;
+  height: 55px;
+  flex-shrink: 0;
+  margin-top: 50px;
+  margin-right: 20px;
+  margin-left: 4cm;
+  filter: brightness(0.8) contrast(1.5) saturate(1.6);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  align-self: flex-start;
+  object-fit: contain;
+}
+
+.hope3-main-image:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .hope3-main-image {
+    width: 120px;
+    height: 32px;
+    margin: 0 0 15px 0;
+  }
+  
+  .hope3-content-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    margin-bottom: 1.5rem !important;
+    padding: 1rem !important;
+  }
+  
+  .hope3-text-content {
+    margin-left: 0 !important;
+  }
+  
+  .feature-cards-section {
+    padding: 1rem 0.5rem !important;
+  }
+  
+  /* Philosophy section mobile spacing */
+  section {
+    padding: 1rem 0.5rem !important;
+  }
+  
+  .max-w-4xl {
+    padding: 1rem !important;
+  }
+}
+
 /* FeatureCards Modern Redesign */
 .section-quote-container {
   text-align: center;

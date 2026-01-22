@@ -125,6 +125,30 @@
   display: block;
 }
 
+/* Mobile responsive for news cards */
+@media (max-width: 768px) {
+  .news-card.has-image .news-card-image-wrapper {
+    height: 180px;
+  }
+  
+  .news-card.has-image .news-card-image {
+    object-fit: cover;
+    object-position: center top;
+  }
+  
+  .news-card {
+    margin-bottom: 1rem;
+  }
+  
+  .spotlight-section {
+    padding: 1rem 0.5rem;
+  }
+  
+  .spotlight-container {
+    padding: 0;
+  }
+}
+
 /* Remove all hover effects on image */
 .news-card.has-image:hover .news-card-image {
   transform: none;

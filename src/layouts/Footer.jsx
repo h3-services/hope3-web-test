@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram, FaUsers } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import TargetCursor from '../components/common/TargetCursor'
@@ -16,17 +16,7 @@ const NewFooter = () => {
     { name: 'Meiy Palaniappan', link: 'https://www.linkedin.com/in/meiytx' }
   ]
 
-  // Manage body class for cursor visibility
-  useEffect(() => {
-    if (showTeamPopup) {
-      document.body.classList.add('custom-cursor-active')
-    } else {
-      document.body.classList.remove('custom-cursor-active')
-    }
-    return () => {
-      document.body.classList.remove('custom-cursor-active')
-    }
-  }, [showTeamPopup])
+
 
   return (
     <div className="footer">
@@ -90,8 +80,7 @@ const NewFooter = () => {
         </div>
       </div>
 
-      {/* Target Cursor Animation */}
-      {showTeamPopup && <TargetCursor targetSelector=".cursor-target" />}
+
 
       {/* Centered Popup with Blurred Background */}
       {showTeamPopup && (
@@ -131,7 +120,6 @@ const NewFooter = () => {
           >
             {/* Close button */}
             <button
-              className="cursor-target"
               onClick={() => setShowTeamPopup(false)}
               style={{
                 position: 'absolute',
@@ -223,6 +211,7 @@ const NewFooter = () => {
               ))}
             </ul>
           </div>
+          <TargetCursor />
         </>
       )}
     </div>

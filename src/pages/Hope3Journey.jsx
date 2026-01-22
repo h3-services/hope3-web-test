@@ -173,7 +173,7 @@ const JourneyTimeline = () => {
                         </div>
 
                         <div className={`absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-blue-900/20 to-transparent transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
-                          <div className="text-sm font-semibold text-blue-200 mb-2 tracking-wider uppercase">{m.date}</div>
+                          <div className="text-sm font-semibold text-blue-200 mb-2 tracking-wider uppercase absolute top-4 right-4">{m.date}</div>
                           <h3 className="text-xl md:text-3xl font-bold text-white mb-3 md:mb-4 leading-tight">
                             {m.title}
                           </h3>
