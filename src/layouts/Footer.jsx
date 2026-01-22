@@ -12,7 +12,7 @@ const NewFooter = () => {
     { name: 'Nivetha', link: 'https://www.linkedin.com/in/nivedha-k-706b03306' },
     { name: 'Beulah Francis', link: 'https://www.linkedin.com/in/beulah-francis-55a439349/' },
     { name: 'Mohamed Aarif', link: 'https://www.linkedin.com/in/mohammad-aarif-321369306/' },
-    { name: 'ShivaKumar', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
+    { name: 'SivaKumar (Shiva) . KS', link: 'https://www.linkedin.com/in/siva-kumar-370132138/' },
     { name: 'Meiy Palaniappan', link: 'https://www.linkedin.com/in/meiytx' }
   ]
 
