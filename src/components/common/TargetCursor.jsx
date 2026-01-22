@@ -11,8 +11,16 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
     const currentTarget = useRef(null);
     const spinTween = useRef(null);
     const [isDesktop, setIsDesktop] = useState(false);
+    const [gsapLoaded, setGsapLoaded] = useState(false);
 
     useEffect(() => {
+        // Verify GSAP is loaded
+        if (typeof gsap === 'undefined' || !gsap.to) {
+            console.error('TargetCursor: GSAP not loaded properly');
+            return;
+        }
+        setGsapLoaded(true);
+
         // Comprehensive desktop detection
         const checkIsDesktop = () => {
             // Check for touch capability
@@ -27,7 +35,17 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
             const hasFinePrecisionPointer = window.matchMedia('(pointer: fine)').matches;
             
             // Device is desktop if: large screen AND (has fine pointer OR no touch)
-            return isLargeScreen && (hasFinePrecisionPointer || !hasTouch);
+            const isDesktopDevice = isLargeScreen && (hasFinePrecisionPointer || !hasTouch);
+            
+            console.log('TargetCursor Desktop Check:', {
+                hasTouch,
+                isLargeScreen,
+                hasFinePrecisionPointer,
+                isDesktopDevice,
+                screenWidth: window.innerWidth
+            });
+            
+            return isDesktopDevice;
         };
 
         const desktop = checkIsDesktop();
@@ -35,11 +53,14 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
 
         // If not desktop, don't initialize cursor
         if (!desktop) {
+            console.log('TargetCursor: Not a desktop device, cursor disabled');
             // Ensure body class is removed
             document.body.classList.remove('custom-cursor-active');
             return;
         }
 
+        console.log('TargetCursor: Initializing on desktop device');
+        
         // Add body class to hide default cursor
         document.body.classList.add('custom-cursor-active');
 
@@ -47,16 +68,30 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
         const cornersGroup = cornersGroupRef.current;
         const corners = cornersRef.current;
 
-        if (!dot || !cornersGroup || corners.length !== 4) return;
+        if (!dot || !cornersGroup || corners.length !== 4) {
+            console.error('TargetCursor: DOM elements not ready', {
+                dot: !!dot,
+                cornersGroup: !!cornersGroup,
+                cornersCount: corners.length
+            });
+            return;
+        }
 
-        // Initialize spinning animation
-        spinTween.current = gsap.to(cornersGroup, {
-            rotation: 360,
-            duration: 2,
-            ease: 'none',
-            repeat: -1,
-            transformOrigin: 'center center'
-        });
+        console.log('TargetCursor: All elements ready, starting animations');
+
+        // Initialize spinning animation with error handling
+        try {
+            spinTween.current = gsap.to(cornersGroup, {
+                rotation: 360,
+                duration: 2,
+                ease: 'none',
+                repeat: -1,
+                transformOrigin: 'center center'
+            });
+        } catch (error) {
+            console.error('TargetCursor: Error creating spin animation', error);
+            return;
+        }
 
         // Mouse move handler
         const handleMouseMove = (e) => {
@@ -131,7 +166,6 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
             });
 
             // Animate corners to frame the target
-            const cornerSize = 12;
             const offset = 0;
 
             gsap.to(corners[0], {
@@ -244,8 +278,8 @@ const TargetCursor = ({ targetSelector = '.cursor-target' }) => {
         };
     }, [targetSelector]);
 
-    // Don't render cursor elements on mobile/tablet
-    if (!isDesktop) {
+    // Don't render cursor elements on mobile/tablet or if GSAP not loaded
+    if (!isDesktop || !gsapLoaded) {
         return null;
     }
 
