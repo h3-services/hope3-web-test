@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import '../../styles/components/Stack.css';
 
 function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }) {
@@ -49,7 +49,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
     );
 }
 
-export default function Stack({
+const Stack = forwardRef(({
     randomRotation = false,
     sensitivity = 200,
     cards = [],
@@ -61,7 +61,7 @@ export default function Stack({
     mobileClickOnly = false,
     mobileBreakpoint = 768,
     onCardChange
-}) {
+}, ref) => {
     const [isMobile, setIsMobile] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
 
@@ -109,6 +109,34 @@ export default function Stack({
             return newStack;
         });
     };
+
+    const bringToFront = () => {
+        setStack(prev => {
+            if (prev.length <= 1) return prev;
+            const newStack = [...prev];
+            const [card] = newStack.shift(); // Take bottom card
+            newStack.push(card); // Move to top
+            return newStack;
+        });
+    };
+
+    useImperativeHandle(ref, () => ({
+        next: () => {
+            if (stack.length > 0) {
+                const topCardId = stack[stack.length - 1].id;
+                sendToBack(topCardId);
+            }
+        },
+        prev: () => {
+            setStack(prev => {
+                if (prev.length <= 1) return prev;
+                const newStack = [...prev];
+                const card = newStack.shift();
+                newStack.push(card);
+                return newStack;
+            });
+        }
+    }), [stack]);
 
     // Use effect to sync parent state when the top card changes
     useEffect(() => {
@@ -170,4 +198,6 @@ export default function Stack({
             })}
         </div>
     );
-}
+});
+
+export default Stack;

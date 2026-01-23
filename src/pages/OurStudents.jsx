@@ -256,9 +256,9 @@ const IPadModal = ({ student, isOpen, onClose }) => {
 
                             {/* Right side - Story Content */}
                             <div className="ipad-story-section">
-                                <h2 className="ipad-student-name">{student.name}</h2>
+                                {/* <h2 className="ipad-student-name">{student.name}</h2> */}
                                 <p className="ipad-subtitle">HOPE3 Success Story</p>
-
+                                <h2 className="ipad-student-name">{student.name}</h2>
                                 <div className="ipad-story-content">
                                     <p className="ipad-story-text">{student.story}</p>
 
@@ -310,7 +310,7 @@ const OurStudents = () => {
                         <p className="quote-text">
                             Everyone can rise above their circumstances and achieve success if they are dedicated to and passionate about what they do.
                         </p>
-                        <p className="quote-author">~Nelson Mandela</p>
+                        <p className="quote-author">- Nelson Mandela</p>
                     </div>
                 </div>
 

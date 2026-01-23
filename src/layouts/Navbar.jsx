@@ -158,15 +158,15 @@ const Navbar = () => {
                   {Object.entries(menuItems).map(([section, items]) => (
                     <div key={section} className="nav-group">
                       {section === 'Services' ? (
-                        <a
-                          href="https://www.hope3.org/"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
                           className="nav-link"
-                          onClick={() => setMobileOpen(false)}
+                          onClick={() => {
+                            navigate('/services');
+                            setMobileOpen(false);
+                          }}
                         >
                           {section}
-                        </a>
+                        </button>
                       ) : (
                         <>
                           <button
@@ -319,7 +319,7 @@ const Navbar = () => {
             <button
               className="section-title"
               onClick={() => {
-                window.open('https://www.hope3.org/', '_blank', 'noopener,noreferrer');
+                navigate('/services');
               }}
             >
               Services

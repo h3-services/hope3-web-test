@@ -133,7 +133,6 @@ html {
     font-family: 'Libre Baskerville', serif;
     letter-spacing: 0.5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
 }
 
 .quote-author {
@@ -144,6 +143,7 @@ html {
     font-weight: 700;
     font-family: 'Inter', sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: none;
 }
 
 /* Responsive adjustments for Banner */
@@ -191,17 +191,28 @@ html {
 
 /* --- Founders Intro Section --- */
 .founders-intro-container {
-    max-width: 1200px;
-    margin: 0 auto 60px;
-    padding: 0 40px;
-    /* Aligned with others */
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.main-section-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #332eb2;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .founders-intro-text {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.8;
     color: #4b5563;
-    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
 }
@@ -217,11 +228,15 @@ html {
 .founder-card-row {
     display: flex;
     align-items: flex-start;
-    /* Changed from center to allow sticky behavior */
-    gap: 60px;
-    /* Reduced from 80px */
-    margin-bottom: 100px;
-    /* Reduced from 120px */
+    gap: 40px;
+    margin-bottom: 80px;
+    position: relative;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    min-height: 600px;
 }
 
 .founder-card-row.reversed {
@@ -229,26 +244,30 @@ html {
 }
 
 .founder-image-col {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 450px;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     position: sticky;
-    top: calc(50vh - 150px);
-    /* Center image in viewport */
+    top: 100px;
+    /* Adjust based on nav height */
     align-self: flex-start;
-    height: fit-content;
+    padding: 0;
+    height: 100%;
+    /* Match the height of bio content */
 }
 
 
 .founder-image-wrapper {
     position: relative;
     width: 100%;
-    max-width: 280px;
-    /* Reduced from 380px */
+    /* Fixed width/height for the image container */
+    max-width: 400px;
+    height: 100%;
+    min-height: 500px;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -258,9 +277,10 @@ html {
 
 .founder-image-wrapper img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
-    transform: scale(1.05);
     transition: transform 0.8s ease;
 }
 
@@ -269,8 +289,14 @@ html {
 }
 
 .founder-content-col {
-    flex: 0 0 70%;
-    max-width: 70%;
+    flex: 1;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    overflow-y: visible;
+    overflow-x: hidden;
 }
 
 /* Ensure responsiveness resets these widths */
@@ -308,6 +334,12 @@ html {
     margin-bottom: 20px;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
+}
+
+.founder-bio p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .founder-contact {
@@ -508,8 +540,19 @@ html {
     font-weight: 700;
     color: #332eb2;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-transform: uppercase;
+}
+
+.section-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
 }
 
 /* --- Board Interaction Styles --- */
@@ -522,6 +565,7 @@ html {
 .varsity-carousel-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     position: relative;
     padding: 20px 0;
@@ -531,8 +575,46 @@ html {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    flex: 1;
-    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+    place-content: center;
+}
+
+/* 5-column grid for Board section */
+.varsity-grid-4:has(> :nth-child(5):last-child) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 1300px;
+}
+
+.varsity-grid-4:has(> :nth-child(5):last-child) .board-card {
+    width: 100%;
+    max-width: 220px;
+}
+
+/* Center alignment for Founders, Finance, and Media sections */
+.centered-section .varsity-carousel-wrapper {
+    width: 100%;
+    justify-content: center;
+}
+
+.centered-section .varsity-grid-4 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 0 auto !important;
+    gap: 40px !important;
+}
+
+/* Remove auto margin from cards in centered sections */
+.centered-section .board-card.premium-card {
+    margin: 0 !important;
 }
 
 /* Arrows */
@@ -826,13 +908,16 @@ html {
 
 .board-card.premium-card {
     position: relative;
-    height: 220px;
+    width: 100%;
+    max-width: 240px;
+    height: 240px;
     background: #0f172a;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     border: none;
     text-align: left;
 }
@@ -1012,6 +1097,7 @@ html {
     line-height: 1.6;
     color: #334155;
     margin-bottom: 20px;
+    white-space: pre-line;
 }
 
 

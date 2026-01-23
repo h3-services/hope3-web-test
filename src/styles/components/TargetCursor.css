@@ -5,15 +5,15 @@
     width: 0;
     height: 0;
     pointer-events: none;
-    z-index: 10000;
+    z-index: 9999;
     mix-blend-mode: difference;
-    /* transform: translate(-50%, -50%); Removed because wrapper no longer moves */
+    transform: translate(-50%, -50%);
 }
 
 .target-cursor-dot {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
     width: 4px;
     height: 4px;
     background: #fff;
@@ -22,19 +22,10 @@
     will-change: transform;
 }
 
-.target-cursor-corners-group {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    will-change: transform;
-}
-
 .target-cursor-corner {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
     width: 12px;
     height: 12px;
     border: 3px solid #fff;
@@ -63,13 +54,4 @@
     transform: translate(-150%, 50%);
     border-right: none;
     border-top: none;
-}
-
-/* Hide default cursor when custom cursor is active */
-body.custom-cursor-active {
-    cursor: none;
-}
-
-body.custom-cursor-active * {
-    cursor: none !important;
 }

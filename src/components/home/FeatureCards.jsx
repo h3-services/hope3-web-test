@@ -3,6 +3,7 @@ import img1 from '../../assets/images/pages/home/education.jpeg'
 import img3 from '../../assets/images/pages/home/empowerment.jpeg'
 import img2 from '../../assets/images/pages/home/enterpreneurship.jpeg'
 import hope3Logo from '../../assets/images/pages/home/hope3_logo.png'
+import hope3Image from '../../assets/images/pages/home/hope3.png'
 
 const FeatureCards = () => {
 
@@ -43,10 +44,16 @@ const FeatureCards = () => {
   return (
     <section className="feature-cards-section py-16 px-6">
       <div className="feature-cards-container mx-auto">
-        <div className="rounded-2xl p-6 mb-6 text-center">
-          <h2 className="cinzel-section-header">
-            Our Three Pillars
-          </h2>
+        <div className="max-w-4xl mx-auto text-left mb-12 px-4 flex items-start gap-2 hope3-content-container">
+          <img src={hope3Image} alt="HOPE3" className="hope3-main-image" />
+          <div className="hope3-text-content" style={{ marginLeft: '2cm' }}>
+            <p className="text-gray-700 leading-relaxed mb-6 font-medium" style={{ fontSize: '16px' }}>
+              HOPE3 Foundation started with the vision to empower earnest, circumstantially challenged students to realize their true potential through higher education, parallel immersive learning, one-on-one mentorship, and a powerful network of academic and industry partners.
+            </p>
+            <p className="text-blue-600 font-bold italic" style={{ fontSize: '18px' }}>
+              The three pillars on which HOPE3 stands are Education, Empowerment and Entrepreneurship.
+            </p>
+          </div>
         </div>
         <div className="feature-cards-grid">
           {features.map((feature) => (
