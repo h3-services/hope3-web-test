@@ -15,6 +15,7 @@ import ganeshImage from '../assets/images/pages/leaders/board/Ganesh (2).jpeg';
 import manickamImage from '../assets/images/pages/leaders/board/Manickam (1).jpeg';
 
 // Varsity members
+import ananyaImage from '../assets/images/pages/leaders/varsity/Ananya.jpeg';
 import anirudhImage from '../assets/images/pages/leaders/varsity/Anirudh.jpeg';
 import balajiImage from '../assets/images/pages/leaders/varsity/Balaji-01.jpeg';
 import amrishImage from '../assets/images/pages/leaders/varsity/Amrish.jpg';
@@ -24,7 +25,7 @@ import nachiappanImage from '../assets/images/pages/leaders/varsity/Nachiappan.j
 import pichumaniImage from '../assets/images/pages/leaders/varsity/Pichumani.jpg';
 import ramuImage from '../assets/images/pages/leaders/varsity/Ramu Palaniappan.jpg';
 import vijayakumarImage from '../assets/images/pages/leaders/varsity/VijayaKumar.jpg';
-import shivakumarImage from '../assets/images/pages/leaders/varsity/shivakumar.png';
+import shivakumarImage from '../assets/images/pages/leaders/varsity/shivakuma.jpg';
 
 // Admissions
 import arumugamImage from '../assets/images/pages/leaders/admission/Arumugam.jpeg';
@@ -119,7 +120,7 @@ const foundersData = [
         id: 27,
         name: "Miss. Ananya Somasundaram",
         title: "Vocabulary Mentor",
-        image: pichumaniImage,
+        image: ananyaImage,
         bio: "Ananya is in tenth grade, living in Plano, Texas. She selects a word and provides its meaning along with an example sentence in both English and Tamil to help the students expand their vocabulary.",
         categories: ['HOPE3 Varsity']
     },
@@ -239,19 +240,19 @@ const foundersData = [
     },
 
     // --- Industrial Partners ---
-    { id: 101, name: 'Anvitha Insights', title: 'Industrial Partner', image: anvithaImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'http://www.unwita.com' },
-    { id: 102, name: 'Arjavatech', title: 'Industrial Partner', image: arjavaImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://arjavatech.com/' },
-    { id: 103, name: 'cytronicx', title: 'Industrial Partner', image: cytronicxImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://www.cytronicx.com/' },
-    { id: 104, name: 'Elarchitek', title: 'Industrial Partner', image: elarchitekImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://elarchitek.com/' },
-    { id: 105, name: 'TNNGO', title: 'Industrial Partner', image: dnlogoImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Industrial Partners'], website: 'https://tnngo.org/' },
+    { id: 101, name: 'Anvitha Insights', title: 'Industrial Partner', image: anvithaImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Industrial Partners'], website: 'http://www.unwita.com' },
+    { id: 102, name: 'Arjavatech', title: 'Industrial Partner', image: arjavaImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Industrial Partners'], website: 'https://arjavatech.com/' },
+    { id: 103, name: 'cytronicx', title: 'Industrial Partner', image: cytronicxImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Industrial Partners'], website: 'https://www.cytronicx.com/' },
+    { id: 104, name: 'Elarchitek', title: 'Industrial Partner', image: elarchitekImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Industrial Partners'], website: 'https://elarchitek.com/' },
+    { id: 105, name: 'TNNGO', title: 'Industrial Partner', image: dnlogoImage, bio: 'Industrial Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Industrial Partners'], website: 'https://tnngo.org/' },
 
     // --- Non-Profit Partners ---
-    { id: 201, name: 'Abdul Kalam Foundation', title: 'Non-Profit Partner', image: abdulKalamFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://apjabdulkalamfoundation.org/' },
-    { id: 202, name: 'Abdul Kalam Trust', title: 'Non-Profit Partner', image: abdulKalamTrustImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://www.drabdulkalamtrust.org/' },
-    { id: 203, name: 'Mugavari Foundation', title: 'Non-Profit Partner', image: mugavariImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://www.mugavarifoundation.org/' },
-    { id: 204, name: 'Namco', title: 'Non-Profit Partner', image: namcoImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://namcoindia.org.in/' },
-    { id: 205, name: 'Shooting Stars Foundation', title: 'Non-Profit Partner', image: shootingStarsImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://shooting-stars-foundation.org/' },
-    { id: 206, name: 'Tamilnadu Foundation', title: 'Non-Profit Partner', image: tamilnaduFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['Non-Profit Partners'], website: 'https://tnfindia.org/' }
+    { id: 201, name: 'Abdul Kalam Foundation', title: 'Non-Profit Partner', image: abdulKalamFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Non-Profit Partners'], website: 'https://apjabdulkalamfoundation.org/' },
+    { id: 202, name: 'Abdul Kalam Trust', title: 'Non-Profit Partner', image: abdulKalamTrustImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Non-Profit Partners'], website: 'https://www.drabdulkalamtrust.org/' },
+    { id: 203, name: 'Mugavari Foundation', title: 'Non-Profit Partner', image: mugavariImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Non-Profit Partners'], website: 'https://www.mugavarifoundation.org/' },
+    { id: 204, name: 'Namco', title: 'Non-Profit Partner', image: namcoImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Non-Profit Partners'], website: 'https://namcoindia.org.in/' },
+    { id: 205, name: 'Shooting Stars Foundation', title: 'Non-Profit Partner', image: shootingStarsImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Non-Profit Partners'], website: 'https://shooting-stars-foundation.org/' },
+    { id: 206, name: 'Tamilnadu Foundation', title: 'Non-Profit Partner', image: tamilnaduFoundationImage, bio: 'Non-Profit Partner', email: 'partner@hope3.org', quote: 'Partnering for success.', categories: ['HOPE3 Non-Profit Partners'], website: 'https://tnfindia.org/' }
 ];
 
 const categories = [
@@ -263,8 +264,8 @@ const categories = [
     'HOPE3 Admissions',
     'HOPE3 Student Relations',
     'HOPE3 Media Team',
-    'Industrial Partners',
-    'Non-Profit Partners'
+    'HOPE3 Industrial Partners',
+    'HOPE3 Non-Profit Partners'
 ];
 
 const foundersIntro = `HOPE3 was founded by Mr. Palani Vairavan, with Mr. Neel Venkatraman and Dr. Meenakshi Sundaram joining the mission. Driven by the conviction that no student should be left behind, they champion every diligent, worthy young person—irrespective of background, language, or origin—granting them a genuine shot at soaring, succeeding, and forging brighter tomorrows. They turned this bold vision into reality, pioneering fresh realms of learning, access, and empowerment for Tamil medium students in Tamil Nadu, India. Imagine unleashing untapped genius in forgotten corners—HOPE3 makes it happen, one transformed life at a time. This unyielding principle pulses at HOPE3's core, shattering barriers and igniting futures for those society overlooks. No more dreams deferred: Every hardworking student rises, equipped to conquer real-world challenges.`;
@@ -287,24 +288,34 @@ const nonProfitIntro = `Our non-profit partners provide support to our students 
 const financeIntro = `HOPE3 Finance\n\nFinance team meticulously tracks all income and expenses and makes sure the organization is in compliance with the laws.`;
 
 // Carousel Component for HOPE3 Varsity (4 cards at a time with auto-play)
-const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = true }) => {
+const VarsityCarousel = ({ members, onHover, onClick, selectedId, showArrows = true, customItemsPerPage = null }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [itemsPerPage, setItemsPerPage] = useState(4);
+    const [itemsPerPage, setItemsPerPage] = useState(customItemsPerPage || 4);
     const visibleMembers = members.slice(startIndex, startIndex + itemsPerPage);
 
     useEffect(() => {
         const updateItemsPerPage = () => {
-            if (window.innerWidth <= 768) {
-                setItemsPerPage(2);
+            if (customItemsPerPage) {
+                // If custom items per page is provided, use it (but adjust for mobile)
+                if (window.innerWidth <= 768) {
+                    setItemsPerPage(2);
+                } else {
+                    setItemsPerPage(customItemsPerPage);
+                }
             } else {
-                setItemsPerPage(4);
+                // Default behavior
+                if (window.innerWidth <= 768) {
+                    setItemsPerPage(2);
+                } else {
+                    setItemsPerPage(4);
+                }
             }
         };
         updateItemsPerPage();
         window.addEventListener('resize', updateItemsPerPage);
         return () => window.removeEventListener('resize', updateItemsPerPage);
-    }, []);
+    }, [customItemsPerPage]);
 
     const handleNext = () => {
         if (startIndex + itemsPerPage < members.length) {
@@ -539,8 +550,9 @@ const Founders = () => {
                     </p>
                 </div>
             )}
-            {(activeCategory === 'HOPE3 Board' || activeCategory === 'HOPE3 Varsity' || activeCategory === 'HOPE3 Finance' || activeCategory === 'HOPE3 Admissions' || activeCategory === 'HOPE3 Student Relations' || activeCategory === 'HOPE3 Media Team' || activeCategory === 'Industrial Partners' || activeCategory === 'Non-Profit Partners') && (
+            {activeCategory !== 'All' && activeCategory !== 'Founders' && categories.includes(activeCategory) && (
                 <div className="founders-intro-container">
+                    <h1 className="main-section-title">{activeCategory}</h1>
                     <p className="founders-intro-text">
                         {(() => {
                             switch (activeCategory) {
@@ -550,8 +562,8 @@ const Founders = () => {
                                 case 'HOPE3 Admissions': return admissionsIntro;
                                 case 'HOPE3 Student Relations': return studentRelationsIntro;
                                 case 'HOPE3 Media Team': return mediaIntro;
-                                case 'Industrial Partners': return industrialIntro;
-                                case 'Non-Profit Partners': return nonProfitIntro;
+                                case 'HOPE3 Industrial Partners': return industrialIntro;
+                                case 'HOPE3 Non-Profit Partners': return nonProfitIntro;
                                 default: return '';
                             }
                         })()}
@@ -591,7 +603,6 @@ const Founders = () => {
                                 if (category === 'Founders') {
                                     return (
                                         <div key={category} className="category-section centered-section">
-                                            <h2 className="section-title">{category}</h2>
                                             <VarsityCarousel
                                                 members={categoryFounders}
                                                 onClick={() => handleCategoryChange(category)}
@@ -603,24 +614,53 @@ const Founders = () => {
 
                                 // Carousel Categories (including Board and Student Relations)
                                 if (['HOPE3 Board', 'HOPE3 Student Relations', 'HOPE3 Varsity', 'HOPE3 Admissions', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(category)) {
+                                    // Get description for each category
+                                    const getDescription = (cat) => {
+                                        switch (cat) {
+                                            case 'HOPE3 Board':
+                                                return 'HOPE3 Board is the governance body for HOPE3 Foundation overseeing all aspects of the effective and efficient performance of the Organization. They form the core team that oversees the operations of HOPE3 and Public Relations.';
+                                            case 'HOPE3 Varsity':
+                                                return "HOPE3's fundamental belief is in education that translates to real world applications, is immersive and is self-driven can generate our next-gen thinkers/leaders. They work and learn with students who carry enthusiasm to learn in spite of coming from challenging backgrounds. HOPE3 Varsity is the key strength to HOPE3's overall success in transforming lives of students.";
+                                            case 'HOPE3 Finance':
+                                                return 'Finance team meticulously tracks all income and expenses and makes sure the organization is in compliance with the laws.';
+                                            case 'HOPE3 Student Relations':
+                                                return 'Student Relations mentors the students on various needs and topics. They are involved in the well being of the students, both physically and mentally.';
+                                            case 'HOPE3 Media Team':
+                                                return 'The Media team manages all aspects of the HOPE3 on digital space and social media space. They manage all the communications over these spaces.';
+                                            case 'HOPE3 Admissions':
+                                                return 'Admissions team takes care of the entire interview process starting from initial screening to final Varsity onboarding. They identifie students from underdeveloped villages, forest reserves, and refugee camps—not by their grades, but by their grit. Once selected, students enter a residential program that covers part-time college education, meals, healthcare, and immersive learning.';
+                                            default:
+                                                return '';
+                                        }
+                                    };
+
                                     return (
                                         <div key={category} className={`category-section ${['HOPE3 Finance', 'HOPE3 Media Team'].includes(category) ? 'centered-section' : ''}`}>
                                             <h2 className="section-title">{category}</h2>
+                                            {getDescription(category) && (
+                                                <p className="section-description">{getDescription(category)}</p>
+                                            )}
                                             <VarsityCarousel
                                                 members={categoryFounders}
                                                 onClick={() => handleCategoryChange(category)}
-                                                showArrows={!['HOPE3 Finance', 'HOPE3 Media Team'].includes(category)}
+                                                showArrows={!['HOPE3 Finance', 'HOPE3 Media Team', 'HOPE3 Board', 'HOPE3 Student Relations'].includes(category)}
+                                                customItemsPerPage={['HOPE3 Board', 'HOPE3 Student Relations'].includes(category) ? 5 : null}
                                             />
                                         </div>
                                     );
                                 }
 
                                 // Partner Categories (Marquee)
-                                if (category === 'Industrial Partners' || category === 'Non-Profit Partners') {
+                                if (category === 'HOPE3 Industrial Partners' || category === 'HOPE3 Non-Profit Partners') {
                                     const marqueeItems = [...categoryFounders, ...categoryFounders];
+                                    const partnerDescription = category === 'HOPE3 Industrial Partners'
+                                        ? 'Our Industrial partners provide internship, mentorship, training support and networking opportunities to our students.'
+                                        : 'Our non-profit partners provide support to our students and networking.';
+
                                     return (
                                         <div key={category} className="category-section">
                                             <h2 className="section-title">{category}</h2>
+                                            <p className="section-description">{partnerDescription}</p>
                                             <div className="partner-marquee-container">
                                                 <div className="partner-marquee-track">
                                                     {marqueeItems.map((partner, idx) => (
@@ -646,8 +686,8 @@ const Founders = () => {
                     </div>
                 ) : (
                     // --- SINGLE CATEGORY VIEW ---
-                    <div className="board-interaction-container">
-                        {['Industrial Partners', 'Non-Profit Partners'].includes(activeCategory) ? (
+                    <div className={`board-interaction-container ${['HOPE3 Finance', 'HOPE3 Media Team'].includes(activeCategory) ? 'centered-section' : ''}`}>
+                        {['HOPE3 Industrial Partners', 'HOPE3 Non-Profit Partners'].includes(activeCategory) ? (
                             <div className="partner-marquee-container">
                                 <div className="partner-marquee-track">
                                     {[...filteredFounders, ...filteredFounders].map((partner, idx) => (
@@ -677,7 +717,8 @@ const Founders = () => {
                                 onFocus={(e) => { }}
                                 onClick={setSelectedMemberId}
                                 selectedId={selectedMemberId}
-                                showArrows={!['Founders', 'HOPE3 Finance', 'HOPE3 Media Team'].includes(activeCategory)}
+                                showArrows={!['Founders', 'HOPE3 Finance', 'HOPE3 Media Team', 'HOPE3 Board', 'HOPE3 Student Relations'].includes(activeCategory)}
+                                customItemsPerPage={['HOPE3 Board', 'HOPE3 Student Relations'].includes(activeCategory) ? 5 : null}
                             />
                         )}
 

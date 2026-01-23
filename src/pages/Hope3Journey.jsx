@@ -13,8 +13,10 @@ const JourneyTimeline = () => {
 
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
+      // Calculate scroll distance to show 4 cards (320px width + 32px gap = 352px per card)
+      const scrollDistance = 352 * 4;
       scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -350 : 350,
+        left: direction === 'left' ? -scrollDistance : scrollDistance,
         behavior: 'smooth'
       });
     }
@@ -142,11 +144,13 @@ const JourneyTimeline = () => {
                 </svg>
               </div>
             ) : (
-              /* Desktop Accordion View */
-              <div className="relative w-full flex items-center" style={{ height: '70vh' }}>
+              /* Desktop Hanging Cards View */
+              <div className="relative w-full" style={{ minHeight: '600px', paddingTop: '80px' }}>
+
+                {/* Navigation Buttons */}
                 <button
                   onClick={() => scroll('left')}
-                  className="absolute left-0 z-20 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg border border-slate-100 text-slate-700 hover:text-blue-600 hover:scale-110 transition-all -ml-4 lg:-ml-12"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-slate-200 text-slate-700 hover:text-blue-600 hover:scale-110 transition-all -ml-4 lg:-ml-12"
                   aria-label="Scroll Left"
                 >
                   <ChevronLeft size={28} />
@@ -154,32 +158,86 @@ const JourneyTimeline = () => {
 
                 <div
                   ref={scrollContainerRef}
-                  className="flex w-full h-full gap-4 transition-all duration-500 ease-out px-1 no-scrollbar flex-row overflow-x-auto overflow-y-hidden pb-4"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  className="relative flex w-full gap-8 transition-all duration-500 ease-out px-1 no-scrollbar flex-row overflow-x-auto overflow-y-hidden pb-8"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingTop: '0px' }}
                 >
+                  {/* Straight Line SVG - extends across all cards */}
+                  <svg
+                    className="absolute top-0 left-0 pointer-events-none"
+                    style={{
+                      width: `${milestones.length * 328}px`,
+                      height: '128px',
+                      zIndex: 1
+                    }}
+                  >
+                    <line
+                      x1="0"
+                      y1="60"
+                      x2={milestones.length * 328}
+                      y2="60"
+                      stroke="#DCEFFC"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+
                   {milestones.map((m, idx) => {
-                    const isActive = activeIndex === idx;
+                    const year = m.date.split(' ')[1] || m.date.split(' ')[0];
+
                     return (
                       <div
                         key={idx}
-                        className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] border flex flex-col flex-none ${isActive ? 'w-[600px] bg-blue-600/85 backdrop-blur-xl border-blue-500/50 shadow-2xl shadow-blue-900/20' : 'w-[280px] bg-slate-50 border-slate-200 hover:bg-slate-100'}`}
-                        onMouseEnter={() => setActiveIndex(idx)}
-                        onClick={() => setActiveIndex(idx)}
+                        className="relative flex-none"
+                        style={{ width: '320px' }}
                       >
-                        <div className={`absolute inset-0 flex flex-col items-center justify-center p-4 text-center transition-all duration-500 ${isActive ? 'opacity-0 scale-90 delay-0' : 'opacity-100 scale-100 delay-100'}`}>
-                          <span className="text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-slate-500 -rotate-90 whitespace-nowrap">
-                            {m.date}
-                          </span>
-                        </div>
+                        {/* Vertical String connecting to the straight line */}
+                        <div
+                          className="absolute left-1/2 -translate-x-1/2 w-0.5 bg-teal-500"
+                          style={{
+                            top: '60px',
+                            height: '60px',
+                            zIndex: 2
+                          }}
+                        ></div>
 
-                        <div className={`absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-blue-900/20 to-transparent transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
-                          <div className="text-sm font-semibold text-blue-200 mb-2 tracking-wider uppercase absolute top-4 right-4">{m.date}</div>
-                          <h3 className="text-xl md:text-3xl font-bold text-white mb-3 md:mb-4 leading-tight">
-                            {m.title}
-                          </h3>
-                          <p className="text-blue-50 text-sm md:text-base leading-relaxed line-clamp-4 md:line-clamp-none">
-                            {m.body}
-                          </p>
+                        {/* Connection dot on the line */}
+                        <div
+                          className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-teal-600 border-2 border-white shadow-md"
+                          style={{
+                            top: '54px',
+                            zIndex: 3
+                          }}
+                        ></div>
+
+                        {/* Card */}
+                        <div
+                          className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 p-6"
+                          style={{ marginTop: '120px', border: '2px solid #DCEFFC' }}
+                        >
+                          {/* Year Badge */}
+                          <div className="absolute -top-4 left-4 bg-teal-600 text-white px-5 py-2 rounded-full text-base font-bold shadow-lg border-2 border-white">
+                            {year}
+                          </div>
+
+                          {/* Date in top right corner */}
+                          <div className="absolute top-4 right-4 text-xs text-slate-400 font-semibold">
+                            {m.date}
+                          </div>
+
+                          {/* Card Content */}
+                          <div className="pt-4 pr-20">
+                            <h3 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
+                              {m.title}
+                            </h3>
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                              {m.body}
+                            </p>
+                          </div>
+
+                          {/* Card Footer - removed date, kept dot */}
+                          <div className="mt-4 pt-4 border-t border-slate-200 flex justify-end items-center">
+                            <div className="w-2 h-2 rounded-full bg-teal-500"></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -188,17 +246,18 @@ const JourneyTimeline = () => {
 
                 <button
                   onClick={() => scroll('right')}
-                  className="absolute right-0 z-20 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg border border-slate-100 text-slate-700 hover:text-blue-600 hover:scale-110 transition-all -mr-4 lg:-mr-12"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-slate-200 text-slate-700 hover:text-blue-600 hover:scale-110 transition-all -mr-4 lg:-mr-12"
                   aria-label="Scroll Right"
                 >
                   <ChevronRight size={28} />
                 </button>
 
-                <div className="absolute bottom-0 left-0 right-0 flex gap-1 mt-6 justify-center">
+                {/* Progress Indicators */}
+                <div className="absolute bottom-0 left-0 right-0 flex gap-2 mt-6 justify-center">
                   {milestones.map((_, i) => (
                     <div
                       key={i}
-                      className={`h-1 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-12 bg-blue-600' : 'w-2 bg-slate-200'}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-12 bg-teal-600' : 'w-2 bg-slate-300'}`}
                     />
                   ))}
                 </div>

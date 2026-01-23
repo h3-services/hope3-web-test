@@ -231,11 +231,11 @@ html {
     gap: 40px;
     margin-bottom: 80px;
     position: relative;
-    background: #ffffff;
-    border-radius: 40px;
-    padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
     min-height: 600px;
 }
 
@@ -249,12 +249,12 @@ html {
     display: flex;
     justify-content: center;
     position: sticky;
-    top: 40px;
+    top: 100px;
     /* Adjust based on nav height */
     align-self: flex-start;
     padding: 0;
-    height: auto;
-    /* Allow it to take height of image */
+    height: 100%;
+    /* Match the height of bio content */
 }
 
 
@@ -263,7 +263,8 @@ html {
     width: 100%;
     /* Fixed width/height for the image container */
     max-width: 400px;
-    height: 500px;
+    height: 100%;
+    min-height: 500px;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -293,8 +294,8 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 500px;
-    overflow-y: auto;
+    height: auto;
+    overflow-y: visible;
     overflow-x: hidden;
 }
 
@@ -539,8 +540,19 @@ html {
     font-weight: 700;
     color: #332eb2;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-transform: uppercase;
+}
+
+.section-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
 }
 
 /* --- Board Interaction Styles --- */
@@ -562,7 +574,7 @@ html {
 .varsity-grid-4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -570,18 +582,39 @@ html {
     place-content: center;
 }
 
+/* 5-column grid for Board section */
+.varsity-grid-4:has(> :nth-child(5):last-child) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 1300px;
+}
+
+.varsity-grid-4:has(> :nth-child(5):last-child) .board-card {
+    width: 100%;
+    max-width: 220px;
+}
+
 /* Center alignment for Founders, Finance, and Media sections */
-.centered-section .varsity-grid-4 {
-    display: flex;
-    flex-wrap: wrap;
+.centered-section .varsity-carousel-wrapper {
+    width: 100%;
     justify-content: center;
-    grid-template-columns: unset;
-    gap: 20px;
+}
+
+.centered-section .varsity-grid-4 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 0 auto !important;
+    gap: 40px !important;
 }
 
 /* Remove auto margin from cards in centered sections */
 .centered-section .board-card.premium-card {
-    margin: 0;
+    margin: 0 !important;
 }
 
 /* Arrows */
