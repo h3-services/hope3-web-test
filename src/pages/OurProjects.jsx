@@ -34,6 +34,15 @@ import foodSharingImg from '../assets/images/pages/project/plates 2 people.jpeg'
 import foodSharing1Img from '../assets/images/pages/project/plates 2 people1.png';
 import foodSharing2Img from '../assets/images/pages/project/plates 2 people2.png';
 import foodSharing3Img from '../assets/images/pages/project/plates 2 people3.png';
+import duoMathImg from '../assets/images/pages/project/duo_math.jpg';
+import duoMath1Img from '../assets/images/pages/project/duo_math1.jpg';
+import duoMath2Img from '../assets/images/pages/project/duo_math2.jpg';
+import duoMath3Img from '../assets/images/pages/project/duo_math3.jpg';
+import duoMath4Img from '../assets/images/pages/project/duo_math4.jpg';
+import crewCallImg from "../assets/images/pages/project/crewcall.jpeg";
+import crewCall1Img from "../assets/images/pages/project/crewcall1.jpeg";
+import crewCallWeb1Img from '../assets/images/pages/project/crewcall_web1.jpg';
+import crewCallWeb2Img from '../assets/images/pages/project/crewcall_web2.jpg';
 
 const OurProjects = () => {
     const [activeFilter, setActiveFilter] = useState('All');
@@ -82,27 +91,27 @@ const OurProjects = () => {
         },
         {
             id: 4,
-            title: "IIT Preparation Program",
+            title: "Duo Math",
             category: "Education",
-            description: "Intensive coaching program preparing students for IIT entrance exams with expert guidance and comprehensive study materials.",
-            fullDescription: "Our IIT Preparation Program provides world-class coaching to deserving students who dream of attending India's premier engineering institutes. With expert faculty, personalized study plans, and extensive practice resources, we have consistently achieved remarkable success rates.",
-            image: "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600",
-            year: 2021,
+            description: "Duo Math is a Flutter-based math game app offering both single-player and competitive two-player modes. Players solve arithmetic problems across three difficulty levels with timed challenges.",
+            fullDescription: "Duo Math is a Flutter-based math game app offering both single-player and competitive two-player modes. Players solve arithmetic problems (addition, subtraction, multiplication, division, squares) across three difficulty levels with timed challenges. The app combines education with entertainment, making math learning engaging and competitive for students of all ages.",
+            image: duoMathImg,
+            year: 2024,
             status: "Active",
-            team: "15 expert coaches",
-            gallery: [img7, img8, educationImg, img1]
+            team: "Likitha V (Developer)",
+            gallery: [duoMathImg, duoMath1Img, duoMath2Img, duoMath3Img, duoMath4Img]
         },
         {
             id: 5,
-            title: "Study Abroad Guidance",
-            category: "International",
-            description: "Helping students navigate the complex process of studying abroad, from university selection to visa assistance.",
-            fullDescription: "Navigating international education can be overwhelming. Our Study Abroad Guidance program provides end-to-end support including university shortlisting, application assistance, scholarship guidance, visa processing, and pre-departure orientation. We have partnerships with universities across 10 countries.",
-            image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600",
-            year: 2022,
+            title: "CrewCall",
+            category: "Tech Career",
+            description: "CrewCall is a platform designed to connect talented individuals with event organizers, enabling easy communication and the formation of small, efficient crews.",
+            fullDescription: "CrewCall is a platform designed to connect talented individuals with event organizers, enabling easy communication and the formation of small, efficient crews. The platform is available as both a website and a mobile app, where users can register as either an Organizer or a Talent by selecting their skills. Organizers can create events and invite people based on the specific talents required, making crew building simple and organized. CrewCall supports both paid and non-paid opportunities, allowing talented individuals to collaborate and earn through their skills. The CrewCall mobile app is developed by Biruntha, and the CrewCall website is developed by Kiruthika.",
+            image: crewCallWeb2Img,
+            year: 2024,
             status: "Active",
-            team: "Expert counselors",
-            gallery: [graduationImg, img1, img2, img3]
+            team: "Biruntha (Mobile App), Kiruthika (Website)",
+            gallery: [crewCallWeb2Img, crewCallWeb1Img, crewCallImg, crewCall1Img]
         },
         {
             id: 6,
