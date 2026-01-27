@@ -249,12 +249,14 @@
     width: 100%;
     height: 220px;
     overflow: hidden;
+    background: #f1f5f9;
 }
 
 .project-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.5s ease;
 }
 
@@ -800,10 +802,8 @@
 /* Modal Gallery Carousel */
 .carousel-container {
     position: relative;
-    width: 80%;
-    /* Reduced width */
+    width: 100%;
     margin: 20px auto;
-    /* Centered */
     border-radius: 16px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.2);
@@ -814,8 +814,7 @@
 .carousel-slide {
     position: relative;
     width: 100%;
-    height: 250px;
-    /* Reduced height */
+    height: 300px;
     overflow: hidden;
 }
 
@@ -838,7 +837,7 @@
 .carousel-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 16px;
 }
 
@@ -1065,6 +1064,10 @@
     .modal-stats-grid {
         grid-template-columns: 1fr;
     }
+
+    .carousel-slide {
+        height: 200px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1082,6 +1085,10 @@
 
     .modal-actions {
         flex-direction: column;
+    }
+
+    .carousel-slide {
+        height: 180px;
     }
 }
 
