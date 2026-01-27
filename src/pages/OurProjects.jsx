@@ -15,7 +15,25 @@ import img8 from '../assets/images/pages/transformation/img8.jpeg';
 import educationImg from '../assets/images/pages/home/education.jpeg';
 import empowermentImg from '../assets/images/pages/home/empowerment.jpeg';
 import entrepreneurshipImg from '../assets/images/pages/home/enterpreneurship.jpeg';
-import graduationImg from '../assets/images/pages/home/college-graduation-pictures.jpg';
+import graduationImg from '../assets/images/pages/home/college-graduation-pictures.jpg.jpeg';
+import chemistryAppImg from '../assets/images/pages/project/chemistryapp- Sham Edward.png';
+import nadiBioBandImg from '../assets/images/pages/project/Nadi Bio Band.jpeg';
+import nadiBioBand1Img from '../assets/images/pages/project/Nadi Bio Band1.jpeg';
+import nadiBioBand2Img from '../assets/images/pages/project/Nadi Bio Band2.jpeg';
+import nadiBioBand3Img from '../assets/images/pages/project/Nadi Bio Band3.jpeg';
+import nadiBioBand4Img from '../assets/images/pages/project/Nadi Bio Band4.jpeg';
+import chemistry1Img from '../assets/images/pages/project/chemistry1.png';
+import chemistry2Img from '../assets/images/pages/project/chemistry2.png';
+import chemistry3Img from '../assets/images/pages/project/chemistry3.png';
+import ourAreaImg from '../assets/images/pages/project/OurArea.png';
+import ourArea1Img from '../assets/images/pages/project/ourarea1.png';
+import ourArea2Img from '../assets/images/pages/project/ourarea2.png';
+import ourArea3Img from '../assets/images/pages/project/ourarea3.png';
+import ourArea4Img from '../assets/images/pages/project/ourarea4.png';
+import foodSharingImg from '../assets/images/pages/project/plates 2 people.jpeg';
+import foodSharing1Img from '../assets/images/pages/project/plates 2 people1.png';
+import foodSharing2Img from '../assets/images/pages/project/plates 2 people2.png';
+import foodSharing3Img from '../assets/images/pages/project/plates 2 people3.png';
 
 const OurProjects = () => {
     const [activeFilter, setActiveFilter] = useState('All');
@@ -35,9 +53,7 @@ const OurProjects = () => {
             image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600",
             year: 2018,
             status: "Active",
-            impact: "500+ individuals helped",
             team: "25 volunteers",
-            location: "Multiple Cities",
             gallery: [img1, img2, img3, img4]
         },
         {
@@ -49,9 +65,7 @@ const OurProjects = () => {
             image: "https://images.unsplash.com/photo-1627556704302-624286467c65?w=600",
             year: 2019,
             status: "Active",
-            impact: "150+ scholarships awarded",
             team: "12 partner schools",
-            location: "Pan India",
             gallery: [educationImg, graduationImg, img4, img5]
         },
         {
@@ -63,9 +77,7 @@ const OurProjects = () => {
             image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600",
             year: 2020,
             status: "Active",
-            impact: "200+ students mentored",
             team: "30 industry mentors",
-            location: "Virtual & On-site",
             gallery: [empowermentImg, img5, img6, img7]
         },
         {
@@ -77,9 +89,7 @@ const OurProjects = () => {
             image: "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600",
             year: 2021,
             status: "Active",
-            impact: "28 IIT selections",
             team: "15 expert coaches",
-            location: "Major Metro Cities",
             gallery: [img7, img8, educationImg, img1]
         },
         {
@@ -91,9 +101,7 @@ const OurProjects = () => {
             image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600",
             year: 2022,
             status: "Active",
-            impact: "75+ students placed abroad",
             team: "Expert counselors",
-            location: "10 Countries",
             gallery: [graduationImg, img1, img2, img3]
         },
         {
@@ -105,50 +113,68 @@ const OurProjects = () => {
             image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600",
             year: 2023,
             status: "Active",
-            impact: "120+ students employed",
             team: "20 partner companies",
-            location: "Remote & Hybrid",
             gallery: [empowermentImg, img3, img4, img5]
         },
         {
             id: 7,
-            title: "Student Entrepreneurship Hub",
-            category: "Entrepreneurship",
-            description: "Nurturing the entrepreneurial spirit in students by providing mentorship, resources, and seed funding for innovative ideas.",
-            fullDescription: "The Student Entrepreneurship Hub is an incubator for young innovators. We provide mentorship from successful entrepreneurs, access to resources and networks, and seed funding for promising ventures. Our startups have collectively raised significant follow-on funding.",
-            image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600",
+            title: "Chemistry Learning App",
+            category: "Tech Career",
+            description: "An interactive mobile application designed to make chemistry learning engaging and accessible for students through gamification and visual learning.",
+            fullDescription: "The Chemistry Learning App revolutionizes how students learn chemistry by combining interactive elements, gamification, and visual learning techniques. The app features molecular visualization, interactive periodic table, chemical reaction simulations, and progress tracking to make chemistry concepts more understandable and engaging for students of all levels.",
+            image: chemistryAppImg,
             year: 2024,
             status: "Active",
-            impact: "15 startups launched",
-            team: "Industry mentors",
-            location: "Innovation Centers",
-            gallery: [entrepreneurshipImg, img5, img6, img7]
+            team: "Sham Edward (Developer)",
+            gallery: [chemistryAppImg, chemistry1Img, chemistry2Img, chemistry3Img]
         },
         {
             id: 8,
-            title: "MAANG Career Pathway",
-            category: "Tech Career",
-            description: "Specialized training and mentorship program preparing students for careers at top tech companies like Meta, Amazon, Apple, Netflix, and Google.",
-            fullDescription: "Our MAANG Career Pathway is an intensive program designed to prepare talented students for careers at top technology companies. The curriculum includes data structures, algorithms, system design, and interview preparation with mentors who work at these companies.",
-            image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600",
-            year: 2025,
+            title: "Our Area",
+            category: "Social Networking",
+            description: "Our Area is a local social networking platform designed to connect people within the same neighborhood. It helps users discover nearby events, shops, and moments through a location-based feed.",
+            fullDescription: "Our Area is a local social networking platform designed to connect people within the same neighborhood. It helps users discover nearby events, shops, and moments through a location-based feed. Built with React, TailwindCSS, FastAPI, and Turso, the platform focuses on strengthening real-world community connections by making local updates digital, simple, and engaging.",
+            image: ourAreaImg,
+            year: 2024,
             status: "Active",
-            impact: "12 placements achieved",
-            team: "8 MAANG mentors",
-            location: "Virtual",
-            gallery: [img7, img8, graduationImg, img1]
+            team: "Siranjeevan (Frontend), Praveen (Backend)",
+            gallery: [ourArea1Img, ourArea2Img, ourArea3Img, ourArea4Img]
+        },
+        {
+            id: 9,
+            title: "Food Sharing Platform",
+            category: "Social Impact",
+            description: "What if the food we waste every day could earn value instead? A smarter way to share and sell fresh food, turning extra food into opportunity.",
+            fullDescription: "What if the food we waste every day could earn value instead? That's the idea behind this project — a smarter way to share and sell fresh food. Every day, homes and small food businesses end up with extra meals or vegetables that simply go to waste. Not because they want to — but because there's no simple way to share or sell it quickly. A smart, community-driven platform that connects people who have extra fresh food or vegetables with those who want to buy it instantly nearby. No middlemen. No delivery stress. Just simple — Post. Discover. Collect.",
+            image: foodSharingImg,
+            year: 2024,
+            status: "Active",
+            team: "Community developers",
+            gallery: [foodSharingImg, foodSharing1Img, foodSharing2Img, foodSharing3Img]
+        },
+        {
+            id: 10,
+            title: "Nadi Bio Band",
+            category: "Health Tech",
+            description: "The Nadi Bio Band Smart Band, a wearable device that brings the traditional Ayurvedic pulse diagnosis (Nadi Pariksha) into the digital era.",
+            fullDescription: "The Nadi Bio Band Smart Band, a wearable device that brings the traditional Ayurvedic pulse diagnosis (Nadi Pariksha) into the digital era. This innovative wearable combines ancient wisdom with modern technology to provide personalized health insights.",
+            image: nadiBioBandImg,
+            year: 2024,
+            status: "Active",
+            team: "8 health tech experts",
+            gallery: [nadiBioBand1Img, nadiBioBand2Img, nadiBioBand3Img, nadiBioBand4Img]
         }
     ];
 
-    const categories = ['All', 'Education', 'Career', 'Social Welfare', 'Employment', 'Entrepreneurship', 'International', 'Tech Career'];
+    const categories = ['All', 'Education', 'Career', 'Social Welfare', 'Employment', 'Entrepreneurship', 'International', 'Tech Career', 'Health Tech', 'Social Networking', 'Social Impact'];
 
     const filteredProjects = activeFilter === 'All'
         ? projects
         : projects.filter(project => project.category === activeFilter);
 
     const impactStats = [
-        { value: "1,200+", label: "Students Impacted" },
-        { value: "8+", label: "Active Projects" },
+        { value: "1,700+", label: "Students Impacted" },
+        { value: "10+", label: "Active Projects" },
         { value: "50+", label: "Partner Organizations" },
         { value: "7", label: "Years of Impact" }
     ];
@@ -317,50 +343,58 @@ const OurProjects = () => {
 
                         <div className="modal-body">
                             <div className="modal-stats-grid">
-                                <div className="modal-stat">
-                                    <div className="modal-stat-icon">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                                        </svg>
+                                {selectedProject.status && (
+                                    <div className="modal-stat">
+                                        <div className="modal-stat-icon">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                            </svg>
+                                        </div>
+                                        <div className="modal-stat-content">
+                                            <span className="modal-stat-label">Status</span>
+                                            <span className="modal-stat-value">{selectedProject.status}</span>
+                                        </div>
                                     </div>
-                                    <div className="modal-stat-content">
-                                        <span className="modal-stat-label">Status</span>
-                                        <span className="modal-stat-value">{selectedProject.status}</span>
+                                )}
+                                {selectedProject.team && (
+                                    <div className="modal-stat">
+                                        <div className="modal-stat-icon">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                                            </svg>
+                                        </div>
+                                        <div className="modal-stat-content">
+                                            <span className="modal-stat-label">Team</span>
+                                            <span className="modal-stat-value">{selectedProject.team}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="modal-stat">
-                                    <div className="modal-stat-icon">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-                                        </svg>
+                                )}
+                                {selectedProject.location && (
+                                    <div className="modal-stat">
+                                        <div className="modal-stat-icon">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                            </svg>
+                                        </div>
+                                        <div className="modal-stat-content">
+                                            <span className="modal-stat-label">Location</span>
+                                            <span className="modal-stat-value">{selectedProject.location}</span>
+                                        </div>
                                     </div>
-                                    <div className="modal-stat-content">
-                                        <span className="modal-stat-label">Team</span>
-                                        <span className="modal-stat-value">{selectedProject.team}</span>
+                                )}
+                                {selectedProject.impact && (
+                                    <div className="modal-stat">
+                                        <div className="modal-stat-icon">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                                            </svg>
+                                        </div>
+                                        <div className="modal-stat-content">
+                                            <span className="modal-stat-label">Impact</span>
+                                            <span className="modal-stat-value">{selectedProject.impact}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="modal-stat">
-                                    <div className="modal-stat-icon">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                                        </svg>
-                                    </div>
-                                    <div className="modal-stat-content">
-                                        <span className="modal-stat-label">Location</span>
-                                        <span className="modal-stat-value">{selectedProject.location}</span>
-                                    </div>
-                                </div>
-                                <div className="modal-stat">
-                                    <div className="modal-stat-icon">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-                                        </svg>
-                                    </div>
-                                    <div className="modal-stat-content">
-                                        <span className="modal-stat-label">Impact</span>
-                                        <span className="modal-stat-value">{selectedProject.impact}</span>
-                                    </div>
-                                </div>
+                                )}
                             </div>
 
                             <div className="modal-section">
@@ -404,26 +438,6 @@ const OurProjects = () => {
                                                 onClick={() => setCurrentImageIndex(index)}
                                             ></span>
                                         ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="modal-section">
-                                <h3 className="modal-section-title">Project Timeline</h3>
-                                <div className="modal-timeline">
-                                    <div className="timeline-item">
-                                        <div className="timeline-dot"></div>
-                                        <div className="timeline-content">
-                                            <span className="timeline-year">{selectedProject.year}</span>
-                                            <span className="timeline-event">Project Launched</span>
-                                        </div>
-                                    </div>
-                                    <div className="timeline-item">
-                                        <div className="timeline-dot active"></div>
-                                        <div className="timeline-content">
-                                            <span className="timeline-year">Present</span>
-                                            <span className="timeline-event">Currently Active</span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

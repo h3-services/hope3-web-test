@@ -87,7 +87,7 @@
 
 /* HOPE3 Passage Section */
 .hope3-passage {
-  padding: 40px;
+  padding: 10px 40px;
   margin: 0 auto;
   background: transparent;
   width: 100%;
@@ -95,29 +95,29 @@
 }
 
 .passage-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  color: #475569;
+  font-family: 'El Messiri', sans-serif;
+  font-size: 20px;
+  color: #444;
   margin-bottom: 25px;
-  line-height: 1.6;
-  text-align: justify;
+  line-height: 1.8;
+  text-align: left;
 }
 
 .hope3-passage strong {
-  color: #332eb2;
+  color: #003668;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
+  font-family: 'El Messiri', sans-serif;
+  font-size: 20px;
 }
 
 .passage-highlight {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  color: #332eb2;
+  font-family: 'El Messiri', sans-serif;
+  font-size: 20px;
+  color: #003668;
   margin: 20px 0 0 0;
-  line-height: 1.6;
+  line-height: 1.8;
   font-weight: 700;
-  text-align: justify;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
@@ -128,7 +128,12 @@
   .passage-text,
   .passage-highlight,
   .hope3-passage strong {
-    font-size: 1rem;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .passage-text {
+    margin-bottom: 15px;
   }
 }
 

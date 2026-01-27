@@ -11,37 +11,19 @@ import getInvolvedIcon from '../assets/images/pages/home/Gemini_Generated_Image_
 const Navbar = () => {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
       // Close popups/dropdowns on scroll
-      if (Math.abs(currentScrollY - lastScrollY) > 5) {
-        setShowGetInvolved(false);
-        setActiveDropdown(null);
-        setClickedDropdown(null);
-      }
-
-      if (currentScrollY > 100) { // Only trigger after scrolling down a bit
-        if (currentScrollY > lastScrollY) {
-          setIsVisible(false); // Hide on scroll down
-        } else {
-          setIsVisible(true); // Show on scroll up
-        }
-      } else {
-        setIsVisible(true); // Always visible at the top
-      }
-
-      setLastScrollY(currentScrollY);
+      setShowGetInvolved(false);
+      setActiveDropdown(null);
+      setClickedDropdown(null);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const [clickedDropdown, setClickedDropdown] = useState(null);
   const [showGetInvolved, setShowGetInvolved] = useState(false);
@@ -120,7 +102,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'} ${mobileOpen ? 'mobile-active' : ''}`} role="navigation" aria-label="Main navigation">
+    <nav className={`navbar ${mobileOpen ? 'mobile-active' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
         <button
           className={`hamburger ${mobileOpen ? 'active' : ''}`}
