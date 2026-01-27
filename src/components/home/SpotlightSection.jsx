@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../../styles/spotlightSection.css'
-import nachiappanImage from '../../assets/images/pages/leaders/media/Nachiappan.jpeg'
+import nachiGoogleImage from '../../assets/images/pages/home/Nachi at Google.jpeg'
 
 const SpotlightSection = () => {
   const baseUrl = import.meta.env.BASE_URL || '/'
@@ -14,7 +14,7 @@ const SpotlightSection = () => {
       date: "November 2025",
       description: "One of our students has been placed at Google as an AIML engineer and is now working in Mountain View, California—a proud milestone for the HOPE3 family.",
       size: "large",
-      image: nachiappanImage
+      image: nachiGoogleImage
     },
     {
       id: 2,
